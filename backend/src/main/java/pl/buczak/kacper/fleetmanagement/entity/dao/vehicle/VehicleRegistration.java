@@ -18,7 +18,7 @@ public class VehicleRegistration extends BaseEntity {
     @OneToOne
     private Vehicle vehicle;
 
-    @OneToMany
+    @OneToMany(mappedBy = "vehicleRegistration")
     private List<TechnicalExamination> technicalExaminationList;
 
 
