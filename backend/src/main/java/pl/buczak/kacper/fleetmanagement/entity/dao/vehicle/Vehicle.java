@@ -1,11 +1,10 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
+import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
+import pl.buczak.kacper.fleetmanagement.entity.dao.insurance.Insurance;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /*
@@ -18,4 +17,12 @@ public class Vehicle extends BaseEntity {
     @OneToMany(cascade = CascadeType.DETACH, mappedBy = "vehicle")
     private List<VehicleUsageTimestamp> vehicleUsageTimestamps;
 
+    @OneToOne
+    private VehicleRegistration vehicleRegistration;
+
+    @OneToOne
+    private ExploatationReport exploatationReport;
+
+    @OneToOne
+    private Insurance insurance;
 }
