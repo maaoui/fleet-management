@@ -26,7 +26,7 @@ public class Address extends BaseEntity {
 
     @Size(max = 50)
     @Column(nullable = false, name = "address")
-    private String address;
+    private String streetAddress;
 
     @OneToOne(mappedBy = "address")
     private Workshop workshop;
@@ -34,4 +34,46 @@ public class Address extends BaseEntity {
     @OneToOne(mappedBy = "address")
     private Department department;
 
+    public Address() {
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getStreetAddress() {
+        return streetAddress;
+    }
+
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+    public Workshop getWorkshop() {
+        return workshop;
+    }
+
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }

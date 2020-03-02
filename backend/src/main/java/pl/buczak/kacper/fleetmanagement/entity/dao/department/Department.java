@@ -14,6 +14,10 @@ import java.util.List;
 @Table(name = "department")
 public class Department extends BaseEntity {
 
+    @Size(max = 50)
+    @Column(nullable = false, name = "department_name")
+    private String departmentName;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
@@ -25,8 +29,38 @@ public class Department extends BaseEntity {
     @OneToMany(cascade = CascadeType.DETACH, mappedBy = "department")
     private List<Employee> employees;
 
-    @Size(max = 50)
-    @Column(nullable = false, name = "department_name")
-    private String departmentName;
+    public Department() {
+    }
 
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 }

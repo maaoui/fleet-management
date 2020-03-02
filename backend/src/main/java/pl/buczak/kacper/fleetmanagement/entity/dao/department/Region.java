@@ -15,9 +15,6 @@ import java.util.List;
 @Table(name = "region")
 public class Region extends BaseEntity {
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
-    private List<Workshop> workshops;
-
     @Size(max = 30)
     @Column(nullable = false, name = "region_name")
     private String regionName;
@@ -25,4 +22,33 @@ public class Region extends BaseEntity {
     @OneToMany(mappedBy = "region")
     private List<Department> department;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
+    private List<Workshop> workshops;
+
+    public Region() {
+    }
+
+    public String getRegionName() {
+        return regionName;
+    }
+
+    public void setRegionName(String regionName) {
+        this.regionName = regionName;
+    }
+
+    public List<Department> getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(List<Department> department) {
+        this.department = department;
+    }
+
+    public List<Workshop> getWorkshops() {
+        return workshops;
+    }
+
+    public void setWorkshops(List<Workshop> workshops) {
+        this.workshops = workshops;
+    }
 }
