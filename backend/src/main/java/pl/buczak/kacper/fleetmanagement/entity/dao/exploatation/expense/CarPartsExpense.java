@@ -4,6 +4,8 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationRepo
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.CarPart;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /*
     @author Kacper Buczak 
@@ -18,4 +20,23 @@ public class CarPartsExpense extends Expense {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CarPart carPart;
+
+    public CarPartsExpense() {
+    }
+
+    public ExploatationReport getExploatationReport() {
+        return exploatationReport;
+    }
+
+    public void setExploatationReport(ExploatationReport exploatationReport) {
+        this.exploatationReport = exploatationReport;
+    }
+
+    public CarPart getCarPart() {
+        return carPart;
+    }
+
+    public void setCarPart(CarPart carPart) {
+        this.carPart = carPart;
+    }
 }

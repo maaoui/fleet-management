@@ -3,10 +3,13 @@ package pl.buczak.kacper.fleetmanagement.entity.dao.workshop;
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.department.Address;
 import pl.buczak.kacper.fleetmanagement.entity.dao.department.Region;
+import pl.buczak.kacper.fleetmanagement.entity.dao.employee.Employee;
+import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.ServiceExpense;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /*
     @author Kacper Buczak 
@@ -18,6 +21,9 @@ public class Workshop extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
+
+    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "workshop")
+    private List<ServiceExpense> serviceExpenses;
 
     @Size(max = 50)
     @Column(nullable = false, name = "workshop_name")

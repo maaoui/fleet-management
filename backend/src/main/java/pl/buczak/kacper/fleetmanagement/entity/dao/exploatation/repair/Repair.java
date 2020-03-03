@@ -1,7 +1,6 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.repair;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
-import pl.buczak.kacper.fleetmanagement.entity.dao.insurance.Insurance;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.CarPart;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.Vehicle;
 
