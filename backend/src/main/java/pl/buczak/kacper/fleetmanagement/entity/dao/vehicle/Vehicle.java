@@ -3,7 +3,6 @@ package pl.buczak.kacper.fleetmanagement.entity.dao.vehicle;
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.repair.RecommendedRepair;
-import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.repair.Repair;
 import pl.buczak.kacper.fleetmanagement.entity.dao.insurance.Insurance;
 
 import javax.persistence.*;
@@ -27,9 +26,6 @@ public class Vehicle extends BaseEntity {
 
     @OneToOne
     private Insurance insurance;
-
-    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "vehicle")
-    private List<Repair> repairs;
 
     @OneToMany(cascade = CascadeType.DETACH, mappedBy = "vehicle")
     private List<RecommendedRepair> recommendedRepairs;

@@ -13,12 +13,15 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "car_part")
 public class CarPart extends BaseEntity {
+
     @Size(max = 30)
     @Column(nullable = false, name = "part_type")
     private String partType;
+
     @Size(max = 30)
     @Column(nullable = false, name = "name")
     private String name;
+
     @Size(max = 30)
     @Column(nullable = false, name = "description")
     private String description;

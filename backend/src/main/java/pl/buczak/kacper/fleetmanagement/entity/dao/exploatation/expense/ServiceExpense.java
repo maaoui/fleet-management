@@ -3,6 +3,7 @@ package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense;
 import org.hibernate.jdbc.Work;
 import pl.buczak.kacper.fleetmanagement.entity.dao.department.Region;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
+import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.CarPart;
 import pl.buczak.kacper.fleetmanagement.entity.dao.workshop.Workshop;
 
 import javax.persistence.*;
@@ -21,4 +22,34 @@ public class ServiceExpense extends Expense {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workshop_id")
     private Workshop workshop;
+
+    @OneToOne
+    private CarPart carPart;
+
+    public ServiceExpense() {
+    }
+
+    public ExploatationReport getExploatationReport() {
+        return exploatationReport;
+    }
+
+    public void setExploatationReport(ExploatationReport exploatationReport) {
+        this.exploatationReport = exploatationReport;
+    }
+
+    public Workshop getWorkshop() {
+        return workshop;
+    }
+
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
+    }
+
+    public CarPart getCarPart() {
+        return carPart;
+    }
+
+    public void setCarPart(CarPart carPart) {
+        this.carPart = carPart;
+    }
 }
