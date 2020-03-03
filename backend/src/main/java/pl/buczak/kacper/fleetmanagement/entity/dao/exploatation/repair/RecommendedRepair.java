@@ -1,12 +1,10 @@
-package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.service;
+package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.repair;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
+import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.CarPart;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.Vehicle;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /*
     @author Kacper Buczak 
@@ -16,6 +14,8 @@ import javax.persistence.Table;
 public class RecommendedRepair extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "vehicle_id", referencedColumnName = "id")
     private Vehicle vehicle;
-
+    @OneToOne
+    private CarPart carPart;
 }

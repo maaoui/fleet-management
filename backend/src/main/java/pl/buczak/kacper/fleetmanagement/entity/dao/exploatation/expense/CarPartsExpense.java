@@ -1,11 +1,9 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
+import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.CarPart;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /*
     @author Kacper Buczak 
@@ -17,4 +15,7 @@ public class CarPartsExpense extends Expense {
     @ManyToOne
     @JoinColumn(name = "exploatation_report_id", referencedColumnName = "id")
     private ExploatationReport exploatationReport;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CarPart carPart;
 }
