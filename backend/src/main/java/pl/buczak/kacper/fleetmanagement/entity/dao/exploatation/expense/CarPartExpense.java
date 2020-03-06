@@ -4,15 +4,13 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationRepo
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.CarPart;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /*
     @author Kacper Buczak 
 */
 @Entity
 @Table(name = "car_parts_expense")
-public class CarPartsExpense extends Expense {
+public class CarPartExpense extends Expense {
 
     @ManyToOne
     @JoinColumn(name = "exploatation_report_id", referencedColumnName = "id")
@@ -21,7 +19,7 @@ public class CarPartsExpense extends Expense {
     @ManyToOne(fetch = FetchType.LAZY)
     private CarPart carPart;
 
-    public CarPartsExpense() {
+    public CarPartExpense() {
     }
 
     public ExploatationReport getExploatationReport() {

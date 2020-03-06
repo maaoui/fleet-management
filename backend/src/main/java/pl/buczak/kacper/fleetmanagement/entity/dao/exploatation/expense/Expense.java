@@ -4,7 +4,6 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -29,6 +28,9 @@ public class Expense extends BaseEntity {
     @Size(min = 0, max = 1000)
     @Column(nullable = false, name = "comment")
     private String comment;
+
+    @Column(nullable = false, name = "current_kilometrage")
+    private Integer currentKilometrage;
 
     public Expense() {
     }
@@ -63,5 +65,13 @@ public class Expense extends BaseEntity {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Integer getCurrentKilometrage() {
+        return currentKilometrage;
+    }
+
+    public void setCurrentKilometrage(Integer currentKilometrage) {
+        this.currentKilometrage = currentKilometrage;
     }
 }

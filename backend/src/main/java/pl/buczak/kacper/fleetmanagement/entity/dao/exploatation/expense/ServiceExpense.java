@@ -1,7 +1,5 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense;
 
-import org.hibernate.jdbc.Work;
-import pl.buczak.kacper.fleetmanagement.entity.dao.department.Region;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.CarPart;
 import pl.buczak.kacper.fleetmanagement.entity.dao.workshop.Workshop;

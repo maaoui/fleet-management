@@ -3,7 +3,6 @@ package pl.buczak.kacper.fleetmanagement.entity.dao.workshop;
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.department.Address;
 import pl.buczak.kacper.fleetmanagement.entity.dao.department.Region;
-import pl.buczak.kacper.fleetmanagement.entity.dao.employee.Employee;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.ServiceExpense;
 
 import javax.persistence.*;

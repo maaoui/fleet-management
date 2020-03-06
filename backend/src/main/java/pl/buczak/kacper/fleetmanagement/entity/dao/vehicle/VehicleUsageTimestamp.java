@@ -6,7 +6,6 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.employee.Employee;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 /*
     @author Kacper Buczak 

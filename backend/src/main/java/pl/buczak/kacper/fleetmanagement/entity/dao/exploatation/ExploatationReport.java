@@ -1,13 +1,16 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
-import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.CarPartsExpense;
+import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.CarPartExpense;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.FuelExpense;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.OtherExpense;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.ServiceExpense;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.Vehicle;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.List;
 
 /*
@@ -24,7 +27,7 @@ public class ExploatationReport extends BaseEntity {
     private List<FuelExpense> fuelExpenses;
 
     @OneToMany(mappedBy = "exploatationReport")
-    private List<CarPartsExpense> carPartsExpenses;
+    private List<CarPartExpense> carPartsExpenses;
 
     @OneToMany(mappedBy = "exploatationReport")
     private List<ServiceExpense> serviceExpenses;
@@ -52,11 +55,11 @@ public class ExploatationReport extends BaseEntity {
         this.fuelExpenses = fuelExpenses;
     }
 
-    public List<CarPartsExpense> getCarPartsExpenses() {
+    public List<CarPartExpense> getCarPartsExpenses() {
         return carPartsExpenses;
     }
 
-    public void setCarPartsExpenses(List<CarPartsExpense> carPartsExpenses) {
+    public void setCarPartsExpenses(List<CarPartExpense> carPartsExpenses) {
         this.carPartsExpenses = carPartsExpenses;
     }
 
