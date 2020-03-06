@@ -15,25 +15,17 @@ import java.util.List;
 @Table(name = "region")
 public class Region extends BaseEntity {
 
-    @Size(max = 30)
-    @Column(nullable = false, name = "region_name")
-    private String regionName;
-
     @OneToMany(mappedBy = "region")
     private List<Department> department;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
     private List<Workshop> workshops;
 
+    @Size(max = 30)
+    @Column(nullable = false, name = "region_name")
+    private String regionName;
+
     public Region() {
-    }
-
-    public String getRegionName() {
-        return regionName;
-    }
-
-    public void setRegionName(String regionName) {
-        this.regionName = regionName;
     }
 
     public List<Department> getDepartment() {
@@ -51,4 +43,13 @@ public class Region extends BaseEntity {
     public void setWorkshops(List<Workshop> workshops) {
         this.workshops = workshops;
     }
+
+    public String getRegionName() {
+        return regionName;
+    }
+
+    public void setRegionName(String regionName) {
+        this.regionName = regionName;
+    }
+
 }

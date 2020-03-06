@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 @MappedSuperclass
 public class BaseEntity implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", unique = true)

@@ -18,6 +18,7 @@ public class VehicleOwner extends BaseEntity {
 
     @OneToOne
     private Vehicle vehicle;
+
     @OneToOne
     private Address address;
 

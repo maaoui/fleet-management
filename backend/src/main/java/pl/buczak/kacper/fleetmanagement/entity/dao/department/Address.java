@@ -17,6 +17,15 @@ import javax.validation.constraints.Size;
 @Table(name = "address")
 public class Address extends BaseEntity {
 
+    @OneToOne(mappedBy = "address")
+    private Workshop workshop;
+
+    @OneToOne(mappedBy = "address")
+    private Department department;
+
+    @OneToOne(mappedBy = "address")
+    private VehicleOwner vehicleOwner;
+
     @Size(max = 50)
     @Column(nullable = false, name = "city")
     private String city;
@@ -29,16 +38,31 @@ public class Address extends BaseEntity {
     @Column(nullable = false, name = "address")
     private String streetAddress;
 
-    @OneToOne(mappedBy = "address")
-    private Workshop workshop;
-
-    @OneToOne(mappedBy = "address")
-    private Department department;
-
-    @OneToOne(mappedBy = "address")
-    private VehicleOwner vehicleOwner;
-
     public Address() {
+    }
+
+    public Workshop getWorkshop() {
+        return workshop;
+    }
+
+    public void setWorkshop(Workshop workshop) {
+        this.workshop = workshop;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public VehicleOwner getVehicleOwner() {
+        return vehicleOwner;
+    }
+
+    public void setVehicleOwner(VehicleOwner vehicleOwner) {
+        this.vehicleOwner = vehicleOwner;
     }
 
     public String getCity() {
@@ -65,27 +89,4 @@ public class Address extends BaseEntity {
         this.streetAddress = streetAddress;
     }
 
-    public Workshop getWorkshop() {
-        return workshop;
-    }
-
-    public void setWorkshop(Workshop workshop) {
-        this.workshop = workshop;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public VehicleOwner getVehicleOwner() {
-        return vehicleOwner;
-    }
-
-    public void setVehicleOwner(VehicleOwner vehicleOwner) {
-        this.vehicleOwner = vehicleOwner;
-    }
 }

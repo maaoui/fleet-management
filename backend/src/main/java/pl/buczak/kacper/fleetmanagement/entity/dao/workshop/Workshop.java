@@ -24,6 +24,10 @@ public class Workshop extends BaseEntity {
     @OneToMany(cascade = CascadeType.DETACH, mappedBy = "workshop")
     private List<ServiceExpense> serviceExpenses;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
+
     @Size(max = 50)
     @Column(nullable = false, name = "workshop_name")
     private String workshopName;
@@ -37,9 +41,6 @@ public class Workshop extends BaseEntity {
     @Column(nullable = true, name = "email")
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Address address;
 
     public Workshop() {
     }
@@ -58,6 +59,14 @@ public class Workshop extends BaseEntity {
 
     public void setServiceExpenses(List<ServiceExpense> serviceExpenses) {
         this.serviceExpenses = serviceExpenses;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getWorkshopName() {
@@ -82,13 +91,5 @@ public class Workshop extends BaseEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 }

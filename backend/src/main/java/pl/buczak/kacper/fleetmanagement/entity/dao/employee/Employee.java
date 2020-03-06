@@ -16,6 +16,12 @@ import java.util.List;
 @Table(name = "employee")
 public class Employee extends BaseEntity {
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Department department;
+
+    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "employee")
+    private List<VehicleUsageTimestamp> vehicleUsageTimestamp;
+
     @Size(max = 30)
     @Column(nullable = false, name = "first_name")
     private String firstName;
@@ -33,13 +39,23 @@ public class Employee extends BaseEntity {
     @Pattern(regexp = "[1-9][0-9]{8}")
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Department department;
-
-    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "employee")
-    private List<VehicleUsageTimestamp> vehicleUsageTimestamp;
-
     public Employee() {
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public List<VehicleUsageTimestamp> getVehicleUsageTimestamp() {
+        return vehicleUsageTimestamp;
+    }
+
+    public void setVehicleUsageTimestamp(List<VehicleUsageTimestamp> vehicleUsageTimestamp) {
+        this.vehicleUsageTimestamp = vehicleUsageTimestamp;
     }
 
     public String getFirstName() {
@@ -72,21 +88,5 @@ public class Employee extends BaseEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public List<VehicleUsageTimestamp> getVehicleUsageTimestamp() {
-        return vehicleUsageTimestamp;
-    }
-
-    public void setVehicleUsageTimestamp(List<VehicleUsageTimestamp> vehicleUsageTimestamp) {
-        this.vehicleUsageTimestamp = vehicleUsageTimestamp;
     }
 }

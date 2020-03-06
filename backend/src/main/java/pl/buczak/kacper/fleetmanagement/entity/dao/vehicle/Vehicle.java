@@ -65,6 +65,7 @@ public class Vehicle extends BaseEntity {
     @Max(value = Integer.MAX_VALUE)
     @Column(nullable = false, name = "weight")
     private Integer weight;
+
     @Min(value = 0)
     @Max(value = Integer.MAX_VALUE)
     @Column(nullable = false, name = "weight")
