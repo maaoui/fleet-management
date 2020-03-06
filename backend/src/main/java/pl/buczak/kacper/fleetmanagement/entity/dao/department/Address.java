@@ -1,6 +1,7 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.department;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
+import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.VehicleOwner;
 import pl.buczak.kacper.fleetmanagement.entity.dao.workshop.Workshop;
 
 import javax.persistence.Column;
@@ -33,6 +34,9 @@ public class Address extends BaseEntity {
 
     @OneToOne(mappedBy = "address")
     private Department department;
+
+    @OneToOne(mappedBy = "address")
+    private VehicleOwner vehicleOwner;
 
     public Address() {
     }
@@ -75,5 +79,13 @@ public class Address extends BaseEntity {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public VehicleOwner getVehicleOwner() {
+        return vehicleOwner;
+    }
+
+    public void setVehicleOwner(VehicleOwner vehicleOwner) {
+        this.vehicleOwner = vehicleOwner;
     }
 }
