@@ -12,8 +12,9 @@ import javax.validation.constraints.Size;
 /*
     @author Kacper Buczak 
 */
-@Entity
+
 @Table(name = "vehicle_owner")
+@Entity
 public class VehicleOwner extends BaseEntity {
 
     @OneToOne
