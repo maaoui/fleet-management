@@ -31,7 +31,7 @@ public class Vehicle extends BaseEntity {
     @OneToMany(cascade = CascadeType.DETACH, mappedBy = "vehicle")
     private List<RecommendedRepair> recommendedRepairs;
 
-    @OneToMany(mappedBy = "vehicleRegistration")
+    @OneToMany(mappedBy = "vehicle")
     private List<TechnicalExamination> technicalExaminationList;
 
     @OneToOne
@@ -68,7 +68,7 @@ public class Vehicle extends BaseEntity {
 
     @Min(value = 0)
     @Max(value = Integer.MAX_VALUE)
-    @Column(nullable = false, name = "weight")
+    @Column(nullable = false, name = "horse_power")
     private Double horsePower;
 
     public Vehicle() {
