@@ -1,6 +1,7 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
+import pl.buczak.kacper.fleetmanagement.util.enums.PartType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +15,8 @@ import javax.validation.constraints.Size;
 @Table(name = "car_part")
 public class CarPart extends BaseEntity {
 
-    @Size(max = 30)
     @Column(nullable = false, name = "part_type")
-    private String partType;
+    private PartType partType;
 
     @Size(max = 30)
     @Column(nullable = false, name = "name")
@@ -29,11 +29,11 @@ public class CarPart extends BaseEntity {
     public CarPart() {
     }
 
-    public String getPartType() {
+    public PartType getPartType() {
         return partType;
     }
 
-    public void setPartType(String partType) {
+    public void setPartType(PartType partType) {
         this.partType = partType;
     }
 

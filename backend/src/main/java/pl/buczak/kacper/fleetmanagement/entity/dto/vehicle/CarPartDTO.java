@@ -1,8 +1,10 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
+import pl.buczak.kacper.fleetmanagement.util.enums.PartType;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /*
@@ -10,9 +12,8 @@ import javax.validation.constraints.Size;
 */
 public class CarPartDTO extends BaseDTO {
 
-    @NotBlank
-    @Size(max = 30)
-    private String partType;
+    @NotNull
+    private PartType partType;
 
     @NotBlank
     @Size(max = 30)
@@ -25,11 +26,11 @@ public class CarPartDTO extends BaseDTO {
     public CarPartDTO() {
     }
 
-    public String getPartType() {
+    public PartType getPartType() {
         return partType;
     }
 
-    public void setPartType(String partType) {
+    public void setPartType(PartType partType) {
         this.partType = partType;
     }
 

@@ -1,6 +1,7 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
+import pl.buczak.kacper.fleetmanagement.util.enums.FuelType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;

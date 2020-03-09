@@ -1,4 +1,4 @@
-package pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense;
+package pl.buczak.kacper.fleetmanagement.util.enums;
 
 /*
     @author Kacper Buczak 
