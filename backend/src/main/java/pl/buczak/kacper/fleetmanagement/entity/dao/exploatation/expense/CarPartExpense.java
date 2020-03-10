@@ -9,7 +9,7 @@ import javax.persistence.*;
     @author Kacper Buczak 
 */
 @Entity
-@Table(name = "car_parts_expense")
+@Table(name = "car_part_expense")
 public class CarPartExpense extends Expense {
 
     @ManyToOne

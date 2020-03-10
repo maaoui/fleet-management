@@ -38,7 +38,7 @@ public class Vehicle extends BaseEntity {
     private VehicleOwner vehicleOwner;
 
     @Size(max = 10)
-    @Column(nullable = false, name = "workshop_name")
+    @Column(nullable = false, name = "plate_number")
     private String plateNumber;
 
     @Size(max = 20)
