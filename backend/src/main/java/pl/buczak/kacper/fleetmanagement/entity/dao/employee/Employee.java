@@ -7,6 +7,7 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.VehicleUsageTimestamp
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 import java.util.List;
 
 /*
@@ -38,6 +39,19 @@ public class Employee extends BaseEntity {
     @Column(nullable = false, name = "phone_number")
     @Pattern(regexp = "[1-9][0-9]{8}")
     private String phoneNumber;
+
+    private String password;
+    private boolean enabled;
+    private boolean tokenExpired;
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
+
 
     public Employee() {
     }
@@ -88,5 +102,37 @@ public class Employee extends BaseEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isTokenExpired() {
+        return tokenExpired;
+    }
+
+    public void setTokenExpired(boolean tokenExpired) {
+        this.tokenExpired = tokenExpired;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 }
