@@ -1,5 +1,6 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.employee;
 
+import org.springframework.security.core.GrantedAuthority;
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import java.util.Collection;
 */
 @Entity
 @Table(name = "role")
-public class Role extends BaseEntity {
+public class Role extends BaseEntity implements GrantedAuthority {
 
     private String name;
 
@@ -48,5 +49,10 @@ public class Role extends BaseEntity {
 
     public void setPrivileges(Collection<Privilege> privileges) {
         this.privileges = privileges;
+    }
+
+    @Override
+    public String getAuthority() {
+        return name;
     }
 }
