@@ -15,7 +15,6 @@ import pl.buczak.kacper.fleetmanagement.repository.employee.RoleRepository;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,7 +24,7 @@ import java.util.List;
 
 @Transactional
 @Service("userDetailsService")
-public class CustomUserDetailsService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -33,17 +32,14 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public CustomUserDetailsService() {
+    public UserDetailsServiceImpl() {
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Employee employee = employeeRepository.findbyEmail(email);
         if (employee == null) {
-            return new org.springframework.security.core.userdetails.User(
-                    " ", " ", true, true, true, true,
-                    getAuthorities(Arrays.asList(
-                            roleRepository.findByName("ROLE_USER"))));
+            throw new UsernameNotFoundException("Not found");
         } else {
             return new org.springframework.security.core.userdetails.User(
                     employee.getEmail(), employee.getPassword(), employee.isEnabled(), true, true,
