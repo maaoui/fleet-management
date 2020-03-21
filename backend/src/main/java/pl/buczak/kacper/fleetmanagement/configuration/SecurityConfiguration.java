@@ -50,6 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
+/*
         httpSecurity.authorizeRequests()
                 .anyRequest()
                 .authenticated()
@@ -61,6 +62,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.headers()
                 .frameOptions()
                 .sameOrigin();
+*/
 
         // TODO Change security configuration.
     }
