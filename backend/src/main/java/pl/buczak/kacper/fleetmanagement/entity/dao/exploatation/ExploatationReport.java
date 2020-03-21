@@ -7,10 +7,7 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.OtherExp
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.ServiceExpense;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.Vehicle;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /*
@@ -20,7 +17,7 @@ import java.util.List;
 @Table(name = "exploatation_report")
 public class ExploatationReport extends BaseEntity {
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Vehicle vehicle;
 
     @OneToMany(mappedBy = "exploatationReport")

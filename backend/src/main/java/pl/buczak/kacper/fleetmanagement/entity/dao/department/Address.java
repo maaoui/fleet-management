@@ -4,10 +4,7 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.VehicleOwner;
 import pl.buczak.kacper.fleetmanagement.entity.dao.workshop.Workshop;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 /*
@@ -17,13 +14,13 @@ import javax.validation.constraints.Size;
 @Table(name = "address")
 public class Address extends BaseEntity {
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private Workshop workshop;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private Department department;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private VehicleOwner vehicleOwner;
 
     @Size(max = 50)

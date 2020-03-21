@@ -22,7 +22,7 @@ public class Department extends BaseEntity {
     @JoinColumn(name = "region_id", referencedColumnName = "id")
     private Region region;
 
-    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "department")
+    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "department", fetch = FetchType.LAZY)
     private List<Employee> employees;
 
     @Size(max = 50)
