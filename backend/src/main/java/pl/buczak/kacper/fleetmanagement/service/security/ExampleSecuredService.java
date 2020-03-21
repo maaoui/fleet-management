@@ -1,4 +1,4 @@
-package pl.buczak.kacper.fleetmanagement.service;
+package pl.buczak.kacper.fleetmanagement.service.security;
 
 import jdk.jshell.spi.ExecutionControl;
 import org.springframework.security.access.prepost.PreAuthorize;

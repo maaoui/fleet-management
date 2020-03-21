@@ -1,4 +1,4 @@
-package pl.buczak.kacper.fleetmanagement.service;
+package pl.buczak.kacper.fleetmanagement.service.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
