@@ -29,4 +29,44 @@ public class VehicleDTO extends BaseDTO {
     @Min(value = 0)
     @Max(value = 5000)
     private Double horsePower;
+
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
+    }
+
+    public String getVIN() {
+        return VIN;
+    }
+
+    public void setVIN(String VIN) {
+        this.VIN = VIN;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public Double getHorsePower() {
+        return horsePower;
+    }
+
+    public void setHorsePower(Double horsePower) {
+        this.horsePower = horsePower;
+    }
 }
