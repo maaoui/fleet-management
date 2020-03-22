@@ -7,10 +7,7 @@ package pl.buczak.kacper.fleetmanagement.controller.department;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.DepartmentDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.DepartmentFullDTO;
 import pl.buczak.kacper.fleetmanagement.service.department.DepartmentService;
@@ -42,8 +39,8 @@ public class DepartmentController {
                 .body(departmentService.getDepartmentsListByRegionId(regionId));
     }
 
-    @GetMapping(value = "/department")
-    public ResponseEntity<DepartmentFullDTO> getFullDepartmentInformation(@NotBlank @RequestParam(name = "id") Long departmentId) {
+    @GetMapping(value = "/department/{id}")
+    public ResponseEntity<DepartmentFullDTO> getFullDepartmentInformation(@NotBlank @PathVariable(name = "id") Long departmentId) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(departmentService.getDepartmentById(departmentId));

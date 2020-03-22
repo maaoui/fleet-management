@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import pl.buczak.kacper.fleetmanagement.entity.dao.department.Region;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.RegionDTO;
+import pl.buczak.kacper.fleetmanagement.entity.dto.department.RegionFullDTO;
 import pl.buczak.kacper.fleetmanagement.repository.department.RegionRepository;
 
 import java.util.List;
@@ -32,9 +33,21 @@ public class RegionService {
                 .collect(Collectors.toList());
     }
 
+    public RegionFullDTO getFullRegionById(Long id) {
+        return regionRepository
+                .findById(id)
+                .map(this::entityToFullDTO)
+                .get();
+    }
+
     private RegionDTO entityToSimpleDTO(Region region) {
         RegionDTO regionDTO = modelMapper.map(region, RegionDTO.class);
         return regionDTO;
+    }
+
+    private RegionFullDTO entityToFullDTO(Region region) {
+        RegionFullDTO regionFullDTO = modelMapper.map(region, RegionFullDTO.class);
+        return regionFullDTO;
     }
 
 }

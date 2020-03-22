@@ -32,15 +32,15 @@ public class EmployeeController {
                 .body(employeeService.findEmployeesDTOList());
     }
 
-    @GetMapping(value = "/employeesByDepartment")
-    public ResponseEntity<List<EmployeeDTO>> getEmployeesListByDepartmentId(@RequestParam(name = "departmentId") @NotBlank Long departmentId) {
+    @GetMapping(value = "/employeesByDepartmentId")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeesListByDepartmentId(@NotBlank @RequestParam(name = "departmentId") Long departmentId) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(employeeService.findEmployeesDTOListByDepartmentId(departmentId));
     }
 
     @GetMapping(value = "/employee/{id}")
-    public ResponseEntity<EmployeeFullDTO> getEmployee(@PathVariable("id") Long employeeId) {
+    public ResponseEntity<EmployeeFullDTO> getEmployee(@NotBlank @PathVariable("id") Long employeeId) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(employeeService.findFullDTOById(employeeId));

@@ -4,11 +4,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.RegionDTO;
+import pl.buczak.kacper.fleetmanagement.entity.dto.department.RegionFullDTO;
 import pl.buczak.kacper.fleetmanagement.service.department.RegionService;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /*
@@ -29,6 +32,13 @@ public class RegionController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(regionService.getRegionDTOList());
+    }
+
+    @GetMapping(value = "/region/{id}")
+    public ResponseEntity<RegionFullDTO> getRegionFullInformation(@NotBlank @PathVariable("id") Long id) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(regionService.getFullRegionById(id));
     }
 
 }
