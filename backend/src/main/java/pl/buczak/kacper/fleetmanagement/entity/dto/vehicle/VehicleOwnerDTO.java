@@ -1,7 +1,7 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
-import pl.buczak.kacper.fleetmanagement.entity.dao.department.Address;
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
+import pl.buczak.kacper.fleetmanagement.entity.dto.department.AddressDTO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 */
 public class VehicleOwnerDTO extends BaseDTO {
 
-    private Address address;
+    private AddressDTO address;
 
     @NotBlank
     @Size(max = 100)
@@ -24,11 +24,11 @@ public class VehicleOwnerDTO extends BaseDTO {
     public VehicleOwnerDTO() {
     }
 
-    public Address getAddress() {
+    public AddressDTO getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(AddressDTO address) {
         this.address = address;
     }
 
