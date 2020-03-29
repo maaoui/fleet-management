@@ -1,11 +1,14 @@
 <div class="container">
   <div class="listContainer">
 
-    <div class="list-group list-group-item" *ngFor="let vehicle of vehicles">
-      <h5> {{vehicle.make}} {{vehicle.model}}</h5>
-      <p> {{vehicle.vin}}</p>
+    <div class="card" *ngFor="let vehicle of vehicles">
+      <h5 class="card-header">{{vehicle.make}} {{vehicle.model}}</h5>
+      <div class="card-body">
+        <p class="card-text">{{vehicle.vin}}</p>
+        <p class="card-text">{{vehicle.plateNumber}}</p>
+        <p class="card-text">{{vehicle.horsePower}}</p>
+      </div>
     </div>
-
 
   </div>
 
