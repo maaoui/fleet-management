@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminViewComponent } from './admin-view.component';
+import {AdminViewComponent} from './admin-view.component';
 
 describe('AdminViewComponent', () => {
   let component: AdminViewComponent;
@@ -8,9 +8,9 @@ describe('AdminViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminViewComponent ]
+      declarations: [AdminViewComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

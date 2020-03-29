@@ -1,3 +1,19 @@
-<div class="container">
-  {{ 'LANGUAGE' | uppercase}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" (click)="destroyCurrentComponent()">{{"ADMIN_VIEW.NAV_HEADER" | translate  }}</a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" (click)="createAdminVehiclesComponent()">{{"ADMIN_VIEW.VEHICLES" | translate  }} </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="createAdminRepairsComponent()">{{"ADMIN_VIEW.REPAIRS" | translate  }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="createAdminExpensesComponent()">{{"ADMIN_VIEW.EXPENSES" | translate  }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div>
+  <template #adminComponentContainer></template>
 </div>
