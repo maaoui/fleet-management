@@ -7,6 +7,7 @@ import {AppComponent} from './app.component';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {AdminModule} from './admin/admin.module';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { EmployeeViewComponent } from './employee-view/employee-view.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {EmployeeViewComponent} from './employee-view/employee-view.component';
 
 
 @NgModule({
@@ -10,4 +9,5 @@ import { EmployeeViewComponent } from './employee-view/employee-view.component';
     CommonModule
   ]
 })
-export class EmployeeModule { }
+export class EmployeeModule {
+}

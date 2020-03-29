@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LoginPageComponent } from './login-page/login-page.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LoginPageComponent} from './login-page/login-page.component';
 
 
 @NgModule({
@@ -10,4 +9,5 @@ import { LoginPageComponent } from './login-page/login-page.component';
     CommonModule
   ]
 })
-export class SignInModule { }
+export class SignInModule {
+}
