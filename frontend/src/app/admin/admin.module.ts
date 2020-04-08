@@ -6,6 +6,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AdminVehiclesComponent} from './admin-vehicles/admin-vehicles.component';
 import {AdminRepairsComponent} from './admin-repairs/admin-repairs.component';
 import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -13,11 +14,12 @@ import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component'
   exports: [
     AdminViewComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    BrowserModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        BrowserModule,
+        FormsModule
+    ]
 })
 export class AdminModule {
 }

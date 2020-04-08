@@ -2,20 +2,25 @@
   <div class="listContainer">
     <ul class="list-group">
       <div class="list-group-item" *ngFor="let vehicle of vehicles">
-        <h5 class="listHeader">{{vehicle.make}} {{vehicle.model}}</h5>
+        <div class="list-group-item__box">
+          <h5 class="listHeader"> {{vehicle.make}} {{vehicle.model}}</h5>
 
-        <p class="list-group-item-text ">
-          <b>{{"ADMIN_VIEW.PLATE_NUMBER" | translate}}:</b> {{vehicle.plateNumber}}
-        </p>
+          <p class="list-group-item-text">
+            <b>{{"ADMIN_VIEW.PLATE_NUMBER" | translate}}:</b> {{vehicle.plateNumber}}
+          </p>
 
-        <p class="list-group-item-text ">
-          <b>{{"ADMIN_VIEW.HORSE_POWER" | translate}}:</b> {{vehicle.horsePower}}
-        </p>
+          <p class="list-group-item-text ">
+            <b>{{"ADMIN_VIEW.HORSE_POWER" | translate  }}</b> {{vehicle.horsePower}}
+          </p>
 
-        <p class="list-group-item-text ">
-          <b>{{"ADMIN_VIEW.VIN" | translate}}:</b> {{vehicle.vin}}
-        </p>
+          <p class="list-group-item-text ">
+            <b>{{"ADMIN_VIEW.VIN" | translate}}:</b> {{vehicle.vin}}
+          </p>
 
+        </div>
+        <div class="list-group-item__box">
+          <button type="button" class="btn btn-success"><i class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
+        </div>
       </div>
     </ul>
   </div>
