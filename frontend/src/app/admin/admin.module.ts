@@ -7,10 +7,11 @@ import {AdminVehiclesComponent} from './admin-vehicles/admin-vehicles.component'
 import {AdminRepairsComponent} from './admin-repairs/admin-repairs.component';
 import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component';
 import {FormsModule} from '@angular/forms';
+import { EditVehicleModalComponent } from './modals/edit-vehicle-modal/edit-vehicle-modal.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent],
   exports: [
     AdminViewComponent
   ],

@@ -15,6 +15,9 @@ export class VehicleService {
     return this.http.get<Vehicle[]>(`${this.getBaseUrl()}${this.getVehicleUrl()}`);
   }
 
+  patchVehicle(vehicle: Vehicle): Observable<Vehicle> {
+    return this.http.patch<Vehicle>(`${this.getBaseUrl()}${this.getVehicleUrl()}/${vehicle.id}`, vehicle);
+  }
 
   private getBaseUrl(): string {
     return 'http://localhost:8080/api/';
@@ -23,5 +26,4 @@ export class VehicleService {
   private getVehicleUrl(): string {
     return 'vehicles';
   }
-
 }

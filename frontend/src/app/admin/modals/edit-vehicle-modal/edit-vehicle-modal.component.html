@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.EDIT_TITLE" | translate}}</h3>
+</div>
+<div class="modal-body">
+  <p>{{vehicle.plateNumber}}</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="onSavePress()"><i
+    class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
+  <button type="button" class="btn btn-danger" (click)="onCancelPress()"><i
+    class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
+</div>
