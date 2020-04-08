@@ -6,7 +6,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AdminVehiclesComponent} from './admin-vehicles/admin-vehicles.component';
 import {AdminRepairsComponent} from './admin-repairs/admin-repairs.component';
 import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { EditVehicleModalComponent } from './modals/edit-vehicle-modal/edit-vehicle-modal.component';
 
 
@@ -15,12 +15,13 @@ import { EditVehicleModalComponent } from './modals/edit-vehicle-modal/edit-vehi
   exports: [
     AdminViewComponent
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        BrowserModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    SharedModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class AdminModule {
 }
