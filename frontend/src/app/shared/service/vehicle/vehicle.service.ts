@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Vehicle} from '../model/vehicle';
+import {Vehicle} from '../../model/vehicle/vehicle';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +13,11 @@ export class VehicleService {
   }
 
   getVehiclesList(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(`${this.getBaseUrl()}${this.getVehicleUrl()}`);
+    return this.http.get<Vehicle[]>(`${environment.baseAPIPath}${this.getVehicleUrl()}`);
   }
 
   patchVehicle(vehicle: Vehicle): Observable<Vehicle> {
-    return this.http.patch<Vehicle>(`${this.getBaseUrl()}${this.getVehicleUrl()}/${vehicle.id}`, vehicle);
-  }
-
-  private getBaseUrl(): string {
-    return 'http://localhost:8080/api/';
+    return this.http.patch<Vehicle>(`${environment.baseAPIPath}${this.getVehicleUrl()}/${vehicle.id}`, vehicle);
   }
 
   private getVehicleUrl(): string {
