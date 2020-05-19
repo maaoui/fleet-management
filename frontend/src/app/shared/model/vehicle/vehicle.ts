@@ -5,7 +5,6 @@ export interface VehicleAttrs {
   model: string;
   horsePower: number;
   vin: string;
-
 }
 
 export class Vehicle {
@@ -24,5 +23,4 @@ export class Vehicle {
   model: string;
   horsePower: number;
   vin: string;
-
 }
