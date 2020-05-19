@@ -8,10 +8,11 @@ import {AdminRepairsComponent} from './admin-repairs/admin-repairs.component';
 import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { EditVehicleModalComponent } from './modals/edit-vehicle-modal/edit-vehicle-modal.component';
+import { InsuranceInformationComponent } from './modals/insurance-information/insurance-information.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent],
   exports: [
     AdminViewComponent
   ],

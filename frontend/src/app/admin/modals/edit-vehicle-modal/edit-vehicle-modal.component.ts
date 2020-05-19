@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {Vehicle} from '../../../shared/model/vehicle';
-import {VehicleService} from '../../../shared/service/vehicle.service';
+import {Vehicle} from '../../../shared/model/vehicle/vehicle';
+import {VehicleService} from '../../../shared/service/vehicle/vehicle.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
