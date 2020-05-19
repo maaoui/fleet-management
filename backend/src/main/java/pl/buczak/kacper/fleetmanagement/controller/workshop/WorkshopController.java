@@ -36,7 +36,7 @@ public class WorkshopController {
 
 
     @GetMapping(value = "workshop/{id}")
-    public ResponseEntity<WorkshopDTO> getWorkshopById(@NotBlank @PathVariable("id") Long workshopId) {
+        public ResponseEntity<WorkshopDTO> getWorkshopById(@NotBlank @PathVariable("id") Long workshopId) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(workshopService.findWorkshopById(workshopId));

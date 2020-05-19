@@ -23,14 +23,6 @@ public class VehicleController {
     public VehicleController(VehicleService vehicleService) {
         this.vehicleService = vehicleService;
     }
-    /*
-    /vehicles
-    /vehicle / id
-    /vehicles / employeeId
-    /vehicles / departmentId
-    /vehicle / id / reports to do
-    */
-
 
     @GetMapping(value = "/vehicles")
     public ResponseEntity<List<VehicleDTO>> getListOfVehicles() {
