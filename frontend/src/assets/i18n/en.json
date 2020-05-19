@@ -3,7 +3,8 @@
     "SAVE": "Save",
     "EDIT": "Edit",
     "DELETE": "Delete",
-    "CANCEL": "Cancel"
+    "CANCEL": "Cancel",
+    "CLOSE": "Close"
   },
   "LANGUAGE": "English",
   "ADMIN_VIEW": {
@@ -14,6 +15,7 @@
     "VIN": "Vin number",
     "PLATE_NUMBER": "Plate number",
     "HORSE_POWER": "Horse power: ",
+    "INSURANCE_INFO": "Insurance",
     "MODALS": {
       "EDIT_TITLE": "Edit Vehicle",
       "VALIDATION": {
@@ -21,7 +23,8 @@
         "MAX_LENGTH": "Too many characters",
         "MIN_VALUE": "Value is too low",
         "MAX_VALUE": "Value is too high"
-      }
+      },
+      "INSURANCE_TITLE": "Insurance"
     }
   }
 }
