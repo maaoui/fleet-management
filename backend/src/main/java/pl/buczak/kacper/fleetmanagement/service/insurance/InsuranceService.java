@@ -28,8 +28,22 @@ public class InsuranceService {
                 .get();
     }
 
+    public InsuranceDTO updateInsurance(InsuranceDTO insuranceDTO) {
+        Insurance insuranceToEdit = insuranceRepository.getOne(insuranceDTO.getId());
+        insuranceToEdit.setCompanyName(insuranceDTO.getCompanyName());
+        insuranceToEdit.setContactNumber(insuranceDTO.getContactNumber());
+        insuranceToEdit.setInsuranceNumber(insuranceDTO.getInsuranceNumber());
+        insuranceToEdit.setStartDate(insuranceDTO.getStartDate());
+        insuranceToEdit.setEndDate(insuranceDTO.getEndDate());
+
+        return entityToSimpleDTO(insuranceRepository
+                .save(insuranceToEdit));
+    }
+
     private InsuranceDTO entityToSimpleDTO(Insurance insurance) {
         InsuranceDTO insuranceDTO = modelMapper.map(insurance, InsuranceDTO.class);
         return insuranceDTO;
     }
+
+
 }

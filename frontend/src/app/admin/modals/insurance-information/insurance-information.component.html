@@ -1,10 +1,16 @@
 <div class="modal-header">
-  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.INSURANCE_TITLE" | translate}}</h3>
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.INSURANCE_TITLE" | translate}}
+    <button type="button" class="btn btn-info" (click)="onEditPress()">
+      <i class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
+  </h3>
+
 </div>
 <div class="modal-body">
 
 </div>
 <div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="onSavePress()">
+    <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
   <button type="button" class="btn btn-danger" (click)="onCancelPress()">
     <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CLOSE" | translate}} </button>
 </div>
