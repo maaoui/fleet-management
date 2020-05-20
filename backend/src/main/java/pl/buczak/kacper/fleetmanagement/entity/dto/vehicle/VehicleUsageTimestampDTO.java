@@ -1,5 +1,6 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
@@ -42,6 +43,7 @@ public class VehicleUsageTimestampDTO extends BaseDTO {
         this.vehicle = vehicle;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getStartDateTime() {
         return startDateTime;
     }
@@ -50,6 +52,7 @@ public class VehicleUsageTimestampDTO extends BaseDTO {
         this.startDateTime = startDateTime;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getEndDateTime() {
         return endDateTime;
     }

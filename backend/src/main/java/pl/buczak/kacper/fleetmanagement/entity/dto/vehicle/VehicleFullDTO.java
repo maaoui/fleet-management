@@ -1,5 +1,6 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.ExploatationReportDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.repair.RecommendedRepairDTO;
@@ -145,6 +146,7 @@ public class VehicleFullDTO extends BaseDTO {
         this.model = model;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getFirstRegistration() {
         return firstRegistration;
     }

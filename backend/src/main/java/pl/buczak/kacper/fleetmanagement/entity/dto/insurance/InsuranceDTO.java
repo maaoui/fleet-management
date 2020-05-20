@@ -1,5 +1,6 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.insurance;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.VehicleDTO;
 
@@ -69,6 +70,7 @@ public class InsuranceDTO extends BaseDTO {
         this.contactNumber = contactNumber;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getStartDate() {
         return startDate;
     }
@@ -77,6 +79,7 @@ public class InsuranceDTO extends BaseDTO {
         this.startDate = startDate;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getEndDate() {
         return endDate;
     }

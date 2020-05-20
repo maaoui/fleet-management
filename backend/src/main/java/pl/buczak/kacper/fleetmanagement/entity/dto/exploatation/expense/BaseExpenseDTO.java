@@ -1,5 +1,6 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.expense;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 
 import javax.validation.constraints.*;
@@ -48,6 +49,7 @@ public abstract class BaseExpenseDTO extends BaseEntity {
         this.currency = currency;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getDate() {
         return date;
     }
