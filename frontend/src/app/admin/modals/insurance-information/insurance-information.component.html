@@ -5,8 +5,101 @@
   </h3>
 
 </div>
-<div class="modal-body">
+<div class="modal-body" *ngIf="!isEditMode">
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.INSURANCE_NUMBER" | translate}}:</b>  {{insurance.insuranceNumber}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.COMPANY_NAME" | translate}}:</b>  {{insurance.companyName}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.START_DATE" | translate}}:</b>  {{insurance.startDate | date}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.END_DATE" | translate}}:</b>  {{insurance.endDate | date}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.CONTACT_NUMBER" | translate}}:</b>  {{insurance.contactNumber}}
+  </p>
+</div>
+<div class="modal-body" *ngIf="isEditMode">
+  <form [formGroup]="insuranceForm" class="form-signin" (ngSubmit)="onSavePress()" autocomplete="off">
+    <div class="form-group">
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.INSURANCE_NUMBER" | translate}}</b>
+      </p>
+      <input formControlName="insuranceNumber" type="text" class="form-control" name="insuranceNumber"/>
+    </div>
+    <div *ngIf="insuranceForm.controls.insuranceNumber.invalid" class="alert-danger">
+      <div *ngIf="insuranceForm.controls['insuranceNumber'].errors.minlength">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+      </div>
 
+      <div *ngIf="insuranceForm.controls['insuranceNumber'].errors.maxlength">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.COMPANY_NAME" | translate}}</b>
+      </p>
+      <input formControlName="companyName" type="text" class="form-control" name="companyName"/>
+    </div>
+    <div *ngIf="insuranceForm.controls.companyName.invalid" class="alert-danger">
+      <div *ngIf="insuranceForm.controls['companyName'].errors.minlength">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+      </div>
+
+      <div *ngIf="insuranceForm.controls['companyName'].errors.maxlength">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.CONTACT_NUMBER" | translate}}</b>
+      </p>
+      <input formControlName="contactNumber" type="text" class="form-control" name="contactNumber"/>
+    </div>
+    <div *ngIf="insuranceForm.controls.contactNumber.invalid" class="alert-danger">
+      <div *ngIf="insuranceForm.controls['contactNumber'].errors.pattern">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        {{"ADMIN_VIEW.MODALS.VALIDATION.INVALID_PATTERN" | translate }}: {{getContactNumberPattern()}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.START_DATE" | translate}}</b>
+      </p>
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd" formControlName="startDate"
+               name="dp1"  ngbDatepicker #dt1="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dt1.toggle()" type="button"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.END_DATE" | translate}}</b>
+      </p>
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd" formControlName="endDate"
+               name="dp2"  ngbDatepicker #dt2="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dt2.toggle()" type="button"></button>
+        </div>
+      </div>
+    </div>
+
+  </form>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-success" (click)="onSavePress()">

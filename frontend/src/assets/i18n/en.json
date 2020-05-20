@@ -22,9 +22,15 @@
         "MIN_LENGTH": "Not enough characters",
         "MAX_LENGTH": "Too many characters",
         "MIN_VALUE": "Value is too low",
-        "MAX_VALUE": "Value is too high"
+        "MAX_VALUE": "Value is too high",
+        "INVALID_PATTERN": "Input is invalid"
       },
-      "INSURANCE_TITLE": "Insurance"
+      "INSURANCE_TITLE": "Insurance",
+      "INSURANCE_NUMBER": "Insurance number",
+      "COMPANY_NAME": "Company name",
+      "START_DATE": "Start date",
+      "END_DATE": "End date",
+      "CONTACT_NUMBER": "Contact number"
     }
   }
 }

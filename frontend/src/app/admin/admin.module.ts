@@ -9,6 +9,7 @@ import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { EditVehicleModalComponent } from './modals/edit-vehicle-modal/edit-vehicle-modal.component';
 import { InsuranceInformationComponent } from './modals/insurance-information/insurance-information.component';
+import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -16,13 +17,14 @@ import { InsuranceInformationComponent } from './modals/insurance-information/in
   exports: [
     AdminViewComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgbDatepickerModule
+    ]
 })
 export class AdminModule {
 }
