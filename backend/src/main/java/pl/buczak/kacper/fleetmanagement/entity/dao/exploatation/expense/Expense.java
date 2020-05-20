@@ -6,8 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 import java.util.Currency;
+import java.util.Date;
 
 /*
     @author Kacper Buczak 
@@ -20,7 +20,7 @@ public class Expense extends BaseEntity {
     private Double value;
 
     @Column(nullable = false, name = "date")
-    private LocalDateTime date;
+    private Date date;
 
     @Column(nullable = false, name = "currency")
     private Currency currency;
@@ -43,11 +43,11 @@ public class Expense extends BaseEntity {
         this.value = value;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

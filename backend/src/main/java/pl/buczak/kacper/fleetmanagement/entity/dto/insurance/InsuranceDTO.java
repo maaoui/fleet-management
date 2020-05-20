@@ -1,6 +1,5 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.insurance;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.VehicleDTO;
 
@@ -8,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /*
     @author Kacper Buczak 
@@ -31,9 +30,9 @@ public class InsuranceDTO extends BaseDTO {
     @Pattern(regexp = "[1-9][0-9]{8}")
     private String contactNumber;
 
-    private LocalDateTime startDate;
+    private Date startDate;
 
-    private LocalDateTime endDate;
+    private Date endDate;
 
     public InsuranceDTO() {
     }
@@ -70,21 +69,19 @@ public class InsuranceDTO extends BaseDTO {
         this.contactNumber = contactNumber;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public LocalDateTime getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 }

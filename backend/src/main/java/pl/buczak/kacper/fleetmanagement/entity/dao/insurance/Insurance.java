@@ -9,7 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /*
     @author Kacper Buczak 
@@ -35,10 +35,10 @@ public class Insurance extends BaseEntity {
     private String contactNumber;
 
     @Column(nullable = false, name = "start_date")
-    private LocalDateTime startDate;
+    private Date startDate;
 
     @Column(nullable = false, name = "end_date")
-    private LocalDateTime endDate;
+    private Date endDate;
 
     public Insurance() {
     }
@@ -75,19 +75,19 @@ public class Insurance extends BaseEntity {
         this.contactNumber = contactNumber;
     }
 
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 }

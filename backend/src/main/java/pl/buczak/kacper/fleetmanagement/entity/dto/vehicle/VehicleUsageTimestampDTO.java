@@ -1,11 +1,10 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /*
     @author Kacper Buczak 
@@ -19,10 +18,10 @@ public class VehicleUsageTimestampDTO extends BaseDTO {
     private VehicleDTO vehicle;
 
     @NotNull
-    private LocalDateTime startDateTime;
+    private Date startDateTime;
 
     @NotNull
-    private LocalDateTime endDateTime;
+    private Date endDateTime;
 
     public VehicleUsageTimestampDTO() {
     }
@@ -43,21 +42,19 @@ public class VehicleUsageTimestampDTO extends BaseDTO {
         this.vehicle = vehicle;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public LocalDateTime getStartDateTime() {
+    public Date getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(LocalDateTime startDateTime) {
+    public void setStartDateTime(Date startDateTime) {
         this.startDateTime = startDateTime;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public LocalDateTime getEndDateTime() {
+    public Date getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(LocalDateTime endDateTime) {
+    public void setEndDateTime(Date endDateTime) {
         this.endDateTime = endDateTime;
     }
 }

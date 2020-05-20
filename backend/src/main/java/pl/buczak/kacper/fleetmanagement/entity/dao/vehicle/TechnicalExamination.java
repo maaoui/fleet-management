@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /*
     @author Kacper Buczak 
@@ -20,7 +20,7 @@ public class TechnicalExamination extends BaseEntity {
     private Vehicle vehicle;
 
     @Column(nullable = false, name = "next_examination_date")
-    private LocalDateTime nextExaminationDate;
+    private Date nextExaminationDate;
 
     @Column(nullable = false, name = "current_kilometrage")
     private Integer currentKilometrage;
@@ -40,11 +40,11 @@ public class TechnicalExamination extends BaseEntity {
         this.vehicle = vehicle;
     }
 
-    public LocalDateTime getNextExaminationDate() {
+    public Date getNextExaminationDate() {
         return nextExaminationDate;
     }
 
-    public void setNextExaminationDate(LocalDateTime nextExaminationDate) {
+    public void setNextExaminationDate(Date nextExaminationDate) {
         this.nextExaminationDate = nextExaminationDate;
     }
 

@@ -9,7 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -54,7 +54,7 @@ public class Vehicle extends BaseEntity {
     private String model;
 
     @Column(nullable = false, name = "first_registration_date")
-    private LocalDateTime firstRegistration;
+    private Date firstRegistration;
 
     @Min(value = 1900)
     @Max(value = Integer.MAX_VALUE)
@@ -154,11 +154,11 @@ public class Vehicle extends BaseEntity {
         this.model = model;
     }
 
-    public LocalDateTime getFirstRegistration() {
+    public Date getFirstRegistration() {
         return firstRegistration;
     }
 
-    public void setFirstRegistration(LocalDateTime firstRegistration) {
+    public void setFirstRegistration(Date firstRegistration) {
         this.firstRegistration = firstRegistration;
     }
 

@@ -1,11 +1,10 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.expense;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 
 import javax.validation.constraints.*;
-import java.time.LocalDateTime;
 import java.util.Currency;
+import java.util.Date;
 
 /*
     @author Kacper Buczak 
@@ -21,7 +20,7 @@ public abstract class BaseExpenseDTO extends BaseEntity {
 
     @NotNull
     @PastOrPresent
-    private LocalDateTime date;
+    private Date date;
 
     @NotBlank
     @Size(min = 0, max = 1000)
@@ -49,12 +48,11 @@ public abstract class BaseExpenseDTO extends BaseEntity {
         this.currency = currency;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

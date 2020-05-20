@@ -5,7 +5,7 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.employee.Employee;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /*
     @author Kacper Buczak 
@@ -22,11 +22,11 @@ public class VehicleUsageTimestamp extends BaseEntity {
 
     @Column(name = "start_date_time")
     @NotNull
-    private LocalDateTime startDateTime;
+    private Date startDateTime;
 
     @NotNull
     @Column(name = "end_date_time")
-    private LocalDateTime endDateTime;
+    private Date endDateTime;
 
     public VehicleUsageTimestamp() {
     }
@@ -47,19 +47,19 @@ public class VehicleUsageTimestamp extends BaseEntity {
         this.vehicle = vehicle;
     }
 
-    public LocalDateTime getStartDateTime() {
+    public Date getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(LocalDateTime startDateTime) {
+    public void setStartDateTime(Date startDateTime) {
         this.startDateTime = startDateTime;
     }
 
-    public LocalDateTime getEndDateTime() {
+    public Date getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(LocalDateTime endDateTime) {
+    public void setEndDateTime(Date endDateTime) {
         this.endDateTime = endDateTime;
     }
 }
