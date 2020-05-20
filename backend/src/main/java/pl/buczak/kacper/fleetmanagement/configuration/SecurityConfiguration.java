@@ -49,7 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // Secure the endpoins with HTTP Basic authentication
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-
+        httpSecurity.csrf().disable().cors();
 /*
         httpSecurity.authorizeRequests()
                 .anyRequest()
