@@ -10,10 +10,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { EditVehicleModalComponent } from './modals/edit-vehicle-modal/edit-vehicle-modal.component';
 import { InsuranceInformationComponent } from './modals/insurance-information/insurance-information.component';
 import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import { CarPartExpensesComponent } from './sub-components/car-part-expenses/car-part-expenses.component';
+import { FuelExpensesComponent } from './sub-components/fuel-expenses/fuel-expenses.component';
+import { CarServiceExpensesComponent } from './sub-components/car-service-expenses/car-service-expenses.component';
+import { OtherExpensesComponent } from './sub-components/other-expenses/other-expenses.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent],
   exports: [
     AdminViewComponent
   ],

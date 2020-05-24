@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ComponentRef, OnInit} from '@angular/core';
 import {VehicleService} from '../../shared/service/vehicle/vehicle.service';
 import {Vehicle} from '../../shared/model/vehicle/vehicle';
 import {ExploitationService} from '../../shared/service/exploitation/exploitation.service';
+import {ExploitationReport} from '../../shared/model/exploitation/exploitation-report';
 
 @Component({
   selector: 'app-admin-expenses',
@@ -10,8 +11,12 @@ import {ExploitationService} from '../../shared/service/exploitation/exploitatio
 })
 export class AdminExpensesComponent implements OnInit {
   private vehicles: Vehicle[];
+  private exploitationReport: ExploitationReport;
+  private currentComponentName: string;
+  private currentComponent: ComponentRef<any> = null;
 
-  constructor(private vehicleService: VehicleService, private exploitationService: ExploitationService) {
+  constructor(private vehicleService: VehicleService,
+              private exploitationService: ExploitationService,) {
   }
 
   ngOnInit(): void {
@@ -34,6 +39,15 @@ export class AdminExpensesComponent implements OnInit {
   getVehicleExploatationData(vehicleId) {
     this.exploitationService
       .getExploitationReportByVehicleId(vehicleId)
-      .subscribe(exploitationReport => console.log(exploitationReport));
+      .subscribe(exploitationReport => {
+          this.exploitationReport = exploitationReport;
+          console.log(exploitationReport);
+        }
+      );
   }
+
+  changeCurrentComponent(componentName: string) {
+    this.currentComponentName = componentName;
+  }
+
 }

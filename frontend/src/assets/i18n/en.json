@@ -32,5 +32,13 @@
       "END_DATE": "End date",
       "CONTACT_NUMBER": "Contact number"
     }
+  },
+  "ADMIN_EXPENSES": {
+    "SELECT_VEHICLE": "Select vehicle to get reports",
+    "CAR_PART_EXPENSES": "Car part expenses",
+    "FUEL_EXPENSES": "Fuel expenses",
+    "OTHER_EXPENSES": "Other expenses",
+    "CAR_SERVICE_EXPENSES": "Servicing expenses",
+    "NOT_AVAILABLE": "Expenses for selected car are not available"
   }
 }

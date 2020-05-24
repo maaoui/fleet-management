@@ -1,22 +1,42 @@
 <div class="container">
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1" >
-      <option *ngFor="let vehicle of vehicles" (click)="getVehicleExploatationData(vehicle.id)"> {{getVehicleShortInformation(vehicle)}}</option>
+    <label for="exampleFormControlSelect1">{{"ADMIN_EXPENSES.SELECT_VEHICLE" | translate}}</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option *ngFor="let vehicle of vehicles"
+              (click)="getVehicleExploatationData(vehicle.id)"> {{getVehicleShortInformation(vehicle)}}</option>
     </select>
   </div>
   <div class="row">
     <div class="col">
-      <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-secondary"
+              (click)="changeCurrentComponent('CAR_PART_EXPENSES')">
+        {{"ADMIN_EXPENSES.CAR_PART_EXPENSES" | translate}}
+      </button>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-secondary"
+              (click)="changeCurrentComponent('FUEL_EXPENSES')">
+        {{"ADMIN_EXPENSES.FUEL_EXPENSES" | translate}}
+      </button>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-secondary"
+              (click)="changeCurrentComponent('CAR_SERVICE_EXPENSES')">
+        {{"ADMIN_EXPENSES.CAR_SERVICE_EXPENSES" | translate}}
+      </button>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-secondary"
+              (click)="changeCurrentComponent('OTHER_EXPENSES')">
+        {{"ADMIN_EXPENSES.OTHER_EXPENSES" | translate}}
+      </button>
     </div>
+  </div>
+
+  <div class="container" *ngIf="exploitationReport">
+    <app-car-part-expenses *ngIf="this.currentComponentName==='CAR_PART_EXPENSES'"></app-car-part-expenses>
+    <app-fuel-expenses *ngIf="this.currentComponentName==='FUEL_EXPENSES'"></app-fuel-expenses>
+    <app-car-service-expenses *ngIf="this.currentComponentName==='CAR_SERVICE_EXPENSES'"></app-car-service-expenses>
+    <app-other-expenses *ngIf="this.currentComponentName==='OTHER_EXPENSES'"></app-other-expenses>
   </div>
 </div>
