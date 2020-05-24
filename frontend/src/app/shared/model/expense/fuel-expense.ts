@@ -1,8 +1,9 @@
 import {BaseExpense, BaseExpenseAttributes} from './base-expense';
+import {FuelType} from '../enums/fuel-type.enum';
 
 export interface FuelExpenseAttrs extends BaseExpenseAttributes {
   fuelAmount: number;
-  fuelType;
+  fuelType: FuelType;
 }
 
 export class FuelExpense extends BaseExpense {
@@ -13,5 +14,5 @@ export class FuelExpense extends BaseExpense {
   }
 
   fuelAmount: number;
-  fuelType;
+  fuelType: FuelType;
 }

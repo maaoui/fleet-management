@@ -1,8 +1,10 @@
 import {BaseExpense, BaseExpenseAttributes} from './base-expense';
+import {CarPart} from '../vehicle/car-part';
+import {Workshop} from '../workshop/workshop';
 
 export interface ServiceExpenseAttrs extends BaseExpenseAttributes {
-  workshop;
-  carPart;
+  workshop: Workshop;
+  carPart: CarPart;
 }
 
 export class ServiceExpense extends BaseExpense {
@@ -12,8 +14,8 @@ export class ServiceExpense extends BaseExpense {
     this.carPart = attrs.carPart;
   }
 
-  workshop;
-  carPart;
+  workshop: Workshop;
+  carPart: CarPart;
 }
 
 

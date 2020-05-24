@@ -39,6 +39,28 @@
     "FUEL_EXPENSES": "Fuel expenses",
     "OTHER_EXPENSES": "Other expenses",
     "CAR_SERVICE_EXPENSES": "Servicing expenses",
-    "NOT_AVAILABLE": "Expenses for selected car are not available"
+    "NOT_AVAILABLE": "Expenses for selected car are not available",
+    "EXPENSE_NOT_FOUND": "Selected expense was not found.",
+    "COMMON": {
+      "DATE": "Date of expense",
+      "KILOMETRAGE": "Kilometrage",
+      "COMMENT": "Comment",
+      "VALUE": "Value"
+    },
+    "CAR_PART_EXPENSES_COMPONENT": {
+      "CAR_PART": "Car part"
+    },
+    "CAR_SERVICE_EXPENSES_COMPONENT": {
+      "WORKSHOP": "Workshop",
+      "CAR_PART": "Car part"
+    },
+    "FUEL_EXPENSES_COMPONENT": {
+      "FUEL_AMOUNT": "Fuel amount",
+      "FUEL_TYPE": "Fuel type"
+    },
+    "OTHER_EXPENSES_COMPONENT": {
+      "ITEM_COUNT": "Item count",
+      "TOTAL_VALUE": "Total value"
+    }
   }
 }

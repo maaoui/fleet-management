@@ -6,7 +6,7 @@
               (click)="getVehicleExploatationData(vehicle.id)"> {{getVehicleShortInformation(vehicle)}}</option>
     </select>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="isVehicleSelected">
     <div class="col">
       <button type="button" class="btn btn-secondary"
               (click)="changeCurrentComponent('CAR_PART_EXPENSES')">

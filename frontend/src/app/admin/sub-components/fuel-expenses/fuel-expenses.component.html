@@ -1,1 +1,27 @@
-<p>fuel-expenses works!</p>
+<div *ngIf="fuelExpenses.length > 0">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">{{"ADMIN_EXPENSES.COMMON.DATE" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.COMMON.KILOMETRAGE" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.COMMON.VALUE" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.COMMON.COMMENT" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.FUEL_EXPENSES_COMPONENT.FUEL_AMOUNT" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.FUEL_EXPENSES_COMPONENT.FUEL_TYPE" |translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let expense of fuelExpenses">
+      <td>{{expense.date |date}}</td>
+      <td>{{expense.currentKilometrage}}</td>
+      <td>{{expense.value | number}} {{expense.currency}}</td>
+      <td>{{expense.comment}}</td>
+      <td>{{expense.fuelAmount | number}}</td>
+      <td>{{expense.fuelType}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="fuelExpenses.length <= 0">
+  <app-expenses-not-found></app-expenses-not-found>
+</div>

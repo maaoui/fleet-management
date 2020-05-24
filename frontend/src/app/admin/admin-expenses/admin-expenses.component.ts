@@ -1,4 +1,4 @@
-import {Component, ComponentRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {VehicleService} from '../../shared/service/vehicle/vehicle.service';
 import {Vehicle} from '../../shared/model/vehicle/vehicle';
 import {ExploitationService} from '../../shared/service/exploitation/exploitation.service';
@@ -13,7 +13,7 @@ export class AdminExpensesComponent implements OnInit {
   private vehicles: Vehicle[];
   private exploitationReport: ExploitationReport;
   private currentComponentName: string;
-  private currentComponent: ComponentRef<any> = null;
+  private isVehicleSelected = false;
 
   constructor(private vehicleService: VehicleService,
               private exploitationService: ExploitationService,) {
@@ -41,7 +41,7 @@ export class AdminExpensesComponent implements OnInit {
       .getExploitationReportByVehicleId(vehicleId)
       .subscribe(exploitationReport => {
           this.exploitationReport = exploitationReport;
-          console.log(exploitationReport);
+          this.isVehicleSelected = true;
         }
       );
   }

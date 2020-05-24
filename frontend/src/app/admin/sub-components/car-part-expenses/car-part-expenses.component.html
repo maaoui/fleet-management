@@ -1,1 +1,29 @@
-<p>car-part-expenses works!</p>
+<div *ngIf="carPartExpenses.length > 0">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">{{"ADMIN_EXPENSES.COMMON.DATE" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.COMMON.KILOMETRAGE" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.COMMON.VALUE" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.COMMON.COMMENT" |translate}}</th>
+      <th scope="col">{{"ADMIN_EXPENSES.CAR_PART_EXPENSES_COMPONENT.CAR_PART" |translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let expense of carPartExpenses">
+      <td>{{expense.date |date}}</td>
+      <td>{{expense.currentKilometrage}}</td>
+      <td>{{expense.value | number}} {{expense.currency}}</td>
+      <td>{{expense.comment}}</td>
+      <td>
+        <button class="btn btn-info">
+          {{"ADMIN_EXPENSES.CAR_PART_EXPENSES_COMPONENT.CAR_PART" |translate}}
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="carPartExpenses.length <= 0">
+  <app-expenses-not-found></app-expenses-not-found>
+</div>
