@@ -50,7 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable().cors();
-/*
+ /*
         httpSecurity.authorizeRequests()
                 .anyRequest()
                 .authenticated()
@@ -63,7 +63,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .frameOptions()
                 .sameOrigin();
 */
-
         // TODO Change security configuration.
     }
 

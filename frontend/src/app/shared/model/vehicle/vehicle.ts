@@ -23,4 +23,5 @@ export class Vehicle {
   model: string;
   horsePower: number;
   vin: string;
+
 }

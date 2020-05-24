@@ -8,7 +8,6 @@ import java.io.Serializable;
 */
 public abstract class BaseDTO implements Serializable {
 
-    @NotNull
     private Long id;
 
     public Long getId() {

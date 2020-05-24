@@ -1,1 +1,22 @@
-<p>admin-expenses works!</p>
+<div class="container">
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control" id="exampleFormControlSelect1" >
+      <option *ngFor="let vehicle of vehicles" (click)="getVehicleExploatationData(vehicle.id)"> {{getVehicleShortInformation(vehicle)}}</option>
+    </select>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-secondary">Secondary</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-secondary">Secondary</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-secondary">Secondary</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-secondary">Secondary</button>
+    </div>
+  </div>
+</div>
