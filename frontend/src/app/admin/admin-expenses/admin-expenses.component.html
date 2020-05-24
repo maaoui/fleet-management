@@ -34,9 +34,17 @@
   </div>
 
   <div class="container" *ngIf="exploitationReport">
-    <app-car-part-expenses *ngIf="this.currentComponentName==='CAR_PART_EXPENSES'"></app-car-part-expenses>
-    <app-fuel-expenses *ngIf="this.currentComponentName==='FUEL_EXPENSES'"></app-fuel-expenses>
-    <app-car-service-expenses *ngIf="this.currentComponentName==='CAR_SERVICE_EXPENSES'"></app-car-service-expenses>
-    <app-other-expenses *ngIf="this.currentComponentName==='OTHER_EXPENSES'"></app-other-expenses>
+    <app-car-part-expenses *ngIf="this.currentComponentName==='CAR_PART_EXPENSES'"
+                           [carPartExpenses]="exploitationReport.carPartsExpenses">
+    </app-car-part-expenses>
+    <app-fuel-expenses *ngIf="this.currentComponentName==='FUEL_EXPENSES'"
+                       [fuelExpenses]="exploitationReport.fuelExpenses">
+    </app-fuel-expenses>
+    <app-car-service-expenses *ngIf="this.currentComponentName==='CAR_SERVICE_EXPENSES'"
+                              [serviceExpenses]="exploitationReport.serviceExpenses">
+    </app-car-service-expenses>
+    <app-other-expenses *ngIf="this.currentComponentName==='OTHER_EXPENSES'"
+                        [otherExpenses]="exploitationReport.otherExpenses">
+    </app-other-expenses>
   </div>
 </div>

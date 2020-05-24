@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {FuelExpense} from '../../../shared/model/expense/fuel-expense';
 
 @Component({
   selector: 'app-fuel-expenses',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FuelExpensesComponent implements OnInit {
 
-  constructor() { }
+  @Input() fuelExpenses: FuelExpense[];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
