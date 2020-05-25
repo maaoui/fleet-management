@@ -17,7 +17,7 @@ export class VehicleService {
   }
 
   patchVehicle(vehicle: Vehicle): Observable<Vehicle> {
-    return this.http.patch<Vehicle>(`${environment.baseAPIPath}${this.getVehicleUrl()}/${vehicle.id}`, vehicle);
+    return this.http.put<Vehicle>(`${environment.baseAPIPath}${this.getVehicleUrl()}/${vehicle.id}`, vehicle);
   }
 
   private getVehicleUrl(): string {

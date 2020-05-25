@@ -51,4 +51,5 @@ public class VehicleController {
                 .status(HttpStatus.OK)
                 .body(vehicleService.findVehiclesByDepartmentId(departmentId));
     }
+
 }

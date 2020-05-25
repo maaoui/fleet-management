@@ -37,6 +37,8 @@ export class EditVehicleModalComponent implements OnInit {
     this.vehicleService
       .patchVehicle(editedVehicle)
       .subscribe((vehicle) => {
+          this.activeModal.close();
+          this.vehicle = vehicle;
           // TODO Show success
         },
         error => {
