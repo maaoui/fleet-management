@@ -12,17 +12,16 @@ import java.security.Principal;
 */
 @RestController
 @RequestMapping("/principal")
-
 public class ExampleController {
 
     @GetMapping("/admin")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('PRIVILEGE_FOR_ROLE_ADMIN_1')")
     public Principal adminSecured(Principal principal) {
         return principal;
     }
 
     @GetMapping("/principal")
-    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
+    @PreAuthorize("hasAuthority('PRIVILEGE_FOR_ROLE_EMPLOYEE_1')")
     public Principal employeeSecured(Principal principal) {
         return principal;
     }
