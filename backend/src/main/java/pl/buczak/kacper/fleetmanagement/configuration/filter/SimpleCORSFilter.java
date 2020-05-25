@@ -1,4 +1,4 @@
-package pl.buczak.kacper.fleetmanagement.configuration;
+package pl.buczak.kacper.fleetmanagement.configuration.filter;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

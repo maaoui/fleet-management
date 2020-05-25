@@ -14,5 +14,5 @@ public interface ExploatationReportRepository extends JpaRepository<Exploatation
 
 
     @Query("SELECT er FROM ExploatationReport er WHERE er.vehicle.id =:vehicleId")
-    public ExploatationReport getExploatationReportByVehicleId(@Param("vehicleId") Long vehicleId);
+    ExploatationReport getExploatationReportByVehicleId(@Param("vehicleId") Long vehicleId);
 }

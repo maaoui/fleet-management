@@ -1,4 +1,4 @@
-package pl.buczak.kacper.fleetmanagement.configuration;
+package pl.buczak.kacper.fleetmanagement.configuration.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

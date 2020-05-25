@@ -1,4 +1,4 @@
-package pl.buczak.kacper.fleetmanagement.configuration;
+package pl.buczak.kacper.fleetmanagement.configuration.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

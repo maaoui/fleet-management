@@ -29,6 +29,7 @@ public class InsuranceController {
                 .status(HttpStatus.OK)
                 .body(insuranceService.findInsuranceByVehicleId(vehicleId));
     }
+
     @PutMapping(value = "/insurance")
     public ResponseEntity<InsuranceDTO> getInsuranceByVehicleId(@RequestBody InsuranceDTO insuranceDTO) {
         return ResponseEntity

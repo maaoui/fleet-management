@@ -1,6 +1,5 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto;
 
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /*
