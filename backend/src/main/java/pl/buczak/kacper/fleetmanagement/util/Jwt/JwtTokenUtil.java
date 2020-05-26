@@ -3,7 +3,6 @@ package pl.buczak.kacper.fleetmanagement.util.Jwt;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -25,9 +24,12 @@ public class JwtTokenUtil implements Serializable {
 
     @Value("${jwt.secretKey}")
     private String secret;
-    @Autowired
     private UserDetailsServiceImpl userDetailsService;
     private static final long serialVersionUID = -121624321856818565L;
+
+    public JwtTokenUtil(UserDetailsServiceImpl userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     public String getUsernameFromToken(String token) {
         return this.getClaimFromToken(token, Claims::getSubject);

@@ -20,16 +20,16 @@ public class ExploatationReport extends BaseEntity {
     @OneToOne(fetch = FetchType.LAZY)
     private Vehicle vehicle;
 
-    @OneToMany(mappedBy = "exploatationReport")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "exploatationReport")
     private List<FuelExpense> fuelExpenses;
 
-    @OneToMany(mappedBy = "exploatationReport")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "exploatationReport")
     private List<CarPartExpense> carPartsExpenses;
 
-    @OneToMany(mappedBy = "exploatationReport")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "exploatationReport")
     private List<ServiceExpense> serviceExpenses;
 
-    @OneToMany(mappedBy = "exploatationReport")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "exploatationReport")
     private List<OtherExpense> otherExpenses;
 
     public ExploatationReport() {

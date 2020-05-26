@@ -1,6 +1,5 @@
 package pl.buczak.kacper.fleetmanagement.service.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,13 +25,13 @@ import java.util.List;
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Autowired
     private RoleRepository roleRepository;
 
-    public UserDetailsServiceImpl() {
+    public UserDetailsServiceImpl(EmployeeRepository employeeRepository, RoleRepository roleRepository) {
+        this.employeeRepository = employeeRepository;
+        this.roleRepository = roleRepository;
     }
 
     @Override

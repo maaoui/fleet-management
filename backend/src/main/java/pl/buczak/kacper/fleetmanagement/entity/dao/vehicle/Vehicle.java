@@ -19,22 +19,22 @@ import java.util.List;
 @Table(name = "vehicle")
 public class Vehicle extends BaseEntity {
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private ExploatationReport exploatationReport;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private Insurance insurance;
 
-    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "vehicle")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "vehicle")
     private List<VehicleUsageTimestamp> vehicleUsageTimestamps;
 
-    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "vehicle")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "vehicle")
     private List<RecommendedRepair> recommendedRepairs;
 
-    @OneToMany(mappedBy = "vehicle")
+    @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "vehicle")
     private List<TechnicalExamination> technicalExaminationList;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private VehicleOwner vehicleOwner;
 
     @Size(max = 10)
