@@ -52,4 +52,18 @@ public class VehicleController {
                 .body(vehicleService.findVehiclesByDepartmentId(departmentId));
     }
 
+    @PutMapping(value = "/vehicle/{id}")
+    public ResponseEntity<VehicleFullDTO> editVehicle(@NotBlank @PathVariable("id") Long vehicleId, @RequestBody VehicleFullDTO vehicle) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(vehicleService.editVehicle(vehicleId,vehicle));
+    }
+
+    @DeleteMapping(value = "/vehicle/{id}")
+    public ResponseEntity<Void> deleteVehicleById(@NotBlank @PathVariable("id") Long vehicleId) {
+        vehicleService.deleteVehicleById(vehicleId);
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .build();
+    }
 }

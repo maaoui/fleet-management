@@ -56,6 +56,19 @@ public class VehicleService {
                 .get();
     }
 
+    public VehicleFullDTO editVehicle(Long vehicleId, VehicleFullDTO vehicle) {
+        Vehicle vehicleToEdit = this.vehicleReposiory.getOne(vehicleId);
+        vehicleToEdit.setMake(vehicle.getMake());
+        vehicleToEdit.setModel(vehicle.getModel());
+        vehicleToEdit.setVIN(vehicle.getVIN());
+        vehicleToEdit.setPlateNumber(vehicle.getPlateNumber());
+        vehicleToEdit.setHorsePower(vehicle.getHorsePower());
+        return entityToFullDTO(this.vehicleReposiory.save(vehicleToEdit));
+    }
+
+    public void deleteVehicleById(Long vehicleId) {
+        this.vehicleReposiory.deleteById(vehicleId);
+    }
 
     private VehicleDTO entityToSimpleDTO(Vehicle vehicle) {
         VehicleDTO vehicleDTO = modelMapper.map(vehicle, VehicleDTO.class);
