@@ -1,8 +1,8 @@
 <div class="modal-header">
-  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.INSURANCE_TITLE" | translate}}
-    <button type="button" class="btn btn-info" (click)="onEditPress()">
-      <i class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
-  </h3>
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.INSURANCE_TITLE" | translate}} </h3>
+  <button type="button" class="btn btn-info button--edit" (click)="onEditPress()">
+    <i class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
+
 
 </div>
 <div class="modal-body" *ngIf="!isEditMode">
@@ -79,7 +79,7 @@
       </p>
       <div class="input-group">
         <input class="form-control" placeholder="yyyy-mm-dd" formControlName="startDate"
-               name="dp1"  ngbDatepicker #dt1="ngbDatepicker">
+               name="dp1" ngbDatepicker #dt1="ngbDatepicker">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="dt1.toggle()" type="button"></button>
         </div>
@@ -92,7 +92,7 @@
       </p>
       <div class="input-group">
         <input class="form-control" placeholder="yyyy-mm-dd" formControlName="endDate"
-               name="dp2"  ngbDatepicker #dt2="ngbDatepicker">
+               name="dp2" ngbDatepicker #dt2="ngbDatepicker">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="dt2.toggle()" type="button"></button>
         </div>
