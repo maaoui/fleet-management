@@ -4,7 +4,9 @@
     "EDIT": "Edit",
     "DELETE": "Delete",
     "CANCEL": "Cancel",
-    "CLOSE": "Close"
+    "CLOSE": "Close",
+    "YES": "Yes",
+    "NO": "No"
   },
   "LANGUAGE": "English",
   "ADMIN_VIEW": {
@@ -30,7 +32,11 @@
       "COMPANY_NAME": "Company name",
       "START_DATE": "Start date",
       "END_DATE": "End date",
-      "CONTACT_NUMBER": "Contact number"
+      "CONTACT_NUMBER": "Contact number",
+      "DELETE_TITLE": "Vehicle deletion",
+      "DELETE_MESSAGE": "Are you sure you want to delete vehicle {vehicle} and all data related to it? This operation is irreversible",
+      "DELETE_YES": "Yes, delete.",
+      "DELETE_NO": "No."
     }
   },
   "ADMIN_EXPENSES": {

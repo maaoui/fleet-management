@@ -6,6 +6,8 @@ import {EditVehicleModalComponent} from '../modals/edit-vehicle-modal/edit-vehic
 import {InsuranceInformationComponent} from '../modals/insurance-information/insurance-information.component';
 import {Subscription} from 'rxjs';
 import {InsuranceService} from '../../shared/service/insurance/insurance.service';
+import {DeleteVehicleModalComponent} from '../modals/delete-vehicle-modal/delete-vehicle-modal.component';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-vehicles',
@@ -33,7 +35,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .getVehiclesList()
       .subscribe(
         (vehicles) => {
-          this.vehicles = vehicles;
+          this.vehicles = vehicles.sort((a: Vehicle, b: Vehicle) => a.id > b.id ? 1 : 0);
           console.log(vehicles);
         },
         (error) => {
@@ -53,8 +55,22 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .subscribe((insurance) => {
         const modalRef = this.modalService.open(InsuranceInformationComponent);
         modalRef.componentInstance.insurance = insurance;
+        modalRef.componentInstance
+          .vehicleUpdateEmitter
+          .pipe(first())
+          .subscribe(() => this.loadVehiclesList());
       }, error => {
         // TODO Handle error - show error message
       });
+  }
+
+  openDeleteVehicleModal(vehicle: Vehicle) {
+    const modalRef = this.modalService
+      .open(DeleteVehicleModalComponent);
+    modalRef.componentInstance.vehicle = vehicle;
+    modalRef.componentInstance
+      .vehicleDeletionEmitter
+      .pipe(first())
+      .subscribe(() => this.loadVehiclesList());
   }
 }

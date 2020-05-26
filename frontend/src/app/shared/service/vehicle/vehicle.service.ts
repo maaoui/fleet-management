@@ -13,14 +13,22 @@ export class VehicleService {
   }
 
   getVehiclesList(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(`${environment.baseAPIPath}${this.getVehicleUrl()}`);
+    return this.http.get<Vehicle[]>(`${environment.baseAPIPath}${this.getVehiclesUrl()}`);
   }
 
-  patchVehicle(vehicle: Vehicle): Observable<Vehicle> {
+  updateVehicle(vehicle: Vehicle): Observable<Vehicle> {
     return this.http.put<Vehicle>(`${environment.baseAPIPath}${this.getVehicleUrl()}/${vehicle.id}`, vehicle);
   }
 
-  private getVehicleUrl(): string {
+  deleteVehicleById(vehicleId: number): Observable<Vehicle> {
+    return this.http.delete<Vehicle>(`${environment.baseAPIPath}${this.getVehicleUrl()}/${vehicleId}`);
+  }
+
+  private getVehiclesUrl(): string {
     return 'vehicles';
+  }
+
+  private getVehicleUrl(): string {
+    return 'vehicle';
   }
 }

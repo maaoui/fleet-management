@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {VehicleService} from '../../../shared/service/vehicle/vehicle.service';
@@ -12,6 +12,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class EditVehicleModalComponent implements OnInit {
 
   @Input() vehicle: Vehicle;
+  @Output() vehicleUpdateEmitter = new EventEmitter<string>();
   private vehicleForm: FormGroup;
 
   constructor(public activeModal: NgbActiveModal, private vehicleService: VehicleService) {
@@ -35,11 +36,10 @@ export class EditVehicleModalComponent implements OnInit {
       vin: this.vehicleForm.controls.vin.value,
     });
     this.vehicleService
-      .patchVehicle(editedVehicle)
+      .updateVehicle(editedVehicle)
       .subscribe((vehicle) => {
           this.activeModal.close();
-          this.vehicle = vehicle;
-          // TODO Show success
+          this.vehicleUpdateEmitter.emit('updated');
         },
         error => {
           // TODO Show error response
