@@ -36,7 +36,13 @@
       "DELETE_TITLE": "Vehicle deletion",
       "DELETE_MESSAGE": "Are you sure you want to delete vehicle {vehicle} and all data related to it? This operation is irreversible",
       "DELETE_YES": "Yes, delete.",
-      "DELETE_NO": "No."
+      "DELETE_NO": "No.",
+      "CAR_PART_MODAL": {
+        "TITLE": "Car part",
+        "PART_TYPE": "Type of part",
+        "NAME": "Name of part",
+        "DESCRIPTION": "Description"
+      }
     }
   },
   "ADMIN_EXPENSES": {

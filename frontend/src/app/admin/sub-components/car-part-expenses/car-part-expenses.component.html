@@ -16,7 +16,7 @@
       <td>{{expense.value | number}} {{expense.currency}}</td>
       <td>{{expense.comment}}</td>
       <td>
-        <button class="btn btn-info">
+        <button class="btn btn-info" (click)="openCarPartModal(expense)">
           {{"ADMIN_EXPENSES.CAR_PART_EXPENSES_COMPONENT.CAR_PART" |translate}}
         </button>
       </td>
