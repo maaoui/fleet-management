@@ -38,10 +38,20 @@
       "DELETE_YES": "Yes, delete.",
       "DELETE_NO": "No.",
       "CAR_PART_MODAL": {
-        "TITLE": "Car part",
+        "TITLE": "Car part information",
         "PART_TYPE": "Type of part",
         "NAME": "Name of part",
         "DESCRIPTION": "Description"
+      },
+      "WORKSHOP_MODAL": {
+        "TITLE": "Workshop information",
+        "WORKSHOP_NAME": "Workshop name",
+        "CONTACT": "Contact number",
+        "EMAIL": "Email address",
+        "REGION": "Region",
+        "CITY": "City",
+        "POSTAL_CODE": "Postal code",
+        "STREET": "Street address"
       }
     }
   },

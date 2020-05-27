@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.WORKSHOP_MODAL.TITLE" | translate}} </h3>
+</div>
+<div class="modal-body">
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_MODAL.WORKSHOP_NAME" | translate}}:</b>  {{workshop.workshopName}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_MODAL.CONTACT" | translate}}:</b>  {{workshop.phoneNumber}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_MODAL.EMAIL" | translate}}:</b> {{workshop.email}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_MODAL.REGION" | translate}}:</b>  {{workshop.region.regionName}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_MODAL.CITY" | translate}}:</b>  {{workshop.address.city}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_MODAL.POSTAL_CODE" | translate}}:</b>  {{workshop.address.postalCode}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_MODAL.STREET" | translate}}:</b>  {{workshop.address.streetAddress}}
+  </p>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="onClosePress()">
+    <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CLOSE" | translate}} </button>
+</div>

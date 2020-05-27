@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ServiceExpense} from '../../../shared/model/expense/service-expense';
-import {CarPartExpense} from '../../../shared/model/expense/car-part-expense';
 import {CarPartModalComponent} from '../../modals/car-part-modal/car-part-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {WorkshopModalComponent} from '../../modals/workshop-modal/workshop-modal.component';
 
 @Component({
   selector: 'app-car-service-expenses',
@@ -21,5 +21,10 @@ export class CarServiceExpensesComponent implements OnInit {
   openCarPartModal(expense: ServiceExpense) {
     const modalRef = this.modalService.open(CarPartModalComponent);
     modalRef.componentInstance.carPart = expense.carPart;
+  }
+
+  openWorkshopModal(expense: ServiceExpense) {
+    const modalRef = this.modalService.open(WorkshopModalComponent);
+    modalRef.componentInstance.workshop = expense.workshop;
   }
 }

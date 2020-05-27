@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {VehicleService} from '../../../shared/service/vehicle/vehicle.service';
@@ -12,7 +12,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class EditVehicleModalComponent implements OnInit {
 
   @Input() vehicle: Vehicle;
-  @Output() vehicleUpdateEmitter = new EventEmitter<string>();
+  @Output() vehicleUpdateEmitter;
   private vehicleForm: FormGroup;
 
   constructor(public activeModal: NgbActiveModal, private vehicleService: VehicleService) {

@@ -17,10 +17,11 @@ import { OtherExpensesComponent } from './sub-components/other-expenses/other-ex
 import { ExpensesNotFoundComponent } from './sub-components/expenses-not-found/expenses-not-found.component';
 import { DeleteVehicleModalComponent } from './modals/delete-vehicle-modal/delete-vehicle-modal.component';
 import { CarPartModalComponent } from './modals/car-part-modal/car-part-modal.component';
+import { WorkshopModalComponent } from './modals/workshop-modal/workshop-modal.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent],
   exports: [
     AdminViewComponent
   ],

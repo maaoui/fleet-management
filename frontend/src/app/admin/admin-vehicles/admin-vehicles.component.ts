@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {Vehicle} from '../../shared/model/vehicle/vehicle';
 import {VehicleService} from '../../shared/service/vehicle/vehicle.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -36,7 +36,6 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .subscribe(
         (vehicles) => {
           this.vehicles = vehicles.sort((a: Vehicle, b: Vehicle) => a.id > b.id ? 1 : 0);
-          console.log(vehicles);
         },
         (error) => {
           // TODO Handle error - show error message
@@ -55,8 +54,8 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .subscribe((insurance) => {
         const modalRef = this.modalService.open(InsuranceInformationComponent);
         modalRef.componentInstance.insurance = insurance;
-        modalRef.componentInstance
-          .vehicleUpdateEmitter
+        modalRef.componentInstance.vehicleUpdateEmitter = new EventEmitter<string>();
+        modalRef.componentInstance.vehicleUpdateEmitter
           .pipe(first())
           .subscribe(() => this.loadVehiclesList());
       }, error => {
