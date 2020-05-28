@@ -44,12 +44,13 @@ export class AddCarPartExpenseModalComponent implements OnInit {
       // TODO Currency picker
       currency: new FormControl(this.carPartExpense.currency,
         Validators.compose([
+          Validators.minLength(this.getCurrencyLength()),
+          Validators.maxLength(this.getCurrencyLength()),
           Validators.required
         ])),
       // TODO Date picker
       date: new FormControl(this.carPartExpense.date,
         Validators.compose([
-          Validators.minLength(this.getMinValue()),
           Validators.required
         ])),
       comment: new FormControl(this.carPartExpense.comment,
@@ -60,7 +61,8 @@ export class AddCarPartExpenseModalComponent implements OnInit {
         ])),
       currentKilometrage: new FormControl(this.carPartExpense.currentKilometrage,
         Validators.compose([
-          Validators.required
+          Validators.required,
+          Validators.pattern('[0-9]*')
         ])),
       // TODO CarPart picker
       carPart: new FormControl(this.carPartExpense.carPart,
@@ -71,15 +73,19 @@ export class AddCarPartExpenseModalComponent implements OnInit {
     });
   }
 
-  private getMinValue() {
+  private getCurrencyLength(): number {
+    return 3;
+  }
+
+  private getMinValue(): number {
     return 0;
   }
 
-  private getMinCommentSize() {
+  private getMinCommentSize(): number {
     return 1;
   }
 
-  private getMaxCommentSize() {
+  private getMaxCommentSize(): number {
     return 1000;
   }
 }

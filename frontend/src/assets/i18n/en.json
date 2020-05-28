@@ -26,7 +26,8 @@
         "MIN_VALUE": "Value is too low",
         "MAX_VALUE": "Value is too high",
         "INVALID_PATTERN": "Input is invalid",
-        "REQUIRED": "This field is required"
+        "REQUIRED": "This field is required",
+        "WRONG_VALUE": "Wrong value"
       },
       "INSURANCE_TITLE": "Insurance",
       "INSURANCE_NUMBER": "Insurance number",
@@ -57,7 +58,11 @@
       "ADD_CAR_PART_EXPENSE_MODAL": {
         "TITLE": "Add car part expense",
         "VALUE": "Expense value",
-        "CURRENCY": "Currency"
+        "CURRENCY": "Currency",
+        "DATE": "Date",
+        "COMMENT": "Comment",
+        "CURRENT_KILOMETRAGE": "Current kilometrage",
+        "CAR_PART": "Car part"
       }
     }
   },
