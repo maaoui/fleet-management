@@ -1,0 +1,17 @@
+.alert-danger {
+  background-color: transparent;
+}
+
+$invalid--input--color: red;
+input {
+  &.ng-invalid {
+    border: 1px solid $invalid--input--color;
+    transition: $invalid--input--color 0.15s ease-in-out, box-shadow $invalid--input--color 0.15s ease-in-out;
+  }
+}
+
+.form-control:focus {
+  &.ng-invalid {
+    box-shadow: 0 0 2px 0 $invalid--input--color;
+  }
+}

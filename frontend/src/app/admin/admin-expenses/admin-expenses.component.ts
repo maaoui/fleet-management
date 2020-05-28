@@ -14,9 +14,10 @@ export class AdminExpensesComponent implements OnInit {
   private exploitationReport: ExploitationReport;
   private currentComponentName: string;
   private isVehicleSelected = false;
+  private selectedVehicle: Vehicle;
 
   constructor(private vehicleService: VehicleService,
-              private exploitationService: ExploitationService,) {
+              private exploitationService: ExploitationService) {
   }
 
   ngOnInit(): void {
@@ -41,6 +42,7 @@ export class AdminExpensesComponent implements OnInit {
       .getExploitationReportByVehicleId(vehicleId)
       .subscribe(exploitationReport => {
           this.exploitationReport = exploitationReport;
+          this.selectedVehicle = exploitationReport.vehicle;
           this.isVehicleSelected = true;
         }
       );

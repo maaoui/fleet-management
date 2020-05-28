@@ -18,10 +18,11 @@ import { ExpensesNotFoundComponent } from './sub-components/expenses-not-found/e
 import { DeleteVehicleModalComponent } from './modals/delete-vehicle-modal/delete-vehicle-modal.component';
 import { CarPartModalComponent } from './modals/car-part-modal/car-part-modal.component';
 import { WorkshopModalComponent } from './modals/workshop-modal/workshop-modal.component';
+import { AddCarPartExpenseModalComponent } from './modals/add-car-part-expense-modal/add-car-part-expense-modal.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent],
   exports: [
     AdminViewComponent
   ],
@@ -31,7 +32,7 @@ import { WorkshopModalComponent } from './modals/workshop-modal/workshop-modal.c
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        NgbDatepickerModule
+        NgbDatepickerModule,
     ]
 })
 export class AdminModule {

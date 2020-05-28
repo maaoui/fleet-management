@@ -35,7 +35,8 @@
 
   <div class="container" *ngIf="exploitationReport">
     <app-car-part-expenses *ngIf="this.currentComponentName==='CAR_PART_EXPENSES'"
-                           [carPartExpenses]="exploitationReport.carPartsExpenses">
+                           [carPartExpenses]="exploitationReport.carPartsExpenses"
+                           [vehicle]="selectedVehicle">
     </app-car-part-expenses>
     <app-fuel-expenses *ngIf="this.currentComponentName==='FUEL_EXPENSES'"
                        [fuelExpenses]="exploitationReport.fuelExpenses">

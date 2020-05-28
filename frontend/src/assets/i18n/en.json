@@ -25,7 +25,8 @@
         "MAX_LENGTH": "Too many characters",
         "MIN_VALUE": "Value is too low",
         "MAX_VALUE": "Value is too high",
-        "INVALID_PATTERN": "Input is invalid"
+        "INVALID_PATTERN": "Input is invalid",
+        "REQUIRED": "This field is required"
       },
       "INSURANCE_TITLE": "Insurance",
       "INSURANCE_NUMBER": "Insurance number",
@@ -52,6 +53,11 @@
         "CITY": "City",
         "POSTAL_CODE": "Postal code",
         "STREET": "Street address"
+      },
+      "ADD_CAR_PART_EXPENSE_MODAL": {
+        "TITLE": "Add car part expense",
+        "VALUE": "Expense value",
+        "CURRENCY": "Currency"
       }
     }
   },
