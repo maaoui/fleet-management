@@ -34,9 +34,11 @@ export class AddCarPartExpenseModalComponent implements OnInit {
 
   onSavePress() {
     // TODO save to endpoint.
-    const date = new Date(Object.values({year: 2020, month: 5, day: 21}).join('-'));
-
-    console.log(this.carPartExpenseForm);
+    const date = new Date(Object.values(this.carPartExpenseForm.value.date).join('-'));
+    const carPartExpense = new CarPartExpense({
+      ...this.carPartExpenseForm.value,
+      date
+    });
   }
 
   private initializeFormGroup() {
@@ -70,22 +72,24 @@ export class AddCarPartExpenseModalComponent implements OnInit {
           Validators.required,
           Validators.pattern('[0-9]*')
         ])),
-      carPartPartType: new FormControl(this.carPartExpense.carPart.partType,
-        Validators.compose([
-          Validators.required
-        ])),
-      carPartName: new FormControl(this.carPartExpense.carPart.name,
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(this.getMinCommentSize()),
-          Validators.maxLength(this.getPartNameMaxLength())
-        ])),
-      carPartDescription: new FormControl(this.carPartExpense.carPart.description,
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(this.getMinCommentSize()),
-          Validators.maxLength(this.getPartDescriptionMaxLength())
-        ])),
+      carPart: new FormGroup({
+        partType: new FormControl(this.carPartExpense.carPart.partType,
+          Validators.compose([
+            Validators.required
+          ])),
+        name: new FormControl(this.carPartExpense.carPart.name,
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(this.getMinCommentSize()),
+            Validators.maxLength(this.getPartNameMaxLength())
+          ])),
+        description: new FormControl(this.carPartExpense.carPart.description,
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(this.getMinCommentSize()),
+            Validators.maxLength(this.getPartDescriptionMaxLength())
+          ])),
+      })
     });
   }
 
