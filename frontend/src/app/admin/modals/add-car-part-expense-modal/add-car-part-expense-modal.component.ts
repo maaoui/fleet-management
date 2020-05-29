@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {CarPartExpense} from '../../../shared/model/expense/car-part-expense';
 import {PartType} from '../../../shared/model/enums/part-type.enum';
 import {CarPart} from '../../../shared/model/vehicle/car-part';
+import {CarPartExpenseService} from '../../../shared/service/exploitation/expense/car-part-expense.service';
 
 @Component({
   selector: 'app-add-car-part-expense-modal',
@@ -14,13 +15,14 @@ import {CarPart} from '../../../shared/model/vehicle/car-part';
 export class AddCarPartExpenseModalComponent implements OnInit {
 
   @Input() vehicle: Vehicle;
+  @Output() postExpenseEmitter = new EventEmitter<string>();
 
   private carPartExpenseForm: FormGroup;
   private carPartExpense: CarPartExpense;
   private partTypeValues: PartType[] = Object.values(PartType);
 
   // TODO Add event emitter.
-  constructor(public activeModal: NgbActiveModal) {
+  constructor(public activeModal: NgbActiveModal, private carPartExpenseService: CarPartExpenseService) {
 
   }
 
@@ -33,12 +35,22 @@ export class AddCarPartExpenseModalComponent implements OnInit {
   }
 
   onSavePress() {
-    // TODO save to endpoint.
     const date = new Date(Object.values(this.carPartExpenseForm.value.date).join('-'));
     const carPartExpense = new CarPartExpense({
       ...this.carPartExpenseForm.value,
       date
     });
+    this.carPartExpenseService
+      .createCarPartExpense(this.vehicle.id, carPartExpense)
+      .subscribe((updatedCarPartExpense: CarPartExpense) => {
+          this.postExpenseEmitter.emit('updated');
+          this.activeModal.close();
+        },
+        (errorMessage) => {
+          // TODO Handle error message
+        }
+      );
+
   }
 
   private initializeFormGroup() {
