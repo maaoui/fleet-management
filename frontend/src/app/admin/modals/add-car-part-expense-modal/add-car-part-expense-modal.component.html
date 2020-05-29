@@ -66,7 +66,7 @@
     </div>
     <div>
       <p class="list-group-item-text">
-        <b>{{"ADMIN_VIEW.MODALS.ADD_CAR_PART_EXPENSE_MODAL.DATE" | translate}}:</b>
+        <b>{{"ADMIN_VIEW.MODALS.ADD_CAR_PART_EXPENSE_MODAL.COMMENT" | translate}}:</b>
       </p>
       <div class="form-group">
         <label class="textarea--label--container">
@@ -105,93 +105,79 @@
     <div class="carpart--input--container">
       <div>
         <p class="list-group-item-text">
-          <b>{{"ADMIN_VIEW.MODALS.ADD_CAR_PART_EXPENSE_MODAL.CURRENT_KILOMETRAGE" | translate}}:</b>
+          <b>{{"ADMIN_VIEW.MODALS.ADD_CAR_PART_EXPENSE_MODAL.PART_TYPE" | translate}}:</b>
         </p>
         <div class="form-group">
-          <input formControlName="currentKilometrage" type="number" class="form-control"
-                 name="currentKilometrage" pattern="[0-9]*"/>
+          <select class="form-control" formControlName="carPartPartType" class="form-control" name="carPartPartType">
+            <option *ngFor="let carPartType of partTypeValues">{{carPartType}}</option>
+          </select>
         </div>
-        <div *ngIf="carPartExpenseForm.controls['currentKilometrage'].errors" class="alert-danger">
-          <div *ngIf="carPartExpenseForm.controls['currentKilometrage'].errors.required">
+        <div *ngIf="carPartExpenseForm.controls['carPartPartType'].errors" class="alert-danger">
+          <div *ngIf="carPartExpenseForm.controls['carPartPartType'].errors.required">
             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
             {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
           </div>
-          <div *ngIf="carPartExpenseForm.controls['currentKilometrage'].errors.pattern">
-            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-            {{"ADMIN_VIEW.MODALS.VALIDATION.WRONG_VALUE" | translate }}
+        </div>
+      </div>
+      <div>
+        <div>
+          <p class="list-group-item-text">
+            <b>{{"ADMIN_VIEW.MODALS.ADD_CAR_PART_EXPENSE_MODAL.PART_NAME" | translate}}:</b>
+          </p>
+          <div class="form-group">
+            <input formControlName="carPartName" type="text" class="form-control" [(ngModel)]="carPartExpense.carPart.name"
+                   name="carPartName" [minLength]="getMinCommentSize()" [maxLength]="getPartNameMaxLength()"/>
+          </div>
+          <div *ngIf="carPartExpenseForm.controls['carPartName'].errors" class="alert-danger">
+            <div *ngIf="carPartExpenseForm.controls['carPartName'].errors.required">
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+            </div>
+            <div *ngIf="carPartExpenseForm.controls['carPartName'].errors.minlength">
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+            </div>
+            <div *ngIf="carPartExpenseForm.controls['carPartName'].errors.maxlength">
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+            </div>
           </div>
         </div>
       </div>
-
+      <div>
+        <div>
+          <p class="list-group-item-text">
+            <b>{{"ADMIN_VIEW.MODALS.ADD_CAR_PART_EXPENSE_MODAL.PART_DESCRIPTION" | translate}}:</b>
+          </p>
+          <div class="form-group">
+            <label class="textarea--label--container">
+              <textarea formControlName="carPartDescription" class="form-control" rows="4"
+                        name="carPartDescription" [minLength]="getMinCommentSize()"
+                        [maxLength]="getPartDescriptionMaxLength()"></textarea>
+            </label>
+          </div>
+          <div *ngIf="carPartExpenseForm.controls['carPartDescription'].errors" class="alert-danger">
+            <div *ngIf="carPartExpenseForm.controls['carPartDescription'].errors.required">
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+            </div>
+            <div *ngIf="carPartExpenseForm.controls['carPartDescription'].errors.minlength">
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+            </div>
+            <div *ngIf="carPartExpenseForm.controls['carPartDescription'].errors.maxlength">
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- <div class="form-group">
-       <input formControlName="make" type="text" class="form-control" name="make"/>
-     </div>
-     <div *ngIf="carPartExpenseForm.controls.make.invalid" class="alert-danger">
-       <div *ngIf="carPartExpenseForm.controls['make'].errors.minlength">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-         {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
-       </div>
-
-       <div *ngIf="carPartExpenseForm.controls['make'].errors.maxlength">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-         {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
-       </div>
-
-     </div>
-     <div class="form-group">
-       <input formControlName="model" type="text" class="form-control" name="model"/>
-     </div>
-     <div *ngIf="carPartExpenseForm.controls.model.invalid" class="alert-danger">
-       <div *ngIf="carPartExpenseForm.controls['model'].errors.minlength">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-         {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
-       </div>
-
-       <div *ngIf="carPartExpenseForm.controls['model'].errors.maxlength">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-         {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
-       </div>
-
-     </div>
-     <div class="form-group">
-       <input formControlName="horsePower" type="number" class="form-control" name="horsePower"/>
-     </div>
-     <div *ngIf="carPartExpenseForm.controls.horsePower.invalid" class="alert-danger">
-       <div *ngIf="carPartExpenseForm.controls['horsePower'].errors.min">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-         {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
-       </div>
-
-       <div *ngIf="carPartExpenseForm.controls['horsePower'].errors.max">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-         {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_VALUE" | translate }}
-       </div>
-
-     </div>
-
-     <div class="form-group">
-       <input formControlName="vin" type="text" class="form-control" name="vin"/>
-     </div>
-     <div *ngIf="carPartExpenseForm.controls.vin.invalid" class="alert-danger">
-       <div *ngIf="carPartExpenseForm.controls['vin'].errors.minlength">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-         {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
-       </div>
-
-       <div *ngIf="carPartExpenseForm.controls['vin'].errors.maxlength">
-         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-         {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
-       </div>
-
-     </div>
-     -->
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success" >
+        <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
+      <button type="button" class="btn btn-danger" (click)="onCancelPress()">
+        <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
+    </div>
   </form>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-success" (click)="onSavePress()">
-    <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
-  <button type="button" class="btn btn-danger" (click)="onCancelPress()">
-    <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
 </div>

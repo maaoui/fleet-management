@@ -62,7 +62,10 @@
         "DATE": "Date",
         "COMMENT": "Comment",
         "CURRENT_KILOMETRAGE": "Current kilometrage",
-        "CAR_PART": "Car part"
+        "CAR_PART": "Car part",
+        "PART_TYPE": "Part type",
+        "PART_NAME": "Part name",
+        "PART_DESCRIPTION": "Description"
       }
     }
   },

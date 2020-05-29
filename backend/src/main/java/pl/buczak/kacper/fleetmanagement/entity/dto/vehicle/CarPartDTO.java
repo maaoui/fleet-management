@@ -20,7 +20,7 @@ public class CarPartDTO extends BaseDTO {
     private String name;
 
     @NotBlank
-    @Size(max = 30)
+    @Size(max = 250)
     private String description;
 
     public CarPartDTO() {
