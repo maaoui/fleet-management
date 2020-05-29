@@ -36,7 +36,8 @@ public class CarPartExpenseService {
 
     public CarPartExpenseDTO updateCarPartExpense(CarPartExpenseDTO carPartExpenseDTO) {
         CarPartExpense carPartExpenseToUpdate = carPartExpenseRepository.getOne(carPartExpenseDTO.getId());
-        return this.entityToDtoMapper(this.carPartExpenseRepository.save(updateCarPartExpense(carPartExpenseToUpdate, carPartExpenseDTO)));
+        CarPart carPart = carPartRepository.save(this.createCarPartFromDto(carPartExpenseDTO.getCarPart()));
+        return this.entityToDtoMapper(this.carPartExpenseRepository.save(updateCarPartExpense(carPartExpenseToUpdate, carPart, carPartExpenseDTO)));
     }
 
     public void deleteCarPartExpenseById(Long expenseId) {
@@ -56,8 +57,8 @@ public class CarPartExpenseService {
         return carPartExpense;
     }
 
-    private CarPartExpense updateCarPartExpense(CarPartExpense carPartExpense, CarPartExpenseDTO carPartExpenseDTO) {
-        carPartExpense.setCarPart(this.createCarPartFromDto(carPartExpenseDTO.getCarPart()));
+    private CarPartExpense updateCarPartExpense(CarPartExpense carPartExpense, CarPart carPart, CarPartExpenseDTO carPartExpenseDTO) {
+        carPartExpense.setCarPart(carPart);
         carPartExpense.setComment(carPartExpenseDTO.getComment());
         carPartExpense.setCurrency(carPartExpenseDTO.getCurrency());
         carPartExpense.setCurrentKilometrage(carPartExpenseDTO.getCurrentKilometrage());
@@ -69,6 +70,7 @@ public class CarPartExpenseService {
 
     private CarPart createCarPartFromDto(CarPartDTO carPartDTO) {
         CarPart carPart = new CarPart();
+        carPart.setId(carPartDTO.getId());
         carPart.setPartType(carPartDTO.getPartType());
         carPart.setName(carPartDTO.getName());
         carPart.setDescription(carPartDTO.getDescription());
