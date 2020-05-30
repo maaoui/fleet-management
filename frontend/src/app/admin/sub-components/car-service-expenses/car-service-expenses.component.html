@@ -17,6 +17,7 @@
       <th scope="col">{{"ADMIN_EXPENSES.COMMON.COMMENT" |translate}}</th>
       <th scope="col">{{"ADMIN_EXPENSES.CAR_SERVICE_EXPENSES_COMPONENT.WORKSHOP" |translate}}</th>
       <th scope="col">{{"ADMIN_EXPENSES.CAR_SERVICE_EXPENSES_COMPONENT.CAR_PART" |translate}}</th>
+      <th scope="col">{{"UNIVERSAL.DELETE" |translate}}</th>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +34,11 @@
       <td>
         <button class="btn btn-info" (click)="openCarPartModal(expense)">
           {{"ADMIN_EXPENSES.CAR_SERVICE_EXPENSES_COMPONENT.CAR_PART" |translate}}
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="openDeleteExpenseModal(expense)">
+          {{"UNIVERSAL.DELETE" |translate}}
         </button>
       </td>
     </tr>

@@ -1,8 +1,15 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {ServiceExpense} from '../../../shared/model/expense/service-expense';
 import {CarPartModalComponent} from '../../modals/car-part-modal/car-part-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {WorkshopModalComponent} from '../../modals/workshop-modal/workshop-modal.component';
+import {DeleteExpenseModalComponent} from '../../modals/delete-expense-modal/delete-expense-modal.component';
+import {first, map} from 'rxjs/operators';
+import {ExpenseEmitterDeletionResponse} from '../../model/expense-emitter-deletion-response';
+import {ExploitationReport} from '../../../shared/model/exploitation/exploitation-report';
+import {ExploitationService} from '../../../shared/service/exploitation/exploitation.service';
+import {CarServiceExpenseService} from '../../../shared/service/exploitation/expense/car-service-expense.service';
+import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 
 @Component({
   selector: 'app-car-service-expenses',
@@ -10,9 +17,13 @@ import {WorkshopModalComponent} from '../../modals/workshop-modal/workshop-modal
   styleUrls: ['./car-service-expenses.component.scss']
 })
 export class CarServiceExpensesComponent implements OnInit {
-  @Input() serviceExpenses: ServiceExpense[];
 
-  constructor(private modalService: NgbModal) {
+  @Input() serviceExpenses: ServiceExpense[];
+  @Input() vehicle: Vehicle;
+
+  constructor(private modalService: NgbModal,
+              private carServiceExpenseService: CarServiceExpenseService,
+              private exploitationService: ExploitationService) {
   }
 
   ngOnInit(): void {
@@ -26,5 +37,49 @@ export class CarServiceExpensesComponent implements OnInit {
   openWorkshopModal(expense: ServiceExpense) {
     const modalRef = this.modalService.open(WorkshopModalComponent);
     modalRef.componentInstance.workshop = expense.workshop;
+  }
+
+  openDeleteExpenseModal(expense: ServiceExpense) {
+    const modalRef = this.modalService.open(DeleteExpenseModalComponent);
+    modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<ServiceExpense>();
+    modalRef.componentInstance.expense = new ServiceExpense(expense);
+    modalRef.componentInstance
+      .expenseDeletetionEmitter
+      .pipe(
+        map((emittedExpense: ServiceExpense) => this.createExpenseEmitterResponse(emittedExpense)),
+        first()
+      )
+      .subscribe((expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) =>
+        this.handleEmittedDeletionResponse(expenseEmitterDeletionResponse));
+  }
+
+  private createExpenseEmitterResponse(emittedExpense: ServiceExpense) {
+    return new ExpenseEmitterDeletionResponse({
+      delete: emittedExpense instanceof ServiceExpense,
+      expense: emittedExpense
+    });
+  }
+
+  private handleEmittedDeletionResponse(expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) {
+    if (expenseEmitterDeletionResponse.delete) {
+      this.carServiceExpenseService
+        .deleteCarServiceExpense(expenseEmitterDeletionResponse.expense.id)
+        .subscribe((response) => {
+            console.log(response);
+            this.refreshCarServiceExpenses();
+            // TODO Show deleted
+          },
+          (error) => {
+            // TODO Show error
+          });
+    }
+  }
+
+  private refreshCarServiceExpenses() {
+    this.exploitationService
+      .getExploitationReportByVehicleId(this.vehicle.id)
+      .subscribe((report: ExploitationReport) => {
+        this.serviceExpenses = [...report.serviceExpenses];
+      });
   }
 }
