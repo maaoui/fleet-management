@@ -54,7 +54,7 @@ export class FuelExpensesComponent implements OnInit {
         .deleteFuelExpense(expenseEmitterDeletionResponse.expense.id)
         .subscribe((response) => {
             console.log(response);
-            this.refreshCarPartExpenses();
+            this.refreshFuelExpenses();
             // TODO Show deleted
           },
           (error) => {
@@ -63,7 +63,7 @@ export class FuelExpensesComponent implements OnInit {
     }
   }
 
-  private refreshCarPartExpenses() {
+  private refreshFuelExpenses() {
     this.exploitationService
       .getExploitationReportByVehicleId(this.vehicle.id)
       .subscribe((report: ExploitationReport) => {
