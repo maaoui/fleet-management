@@ -17,6 +17,7 @@
       <th scope="col">{{"ADMIN_EXPENSES.COMMON.COMMENT" |translate}}</th>
       <th scope="col">{{"ADMIN_EXPENSES.OTHER_EXPENSES_COMPONENT.ITEM_COUNT" |translate}}</th>
       <th scope="col">{{"ADMIN_EXPENSES.OTHER_EXPENSES_COMPONENT.ITEM_COUNT" |translate}}</th>
+      <th scope="col">{{"UNIVERSAL.DELETE" |translate}}</th>
     </tr>
     </thead>
     <tbody>
@@ -27,6 +28,11 @@
       <td>{{expense.comment}}</td>
       <td>{{expense.itemCount | number}}</td>
       <td>{{expense.itemCount * expense.value | number}}</td>
+      <td>
+        <button class="btn btn-danger" (click)="openDeleteExpenseModal(expense)">
+          {{"UNIVERSAL.DELETE" |translate}}
+        </button>
+      </td>
     </tr>
     </tbody>
   </table>
