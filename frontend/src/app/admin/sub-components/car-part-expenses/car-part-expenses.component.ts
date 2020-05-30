@@ -50,11 +50,11 @@ export class CarPartExpensesComponent implements OnInit {
         modalRef.componentInstance
             .expenseDeletetionEmitter
             .pipe(
-                map((emittedExpense: CarPartExpense) => this.createExpenseEmitterResponser(emittedExpense)),
+                map((emittedExpense: CarPartExpense) => this.createExpenseEmitterResponse(emittedExpense)),
                 first()
             )
             .subscribe((expenseEmitterDeletionReponse: ExpenseEmitterDeletionResponse) =>
-                this.handleEmittedDeletionReponse(expenseEmitterDeletionReponse));
+                this.handleEmittedDeletionResponse(expenseEmitterDeletionReponse));
     }
 
     private refreshCarPartExpenses() {
@@ -65,17 +65,17 @@ export class CarPartExpensesComponent implements OnInit {
             });
     }
 
-    private createExpenseEmitterResponser(emittedExpense: CarPartExpense) {
+    private createExpenseEmitterResponse(emittedExpense: CarPartExpense) {
         return new ExpenseEmitterDeletionResponse({
             delete: emittedExpense instanceof CarPartExpense,
             expense: emittedExpense
         });
     }
 
-    private handleEmittedDeletionReponse(expenseEmitterDeletionReponse: ExpenseEmitterDeletionResponse) {
-        if (expenseEmitterDeletionReponse.delete) {
+    private handleEmittedDeletionResponse(expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) {
+        if (expenseEmitterDeletionResponse.delete) {
             this.carPartExpenseService
-                .deleteCarPartExpense(expenseEmitterDeletionReponse.expense.id)
+                .deleteCarPartExpense(expenseEmitterDeletionResponse.expense.id)
                 .subscribe((response) => {
                         console.log(response);
                         this.refreshCarPartExpenses();
