@@ -43,7 +43,7 @@ export class CarPartExpensesComponent implements OnInit {
             .subscribe(() => this.refreshCarPartExpenses());
     }
 
-    openDeleteCarPartModal(expense: CarPartExpense) {
+    openDeleteExpenseModal(expense: CarPartExpense) {
         const modalRef = this.modalService.open(DeleteExpenseModalComponent);
         modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<CarPartExpense>();
         modalRef.componentInstance.expense = new CarPartExpense(expense);
