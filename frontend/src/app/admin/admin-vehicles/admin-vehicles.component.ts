@@ -8,6 +8,8 @@ import {Subscription} from 'rxjs';
 import {InsuranceService} from '../../shared/service/insurance/insurance.service';
 import {DeleteVehicleModalComponent} from '../modals/delete-vehicle-modal/delete-vehicle-modal.component';
 import {first} from 'rxjs/operators';
+import {CarPartModalComponent} from '../modals/car-part-modal/car-part-modal.component';
+import {Constraint} from '../../shared/constraints/constraint';
 
 @Component({
   selector: 'app-admin-vehicles',
@@ -44,7 +46,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
   }
 
   openEditVehicleModal(vehicle: Vehicle) {
-    const modalRef = this.modalService.open(EditVehicleModalComponent);
+    const modalRef = this.modalService.open(EditVehicleModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.vehicle = vehicle;
   }
 
@@ -52,7 +54,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
     this.subscription = this.insuranceService
       .getInsuranceByVehicleId(vehicle.id)
       .subscribe((insurance) => {
-        const modalRef = this.modalService.open(InsuranceInformationComponent);
+        const modalRef = this.modalService.open(InsuranceInformationComponent, {size: Constraint.MODAL_SIZE_LG});
         modalRef.componentInstance.insurance = insurance;
         modalRef.componentInstance.vehicleUpdateEmitter = new EventEmitter<string>();
         modalRef.componentInstance.vehicleUpdateEmitter
@@ -65,7 +67,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
 
   openDeleteVehicleModal(vehicle: Vehicle) {
     const modalRef = this.modalService
-      .open(DeleteVehicleModalComponent);
+      .open(DeleteVehicleModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.vehicle = vehicle;
     modalRef.componentInstance
       .vehicleDeletionEmitter

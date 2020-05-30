@@ -8,6 +8,8 @@ import {ExploitationReport} from '../../../shared/model/exploitation/exploitatio
 import {ExploitationService} from '../../../shared/service/exploitation/exploitation.service';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {FuelExpenseService} from '../../../shared/service/exploitation/expense/fuel-expense.service';
+import {CarPartModalComponent} from '../../modals/car-part-modal/car-part-modal.component';
+import {Constraint} from '../../../shared/constraints/constraint';
 
 @Component({
   selector: 'app-fuel-expenses',
@@ -28,7 +30,7 @@ export class FuelExpensesComponent implements OnInit {
   }
 
   openDeleteExpenseModal(expense: FuelExpense) {
-    const modalRef = this.modalService.open(DeleteExpenseModalComponent);
+    const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<FuelExpense>();
     modalRef.componentInstance.expense = new FuelExpense(expense);
     modalRef.componentInstance

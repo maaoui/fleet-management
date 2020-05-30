@@ -10,6 +10,7 @@ import {ExploitationReport} from '../../../shared/model/exploitation/exploitatio
 import {ExploitationService} from '../../../shared/service/exploitation/exploitation.service';
 import {CarServiceExpenseService} from '../../../shared/service/exploitation/expense/car-service-expense.service';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
+import {Constraint} from '../../../shared/constraints/constraint';
 
 @Component({
   selector: 'app-car-service-expenses',
@@ -30,17 +31,17 @@ export class CarServiceExpensesComponent implements OnInit {
   }
 
   openCarPartModal(expense: ServiceExpense) {
-    const modalRef = this.modalService.open(CarPartModalComponent);
+    const modalRef = this.modalService.open(CarPartModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.carPart = expense.carPart;
   }
 
   openWorkshopModal(expense: ServiceExpense) {
-    const modalRef = this.modalService.open(WorkshopModalComponent);
+    const modalRef = this.modalService.open(WorkshopModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.workshop = expense.workshop;
   }
 
   openDeleteExpenseModal(expense: ServiceExpense) {
-    const modalRef = this.modalService.open(DeleteExpenseModalComponent);
+    const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<ServiceExpense>();
     modalRef.componentInstance.expense = new ServiceExpense(expense);
     modalRef.componentInstance

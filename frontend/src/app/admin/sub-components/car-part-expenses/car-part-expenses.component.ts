@@ -10,6 +10,7 @@ import {ExploitationReport} from '../../../shared/model/exploitation/exploitatio
 import {DeleteExpenseModalComponent} from '../../modals/delete-expense-modal/delete-expense-modal.component';
 import {ExpenseEmitterDeletionResponse} from '../../model/expense-emitter-deletion-response';
 import {CarPartExpenseService} from '../../../shared/service/exploitation/expense/car-part-expense.service';
+import {Constraint} from '../../../shared/constraints/constraint';
 
 @Component({
     selector: 'app-car-part-expenses',
@@ -30,12 +31,12 @@ export class CarPartExpensesComponent implements OnInit {
     }
 
     openCarPartModal(expense: CarPartExpense) {
-        const modalRef = this.modalService.open(CarPartModalComponent);
+        const modalRef = this.modalService.open(CarPartModalComponent, {size: Constraint.MODAL_SIZE_LG});
         modalRef.componentInstance.carPart = expense.carPart;
     }
 
     openAddCarPartExpenseModal() {
-        const modalRef = this.modalService.open(AddCarPartExpenseModalComponent);
+        const modalRef = this.modalService.open(AddCarPartExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
         modalRef.componentInstance.vehicle = this.vehicle;
         modalRef.componentInstance
             .postExpenseEmitter
@@ -44,7 +45,7 @@ export class CarPartExpensesComponent implements OnInit {
     }
 
     openDeleteExpenseModal(expense: CarPartExpense) {
-        const modalRef = this.modalService.open(DeleteExpenseModalComponent);
+        const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
         modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<CarPartExpense>();
         modalRef.componentInstance.expense = new CarPartExpense(expense);
         modalRef.componentInstance

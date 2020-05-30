@@ -9,6 +9,8 @@ import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ExploitationService} from '../../../shared/service/exploitation/exploitation.service';
 import {OtherExpenseService} from '../../../shared/service/exploitation/expense/other-expense.service';
+import {CarPartModalComponent} from '../../modals/car-part-modal/car-part-modal.component';
+import {Constraint} from '../../../shared/constraints/constraint';
 
 @Component({
   selector: 'app-other-expenses',
@@ -28,7 +30,7 @@ export class OtherExpensesComponent implements OnInit {
   }
 
   openDeleteExpenseModal(expense: OtherExpense) {
-    const modalRef = this.modalService.open(DeleteExpenseModalComponent);
+    const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<OtherExpense>();
     modalRef.componentInstance.expense = new OtherExpense(expense);
     modalRef.componentInstance
