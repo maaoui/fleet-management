@@ -66,6 +66,10 @@
         "PART_TYPE": "Part type",
         "PART_NAME": "Part name",
         "PART_DESCRIPTION": "Description"
+      },
+      "DELETE_EXPENSE_MODAL": {
+        "TITLE": "Delete expense",
+        "DELETE_MESSAGE": "Are you sure you want to delete selected expense?"
       }
     }
   },
