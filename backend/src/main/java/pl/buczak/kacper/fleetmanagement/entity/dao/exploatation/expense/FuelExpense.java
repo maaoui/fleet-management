@@ -21,7 +21,6 @@ public class FuelExpense extends Expense {
     @Column(nullable = false, name = "fuel_amount")
     private Double fuelAmount;
 
-    @Min(value = 0)
     @Column(nullable = false, name = "fuel_type")
     private FuelType fuelType;
 
