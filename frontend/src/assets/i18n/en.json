@@ -9,6 +9,11 @@
     "NO": "No"
   },
   "LANGUAGE": "English",
+  "LOGIN": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "LOGIN": "Log in"
+  },
   "ADMIN_VIEW": {
     "NAV_HEADER": "Fleet Management",
     "VEHICLES": "Vehicles",

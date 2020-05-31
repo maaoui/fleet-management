@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    {{"LOGIN.EMAIL" | translate}}
+    <label>
+      <input type="text" name="username" [(ngModel)]="username">
+    </label>
+  </div>
+  <div>
+    {{"LOGIN.PASSWORD" | translate}}
+    <label>
+      <input type="password" name="password" [(ngModel)]="password">
+    </label>
+  </div>
+
+
+  <button (click)=checkLogin() class="btn btn-success">
+    {{"LOGIN.LOGIN" | translate}}
+  </button>
+</div>
