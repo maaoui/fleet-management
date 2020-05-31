@@ -1,5 +1,6 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.workshop;
 
+import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.AddressDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.RegionDTO;
 
@@ -11,7 +12,7 @@ import javax.validation.constraints.Size;
 /*
     @author Kacper Buczak 
 */
-public class WorkshopDTO {
+public class WorkshopDTO extends BaseDTO {
 
     @NotNull
     private RegionDTO region;
