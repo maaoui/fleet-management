@@ -8,8 +8,8 @@ import {ExploitationReport} from '../../../shared/model/exploitation/exploitatio
 import {ExploitationService} from '../../../shared/service/exploitation/exploitation.service';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {FuelExpenseService} from '../../../shared/service/exploitation/expense/fuel-expense.service';
-import {CarPartModalComponent} from '../../modals/car-part-modal/car-part-modal.component';
 import {Constraint} from '../../../shared/constraints/constraint';
+import {AddFuelExpenseModalComponent} from '../../modals/add-fuel-expense-modal/add-fuel-expense-modal.component';
 
 @Component({
   selector: 'app-fuel-expenses',
@@ -72,4 +72,14 @@ export class FuelExpensesComponent implements OnInit {
         this.fuelExpenses = [...report.fuelExpenses];
       });
   }
+
+  openAddFuelExpenseModal() {
+    const modalRef = this.modalService.open(AddFuelExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.vehicle = this.vehicle;
+    modalRef.componentInstance
+      .postExpenseEmitter
+      .pipe(first())
+      .subscribe(() => this.refreshFuelExpenses());
+  }
+
 }
