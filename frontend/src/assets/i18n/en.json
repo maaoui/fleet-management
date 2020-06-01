@@ -44,6 +44,11 @@
       "DELETE_MESSAGE": "Are you sure you want to delete vehicle {vehicle} and all data related to it? This operation is irreversible",
       "DELETE_YES": "Yes, delete.",
       "DELETE_NO": "No.",
+      "VALUE": "Expense value",
+      "CURRENCY": "Currency",
+      "DATE": "Date",
+      "COMMENT": "Comment",
+      "CURRENT_KILOMETRAGE": "Current kilometrage",
       "CAR_PART_MODAL": {
         "TITLE": "Car part information",
         "PART_TYPE": "Type of part",
@@ -62,15 +67,15 @@
       },
       "ADD_CAR_PART_EXPENSE_MODAL": {
         "TITLE": "Add car part expense",
-        "VALUE": "Expense value",
-        "CURRENCY": "Currency",
-        "DATE": "Date",
-        "COMMENT": "Comment",
-        "CURRENT_KILOMETRAGE": "Current kilometrage",
         "CAR_PART": "Car part",
         "PART_TYPE": "Part type",
         "PART_NAME": "Part name",
         "PART_DESCRIPTION": "Description"
+      },
+      "ADD_FUEL_EXPENSE_MODAL": {
+        "TITLE": "Add fuel expense",
+        "FUEL_AMOUNT": "Fuel amount",
+        "FUEL_TYPE": "Fuel type"
       },
       "DELETE_EXPENSE_MODAL": {
         "TITLE": "Delete expense",

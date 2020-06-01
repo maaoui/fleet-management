@@ -1,1 +1,6 @@
 @import './src/styles';
+
+.table--comment-container {
+  max-width: 10em;
+  word-wrap: break-word;
+}

@@ -21,7 +21,6 @@ export class AddCarPartExpenseModalComponent implements OnInit {
   private carPartExpense: CarPartExpense;
   private partTypeValues: PartType[] = Object.values(PartType);
 
-  // TODO Add event emitter.
   constructor(public activeModal: NgbActiveModal, private carPartExpenseService: CarPartExpenseService) {
 
   }
