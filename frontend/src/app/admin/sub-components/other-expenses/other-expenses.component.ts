@@ -11,6 +11,8 @@ import {ExploitationService} from '../../../shared/service/exploitation/exploita
 import {OtherExpenseService} from '../../../shared/service/exploitation/expense/other-expense.service';
 import {CarPartModalComponent} from '../../modals/car-part-modal/car-part-modal.component';
 import {Constraint} from '../../../shared/constraints/constraint';
+import {AddFuelExpenseModalComponent} from '../../modals/add-fuel-expense-modal/add-fuel-expense-modal.component';
+import {AddOtherExpenseModalComponent} from '../../modals/add-other-expense-modal/add-other-expense-modal.component';
 
 @Component({
   selector: 'app-other-expenses',
@@ -71,5 +73,14 @@ export class OtherExpensesComponent implements OnInit {
       .subscribe((report: ExploitationReport) => {
         this.otherExpenses = [...report.otherExpenses];
       });
+  }
+
+  openAddOtherExpenseModal() {
+    const modalRef = this.modalService.open(AddOtherExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.vehicle = this.vehicle;
+    modalRef.componentInstance
+      .postExpenseEmitter
+      .pipe(first())
+      .subscribe(() => this.refreshOtherExpenses());
   }
 }

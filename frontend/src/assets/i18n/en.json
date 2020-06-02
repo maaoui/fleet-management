@@ -80,6 +80,10 @@
       "DELETE_EXPENSE_MODAL": {
         "TITLE": "Delete expense",
         "DELETE_MESSAGE": "Are you sure you want to delete selected expense?"
+      },
+      "ADD_OTHER_EXPENSE_MODAL": {
+        "TITLE": "Add Other expense",
+        "ITEM_COUNT": "Item count"
       }
     }
   },

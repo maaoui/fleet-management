@@ -1,25 +1,23 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FuelExpense} from '../../../shared/model/expense/fuel-expense';
+import {OtherExpense} from '../../../shared/model/expense/other-expense';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {FuelExpenseService} from '../../../shared/service/exploitation/expense/fuel-expense.service';
-import {FuelType} from '../../../shared/model/enums/fuel-type.enum';
+import {OtherExpenseService} from '../../../shared/service/exploitation/expense/other-expense.service';
 
 @Component({
-  selector: 'app-add-fuel-expense-modal',
-  templateUrl: './add-fuel-expense-modal.component.html',
-  styleUrls: ['./add-fuel-expense-modal.component.scss']
+  selector: 'app-add-other-expense-modal',
+  templateUrl: './add-other-expense-modal.component.html',
+  styleUrls: ['./add-other-expense-modal.component.scss']
 })
-export class AddFuelExpenseModalComponent implements OnInit {
+export class AddOtherExpenseModalComponent implements OnInit {
   @Input() vehicle: Vehicle;
   @Output() postExpenseEmitter = new EventEmitter<string>();
 
-  private fuelExpenseForm: FormGroup;
-  private fuelExpense: FuelExpense;
-  private fuelTypeValues: FuelType[];
+  private otherExpenseForm: FormGroup;
+  private otherExpense: OtherExpense;
 
-  constructor(public activeModal: NgbActiveModal, private fuelExpenseService: FuelExpenseService) {
+  constructor(public activeModal: NgbActiveModal, private otherExpenseService: OtherExpenseService) {
   }
 
   ngOnInit(): void {
@@ -31,14 +29,14 @@ export class AddFuelExpenseModalComponent implements OnInit {
   }
 
   onSavePress() {
-    const date = new Date(Object.values(this.fuelExpenseForm.value.date).join('-'));
-    const fuelExpense = new FuelExpense({
-      ...this.fuelExpenseForm.value,
+    const date = new Date(Object.values(this.otherExpenseForm.value.date).join('-'));
+    const otherExpense = new OtherExpense({
+      ...this.otherExpenseForm.value,
       date
     });
-    this.fuelExpenseService
-      .createFuelExpense(this.vehicle.id, fuelExpense)
-      .subscribe((updatedFuelExpense: FuelExpense) => {
+    this.otherExpenseService
+      .createOtherExpense(this.vehicle.id, otherExpense)
+      .subscribe((updatedFuelExpense: OtherExpense) => {
           this.postExpenseEmitter.emit('updated');
           this.activeModal.close();
         },
@@ -46,48 +44,41 @@ export class AddFuelExpenseModalComponent implements OnInit {
           // TODO Handle error message
         }
       );
-
   }
 
   private initializeFormGroup() {
-    this.fuelTypeValues = Object.values(FuelType);
-    this.fuelExpense = new FuelExpense();
-    this.fuelExpenseForm = new FormGroup({
-      value: new FormControl(this.fuelExpense.value,
+    this.otherExpense = new OtherExpense();
+    this.otherExpenseForm = new FormGroup({
+      value: new FormControl(this.otherExpense.value,
         Validators.compose([
           Validators.minLength(this.getMinValue()),
           Validators.required
         ])),
-      currency: new FormControl(this.fuelExpense.currency,
+      currency: new FormControl(this.otherExpense.currency,
         Validators.compose([
           Validators.minLength(this.getCurrencyLength()),
           Validators.maxLength(this.getCurrencyLength()),
           Validators.required
         ])),
-      date: new FormControl(this.fuelExpense.date,
+      date: new FormControl(this.otherExpense.date,
         Validators.compose([
           Validators.required
         ])),
-      comment: new FormControl(this.fuelExpense.comment,
+      comment: new FormControl(this.otherExpense.comment,
         Validators.compose([
           Validators.minLength(this.getMinCommentSize()),
           Validators.maxLength(this.getMaxCommentSize()),
           Validators.required
         ])),
-      currentKilometrage: new FormControl(this.fuelExpense.currentKilometrage,
+      currentKilometrage: new FormControl(this.otherExpense.currentKilometrage,
         Validators.compose([
           Validators.required,
           Validators.pattern('[0-9]*')
         ])),
-      fuelAmount: new FormControl(this.fuelExpense.fuelAmount,
+      itemCount: new FormControl(this.otherExpense.itemCount,
         Validators.compose([
           Validators.required,
           Validators.min(this.getMinFuelAmount()),
-        ])
-      ),
-      fuelType: new FormControl(this.fuelExpense.fuelType,
-        Validators.compose([
-          Validators.required,
         ])
       ),
     });
