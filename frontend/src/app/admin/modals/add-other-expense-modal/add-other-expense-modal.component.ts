@@ -36,7 +36,7 @@ export class AddOtherExpenseModalComponent implements OnInit {
     });
     this.otherExpenseService
       .createOtherExpense(this.vehicle.id, otherExpense)
-      .subscribe((updatedFuelExpense: OtherExpense) => {
+      .subscribe((updatedOtherExpense: OtherExpense) => {
           this.postExpenseEmitter.emit('updated');
           this.activeModal.close();
         },

@@ -49,14 +49,12 @@ export class AddCarPartExpenseModalComponent implements OnInit {
           // TODO Handle error message
         }
       );
-
   }
 
   private initializeFormGroup() {
     this.carPartExpense = new CarPartExpense();
     this.carPartExpense.carPart = new CarPart();
     this.carPartExpenseForm = new FormGroup({
-      // id: new FormControl(this.carPartExpense.id),
       value: new FormControl(this.carPartExpense.value,
         Validators.compose([
           Validators.minLength(this.getMinValue()),

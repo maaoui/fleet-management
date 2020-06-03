@@ -11,6 +11,8 @@ import {ExploitationService} from '../../../shared/service/exploitation/exploita
 import {CarServiceExpenseService} from '../../../shared/service/exploitation/expense/car-service-expense.service';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {Constraint} from '../../../shared/constraints/constraint';
+import {AddCarPartExpenseModalComponent} from '../../modals/add-car-part-expense-modal/add-car-part-expense-modal.component';
+import {AddServicingExpenseModalComponent} from '../../modals/add-servicing-expense-modal/add-servicing-expense-modal.component';
 
 @Component({
   selector: 'app-car-service-expenses',
@@ -82,5 +84,14 @@ export class CarServiceExpensesComponent implements OnInit {
       .subscribe((report: ExploitationReport) => {
         this.serviceExpenses = [...report.serviceExpenses];
       });
+  }
+
+  openAddServicingExpenseModal() {
+    const modalRef = this.modalService.open(AddServicingExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.vehicle = this.vehicle;
+    modalRef.componentInstance
+      .postExpenseEmitter
+      .pipe(first())
+      .subscribe(() => this.refreshCarServiceExpenses());
   }
 }

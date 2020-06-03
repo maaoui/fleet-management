@@ -22,10 +22,11 @@ import {AddCarPartExpenseModalComponent} from './modals/add-car-part-expense-mod
 import {DeleteExpenseModalComponent} from './modals/delete-expense-modal/delete-expense-modal.component';
 import {AddFuelExpenseModalComponent} from './modals/add-fuel-expense-modal/add-fuel-expense-modal.component';
 import {AddOtherExpenseModalComponent} from './modals/add-other-expense-modal/add-other-expense-modal.component';
+import { AddServicingExpenseModalComponent } from './modals/add-servicing-expense-modal/add-servicing-expense-modal.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent],
   exports: [
     AdminViewComponent
   ],

@@ -84,6 +84,14 @@
       "ADD_OTHER_EXPENSE_MODAL": {
         "TITLE": "Add Other expense",
         "ITEM_COUNT": "Item count"
+      },
+      "ADD_SERVICE_EXPENSE_MODAL": {
+        "TITLE": "Add service expense",
+        "WORKSHOP": "Workshop",
+        "CAR_PART": "Car part",
+        "PART_TYPE": "Part type",
+        "PART_NAME": "Part name",
+        "PART_DESCRIPTION": "Description"
       }
     }
   },
