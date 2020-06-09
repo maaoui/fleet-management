@@ -5,28 +5,33 @@ import {EmployeeViewComponent} from './employee/employee-view/employee-view.comp
 import {AppComponent} from './app.component';
 import {LoginComponent} from './shared/component/login/login.component';
 import {LogoutComponent} from './shared/component/logout/logout.component';
+import {AuthGuard} from './core/auth/auth.guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent
+    component: AppComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admin',
-    component: AdminViewComponent
+    component: AdminViewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'employee',
-    component: EmployeeViewComponent
+    component: EmployeeViewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'logout',
-    component: LogoutComponent
+    component: LogoutComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
