@@ -2,7 +2,6 @@ package pl.buczak.kacper.fleetmanagement.entity.dao.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
-import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.repair.RecommendedRepair;
 import pl.buczak.kacper.fleetmanagement.entity.dao.insurance.Insurance;
 
 import javax.persistence.*;
@@ -27,9 +26,6 @@ public class Vehicle extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "vehicle")
     private List<VehicleUsageTimestamp> vehicleUsageTimestamps;
-
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "vehicle")
-    private List<RecommendedRepair> recommendedRepairs;
 
     @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "vehicle")
     private List<TechnicalExamination> technicalExaminationList;
@@ -96,14 +92,6 @@ public class Vehicle extends BaseEntity {
 
     public void setVehicleUsageTimestamps(List<VehicleUsageTimestamp> vehicleUsageTimestamps) {
         this.vehicleUsageTimestamps = vehicleUsageTimestamps;
-    }
-
-    public List<RecommendedRepair> getRecommendedRepairs() {
-        return recommendedRepairs;
-    }
-
-    public void setRecommendedRepairs(List<RecommendedRepair> recommendedRepairs) {
-        this.recommendedRepairs = recommendedRepairs;
     }
 
     public List<TechnicalExamination> getTechnicalExaminationList() {
