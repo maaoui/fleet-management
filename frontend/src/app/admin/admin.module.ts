@@ -4,7 +4,6 @@ import {AdminViewComponent} from './admin-view/admin-view.component';
 import {SharedModule} from '../shared/shared.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {AdminVehiclesComponent} from './admin-vehicles/admin-vehicles.component';
-import {AdminRepairsComponent} from './admin-repairs/admin-repairs.component';
 import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EditVehicleModalComponent} from './modals/edit-vehicle-modal/edit-vehicle-modal.component';
@@ -26,7 +25,7 @@ import { AddServicingExpenseModalComponent } from './modals/add-servicing-expens
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminRepairsComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent],
   exports: [
     AdminViewComponent
   ],

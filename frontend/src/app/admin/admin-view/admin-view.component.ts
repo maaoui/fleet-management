@@ -1,7 +1,6 @@
 import {Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewContainerRef} from '@angular/core';
 import {AdminVehiclesComponent} from '../admin-vehicles/admin-vehicles.component';
 import {AdminExpensesComponent} from '../admin-expenses/admin-expenses.component';
-import {AdminRepairsComponent} from '../admin-repairs/admin-repairs.component';
 
 @Component({
   selector: 'app-admin-view',
@@ -23,11 +22,6 @@ export class AdminViewComponent implements OnInit {
     this.createComponent(this.getAdminVehiclesComponentFactory());
   }
 
-  createAdminRepairsComponent() {
-    this.destroyCurrentComponent();
-    this.createComponent(this.getAdminRepairsComponentFactory());
-  }
-
   createAdminExpensesComponent() {
     this.destroyCurrentComponent();
     this.createComponent(this.getAdminExpensesComponentFactory());
@@ -46,10 +40,6 @@ export class AdminViewComponent implements OnInit {
 
   private getAdminVehiclesComponentFactory(): ComponentFactory<AdminVehiclesComponent> {
     return this.componentFactoryResolver.resolveComponentFactory(AdminVehiclesComponent);
-  }
-
-  private getAdminRepairsComponentFactory(): ComponentFactory<AdminRepairsComponent> {
-    return this.componentFactoryResolver.resolveComponentFactory(AdminRepairsComponent);
   }
 
   private getAdminExpensesComponentFactory(): ComponentFactory<AdminExpensesComponent> {
