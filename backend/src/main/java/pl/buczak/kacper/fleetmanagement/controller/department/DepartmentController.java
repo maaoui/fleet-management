@@ -46,4 +46,17 @@ public class DepartmentController {
                 .body(departmentService.getDepartmentById(departmentId));
     }
 
+    @PostMapping(value = "/departments")
+    public ResponseEntity<DepartmentFullDTO> createDepartment(@RequestBody DepartmentFullDTO departmentFullDTO) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(departmentService.createDepartment(departmentFullDTO));
+    }
+
+    @PutMapping(value = "/departments")
+    public ResponseEntity<DepartmentFullDTO> editDepartment(@RequestBody DepartmentFullDTO departmentFullDTO) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(departmentService.editDepartment(departmentFullDTO));
+    }
 }
