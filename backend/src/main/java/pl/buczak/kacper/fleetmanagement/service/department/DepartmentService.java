@@ -11,7 +11,10 @@ import pl.buczak.kacper.fleetmanagement.entity.dto.department.DepartmentDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.DepartmentFullDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.RegionDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
+import pl.buczak.kacper.fleetmanagement.repository.department.AddressRepository;
 import pl.buczak.kacper.fleetmanagement.repository.department.DepartmentRepository;
+import pl.buczak.kacper.fleetmanagement.repository.department.RegionRepository;
+import pl.buczak.kacper.fleetmanagement.repository.employee.EmployeeRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,12 +26,21 @@ import java.util.stream.Collectors;
 public class DepartmentService {
 
     private DepartmentRepository departmentRepository;
-
+    private RegionRepository regionRepository;
+    private AddressRepository addressRepository;
+    private EmployeeRepository employeeRepository;
     private ModelMapper modelMapper;
 
-    public DepartmentService(DepartmentRepository departmentRepository, ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
+    public DepartmentService(DepartmentRepository departmentRepository,
+                             RegionRepository regionRepository,
+                             AddressRepository addressRepository,
+                             EmployeeRepository employeeRepository,
+                             ModelMapper modelMapper) {
         this.departmentRepository = departmentRepository;
+        this.regionRepository = regionRepository;
+        this.addressRepository = addressRepository;
+        this.employeeRepository = employeeRepository;
+        this.modelMapper = modelMapper;
     }
 
     public List<DepartmentDTO> getDepartmentsList() {
@@ -57,28 +69,30 @@ public class DepartmentService {
 
     public DepartmentFullDTO createDepartment(DepartmentFullDTO departmentFullDTO) {
         Department department = new Department();
+        Address address = addressRepository.save(addressDTOToAddressMapper(departmentFullDTO.getAddress()));
+        Region region = regionRepository.getOne(departmentFullDTO.getRegion().getId());
         department.setDepartmentName(departmentFullDTO.getDepartmentName());
-        department.setAddress(addressDTOToAddressMapper(departmentFullDTO.getAddress()));
-        department.setRegion(regionDTOToRegionMapper(departmentFullDTO.getRegion()));
+        department.setAddress(address);
+        department.setRegion(region);
         department.setEmployees(extractEmployeeListFromDepartmentFullDto(departmentFullDTO));
         return entityToFullDTO(departmentRepository.save(department));
     }
 
     public DepartmentFullDTO editDepartment(DepartmentFullDTO departmentFullDTO) {
         Department department = departmentRepository.getOne(departmentFullDTO.getId());
+        Region region = regionRepository.getOne(departmentFullDTO.getRegion().getId());
         department.setDepartmentName(departmentFullDTO.getDepartmentName());
         department.setAddress(addressDTOToAddressMapper(departmentFullDTO.getAddress()));
-        department.setRegion(regionDTOToRegionMapper(departmentFullDTO.getRegion()));
+        department.setRegion(region);
         department.setEmployees(extractEmployeeListFromDepartmentFullDto(departmentFullDTO));
         return entityToFullDTO(departmentRepository.save(department));
     }
-
 
     private List<Employee> extractEmployeeListFromDepartmentFullDto(DepartmentFullDTO departmentFullDTO) {
         return departmentFullDTO
                 .getEmployees()
                 .stream()
-                .map(this::employeeDTOToEmployeeMapper)
+                .map(e -> employeeRepository.getOne(e.getId()))
                 .collect(Collectors.toList());
     }
 
