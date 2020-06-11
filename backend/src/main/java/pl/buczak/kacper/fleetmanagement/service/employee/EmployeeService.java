@@ -61,4 +61,9 @@ public class EmployeeService {
     }
 
 
+    public EmployeeFullDTO setActive(Long employeeId, boolean active) {
+        Employee employee = employeeRepository.getOne(employeeId);
+        employee.setEnabled(active);
+        return entityToFullDTO(employeeRepository.save(employee));
+    }
 }

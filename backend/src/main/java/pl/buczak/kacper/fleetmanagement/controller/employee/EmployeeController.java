@@ -46,5 +46,19 @@ public class EmployeeController {
                 .body(employeeService.findFullDTOById(employeeId));
     }
 
+    @PostMapping(value = "/employee/enable/{id}")
+    public ResponseEntity<EmployeeFullDTO> enableEmployeeById(@NotBlank @PathVariable("id") Long employeeId) {
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(employeeService.setActive(employeeId, true));
+    }
 
+    @PostMapping(value = "/employee/disable/{id}")
+    public ResponseEntity<EmployeeFullDTO> disableEmployeeById(@NotBlank @PathVariable("id") Long employeeId) {
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(employeeService.setActive(employeeId, true));
+    }
 }
+
+
