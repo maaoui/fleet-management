@@ -26,7 +26,7 @@ public class DepartmentController {
     }
 
     @GetMapping(value = "/departments")
-    public ResponseEntity<List<DepartmentDTO>> getDepartmentsList() {
+    public ResponseEntity<List<DepartmentFullDTO>> getDepartmentsList() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(departmentService.getDepartmentsList());

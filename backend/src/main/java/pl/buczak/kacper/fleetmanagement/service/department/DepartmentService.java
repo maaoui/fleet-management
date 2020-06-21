@@ -43,11 +43,11 @@ public class DepartmentService {
         this.modelMapper = modelMapper;
     }
 
-    public List<DepartmentDTO> getDepartmentsList() {
+    public List<DepartmentFullDTO> getDepartmentsList() {
         return departmentRepository
                 .findAll()
                 .stream()
-                .map(this::entityToSimpleDTO)
+                .map(this::entityToFullDTO)
                 .collect(Collectors.toList());
     }
 
