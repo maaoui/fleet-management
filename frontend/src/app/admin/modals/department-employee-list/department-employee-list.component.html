@@ -1,0 +1,25 @@
+<div class="container" *ngIf="employees.length > 0">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+      <th scope="col">Handle</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.id }}</td>
+      <td>{{employee.firstName | titlecase}}</td>
+      <td>{{employee.lastName| titlecase}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.phoneNumber}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container" *ngIf="employees.length === 0">
+  <h5> Employees not found for current department!</h5>
+</div>

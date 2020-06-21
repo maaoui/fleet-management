@@ -125,5 +125,14 @@
       "ITEM_COUNT": "Item count",
       "TOTAL_VALUE": "Total value"
     }
+  },
+  "ADMIN_DEPARTMENTS": {
+    "LIST": {
+      "REGION_NAME": "Region name",
+      "CITY": "City",
+      "POSTAL_CODE": "Postal code",
+      "ADDRESS": "Address",
+      "BTN_EMPLOYEES": "See list of employees"
+    }
   }
 }

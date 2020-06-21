@@ -23,10 +23,14 @@ import {AddFuelExpenseModalComponent} from './modals/add-fuel-expense-modal/add-
 import {AddOtherExpenseModalComponent} from './modals/add-other-expense-modal/add-other-expense-modal.component';
 import { AddServicingExpenseModalComponent } from './modals/add-servicing-expense-modal/add-servicing-expense-modal.component';
 import { AdminDepartmentsComponent } from './admin-departments/admin-departments.component';
+import { DepartmentEmployeeListComponent } from './modals/department-employee-list/department-employee-list.component';
+import { EditDepartmentModalComponent } from './modals/edit-department-modal/edit-department-modal.component';
+import { DeleteDepartmentModalComponent } from './modals/delete-department-modal/delete-department-modal.component';
+import { AddDepartmentModalComponent } from './modals/add-department-modal/add-department-modal.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent, AdminDepartmentsComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent, AdminDepartmentsComponent, DepartmentEmployeeListComponent, EditDepartmentModalComponent, DeleteDepartmentModalComponent, AddDepartmentModalComponent],
   exports: [
     AdminViewComponent
   ],

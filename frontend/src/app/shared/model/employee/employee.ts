@@ -1,7 +1,4 @@
-export class Employee {
-}
-
-export interface DepartmentAttrs {
+export interface EmployeeAttrs {
   id: number;
   phoneNumber: string;
   email: string;
@@ -9,8 +6,8 @@ export interface DepartmentAttrs {
   lastName: string;
 }
 
-export class Department {
-  constructor(attrs: Partial<DepartmentAttrs> = {}) {
+export class Employee {
+  constructor(attrs: Partial<EmployeeAttrs> = {}) {
     this.id = attrs.id;
     this.phoneNumber = attrs.phoneNumber;
     this.email = attrs.email;

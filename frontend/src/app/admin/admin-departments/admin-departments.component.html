@@ -1,3 +1,40 @@
 <div class="container">
-  <p>admin-departments works!</p>
+  <button type="button" class="btn btn-success btn-circle btn-lg float" (click)="openAddDepartmentModal()"><i
+    class="fa fa-plus"></i></button>
+  <div class="listContainer">
+    <ul class="list-group">
+      <div class="list-group-item" *ngFor="let department of departments">
+        <div class="list-group-item__box">
+          <h5 class="listHeader"> {{department.departmentName}}</h5>
+
+          <p class="list-group-item-text">
+            <b>{{"ADMIN_DEPARTMENTS.LIST.REGION_NAME" | translate}}:</b> {{department.region.regionName}}
+          </p>
+
+          <p class="list-group-item-text ">
+            <b>{{"ADMIN_DEPARTMENTS.LIST.CITY" | translate  }}:</b> {{department.address.city}}
+          </p>
+
+          <p class="list-group-item-text ">
+            <b>{{"ADMIN_DEPARTMENTS.LIST.POSTAL_CODE" | translate  }}:</b> {{department.address.postalCode}}
+          </p>
+
+          <p class="list-group-item-text ">
+            <b>{{"ADMIN_DEPARTMENTS.LIST.ADDRESS" | translate  }}:</b> {{department.address.streetAddress}}
+          </p>
+
+          <p class="list-group-item-text ">
+            <button type="button" class="btn btn-info" (click)="openDepartmentEmployeesListModal(department)"><i
+              class="fas fa-users"></i>  {{"ADMIN_DEPARTMENTS.LIST.BTN_EMPLOYEES" | translate}} </button>
+          </p>
+        </div>
+        <div class="list-group-item__box">
+          <button type="button" class="btn btn-success" (click)="openEditDepartmentModal(department)"><i
+            class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
+          <button type="button" class="btn btn-danger" (click)="openDeleteDepartmentModal(department)"><i
+            class="far fa-edit"></i>  {{"UNIVERSAL.DELETE" | translate}} </button>
+        </div>
+      </div>
+    </ul>
+  </div>
 </div>
