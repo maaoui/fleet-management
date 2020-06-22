@@ -1,11 +1,11 @@
 <div class="modal-header">
-  <h3 class="modal-title">{{"NOT_IMPLEMENTED" | translate}}</h3>
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.TITLE_EDIT"  | translate}}</h3>
 </div>
-<div class="modal-body">
+<div class="modal-body" *ngIf="this.regions && this.employees">
   <form [formGroup]="departmentForm" class="form-signin" (ngSubmit)="onSavePress()" autocomplete="off">
     <div>
       <p class="list-group-item-text">
-        <b>{{"NOT_IMPLEMENTED" | translate}}:</b>
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.DEPARTMENT_NAME" | translate}}:</b>
       </p>
       <div class="form-group">
         <input formControlName="departmentName" type="text" class="form-control" name="departmentName"/>
@@ -21,7 +21,7 @@
     <div formGroupName="address">
       <div>
         <p class="list-group-item-text">
-          <b>{{"NOT_IMPLEMENTED" | translate}}:</b>
+          <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.CITY"| translate}}:</b>
         </p>
         <div class="form-group">
           <input formControlName="city" type="text" class="form-control" name="city"/>
@@ -35,7 +35,7 @@
       </div>
       <div>
         <p class="list-group-item-text">
-          <b>{{"NOT_IMPLEMENTED" | translate}}:</b>
+          <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.POSTAL_CODE"| translate}}:</b>
         </p>
         <div class="form-group">
           <input formControlName="postalCode" type="text" class="form-control" name="postalCode"/>
@@ -49,7 +49,7 @@
       </div>
       <div>
         <p class="list-group-item-text">
-          <b>{{"NOT_IMPLEMENTED" | translate}}:</b>
+          <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.STREET_ADDRESS" | translate}}:</b>
         </p>
         <div class="form-group">
           <input formControlName="streetAddress" type="text" class="form-control" name="streetAddress"/>
@@ -62,20 +62,23 @@
         </div>
       </div>
     </div>
+
     <div>
       <p class="list-group-item-text">
-        <b>{{"NOT_IMPLEMENTED" | translate}}:</b>
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.EMPLOYEES" | translate}}:</b>
       </p>
       <select class="custom-select" multiple>
         <option *ngFor="let employee of employees"> {{employee.firstName}} {{employee.lastName}}</option>
       </select>
     </div>
+
     <div>
       <p class="list-group-item-text">
-        <b>{{"NOT_IMPLEMENTED" | translate}}:</b>
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.REGION" | translate}}:</b>
       </p>
-      <select class="custom-select">
-        <option *ngFor="let region of regions"> {{region.regionName}}</option>
+      <select class="custom-select form-control" formControlName="region" name="region">
+        <option [ngValue]="department.region"> {{department.region.regionName}}</option>
+        <option *ngFor="let region of regions" [ngValue]="region"> {{region.regionName}}</option>
       </select>
     </div>
 

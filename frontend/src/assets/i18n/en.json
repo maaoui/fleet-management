@@ -98,6 +98,16 @@
       "DELETE_DEPARTMENT_MODAL": {
         "TITLE": "Delete department",
         "DELETE_MESSAGE": "Are you sure you want to delete a department?"
+      },
+      "DEPARTMENT_MODAL": {
+        "TITLE_EDIT": "Edit department",
+        "TITLE_ADD": "Add department",
+        "DEPARTMENT_NAME": "Department name",
+        "CITY": "City",
+        "POSTAL_CODE": "Postal code",
+        "STREET_ADDRESS": "Street address",
+        "EMPLOYEES": "Employees",
+        "REGION": "Region"
       }
     }
   },

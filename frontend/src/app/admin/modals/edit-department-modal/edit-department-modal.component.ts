@@ -38,7 +38,10 @@ export class EditDepartmentModalComponent implements OnInit {
   }
 
   onSavePress() {
-    console.log(this.departmentForm.controls);
+    const departmentToSave: Department = new Department({
+      ...this.departmentForm.value
+    });
+    console.log(departmentToSave);
   }
 
   private initializeFormGroup() {
