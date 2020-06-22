@@ -118,11 +118,11 @@
         </div>
       </div>
     </div>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-success" [disabled]="!this.otherExpenseForm.valid">
-        <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
-      <button type="button" class="btn btn-danger" (click)="onCancelPress()">
-        <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
-    </div>
   </form>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" [disabled]="!this.otherExpenseForm.valid">
+      <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
+    <button type="button" class="btn btn-danger" (click)="onCancelPress()">
+      <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
+  </div>
 </div>

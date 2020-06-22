@@ -1,25 +1,24 @@
 import {Address} from '../address/address';
 import {Region} from '../address/region';
 import {Employee} from '../employee/employee';
+import {BaseEntity, BaseEntityAttrs} from '../base-entity';
 
-export interface DepartmentAttrs {
-  id: number;
+export interface DepartmentAttrs extends BaseEntityAttrs {
   address: Address;
   region: Region;
   employees: Employee[];
   departmentName: string;
 }
 
-export class Department {
+export class Department extends BaseEntity {
   constructor(attrs: Partial<DepartmentAttrs> = {}) {
-    this.id = attrs.id;
+    super(attrs);
     this.address = attrs.address;
     this.region = attrs.region;
     this.employees = attrs.employees;
     this.departmentName = attrs.departmentName;
   }
 
-  id: number;
   address: Address;
   region: Region;
   employees: Employee[];

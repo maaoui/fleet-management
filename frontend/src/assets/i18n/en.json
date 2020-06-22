@@ -1,4 +1,5 @@
 {
+  "NOT_IMPLEMENTED": "NOT_IMPLEMENTED",
   "UNIVERSAL": {
     "SAVE": "Save",
     "EDIT": "Edit",
@@ -93,6 +94,10 @@
         "PART_TYPE": "Part type",
         "PART_NAME": "Part name",
         "PART_DESCRIPTION": "Description"
+      },
+      "DELETE_DEPARTMENT_MODAL": {
+        "TITLE": "Delete department",
+        "DELETE_MESSAGE": "Are you sure you want to delete a department?"
       }
     }
   },

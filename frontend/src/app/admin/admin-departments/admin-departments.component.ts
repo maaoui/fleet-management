@@ -5,7 +5,6 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Constraint} from '../../shared/constraints/constraint';
 import {DepartmentEmployeeListComponent} from '../modals/department-employee-list/department-employee-list.component';
 import {EditDepartmentModalComponent} from '../modals/edit-department-modal/edit-department-modal.component';
-import {DeleteDepartmentModalComponent} from '../modals/delete-department-modal/delete-department-modal.component';
 import {AddDepartmentModalComponent} from '../modals/add-department-modal/add-department-modal.component';
 
 @Component({
@@ -17,8 +16,8 @@ export class AdminDepartmentsComponent implements OnInit {
 
   private departments: Department[];
 
-
-  constructor(private departmentService: DepartmentService, private modalService: NgbModal) {
+  constructor(private departmentService: DepartmentService,
+              private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -40,13 +39,9 @@ export class AdminDepartmentsComponent implements OnInit {
 
   openEditDepartmentModal(department: Department) {
     const modalRef = this.modalService.open(EditDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.department = department;
   }
 
-  openDeleteDepartmentModal(department: Department) {
-    const modalRef = this.modalService.open(DeleteDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
-  }
-
-  //TODO Implement ADD as edit of empty Department
   openAddDepartmentModal() {
     const modalRef = this.modalService.open(AddDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
   }
