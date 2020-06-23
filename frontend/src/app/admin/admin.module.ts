@@ -26,6 +26,7 @@ import {AdminDepartmentsComponent} from './admin-departments/admin-departments.c
 import {DepartmentEmployeeListComponent} from './modals/department-employee-list/department-employee-list.component';
 import {EditDepartmentModalComponent} from './modals/edit-department-modal/edit-department-modal.component';
 import {AddDepartmentModalComponent} from './modals/add-department-modal/add-department-modal.component';
+import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {AddDepartmentModalComponent} from './modals/add-department-modal/add-dep
     FormsModule,
     ReactiveFormsModule,
     NgbDatepickerModule,
+    AngularMultiSelectModule,
   ]
 })
 export class AdminModule {

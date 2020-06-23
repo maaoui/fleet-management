@@ -65,21 +65,34 @@
 
     <div>
       <p class="list-group-item-text">
-        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.EMPLOYEES" | translate}}:</b>
-      </p>
-      <select class="custom-select" multiple>
-        <option *ngFor="let employee of employees"> {{employee.firstName}} {{employee.lastName}}</option>
-      </select>
-    </div>
-
-    <div>
-      <p class="list-group-item-text">
         <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.REGION" | translate}}:</b>
       </p>
       <select class="custom-select form-control" formControlName="region" name="region">
         <option [ngValue]="department.region"> {{department.region.regionName}}</option>
         <option *ngFor="let region of regions" [ngValue]="region"> {{region.regionName}}</option>
       </select>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.EMPLOYEES" | translate}}:</b>
+      </p>
+      <angular2-multiselect [data]="employees"
+                            formControlName="employees"
+                            [(ngModel)]="departmentForm.value.employees"
+                            [settings]="settings"
+                            (onSelect)="onItemSelect($event)"
+                            (onDeSelect)="OnItemDeSelect($event)"
+                            (onSelectAll)="onSelectAll($event)"
+                            (onDeSelectAll)="onDeSelectAll($event)">
+        <c-item>
+          <ng-template let-emp="item">
+            <label>{{emp.firstName}} {{emp.lastName}}</label>
+          </ng-template>
+        </c-item>
+      </angular2-multiselect>
+
+
     </div>
 
   </form>

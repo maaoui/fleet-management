@@ -20,6 +20,7 @@ export class EditDepartmentModalComponent implements OnInit {
   @Input() employees: Employee[];
   private departmentForm: FormGroup;
   private regions: Region[];
+  private settings;
 
   constructor(private activeModal: NgbActiveModal,
               private departmentService: DepartmentService,
@@ -28,6 +29,15 @@ export class EditDepartmentModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.settings = {
+      singleSelection: false,
+      text: 'Select Fields',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      searchPlaceholderText: 'Search Fields',
+      enableSearchFilter: true,
+      badgeShowLimit: 5
+    };
     this.initializeEmployeeList();
     this.initializeRegionsList();
     this.initializeFormGroup();
@@ -77,5 +87,21 @@ export class EditDepartmentModalComponent implements OnInit {
 
   private initializeRegionsList() {
     this.regionService.getRegionsList().subscribe((regions: Region[]) => this.regions = regions);
+  }
+
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+
+  OnItemDeSelect(item: any) {
+    console.log(item);
+  }
+
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+
+  onDeSelectAll(items: any) {
+    console.log(items);
   }
 }
