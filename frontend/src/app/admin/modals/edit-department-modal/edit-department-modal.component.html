@@ -80,21 +80,14 @@
       <angular2-multiselect [data]="employees"
                             formControlName="employees"
                             [(ngModel)]="departmentForm.value.employees"
-                            [settings]="settings"
-                            (onSelect)="onItemSelect($event)"
-                            (onDeSelect)="OnItemDeSelect($event)"
-                            (onSelectAll)="onSelectAll($event)"
-                            (onDeSelectAll)="onDeSelectAll($event)">
+                            [settings]="settings">
         <c-item>
           <ng-template let-emp="item">
             <label>{{emp.firstName}} {{emp.lastName}}</label>
           </ng-template>
         </c-item>
       </angular2-multiselect>
-
-
     </div>
-
   </form>
 </div>
 <div class="modal-footer">

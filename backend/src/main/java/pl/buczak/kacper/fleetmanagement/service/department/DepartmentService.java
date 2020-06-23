@@ -78,8 +78,8 @@ public class DepartmentService {
         return entityToFullDTO(departmentRepository.save(department));
     }
 
-    public DepartmentFullDTO editDepartment(DepartmentFullDTO departmentFullDTO) {
-        Department department = departmentRepository.getOne(departmentFullDTO.getId());
+    public DepartmentFullDTO editDepartment(DepartmentFullDTO departmentFullDTO, Long departmentId) {
+        Department department = departmentRepository.getOne(departmentId);
         Region region = regionRepository.getOne(departmentFullDTO.getRegion().getId());
         department.setDepartmentName(departmentFullDTO.getDepartmentName());
         department.setAddress(addressDTOToAddressMapper(departmentFullDTO.getAddress()));

@@ -16,15 +16,21 @@ export class DepartmentService {
     return this.httpClient.get<Department[]>(`${environment.baseAPIPath}${this.getDepartmentsPath()}`);
   }
 
+  saveDepartment(departmentToSave: Department): Observable<Department> {
+    return this.httpClient.put<Department>(`${environment.baseAPIPath}${this.getDepartmentPathById(departmentToSave.id)}`, departmentToSave);
+  }
+
   deleteDepartmentById(id: number): Observable<Department> {
-    return this.httpClient.delete<Department>(`${environment.baseAPIPath}${this.getDeleteDepartmentPath(id)}`);
+    return this.httpClient.delete<Department>(`${environment.baseAPIPath}${this.getDepartmentPathById(id)}`);
   }
 
   private getDepartmentsPath(): string {
     return 'departments';
   }
 
-  private getDeleteDepartmentPath(id: number): string {
+  private getDepartmentPathById(id: number): string {
     return `department/${id}`;
   }
+
+
 }

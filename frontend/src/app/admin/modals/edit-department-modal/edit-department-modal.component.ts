@@ -52,6 +52,11 @@ export class EditDepartmentModalComponent implements OnInit {
       ...this.departmentForm.value
     });
     console.log(departmentToSave);
+    this.departmentService
+      .saveDepartment(departmentToSave)
+      .subscribe(res => {
+        console.log(res);
+      });
   }
 
   private initializeFormGroup() {
@@ -87,21 +92,5 @@ export class EditDepartmentModalComponent implements OnInit {
 
   private initializeRegionsList() {
     this.regionService.getRegionsList().subscribe((regions: Region[]) => this.regions = regions);
-  }
-
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-
-  OnItemDeSelect(item: any) {
-    console.log(item);
-  }
-
-  onSelectAll(items: any) {
-    console.log(items);
-  }
-
-  onDeSelectAll(items: any) {
-    console.log(items);
   }
 }

@@ -53,10 +53,10 @@ public class DepartmentController {
                 .body(departmentService.createDepartment(departmentFullDTO));
     }
 
-    @PutMapping(value = "/departments")
-    public ResponseEntity<DepartmentFullDTO> editDepartment(@RequestBody DepartmentFullDTO departmentFullDTO) {
+    @PutMapping(value = "/department/{id}")
+    public ResponseEntity<DepartmentFullDTO> editDepartment(@RequestBody DepartmentFullDTO departmentFullDTO, @NotBlank @PathVariable(name = "id") Long id) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(departmentService.editDepartment(departmentFullDTO));
+                .body(departmentService.editDepartment(departmentFullDTO, id));
     }
 }
