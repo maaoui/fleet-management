@@ -88,6 +88,17 @@ public class DepartmentService {
         return entityToFullDTO(departmentRepository.save(department));
     }
 
+    public void deleteDepartment(Long id) {
+        employeeRepository
+                .findByDepartmentId(id)
+                .stream()
+                .forEach(employee -> {
+                    employee.setDepartment(null);
+                    employeeRepository.save(employee);
+                });
+        departmentRepository.deleteById(id);
+    }
+
     private List<Employee> extractEmployeeListFromDepartmentFullDto(DepartmentFullDTO departmentFullDTO) {
         return departmentFullDTO
                 .getEmployees()
@@ -117,5 +128,6 @@ public class DepartmentService {
     private Employee employeeDTOToEmployeeMapper(EmployeeDTO employeeDTO) {
         return modelMapper.map(employeeDTO, Employee.class);
     }
+
 
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {DepartmentService} from '../../../shared/service/department/department.service';
 import {Department} from '../../../shared/model/department/department';
@@ -17,6 +17,8 @@ import {Region} from '../../../shared/model/address/region';
 export class EditDepartmentModalComponent implements OnInit {
   @Input() department: Department;
   @Input() employees: Employee[];
+  @Output() updateEmitter = new EventEmitter<string>();
+
   private departmentForm: FormGroup;
   private regions: Region[];
   private dropdownSettings;
@@ -47,6 +49,7 @@ export class EditDepartmentModalComponent implements OnInit {
       .subscribe((response: Department) => {
         this.department = response;
         this.activeModal.close();
+        this.updateEmitter.emit('Updated');
       });
   }
 

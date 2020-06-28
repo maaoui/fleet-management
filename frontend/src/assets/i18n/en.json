@@ -97,7 +97,7 @@
       },
       "DELETE_DEPARTMENT_MODAL": {
         "TITLE": "Delete department",
-        "DELETE_MESSAGE": "Are you sure you want to delete a department?"
+        "DELETE_MESSAGE": "Are you sure you want to delete department {{department}} and all data related to it? This operation is irreversible"
       },
       "DEPARTMENT_MODAL": {
         "TITLE_EDIT": "Edit department",

@@ -1,1 +1,98 @@
-<p>add-department-modal works!</p>
+<div class="modal-header">
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.TITLE_EDIT"  | translate}}</h3>
+</div>
+<div class="modal-body" *ngIf="this.regions && this.employees">
+  <form [formGroup]="departmentForm" class="form-signin" (ngSubmit)="onSavePress()" autocomplete="off">
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.DEPARTMENT_NAME" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="departmentName" type="text" class="form-control" name="departmentName"/>
+      </div>
+      <div *ngIf="departmentForm.controls.departmentName.invalid" class="alert-danger">
+        <div *ngIf="departmentForm.controls['departmentName'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div formGroupName="address">
+      <div>
+        <p class="list-group-item-text">
+          <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.CITY"| translate}}:</b>
+        </p>
+        <div class="form-group">
+          <input formControlName="city" type="text" class="form-control" name="city"/>
+        </div>
+        <div *ngIf="departmentForm.controls.address['controls']['city'].errors" class="alert-danger">
+          <div *ngIf="departmentForm.controls.address['controls']['city'].errors['maxlength']">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="list-group-item-text">
+          <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.POSTAL_CODE"| translate}}:</b>
+        </p>
+        <div class="form-group">
+          <input formControlName="postalCode" type="text" class="form-control" name="postalCode"/>
+        </div>
+        <div *ngIf="departmentForm.controls.address['controls']['postalCode'].errors" class="alert-danger">
+          <div *ngIf="departmentForm.controls.address['controls']['postalCode'].errors['maxlength']">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="list-group-item-text">
+          <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.STREET_ADDRESS" | translate}}:</b>
+        </p>
+        <div class="form-group">
+          <input formControlName="streetAddress" type="text" class="form-control" name="streetAddress"/>
+        </div>
+        <div *ngIf="departmentForm.controls.address['controls']['streetAddress'].errors" class="alert-danger">
+          <div *ngIf="departmentForm.controls.address['controls']['streetAddress'].errors['maxlength']">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.REGION" | translate}}:</b>
+      </p>
+      <select class="custom-select form-control" formControlName="region" name="region">
+        <option [ngValue]="department.region"> {{department.region.regionName}}</option>
+        <option *ngFor="let region of regions" [ngValue]="region"> {{region.regionName}}</option>
+      </select>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.EMPLOYEES" | translate}}:</b>
+      </p>
+      <angular2-multiselect [data]="employees"
+                            formControlName="employees"
+                            [(ngModel)]="departmentForm.value.employees"
+                            [settings]="dropdownSettings">
+        <c-item>
+          <ng-template let-emp="item">
+            <label>{{emp.firstName}} {{emp.lastName}}</label>
+          </ng-template>
+        </c-item>
+      </angular2-multiselect>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="onSavePress()">
+    <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
+  <button type="button" class="btn btn-danger" (click)="onCancelPress()">
+    <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
+</div>

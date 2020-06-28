@@ -11,7 +11,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class DeleteVehicleModalComponent implements OnInit {
 
   @Input() vehicle: Vehicle;
-  @Output() vehicleDeletionEmitter = new EventEmitter<string>();
+  @Output() departmentDeletionEmitter = new EventEmitter<string>();
 
   constructor(public activeModal: NgbActiveModal, private vehicleService: VehicleService) {
   }
@@ -25,7 +25,7 @@ export class DeleteVehicleModalComponent implements OnInit {
       .deleteVehicleById(this.vehicle.id)
       .subscribe(response => {
         this.activeModal.close();
-        this.vehicleDeletionEmitter.emit('updated');
+        this.departmentDeletionEmitter.emit('updated');
       });
   }
 

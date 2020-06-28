@@ -16,6 +16,11 @@ export class DepartmentService {
     return this.httpClient.get<Department[]>(`${environment.baseAPIPath}${this.getDepartmentsPath()}`);
   }
 
+  createDepartment(departmentToCreate: Department): Observable<Department> {
+    return this.httpClient.post<Department>(`${environment.baseAPIPath}${this.getDepartmentsPath()}`, departmentToCreate);
+
+  }
+
   saveDepartment(departmentToSave: Department): Observable<Department> {
     return this.httpClient.put<Department>(`${environment.baseAPIPath}${this.getDepartmentPathById(departmentToSave.id)}`, departmentToSave);
   }
@@ -31,6 +36,5 @@ export class DepartmentService {
   private getDepartmentPathById(id: number): string {
     return `department/${id}`;
   }
-
 
 }

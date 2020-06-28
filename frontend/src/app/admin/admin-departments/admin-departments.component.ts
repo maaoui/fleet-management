@@ -6,6 +6,10 @@ import {Constraint} from '../../shared/constraints/constraint';
 import {DepartmentEmployeeListComponent} from '../modals/department-employee-list/department-employee-list.component';
 import {EditDepartmentModalComponent} from '../modals/edit-department-modal/edit-department-modal.component';
 import {AddDepartmentModalComponent} from '../modals/add-department-modal/add-department-modal.component';
+import {Address} from '../../shared/model/address/address';
+import {Region} from '../../shared/model/address/region';
+import {first} from 'rxjs/operators';
+import {DeleteDepartmentModalComponent} from '../modals/delete-department-modal/delete-department-modal.component';
 
 @Component({
   selector: 'app-admin-departments',
@@ -21,15 +25,7 @@ export class AdminDepartmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initializeDepartments();
-  }
-
-  private initializeDepartments() {
-    this.departmentService
-      .getDepartmentsList()
-      .subscribe((departments: Department[]) => {
-        this.departments = departments;
-      });
+    this.loadDepartmentsList();
   }
 
   openDepartmentEmployeesListModal(department: Department) {
@@ -40,9 +36,49 @@ export class AdminDepartmentsComponent implements OnInit {
   openEditDepartmentModal(department: Department) {
     const modalRef = this.modalService.open(EditDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.department = department;
+    modalRef.componentInstance
+      .updateEmitter
+      .pipe(first())
+      .subscribe(() => {
+        this.loadDepartmentsList();
+      });
   }
 
   openAddDepartmentModal() {
     const modalRef = this.modalService.open(AddDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.department = this.getEmptyDepartment();
+    modalRef.componentInstance
+      .creationEmitter
+      .pipe(first())
+      .subscribe(() => {
+        this.loadDepartmentsList();
+      });
   }
+
+  openDeleteDepartmentModal(department: Department) {
+    const modalRef = this.modalService
+      .open(DeleteDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.department = department;
+    modalRef.componentInstance
+      .departmentDeletionEmitter
+      .pipe(first())
+      .subscribe(() => this.loadDepartmentsList());
+  }
+
+  private loadDepartmentsList() {
+    this.departmentService
+      .getDepartmentsList()
+      .subscribe((departments: Department[]) => {
+        this.departments = departments;
+      });
+  }
+
+  private getEmptyDepartment(): Department {
+    return new Department({
+      address: new Address(),
+      employees: [],
+      region: new Region()
+    });
+  }
+
 }

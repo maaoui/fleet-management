@@ -59,4 +59,11 @@ public class DepartmentController {
                 .status(HttpStatus.CREATED)
                 .body(departmentService.editDepartment(departmentFullDTO, id));
     }
+
+    @DeleteMapping(value = "/department/{id}")
+    public ResponseEntity<DepartmentFullDTO> deleteDepartment(@NotBlank @PathVariable(name = "id") Long id) {
+        departmentService.deleteDepartment(id);
+        return ResponseEntity
+                .status(HttpStatus.CREATED).build();
+    }
 }
