@@ -1,7 +1,7 @@
 <div class="container">
   <button type="button" class="btn btn-success btn-circle btn-lg float" (click)="openAddDepartmentModal()"><i
     class="fa fa-plus"></i></button>
-  <div class="listContainer">
+  <div class="listContainer" *ngIf="departments">
     <ul class="list-group">
       <div class="list-group-item" *ngFor="let department of departments">
         <div class="list-group-item__box">
@@ -33,6 +33,11 @@
             class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
           <button type="button" class="btn btn-danger" (click)="openDeleteDepartmentModal(department)"><i
             class="far fa-edit"></i>  {{"UNIVERSAL.DELETE" | translate}} </button>
+        </div>
+      </div>
+      <div class="listContainer" *ngIf="departments.length <= 0">
+        <div class="alert alert-warning" role="alert">
+          {{"ADMIN_DEPARTMENTS.NOT_FOUND" |translate}}
         </div>
       </div>
     </ul>

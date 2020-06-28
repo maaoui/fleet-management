@@ -148,6 +148,7 @@
       "POSTAL_CODE": "Postal code",
       "ADDRESS": "Address",
       "BTN_EMPLOYEES": "See list of employees"
-    }
+    },
+    "NOT_FOUND": "No departments were found."
   }
 }

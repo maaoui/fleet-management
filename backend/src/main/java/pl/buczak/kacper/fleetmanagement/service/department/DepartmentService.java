@@ -69,22 +69,30 @@ public class DepartmentService {
 
     public DepartmentFullDTO createDepartment(DepartmentFullDTO departmentFullDTO) {
         Department department = new Department();
+        List<Employee> employees = extractEmployeeListFromDepartmentFullDto(departmentFullDTO);
         Address address = addressRepository.save(addressDTOToAddressMapper(departmentFullDTO.getAddress()));
         Region region = regionRepository.getOne(departmentFullDTO.getRegion().getId());
         department.setDepartmentName(departmentFullDTO.getDepartmentName());
         department.setAddress(address);
         department.setRegion(region);
-        department.setEmployees(extractEmployeeListFromDepartmentFullDto(departmentFullDTO));
+        employees.forEach(employee -> {
+            employee.setDepartment(department);
+        });
+        department.setEmployees(employees);
         return entityToFullDTO(departmentRepository.save(department));
     }
 
     public DepartmentFullDTO editDepartment(DepartmentFullDTO departmentFullDTO, Long departmentId) {
+        List<Employee> employees = extractEmployeeListFromDepartmentFullDto(departmentFullDTO);
         Department department = departmentRepository.getOne(departmentId);
         Region region = regionRepository.getOne(departmentFullDTO.getRegion().getId());
         department.setDepartmentName(departmentFullDTO.getDepartmentName());
         department.setAddress(addressDTOToAddressMapper(departmentFullDTO.getAddress()));
         department.setRegion(region);
-        department.setEmployees(extractEmployeeListFromDepartmentFullDto(departmentFullDTO));
+        employees.forEach(employee -> {
+            employee.setDepartment(department);
+        });
+        department.setEmployees(employees);
         return entityToFullDTO(departmentRepository.save(department));
     }
 
