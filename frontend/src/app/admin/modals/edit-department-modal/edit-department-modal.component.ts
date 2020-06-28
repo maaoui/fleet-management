@@ -15,12 +15,11 @@ import {Region} from '../../../shared/model/address/region';
   styleUrls: ['./edit-department-modal.component.scss']
 })
 export class EditDepartmentModalComponent implements OnInit {
-  //TODO Implement dropdown, saving
   @Input() department: Department;
   @Input() employees: Employee[];
   private departmentForm: FormGroup;
   private regions: Region[];
-  private settings;
+  private dropdownSettings;
 
   constructor(private activeModal: NgbActiveModal,
               private departmentService: DepartmentService,
@@ -29,15 +28,7 @@ export class EditDepartmentModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.settings = {
-      singleSelection: false,
-      text: 'Select Fields',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      searchPlaceholderText: 'Search Fields',
-      enableSearchFilter: true,
-      badgeShowLimit: 5
-    };
+    this.initializeDropdownSettings();
     this.initializeEmployeeList();
     this.initializeRegionsList();
     this.initializeFormGroup();
@@ -51,12 +42,24 @@ export class EditDepartmentModalComponent implements OnInit {
     const departmentToSave: Department = new Department({
       ...this.departmentForm.value
     });
-    console.log(departmentToSave);
     this.departmentService
       .saveDepartment(departmentToSave)
-      .subscribe(res => {
-        console.log(res);
+      .subscribe((response: Department) => {
+        this.department = response;
+        this.activeModal.close();
       });
+  }
+
+  private initializeDropdownSettings() {
+    this.dropdownSettings = {
+      singleSelection: false,
+      text: 'Select Fields',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      searchPlaceholderText: 'Search Fields',
+      enableSearchFilter: true,
+      badgeShowLimit: 5
+    };
   }
 
   private initializeFormGroup() {

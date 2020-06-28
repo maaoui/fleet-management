@@ -80,7 +80,7 @@
       <angular2-multiselect [data]="employees"
                             formControlName="employees"
                             [(ngModel)]="departmentForm.value.employees"
-                            [settings]="settings">
+                            [settings]="dropdownSettings">
         <c-item>
           <ng-template let-emp="item">
             <label>{{emp.firstName}} {{emp.lastName}}</label>
