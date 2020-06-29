@@ -29,6 +29,7 @@ import {AddDepartmentModalComponent} from './modals/add-department-modal/add-dep
 import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import { DeleteDepartmentModalComponent } from './modals/delete-department-modal/delete-department-modal.component';
 import { AdminWorkshopsComponent } from './admin-workshops/admin-workshops.component';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 
 
 @NgModule({
@@ -36,15 +37,16 @@ import { AdminWorkshopsComponent } from './admin-workshops/admin-workshops.compo
   exports: [
     AdminViewComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgbDatepickerModule,
-    AngularMultiSelectModule,
-  ]
+    imports: [
+        CommonModule,
+        SharedModule,
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgbDatepickerModule,
+        AngularMultiSelectModule,
+        LeafletModule,
+    ]
 })
 export class AdminModule {
 }
