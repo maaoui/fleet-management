@@ -8,6 +8,8 @@ export interface WorkshopAttrs {
   workshopName: string;
   address: Address;
   region: Region;
+  longitude: number;
+  latitude: number;
 }
 
 export class Workshop {
@@ -18,6 +20,8 @@ export class Workshop {
     this.workshopName = attrs.workshopName;
     this.address = attrs.address;
     this.region = attrs.region;
+    this.longitude = attrs.longitude;
+    this.latitude = attrs.latitude;
   }
 
   id: number;
@@ -26,4 +30,6 @@ export class Workshop {
   workshopName: string;
   address: Address;
   region: Region;
+  longitude: number;
+  latitude: number;
 }
