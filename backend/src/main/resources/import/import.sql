@@ -20,11 +20,11 @@ VALUES (1, 'Warszawa', '02-672', 'ul. Domaniewska 48'),
        (18, 'Warszawa', '02-672', 'ul. Domaniewska 58'),
        (19, 'Warszawa', '02-672', 'ul. Domaniewska 59'),
        (20, 'Warszawa', '02-672', 'ul. Domaniewska 50'),
-       (21, 'Warszawa', '02-672', 'ul. Domaniewska 52'),
-       (22, 'Warszawa', '02-672', 'ul. Domaniewska 56'),
-       (23, 'Warszawa', '02-672', 'ul. Domaniewska 47'),
-       (24, 'Warszawa', '02-672', 'ul. Domaniewska 58'),
-       (25, 'Warszawa', '02-672', 'ul. Domaniewska 59');
+       (21, 'Wrocław', '50-001', 'ul. Domaniewska 52'),
+       (22, 'Katowice', '40-001', 'ul. Domaniewska 56'),
+       (23, 'Kraków', '30-001', 'ul. Domaniewska 47'),
+       (24, 'Warszawa', '00-001', 'ul. Domaniewska 58'),
+       (25, 'Gdańsk', '80-001', 'ul. Domaniewska 59');
 -- Inserts for CAR_PART Table
 INSERT INTO CAR_PART(ID, DESCRIPTION, NAME, PART_TYPE)
 VALUES (1, 'Oil Comment', 'Oil', 1),
@@ -51,12 +51,12 @@ VALUES (1, 'Dolnośląskie'),
        (15, 'Wielkopolskie'),
        (16, 'Zachodniopomorskie');
 -- Inserts for WORKSHOP Table
-INSERT INTO WORKSHOP(ID, EMAIL, PHONE_NUMBER, WORKSHOP_NAME, ADDRESS_ID, REGION_ID)
-VALUES (1, 'workshop1@workshop1.com', '693999000', 'Workshop 1', 21, 7),
-       (2, 'workshop2@workshop2.com', '693999111', 'Workshop 2', 22, 7),
-       (3, 'workshop3@workshop3.com', '693999222', 'Workshop 3', 23, 7),
-       (4, 'workshop4@workshop4.com', '693999333', 'Workshop 4', 24, 7),
-       (5, 'workshop5@workshop5.com', '693999444', 'Workshop 5', 25, 7);
+INSERT INTO WORKSHOP(ID, EMAIL, PHONE_NUMBER, WORKSHOP_NAME, ADDRESS_ID, REGION_ID, LATITUDE, LONGITUDE)
+VALUES (1, 'workshop1@workshop1.com', '693999000', 'Workshop 1', 21, 7, 51.1841002, 17.0384100),
+       (2, 'workshop2@workshop2.com', '693999111', 'Workshop 2', 22, 7, 50.2584100, 19.0275400),
+       (3, 'workshop3@workshop3.com', '693999222', 'Workshop 3', 23, 7, 50.0614300, 19.9365800),
+       (4, 'workshop4@workshop4.com', '693999333', 'Workshop 4', 24, 7, 52.2297700, 21.0117800),
+       (5, 'workshop5@workshop5.com', '693999444', 'Workshop 5', 25, 7, 54.3520500, 18.6463700);
 -- Inserts for DEPARTMENT Table
 INSERT INTO DEPARTMENT(ID, DEPARTMENT_NAME, ADDRESS_ID, REGION_ID)
 VALUES (1, 'Department 1', 1, 1),
@@ -282,24 +282,44 @@ SET EXPLOATATION_REPORT_ID = 10,
     INSURANCE_ID           = 10,
     VEHICLE_OWNER_ID       = 10
 WHERE ID = 10;
-SELECT setval('address_id_seq', max(id)) FROM address;
-SELECT setval('CAR_PART_id_seq', max(id)) FROM CAR_PART;
-SELECT setval('REGION_id_seq', max(id)) FROM REGION;
-SELECT setval('WORKSHOP_id_seq', max(id)) FROM WORKSHOP;
-SELECT setval('DEPARTMENT_id_seq', max(id)) FROM DEPARTMENT;
-SELECT setval('EMPLOYEE_id_seq', max(id)) FROM EMPLOYEE;
-SELECT setval('ROLE_id_seq', max(id)) FROM ROLE;
-SELECT setval('PRIVILEGE_id_seq', max(id)) FROM PRIVILEGE;
-SELECT setval('VEHICLE_id_seq', max(id)) FROM VEHICLE;
-SELECT setval('EXPLOATATION_REPORT_id_seq', max(id)) FROM EXPLOATATION_REPORT;
-SELECT setval('VEHICLE_USAGE_TIMESTAMP_id_seq', max(id)) FROM VEHICLE_USAGE_TIMESTAMP;
-SELECT setval('CAR_PART_EXPENSE_id_seq', max(id)) FROM CAR_PART_EXPENSE;
-SELECT setval('FUEL_EXPENSE_id_seq', max(id)) FROM FUEL_EXPENSE;
-SELECT setval('INSURANCE_id_seq', max(id)) FROM INSURANCE;
-SELECT setval('OTHER_EXPENSE_id_seq', max(id)) FROM OTHER_EXPENSE;
-SELECT setval('RECOMMENDED_REPAIR_id_seq', max(id)) FROM RECOMMENDED_REPAIR;
-SELECT setval('SERVICE_EXPENSE_id_seq', max(id)) FROM SERVICE_EXPENSE;
-SELECT setval('TECHNICAL_EXAMINATION_id_seq', max(id)) FROM TECHNICAL_EXAMINATION;
-SELECT setval('VEHICLE_OWNER_id_seq', max(id)) FROM VEHICLE_OWNER;
-SELECT setval('RECOMMENDED_REPAIR_id_seq', max(id)) FROM RECOMMENDED_REPAIR;
+SELECT setval('address_id_seq', max(id))
+FROM address;
+SELECT setval('CAR_PART_id_seq', max(id))
+FROM CAR_PART;
+SELECT setval('REGION_id_seq', max(id))
+FROM REGION;
+SELECT setval('WORKSHOP_id_seq', max(id))
+FROM WORKSHOP;
+SELECT setval('DEPARTMENT_id_seq', max(id))
+FROM DEPARTMENT;
+SELECT setval('EMPLOYEE_id_seq', max(id))
+FROM EMPLOYEE;
+SELECT setval('ROLE_id_seq', max(id))
+FROM ROLE;
+SELECT setval('PRIVILEGE_id_seq', max(id))
+FROM PRIVILEGE;
+SELECT setval('VEHICLE_id_seq', max(id))
+FROM VEHICLE;
+SELECT setval('EXPLOATATION_REPORT_id_seq', max(id))
+FROM EXPLOATATION_REPORT;
+SELECT setval('VEHICLE_USAGE_TIMESTAMP_id_seq', max(id))
+FROM VEHICLE_USAGE_TIMESTAMP;
+SELECT setval('CAR_PART_EXPENSE_id_seq', max(id))
+FROM CAR_PART_EXPENSE;
+SELECT setval('FUEL_EXPENSE_id_seq', max(id))
+FROM FUEL_EXPENSE;
+SELECT setval('INSURANCE_id_seq', max(id))
+FROM INSURANCE;
+SELECT setval('OTHER_EXPENSE_id_seq', max(id))
+FROM OTHER_EXPENSE;
+SELECT setval('RECOMMENDED_REPAIR_id_seq', max(id))
+FROM RECOMMENDED_REPAIR;
+SELECT setval('SERVICE_EXPENSE_id_seq', max(id))
+FROM SERVICE_EXPENSE;
+SELECT setval('TECHNICAL_EXAMINATION_id_seq', max(id))
+FROM TECHNICAL_EXAMINATION;
+SELECT setval('VEHICLE_OWNER_id_seq', max(id))
+FROM VEHICLE_OWNER;
+SELECT setval('RECOMMENDED_REPAIR_id_seq', max(id))
+FROM RECOMMENDED_REPAIR;
 

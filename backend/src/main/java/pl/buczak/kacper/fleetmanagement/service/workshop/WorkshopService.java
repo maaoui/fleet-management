@@ -33,13 +33,6 @@ public class WorkshopService {
                 .collect(Collectors.toList());
     }
 
-    public WorkshopDTO findWorkshopById(Long workshopId) {
-        return workshopRepository
-                .findById(workshopId)
-                .map(this::entityToSimpleDTO)
-                .get();
-    }
-
     private WorkshopDTO entityToSimpleDTO(Workshop workshop) {
         WorkshopDTO workshopDTO = modelMapper.map(workshop, WorkshopDTO.class);
         return workshopDTO;

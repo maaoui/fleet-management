@@ -6,6 +6,8 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.department.Region;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.expense.ServiceExpense;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -40,6 +42,16 @@ public class Workshop extends BaseEntity {
     @Size(max = 50)
     @Column(nullable = true, name = "email")
     private String email;
+
+    @Min(value = 0)
+    @Max(value = 90)
+    @Column(nullable = false, name = "latitude")
+    private Double latitude;
+
+    @Min(value = 0)
+    @Max(value = 180)
+    @Column(nullable = false, name = "longitude")
+    private Double longitude;
 
 
     public Workshop() {
@@ -91,5 +103,21 @@ public class Workshop extends BaseEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }
