@@ -70,7 +70,6 @@ export class AdminWorkshopsComponent implements OnInit {
   }
 
   private onClickMarkerEvent(workshop: Workshop) {
-    console.log(workshop);
     this.chosenWorkshop = new Workshop({...workshop});
     this.ref.detectChanges();
   }
