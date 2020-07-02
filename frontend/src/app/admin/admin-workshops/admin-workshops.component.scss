@@ -1,5 +1,15 @@
-.leaflet--map--container {
+@mixin component--container {
   width: 90%;
   height: 600px;
   margin: 5% 5%;
+}
+
+
+.leaflet--map--container {
+  @include component--container;
+}
+
+.workshop--details--container {
+  @include component--container;
+  padding: 0 4em;
 }

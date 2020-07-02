@@ -151,5 +151,15 @@
       "BTN_EMPLOYEES": "See list of employees"
     },
     "NOT_FOUND": "No departments were found."
+  },
+  "ADMIN_WORKSHOP": {
+    "WORKSHOP_NOT_CHOSEN": "Choose workshop from map to get information.",
+    "COORDINATES": "Longitude: {{longitude}}, Latitude: {{latitude}}",
+    "REGION_NAME": "Region name",
+    "EMAIL": "Email",
+    "PHONE_NUMBER": "Phone number",
+    "CITY": "City",
+    "POSTAL_CODE": "Postal code",
+    "ADDRESS": "Address"
   }
 }

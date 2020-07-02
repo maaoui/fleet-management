@@ -8,7 +8,7 @@ import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EditVehicleModalComponent} from './modals/edit-vehicle-modal/edit-vehicle-modal.component';
 import {InsuranceInformationComponent} from './modals/insurance-information/insurance-information.component';
-import {NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbAlertModule, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarPartExpensesComponent} from './sub-components/car-part-expenses/car-part-expenses.component';
 import {FuelExpensesComponent} from './sub-components/fuel-expenses/fuel-expenses.component';
 import {CarServiceExpensesComponent} from './sub-components/car-service-expenses/car-service-expenses.component';
@@ -27,8 +27,8 @@ import {DepartmentEmployeeListComponent} from './modals/department-employee-list
 import {EditDepartmentModalComponent} from './modals/edit-department-modal/edit-department-modal.component';
 import {AddDepartmentModalComponent} from './modals/add-department-modal/add-department-modal.component';
 import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
-import { DeleteDepartmentModalComponent } from './modals/delete-department-modal/delete-department-modal.component';
-import { AdminWorkshopsComponent } from './admin-workshops/admin-workshops.component';
+import {DeleteDepartmentModalComponent} from './modals/delete-department-modal/delete-department-modal.component';
+import {AdminWorkshopsComponent} from './admin-workshops/admin-workshops.component';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 
 
@@ -37,16 +37,17 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
   exports: [
     AdminViewComponent
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        NgbDatepickerModule,
-        AngularMultiSelectModule,
-        LeafletModule,
-    ]
+  imports: [
+    CommonModule,
+    SharedModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbDatepickerModule,
+    AngularMultiSelectModule,
+    LeafletModule,
+    NgbAlertModule,
+  ]
 })
 export class AdminModule {
 }

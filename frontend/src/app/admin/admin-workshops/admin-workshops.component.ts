@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Icon, latLng, Marker, marker, tileLayer} from 'leaflet';
 import {Workshop} from '../../shared/model/workshop/workshop';
 import {WorkshopService} from '../../shared/service/vehicle/workshop.service';
@@ -22,10 +22,11 @@ export class DefaultMapConstants {
 })
 export class AdminWorkshopsComponent implements OnInit {
   private workshops: Workshop[] = [];
+  chosenWorkshop: Workshop = null;
   options = {};
   mapMarkerLayers: Marker[] = [];
 
-  constructor(private workshopService: WorkshopService) {
+  constructor(private workshopService: WorkshopService, private ref: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -70,10 +71,11 @@ export class AdminWorkshopsComponent implements OnInit {
 
   private onClickMarkerEvent(workshop: Workshop) {
     console.log(workshop);
+    this.chosenWorkshop = new Workshop({...workshop});
+    this.ref.detectChanges();
   }
 
   private getTooltipMessage(workshop: Workshop): string {
     return workshop.workshopName;
   }
-
 }

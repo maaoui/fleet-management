@@ -3,3 +3,38 @@
      [leafletOptions]="options"
      [leafletLayers]="mapMarkerLayers">
 </div>
+<div class="workshop--details--container" *ngIf="!chosenWorkshop">
+  <div class="alert alert-info" role="alert">
+    <p>{{"ADMIN_WORKSHOP.WORKSHOP_NOT_CHOSEN" | translate}}</p>
+  </div>
+</div>
+<div class="workshop--details--container" *ngIf="chosenWorkshop">
+  <div>
+    <h4>{{chosenWorkshop.workshopName}}</h4>
+  </div>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_WORKSHOP.REGION_NAME" | translate}}:</b> {{chosenWorkshop.region.regionName}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_WORKSHOP.EMAIL" | translate}}:</b> {{chosenWorkshop.email}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_WORKSHOP.PHONE_NUMBER" | translate}}:</b> {{chosenWorkshop.phoneNumber}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_WORKSHOP.CITY" | translate}}:</b> {{chosenWorkshop.address.city}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_WORKSHOP.POSTAL_CODE" | translate}}:</b> {{chosenWorkshop.address.postalCode}}
+  </p>
+  <p class="list-group-item-text">
+    <b>{{"ADMIN_WORKSHOP.ADDRESS" | translate}}:</b> {{chosenWorkshop.address.streetAddress}}
+  </p>
+  <p class="list-group-item-text">
+    {{"ADMIN_WORKSHOP.COORDINATES" | translate :{
+    latitude: chosenWorkshop.latitude,
+    longitude: chosenWorkshop.longitude
+  } }}
+  </p>
+</div>
+
