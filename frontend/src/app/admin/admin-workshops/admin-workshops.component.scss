@@ -12,6 +12,15 @@
 .workshop--details--container {
   @include component--container;
   padding: 0 4em;
+
+  p {
+    padding: 0 2em;
+  }
+}
+
+.align-left {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .float {

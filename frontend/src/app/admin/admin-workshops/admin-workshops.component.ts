@@ -34,6 +34,14 @@ export class AdminWorkshopsComponent implements OnInit {
     this.initializeWorkshops();
   }
 
+  onEditWorkshopPress() {
+
+  }
+
+  onAddWorkshopPress() {
+
+  }
+
   private initializeLeafletMapOptions() {
     this.options = {
       layers: [
@@ -77,4 +85,6 @@ export class AdminWorkshopsComponent implements OnInit {
   private getTooltipMessage(workshop: Workshop): string {
     return workshop.workshopName;
   }
+
+
 }
