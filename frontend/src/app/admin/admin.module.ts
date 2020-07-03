@@ -30,10 +30,11 @@ import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import {DeleteDepartmentModalComponent} from './modals/delete-department-modal/delete-department-modal.component';
 import {AdminWorkshopsComponent} from './admin-workshops/admin-workshops.component';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import { WorkshopEditingModalComponent } from './modals/workshop-editing-modal/workshop-editing-modal.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent, AdminDepartmentsComponent, DepartmentEmployeeListComponent, EditDepartmentModalComponent, AddDepartmentModalComponent, DeleteDepartmentModalComponent, AdminWorkshopsComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent, AdminDepartmentsComponent, DepartmentEmployeeListComponent, EditDepartmentModalComponent, AddDepartmentModalComponent, DeleteDepartmentModalComponent, AdminWorkshopsComponent, WorkshopEditingModalComponent],
   exports: [
     AdminViewComponent
   ],

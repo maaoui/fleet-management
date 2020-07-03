@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.ADD_SERVICE_EXPENSE_MODAL.TITLE" | translate}}</h3>
+</div>
+<div class="modal-body">
+  <form [formGroup]="workshopForm" class="form-signin" (ngSubmit)="onSaveWorkshopPress()" autocomplete="off">
+
+   <!-- <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.DEPARTMENT_NAME" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="departmentName" type="text" class="form-control" name="departmentName"/>
+      </div>
+      <div *ngIf="workshopForm.controls.departmentName.invalid" class="alert-danger">
+        <div *ngIf="workshopForm.controls['departmentName'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>-->
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.REGION" | translate}}:</b>
+      </p>
+      <select class="custom-select form-control" formControlName="region" name="region">
+        <option [ngValue]="workshop.region"> {{workshop.region.regionName}}</option>
+        <option *ngFor="let region of regions" [ngValue]="region"> {{region.regionName}}</option>
+      </select>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success" [disabled]="!this.workshopForm.valid">
+        <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
+      <button type="button" class="btn btn-danger" (click)="onCancelPress()">
+        <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
+    </div>
+  </form>
+</div>

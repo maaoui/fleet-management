@@ -2,6 +2,11 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Icon, latLng, Marker, marker, tileLayer} from 'leaflet';
 import {Workshop} from '../../shared/model/workshop/workshop';
 import {WorkshopService} from '../../shared/service/vehicle/workshop.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Constraint} from '../../shared/constraints/constraint';
+import {WorkshopEditingModalComponent} from '../modals/workshop-editing-modal/workshop-editing-modal.component';
+import {Address} from '../../shared/model/address/address';
+import {Region} from '../../shared/model/address/region';
 
 export class DefaultMapConstants {
   public static readonly DEFAULT_COORDINATES = {
@@ -26,7 +31,9 @@ export class AdminWorkshopsComponent implements OnInit {
   options = {};
   mapMarkerLayers: Marker[] = [];
 
-  constructor(private workshopService: WorkshopService, private ref: ChangeDetectorRef) {
+  constructor(private workshopService: WorkshopService,
+              private ref: ChangeDetectorRef,
+              private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -35,11 +42,18 @@ export class AdminWorkshopsComponent implements OnInit {
   }
 
   onEditWorkshopPress() {
-
+    const modalRef = this.modalService.open(WorkshopEditingModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.workshop = this.chosenWorkshop;
+    modalRef.componentInstance.isEditMode = true;
   }
 
   onAddWorkshopPress() {
-
+    const modalRef = this.modalService.open(WorkshopEditingModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.workshop = new Workshop({
+      address: new Address(),
+      region: new Region()
+    });
+    modalRef.componentInstance.isEditMode = false;
   }
 
   private initializeLeafletMapOptions() {
