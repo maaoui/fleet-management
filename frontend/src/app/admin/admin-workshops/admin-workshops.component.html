@@ -5,17 +5,19 @@
 </div>
 <button type="button" class="btn btn-success btn-circle btn-lg float" (click)="onAddWorkshopPress()"><i
   class="fa fa-plus"></i></button>
+
+<button type="button" class="btn btn-info btn-circle btn-lg float" (click)="onEditWorkshopPress()"
+        [hidden]="chosenWorkshop === null"><i
+  class="fa fa-edit"></i></button>
+
+
 <div class="workshop--details--container" *ngIf="!chosenWorkshop">
   <div class="alert alert-info" role="alert">
     <p>{{"ADMIN_WORKSHOP.WORKSHOP_NOT_CHOSEN" | translate}}</p>
   </div>
 </div>
-<div class="workshop--details--container" *ngIf="chosenWorkshop != null">
+<div class="workshop--details--container" *ngIf="chosenWorkshop">
   <div>
-    <div class="col-12  align-left">
-      <button type="button" class="btn btn-info"
-              (click)=" onEditWorkshopPress()">{{"UNIVERSAL.EDIT" | translate}}</button>
-    </div>
     <div>
       <h4>{{chosenWorkshop.workshopName}}</h4>
     </div>
