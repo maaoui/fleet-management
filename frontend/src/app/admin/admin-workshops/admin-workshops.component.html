@@ -10,10 +10,11 @@
     <p>{{"ADMIN_WORKSHOP.WORKSHOP_NOT_CHOSEN" | translate}}</p>
   </div>
 </div>
-<div class="workshop--details--container" *ngIf="chosenWorkshop">
+<div class="workshop--details--container" *ngIf="chosenWorkshop != null">
   <div>
-    <div class="col-12  align-left" >
-      <button class="btn btn-info" (click)="onEditWorkshopPress()">{{"UNIVERSAL.EDIT" | translate}}</button>
+    <div class="col-12  align-left">
+      <button type="button" class="btn btn-info"
+              (click)=" onEditWorkshopPress()">{{"UNIVERSAL.EDIT" | translate}}</button>
     </div>
     <div>
       <h4>{{chosenWorkshop.workshopName}}</h4>

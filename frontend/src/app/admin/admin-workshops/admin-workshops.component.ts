@@ -7,6 +7,7 @@ import {Constraint} from '../../shared/constraints/constraint';
 import {WorkshopEditingModalComponent} from '../modals/workshop-editing-modal/workshop-editing-modal.component';
 import {Address} from '../../shared/model/address/address';
 import {Region} from '../../shared/model/address/region';
+import {first} from 'rxjs/operators';
 
 export class DefaultMapConstants {
   public static readonly DEFAULT_COORDINATES = {
@@ -42,18 +43,31 @@ export class AdminWorkshopsComponent implements OnInit {
   }
 
   onEditWorkshopPress() {
+    const workshop = new Workshop({...this.chosenWorkshop});
     const modalRef = this.modalService.open(WorkshopEditingModalComponent, {size: Constraint.MODAL_SIZE_LG});
-    modalRef.componentInstance.workshop = this.chosenWorkshop;
     modalRef.componentInstance.isEditMode = true;
+    modalRef.componentInstance.workshop = workshop;
+    modalRef.componentInstance
+      .updateEmitter
+      .pipe(first())
+      .subscribe(() => {
+        this.initializeWorkshops();
+      });
   }
 
   onAddWorkshopPress() {
     const modalRef = this.modalService.open(WorkshopEditingModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.isEditMode = false;
     modalRef.componentInstance.workshop = new Workshop({
       address: new Address(),
       region: new Region()
     });
-    modalRef.componentInstance.isEditMode = false;
+    modalRef.componentInstance
+      .updateEmitter
+      .pipe(first())
+      .subscribe(() => {
+        this.initializeWorkshops();
+      });
   }
 
   private initializeLeafletMapOptions() {

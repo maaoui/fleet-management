@@ -1,23 +1,58 @@
 <div class="modal-header">
-  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.ADD_SERVICE_EXPENSE_MODAL.TITLE" | translate}}</h3>
+  <h3 class="modal-title" *ngIf="isEditMode">{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.TITLE_EDIT" | translate}}</h3>
+  <h3 class="modal-title" *ngIf="!isEditMode">{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.TITLE_ADD" | translate}}</h3>
 </div>
 <div class="modal-body">
   <form [formGroup]="workshopForm" class="form-signin" (ngSubmit)="onSaveWorkshopPress()" autocomplete="off">
 
-   <!-- <div>
+    <div>
       <p class="list-group-item-text">
-        <b>{{"ADMIN_VIEW.MODALS.DEPARTMENT_MODAL.DEPARTMENT_NAME" | translate}}:</b>
+        <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.WORKSHOP_NAME" | translate}}:</b>
       </p>
       <div class="form-group">
-        <input formControlName="departmentName" type="text" class="form-control" name="departmentName"/>
+        <input formControlName="workshopName" type="text" class="form-control" name="workshopName"/>
       </div>
-      <div *ngIf="workshopForm.controls.departmentName.invalid" class="alert-danger">
-        <div *ngIf="workshopForm.controls['departmentName'].errors.maxlength">
+      <div *ngIf="workshopForm.controls.workshopName.invalid" class="alert-danger">
+        <div *ngIf="workshopForm.controls['workshopName'].errors.maxlength">
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
           {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
         </div>
       </div>
-    </div>-->
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.EMAIL" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="email" type="email" class="form-control" name="email"/>
+      </div>
+      <div *ngIf="workshopForm.controls.email.invalid" class="alert-danger">
+        <div *ngIf="workshopForm.controls['email'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.PHONE_NUMBER" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="phoneNumber" type="text" class="form-control" name="phoneNumber"/>
+      </div>
+      <div *ngIf="workshopForm.controls.email.invalid" class="alert-danger">
+        <div *ngIf="workshopForm.controls['phoneNumber'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+        <div *ngIf="workshopForm.controls['phoneNumber'].errors.pattern">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.INVALID_PATTERN" | translate }}
+        </div>
+      </div>
+    </div>
 
     <div>
       <p class="list-group-item-text">
@@ -27,6 +62,51 @@
         <option [ngValue]="workshop.region"> {{workshop.region.regionName}}</option>
         <option *ngFor="let region of regions" [ngValue]="region"> {{region.regionName}}</option>
       </select>
+    </div>
+
+    <div formGroupName="address">
+      <div>
+        <p class="list-group-item-text">
+          <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.CITY"| translate}}:</b>
+        </p>
+        <div class="form-group">
+          <input formControlName="city" type="text" class="form-control" name="city"/>
+        </div>
+        <div *ngIf="workshopForm.controls.address['controls']['city'].errors" class="alert-danger">
+          <div *ngIf="workshopForm.controls.address['controls']['city'].errors['maxlength']">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="list-group-item-text">
+          <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.POSTAL_CODE"| translate}}:</b>
+        </p>
+        <div class="form-group">
+          <input formControlName="postalCode" type="text" class="form-control" name="postalCode"/>
+        </div>
+        <div *ngIf="workshopForm.controls.address['controls']['postalCode'].errors" class="alert-danger">
+          <div *ngIf="workshopForm.controls.address['controls']['postalCode'].errors['maxlength']">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="list-group-item-text">
+          <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.STREET_ADDRESS" | translate}}:</b>
+        </p>
+        <div class="form-group">
+          <input formControlName="streetAddress" type="text" class="form-control" name="streetAddress"/>
+        </div>
+        <div *ngIf="workshopForm.controls.address['controls']['streetAddress'].errors" class="alert-danger">
+          <div *ngIf="workshopForm.controls.address['controls']['streetAddress'].errors['maxlength']">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="modal-footer">

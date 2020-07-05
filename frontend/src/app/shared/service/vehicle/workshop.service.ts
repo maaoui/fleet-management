@@ -16,7 +16,19 @@ export class WorkshopService {
     return this.http.get<Workshop[]>(`${environment.baseAPIPath}${this.getWorkshopsUrl()}`);
   }
 
+  createWorkshop(workshop: Workshop): Observable<Workshop> {
+    return this.http.post<Workshop>(`${environment.baseAPIPath}${this.getWorkshopsUrl()}`, workshop);
+  }
+
+  updateWorkshop(workshop: Workshop): Observable<Workshop> {
+    return this.http.put<Workshop>(`${environment.baseAPIPath}${this.getUpdateUrl(workshop.id)}`, workshop);
+  }
+
   private getWorkshopsUrl(): string {
     return 'workshops';
+  }
+
+  private getUpdateUrl(id: number): string {
+    return `workshop/${id}`;
   }
 }

@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Workshop} from '../../../shared/model/workshop/workshop';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RegionService} from '../../../shared/service/department/region.service';
 import {Region} from '../../../shared/model/address/region';
 import {AddressValidatorConstants, WorkshopValidatorConstants} from '../../../core/constants/validator-constants';
+import {WorkshopService} from '../../../shared/service/vehicle/workshop.service';
 
 @Component({
   selector: 'app-workshop-editing-modal',
@@ -15,11 +16,13 @@ export class WorkshopEditingModalComponent implements OnInit {
 
   @Input() workshop: Workshop;
   @Input() isEditMode: boolean;
+  @Output() updateEmitter = new EventEmitter<string>();
   private workshopForm: FormGroup;
   private regions: Region[];
 
   constructor(public activeModal: NgbActiveModal,
-              private regionService: RegionService) {
+              private regionService: RegionService,
+              private workshopService: WorkshopService) {
   }
 
   ngOnInit(): void {
@@ -36,10 +39,33 @@ export class WorkshopEditingModalComponent implements OnInit {
   }
 
   private saveEditedWorkshop() {
+    const workshopToUpdate: Workshop = new Workshop({
+      ...this.workshopForm.value
+    });
+    this
+      .workshopService
+      .updateWorkshop(workshopToUpdate)
+      .subscribe((savedWorkshop: Workshop) => {
+        this.updateEmitter.emit('updated');
+        this.activeModal.close();
+      });
   }
 
   private createWorkshop() {
-
+    const latitude = 52.00;
+    const longitude = 21.00;
+    const workshopToSave: Workshop = new Workshop({
+      ...this.workshopForm.value,
+      latitude,
+      longitude
+    });
+    this
+      .workshopService
+      .createWorkshop(workshopToSave)
+      .subscribe((savedWorkshop: Workshop) => {
+        this.updateEmitter.emit('updated');
+        this.activeModal.close();
+      });
   }
 
   private initializeWorkshopForm() {

@@ -109,6 +109,17 @@
         "STREET_ADDRESS": "Street address",
         "EMPLOYEES": "Employees",
         "REGION": "Region"
+      },
+      "WORKSHOP_EDITING_MODAL": {
+        "TITLE_EDIT": "Edit Workshop",
+        "TITLE_ADD": "Add Workshop",
+        "WORKSHOP_NAME": "Workshop name",
+        "EMAIL": "Email address",
+        "PHONE_NUMBER": "Phone number",
+        "CITY": "City",
+        "POSTAL_CODE": "Postal code",
+        "STREET_ADDRESS": "Street address",
+        "REGION": "Region"
       }
     }
   },
