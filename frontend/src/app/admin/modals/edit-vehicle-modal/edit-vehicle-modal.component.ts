@@ -35,6 +35,8 @@ export class EditVehicleModalComponent implements OnInit {
   }
 
   onSavePress() {
+    const {year, month, day} = this.vehicleForm.controls.firstRegistration.value;
+    const date = `${month}/${day}/${year}`;
     const editedVehicle = new Vehicle({
       id: this.vehicle.id,
       plateNumber: this.vehicleForm.controls.plateNumber.value,
@@ -42,7 +44,7 @@ export class EditVehicleModalComponent implements OnInit {
       model: this.vehicleForm.controls.model.value,
       horsePower: this.vehicleForm.controls.horsePower.value,
       vin: this.vehicleForm.controls.vin.value,
-      firstRegistration: moment(this.vehicleForm.controls.firstRegistration.value).toDate(),
+      firstRegistration: new Date(date),
       yearOfProduction: this.vehicleForm.controls.yearOfProduction.value,
       weight: this.vehicleForm.controls.weight.value,
       currentEmployee: this.vehicleForm.controls.currentEmployee.value
@@ -107,7 +109,7 @@ export class EditVehicleModalComponent implements OnInit {
     this.employeeService
       .getEmployeeList()
       .subscribe((employees: Employee[]) => {
-      this.employees = employees;
-    });
+        this.employees = employees;
+      });
   }
 }

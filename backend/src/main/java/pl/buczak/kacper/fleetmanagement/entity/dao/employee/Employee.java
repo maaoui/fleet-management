@@ -55,6 +55,14 @@ public class Employee extends BaseEntity {
     public Employee() {
     }
 
+    public Vehicle getCurrentVehicle() {
+        return currentVehicle;
+    }
+
+    public void setCurrentVehicle(Vehicle currentVehicle) {
+        this.currentVehicle = currentVehicle;
+    }
+
     public Department getDepartment() {
         return department;
     }

@@ -56,7 +56,7 @@ public class VehicleController {
     public ResponseEntity<VehicleFullDTO> editVehicle(@NotBlank @PathVariable("id") Long vehicleId, @RequestBody VehicleFullDTO vehicle) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(vehicleService.editVehicle(vehicleId,vehicle));
+                .body(vehicleService.editVehicle(vehicle));
     }
 
     @DeleteMapping(value = "/vehicle/{id}")

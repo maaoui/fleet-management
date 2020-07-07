@@ -48,6 +48,11 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
   openEditVehicleModal(vehicle: Vehicle) {
     const modalRef = this.modalService.open(EditVehicleModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.vehicle = vehicle;
+    modalRef.componentInstance.vehicleUpdateEmitter = new EventEmitter();
+    modalRef.componentInstance
+      .vehicleUpdateEmitter
+      .pipe(first())
+      .subscribe(() => this.loadVehiclesList());
   }
 
   openInsuranceInformationModal(vehicle: Vehicle) {
@@ -56,6 +61,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .subscribe((insurance) => {
         const modalRef = this.modalService.open(InsuranceInformationComponent, {size: Constraint.MODAL_SIZE_LG});
         modalRef.componentInstance.insurance = insurance;
+        modalRef.componentInstance.vehicleUpdateEmitter = new EventEmitter();
         modalRef.componentInstance.vehicleUpdateEmitter
           .pipe(first())
           .subscribe(() => this.loadVehiclesList());
@@ -68,6 +74,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
     const modalRef = this.modalService
       .open(DeleteVehicleModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.vehicle = vehicle;
+    modalRef.componentInstance.vehicleDeletionEmitter = new EventEmitter();
     modalRef.componentInstance
       .vehicleDeletionEmitter
       .pipe(first())
