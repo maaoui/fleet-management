@@ -2,7 +2,6 @@ package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.ExploatationReportDTO;
-import pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.repair.RecommendedRepairDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.insurance.InsuranceDTO;
 
 import javax.validation.constraints.*;
@@ -15,8 +14,6 @@ import java.util.List;
 public class VehicleFullDTO extends BaseDTO {
 
     private ExploatationReportDTO exploatationReport;
-
-    private List<RecommendedRepairDTO> recommendedRepairs;
 
     private List<TechnicalExaminationDTO> technicalExaminationList;
 
@@ -67,14 +64,6 @@ public class VehicleFullDTO extends BaseDTO {
 
     public void setExploatationReport(ExploatationReportDTO exploatationReport) {
         this.exploatationReport = exploatationReport;
-    }
-
-    public List<RecommendedRepairDTO> getRecommendedRepairs() {
-        return recommendedRepairs;
-    }
-
-    public void setRecommendedRepairs(List<RecommendedRepairDTO> recommendedRepairs) {
-        this.recommendedRepairs = recommendedRepairs;
     }
 
     public List<TechnicalExaminationDTO> getTechnicalExaminationList() {
