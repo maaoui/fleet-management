@@ -21,7 +21,7 @@ import java.util.function.Function;
 public class JwtTokenUtil implements Serializable {
 
     public static final long JWT_TOKEN_VALIDITY_SECONDS = 2 * 60 * 60;
-
+    public static final String PRIVILEGES_TOKEN_KEY = "privileges";
     @Value("${jwt.secretKey}")
     private String secret;
     private UserDetailsServiceImpl userDetailsService;
@@ -57,7 +57,7 @@ public class JwtTokenUtil implements Serializable {
         final long issuedAtInMilliseconds = System.currentTimeMillis();
         final long expirationDateInMilliseconds = issuedAtInMilliseconds + JWT_TOKEN_VALIDITY_SECONDS * 1000;
 
-        claims.put("privileges", userDetails.getAuthorities());
+        claims.put(PRIVILEGES_TOKEN_KEY, userDetails.getAuthorities());
 
         return Jwts
                 .builder()
