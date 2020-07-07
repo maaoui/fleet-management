@@ -5,6 +5,8 @@ import {VehicleService} from '../../../shared/service/vehicle/vehicle.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleValidatorConstants} from '../../../core/constants/validator-constants';
 import * as moment from 'moment';
+import {EmployeeService} from '../../../shared/service/employee/employee.service';
+import {Employee} from '../../../shared/model/employee/employee';
 
 @Component({
   selector: 'app-edit-vehicle-modal',
@@ -16,12 +18,16 @@ export class EditVehicleModalComponent implements OnInit {
   @Input() vehicle: Vehicle;
   @Output() vehicleUpdateEmitter = new EventEmitter<string>();
   private vehicleForm: FormGroup;
+  private employees: Employee[];
 
-  constructor(public activeModal: NgbActiveModal, private vehicleService: VehicleService) {
+  constructor(public activeModal: NgbActiveModal,
+              private vehicleService: VehicleService,
+              private employeeService: EmployeeService) {
   }
 
   ngOnInit(): void {
     this.initializeFormGroup();
+    this.initializeEmployees();
   }
 
   onCancelPress() {
@@ -94,6 +100,14 @@ export class EditVehicleModalComponent implements OnInit {
           Validators.min(VehicleValidatorConstants.WEIGHT_MIN_VALUE),
         ])),
       currentEmployee: new FormControl(this.vehicle.currentEmployee)
+    });
+  }
+
+  private initializeEmployees() {
+    this.employeeService
+      .getEmployeeList()
+      .subscribe((employees: Employee[]) => {
+      this.employees = employees;
     });
   }
 }
