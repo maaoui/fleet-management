@@ -1,4 +1,4 @@
-package pl.buczak.kacper.fleetmanagement.model.Jwt;
+package pl.buczak.kacper.fleetmanagement.entity.dto.jwt;
 
 import java.io.Serializable;
 

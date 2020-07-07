@@ -7,8 +7,8 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import pl.buczak.kacper.fleetmanagement.model.Jwt.JwtCredentials;
-import pl.buczak.kacper.fleetmanagement.model.Jwt.JwtTokenReponse;
+import pl.buczak.kacper.fleetmanagement.entity.dto.jwt.JwtCredentials;
+import pl.buczak.kacper.fleetmanagement.entity.dto.jwt.JwtTokenReponse;
 import pl.buczak.kacper.fleetmanagement.service.security.UserDetailsServiceImpl;
 import pl.buczak.kacper.fleetmanagement.util.Jwt.JwtTokenUtil;
 
