@@ -2,13 +2,11 @@ package pl.buczak.kacper.fleetmanagement.entity.dto.employee;
 
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.DepartmentDTO;
-import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.VehicleUsageTimestampDTO;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 /*
     @author Kacper Buczak 
@@ -18,7 +16,6 @@ public class EmployeeFullDTO extends BaseDTO {
     @NotNull
     private DepartmentDTO department;
 
-    private List<VehicleUsageTimestampDTO> vehicleUsageTimestamp;
 
     @NotBlank
     @Size(max = 30)
@@ -46,14 +43,6 @@ public class EmployeeFullDTO extends BaseDTO {
 
     public void setDepartment(DepartmentDTO department) {
         this.department = department;
-    }
-
-    public List<VehicleUsageTimestampDTO> getVehicleUsageTimestamp() {
-        return vehicleUsageTimestamp;
-    }
-
-    public void setVehicleUsageTimestamp(List<VehicleUsageTimestampDTO> vehicleUsageTimestamp) {
-        this.vehicleUsageTimestamp = vehicleUsageTimestamp;
     }
 
     public String getFirstName() {

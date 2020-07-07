@@ -2,13 +2,11 @@ package pl.buczak.kacper.fleetmanagement.entity.dao.employee;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.department.Department;
-import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.VehicleUsageTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Collection;
-import java.util.List;
 
 /*
     @author Kacper Buczak
@@ -19,9 +17,6 @@ public class Employee extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Department department;
-
-    @OneToMany(cascade = CascadeType.DETACH, mappedBy = "employee")
-    private List<VehicleUsageTimestamp> vehicleUsageTimestamp;
 
     @Size(max = 30)
     @Column(nullable = false, name = "first_name")
@@ -62,14 +57,6 @@ public class Employee extends BaseEntity {
 
     public void setDepartment(Department department) {
         this.department = department;
-    }
-
-    public List<VehicleUsageTimestamp> getVehicleUsageTimestamp() {
-        return vehicleUsageTimestamp;
-    }
-
-    public void setVehicleUsageTimestamp(List<VehicleUsageTimestamp> vehicleUsageTimestamp) {
-        this.vehicleUsageTimestamp = vehicleUsageTimestamp;
     }
 
     public String getFirstName() {

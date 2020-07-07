@@ -16,8 +16,6 @@ public class VehicleFullDTO extends BaseDTO {
 
     private ExploatationReportDTO exploatationReport;
 
-    private List<VehicleUsageTimestampDTO> vehicleUsageTimestamps;
-
     private List<RecommendedRepairDTO> recommendedRepairs;
 
     private List<TechnicalExaminationDTO> technicalExaminationList;
@@ -25,8 +23,6 @@ public class VehicleFullDTO extends BaseDTO {
     @NotNull
     private InsuranceDTO insurance;
 
-    @NotNull
-    private VehicleOwnerDTO vehicleOwner;
 
     @NotBlank
     @Size(max = 10)
@@ -73,14 +69,6 @@ public class VehicleFullDTO extends BaseDTO {
         this.exploatationReport = exploatationReport;
     }
 
-    public List<VehicleUsageTimestampDTO> getVehicleUsageTimestamps() {
-        return vehicleUsageTimestamps;
-    }
-
-    public void setVehicleUsageTimestamps(List<VehicleUsageTimestampDTO> vehicleUsageTimestamps) {
-        this.vehicleUsageTimestamps = vehicleUsageTimestamps;
-    }
-
     public List<RecommendedRepairDTO> getRecommendedRepairs() {
         return recommendedRepairs;
     }
@@ -103,14 +91,6 @@ public class VehicleFullDTO extends BaseDTO {
 
     public void setInsurance(InsuranceDTO insurance) {
         this.insurance = insurance;
-    }
-
-    public VehicleOwnerDTO getVehicleOwner() {
-        return vehicleOwner;
-    }
-
-    public void setVehicleOwner(VehicleOwnerDTO vehicleOwner) {
-        this.vehicleOwner = vehicleOwner;
     }
 
     public String getPlateNumber() {

@@ -24,14 +24,8 @@ public class Vehicle extends BaseEntity {
     @OneToOne(cascade = CascadeType.REMOVE)
     private Insurance insurance;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "vehicle")
-    private List<VehicleUsageTimestamp> vehicleUsageTimestamps;
-
     @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "vehicle")
     private List<TechnicalExamination> technicalExaminationList;
-
-    @OneToOne(cascade = CascadeType.REMOVE)
-    private VehicleOwner vehicleOwner;
 
     @Size(max = 10)
     @Column(nullable = false, name = "plate_number")
@@ -86,28 +80,12 @@ public class Vehicle extends BaseEntity {
         this.insurance = insurance;
     }
 
-    public List<VehicleUsageTimestamp> getVehicleUsageTimestamps() {
-        return vehicleUsageTimestamps;
-    }
-
-    public void setVehicleUsageTimestamps(List<VehicleUsageTimestamp> vehicleUsageTimestamps) {
-        this.vehicleUsageTimestamps = vehicleUsageTimestamps;
-    }
-
     public List<TechnicalExamination> getTechnicalExaminationList() {
         return technicalExaminationList;
     }
 
     public void setTechnicalExaminationList(List<TechnicalExamination> technicalExaminationList) {
         this.technicalExaminationList = technicalExaminationList;
-    }
-
-    public VehicleOwner getVehicleOwner() {
-        return vehicleOwner;
-    }
-
-    public void setVehicleOwner(VehicleOwner vehicleOwner) {
-        this.vehicleOwner = vehicleOwner;
     }
 
     public String getPlateNumber() {

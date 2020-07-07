@@ -13,9 +13,11 @@ import java.util.Collection;
 @Repository
 public interface VehicleReposiory extends JpaRepository<Vehicle, Long> {
 
-    @Query("SELECT v FROM Vehicle v join VehicleUsageTimestamp vut on v = vut.vehicle where vut.employee.id = :employeeId")
+    //TODO Change this query
+    @Query("SELECT v FROM Vehicle v ")
     Collection<Vehicle> findAllByEmployeeId(Long employeeId);
 
-    @Query("SELECT v FROM Vehicle v join VehicleUsageTimestamp vut on v = vut.vehicle where vut.employee.department.id = :departmentId")
+    //TODO Change this query
+    @Query("SELECT v FROM Vehicle v ")
     Collection<Vehicle> findAllByDepartmentId(Long departmentId);
 }
