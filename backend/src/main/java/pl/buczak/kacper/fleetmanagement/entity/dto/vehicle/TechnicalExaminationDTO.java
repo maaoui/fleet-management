@@ -14,6 +14,10 @@ public class TechnicalExaminationDTO extends BaseDTO {
     @NotNull
     private Date nextExaminationDate;
 
+    @PastOrPresent
+    @NotNull
+    private Date examinationDate;
+
     @NotNull
     @Min(value = 0)
     @Min(value = Integer.MAX_VALUE)
@@ -22,6 +26,14 @@ public class TechnicalExaminationDTO extends BaseDTO {
     @NotBlank
     @Size(max = 512)
     private String comment;
+
+    public Date getExaminationDate() {
+        return examinationDate;
+    }
+
+    public void setExaminationDate(Date examinationDate) {
+        this.examinationDate = examinationDate;
+    }
 
     public Date getNextExaminationDate() {
         return nextExaminationDate;

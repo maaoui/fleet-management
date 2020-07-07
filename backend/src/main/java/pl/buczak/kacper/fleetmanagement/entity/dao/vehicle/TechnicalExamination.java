@@ -19,6 +19,9 @@ public class TechnicalExamination extends BaseEntity {
     @ManyToOne
     private Vehicle vehicle;
 
+    @Column(nullable = false, name = "examination_date")
+    private Date examinationDate;
+
     @Column(nullable = false, name = "next_examination_date")
     private Date nextExaminationDate;
 
@@ -38,6 +41,14 @@ public class TechnicalExamination extends BaseEntity {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public Date getExaminationDate() {
+        return examinationDate;
+    }
+
+    public void setExaminationDate(Date examinationDate) {
+        this.examinationDate = examinationDate;
     }
 
     public Date getNextExaminationDate() {

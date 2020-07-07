@@ -200,13 +200,16 @@ VALUES (1, 'Comment 1', 'PLN', 110000, CURRENT_TIMESTAMP, 100, 1, 1, 1),
        (5, 'Comment 5', 'PLN', 150000, CURRENT_TIMESTAMP, 100, 1, 2, 2),
        (6, 'Comment 6', 'PLN', 160000, CURRENT_TIMESTAMP, 100, 1, 1, 2);
 -- Inserts for TECHNICAL_EXAMINATION
-INSERT INTO TECHNICAL_EXAMINATION (ID, COMMENT, CURRENT_KILOMETRAGE, NEXT_EXAMINATION_DATE, VEHICLE_ID)
-VALUES (1, 'Technical examination 1', 100000, CURRENT_TIMESTAMP - interval '1 year', 1),
-       (2, 'Technical examination 2', 170000, CURRENT_TIMESTAMP, 1),
-       (3, 'Technical examination 3', 230000, CURRENT_TIMESTAMP + interval '1 year', 1),
-       (4, 'Technical examination 4', 100000, CURRENT_TIMESTAMP - interval '1 year', 2),
-       (5, 'Technical examination 5', 170000, CURRENT_TIMESTAMP, 2),
-       (6, 'Technical examination 6', 230000, CURRENT_TIMESTAMP + interval '1 year', 2);
+INSERT INTO TECHNICAL_EXAMINATION (ID, COMMENT, CURRENT_KILOMETRAGE, EXAMINATION_DATE, NEXT_EXAMINATION_DATE,
+                                   VEHICLE_ID)
+VALUES (1, 'Technical examination 1', 100000, CURRENT_TIMESTAMP - interval '2 year',
+        CURRENT_TIMESTAMP - interval '1 year', 1),
+       (2, 'Technical examination 2', 170000, CURRENT_TIMESTAMP - interval '1 year', CURRENT_TIMESTAMP, 1),
+       (3, 'Technical examination 3', 230000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + interval '1 year', 1),
+       (4, 'Technical examination 4', 100000, CURRENT_TIMESTAMP - interval '2 year',
+        CURRENT_TIMESTAMP - interval '1 year', 2),
+       (5, 'Technical examination 5', 170000, CURRENT_TIMESTAMP - interval '1 year', CURRENT_TIMESTAMP, 2),
+       (6, 'Technical examination 6', 230000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + interval '1 year', 2);
 -- Updates for VEHICLE
 UPDATE VEHICLE
 SET EXPLOATATION_REPORT_ID = 1,
