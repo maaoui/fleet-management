@@ -20,7 +20,6 @@ public class VehicleFullDTO extends BaseDTO {
     @NotNull
     private InsuranceDTO insurance;
 
-
     @NotBlank
     @Size(max = 10)
     private String plateNumber;

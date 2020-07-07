@@ -3,6 +3,7 @@ package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 
 import javax.validation.constraints.*;
+import java.util.Date;
 
 /*
     @author Kacper Buczak 
@@ -24,6 +25,19 @@ public class VehicleDTO extends BaseDTO {
     @NotBlank
     @Size(max = 30)
     private String model;
+
+    @PastOrPresent
+    private Date firstRegistration;
+
+    @NotNull
+    @Min(value = 1900)
+    @Max(value = Integer.MAX_VALUE)
+    private Integer yearOfProduction;
+
+    @NotNull
+    @Min(value = 0)
+    @Max(value = Integer.MAX_VALUE)
+    private Integer weight;
 
     @NotNull
     @Min(value = 0)
@@ -68,5 +82,29 @@ public class VehicleDTO extends BaseDTO {
 
     public void setHorsePower(Double horsePower) {
         this.horsePower = horsePower;
+    }
+
+    public Date getFirstRegistration() {
+        return firstRegistration;
+    }
+
+    public void setFirstRegistration(Date firstRegistration) {
+        this.firstRegistration = firstRegistration;
+    }
+
+    public Integer getYearOfProduction() {
+        return yearOfProduction;
+    }
+
+    public void setYearOfProduction(Integer yearOfProduction) {
+        this.yearOfProduction = yearOfProduction;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
     }
 }

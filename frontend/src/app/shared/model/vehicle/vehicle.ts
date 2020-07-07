@@ -5,6 +5,9 @@ export interface VehicleAttrs {
   model: string;
   horsePower: number;
   vin: string;
+  firstRegistration: number;
+  yearOfProduction: number;
+  weight: number;
 }
 
 export class Vehicle {
@@ -15,6 +18,9 @@ export class Vehicle {
     this.model = attrs.model;
     this.horsePower = attrs.horsePower;
     this.vin = attrs.vin;
+    this.firstRegistration = attrs.firstRegistration;
+    this.yearOfProduction = attrs.yearOfProduction;
+    this.weight = attrs.weight;
   }
 
   id: number;
@@ -23,5 +29,7 @@ export class Vehicle {
   model: string;
   horsePower: number;
   vin: string;
-
+  firstRegistration: number;
+  yearOfProduction: number;
+  weight: number;
 }
