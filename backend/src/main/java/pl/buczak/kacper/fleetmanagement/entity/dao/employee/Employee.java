@@ -2,6 +2,7 @@ package pl.buczak.kacper.fleetmanagement.entity.dao.employee;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.department.Department;
+import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.Vehicle;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
@@ -17,6 +18,9 @@ public class Employee extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Department department;
+
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private Vehicle currentVehicle;
 
     @Size(max = 30)
     @Column(nullable = false, name = "first_name")

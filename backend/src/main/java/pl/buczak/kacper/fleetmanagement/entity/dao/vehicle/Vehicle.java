@@ -1,6 +1,7 @@
 package pl.buczak.kacper.fleetmanagement.entity.dao.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
+import pl.buczak.kacper.fleetmanagement.entity.dao.employee.Employee;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
 import pl.buczak.kacper.fleetmanagement.entity.dao.insurance.Insurance;
 
@@ -23,6 +24,9 @@ public class Vehicle extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.REMOVE)
     private Insurance insurance;
+
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private Employee currentEmployee;
 
     @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "vehicle")
     private List<TechnicalExamination> technicalExaminationList;
@@ -86,6 +90,14 @@ public class Vehicle extends BaseEntity {
 
     public void setTechnicalExaminationList(List<TechnicalExamination> technicalExaminationList) {
         this.technicalExaminationList = technicalExaminationList;
+    }
+
+    public Employee getCurrentEmployee() {
+        return currentEmployee;
+    }
+
+    public void setCurrentEmployee(Employee currentEmployee) {
+        this.currentEmployee = currentEmployee;
     }
 
     public String getPlateNumber() {

@@ -14,10 +14,10 @@ import java.util.Collection;
 public interface VehicleReposiory extends JpaRepository<Vehicle, Long> {
 
     //TODO Change this query
-    @Query("SELECT v FROM Vehicle v ")
+    @Query("SELECT v FROM Vehicle v left join Employee e on v.currentEmployee.id = e.id where e.id =: employeeId")
     Collection<Vehicle> findAllByEmployeeId(Long employeeId);
 
     //TODO Change this query
-    @Query("SELECT v FROM Vehicle v ")
+    @Query("SELECT v FROM Vehicle v left join Employee e on v.currentEmployee.id = e.id where e.department.id =:departmentId")
     Collection<Vehicle> findAllByDepartmentId(Long departmentId);
 }
