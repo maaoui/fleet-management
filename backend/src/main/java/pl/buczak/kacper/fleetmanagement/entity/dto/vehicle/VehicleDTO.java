@@ -1,6 +1,7 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
+import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
 
 import javax.validation.constraints.*;
 import java.util.Date;
@@ -9,6 +10,8 @@ import java.util.Date;
     @author Kacper Buczak 
 */
 public class VehicleDTO extends BaseDTO {
+
+    private EmployeeDTO currentEmployee;
 
     @NotBlank
     @Size(max = 10)
@@ -43,6 +46,14 @@ public class VehicleDTO extends BaseDTO {
     @Min(value = 0)
     @Max(value = 5000)
     private Double horsePower;
+
+    public EmployeeDTO getCurrentEmployee() {
+        return currentEmployee;
+    }
+
+    public void setCurrentEmployee(EmployeeDTO currentEmployee) {
+        this.currentEmployee = currentEmployee;
+    }
 
     public String getPlateNumber() {
         return plateNumber;

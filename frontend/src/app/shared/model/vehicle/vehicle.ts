@@ -1,3 +1,5 @@
+import {Employee} from '../employee/employee';
+
 export interface VehicleAttrs {
   id: number;
   plateNumber: string;
@@ -8,6 +10,7 @@ export interface VehicleAttrs {
   firstRegistration: number;
   yearOfProduction: number;
   weight: number;
+  currentEmployee: Employee;
 }
 
 export class Vehicle {
@@ -21,6 +24,7 @@ export class Vehicle {
     this.firstRegistration = attrs.firstRegistration;
     this.yearOfProduction = attrs.yearOfProduction;
     this.weight = attrs.weight;
+    this.currentEmployee = attrs.currentEmployee;
   }
 
   id: number;
@@ -32,4 +36,5 @@ export class Vehicle {
   firstRegistration: number;
   yearOfProduction: number;
   weight: number;
+  currentEmployee: Employee;
 }

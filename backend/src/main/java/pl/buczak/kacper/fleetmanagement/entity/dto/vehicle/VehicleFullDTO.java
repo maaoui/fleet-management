@@ -1,6 +1,7 @@
 package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
+import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.ExploatationReportDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.insurance.InsuranceDTO;
 
@@ -16,6 +17,8 @@ public class VehicleFullDTO extends BaseDTO {
     private ExploatationReportDTO exploatationReport;
 
     private List<TechnicalExaminationDTO> technicalExaminationList;
+
+    private EmployeeDTO currentEmployee;
 
     @NotNull
     private InsuranceDTO insurance;
@@ -55,6 +58,14 @@ public class VehicleFullDTO extends BaseDTO {
     private Double horsePower;
 
     public VehicleFullDTO() {
+    }
+
+    public EmployeeDTO getCurrentEmployee() {
+        return currentEmployee;
+    }
+
+    public void setCurrentEmployee(EmployeeDTO currentEmployee) {
+        this.currentEmployee = currentEmployee;
     }
 
     public ExploatationReportDTO getExploatationReport() {

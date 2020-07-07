@@ -16,7 +16,6 @@ public class EmployeeFullDTO extends BaseDTO {
     @NotNull
     private DepartmentDTO department;
 
-
     @NotBlank
     @Size(max = 30)
     private String firstName;
