@@ -1,8 +1,10 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {VehicleService} from '../../../shared/service/vehicle/vehicle.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {VehicleValidatorConstants} from '../../../core/constants/validator-constants';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edit-vehicle-modal',
@@ -12,7 +14,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class EditVehicleModalComponent implements OnInit {
 
   @Input() vehicle: Vehicle;
-  @Output() vehicleUpdateEmitter;
+  @Output() vehicleUpdateEmitter = new EventEmitter<string>();
   private vehicleForm: FormGroup;
 
   constructor(public activeModal: NgbActiveModal, private vehicleService: VehicleService) {
@@ -34,6 +36,10 @@ export class EditVehicleModalComponent implements OnInit {
       model: this.vehicleForm.controls.model.value,
       horsePower: this.vehicleForm.controls.horsePower.value,
       vin: this.vehicleForm.controls.vin.value,
+      firstRegistration: moment(this.vehicleForm.controls.firstRegistration.value).toDate(),
+      yearOfProduction: this.vehicleForm.controls.yearOfProduction.value,
+      weight: this.vehicleForm.controls.weight.value,
+      currentEmployee: this.vehicleForm.controls.currentEmployee.value
     });
     this.vehicleService
       .updateVehicle(editedVehicle)
@@ -51,58 +57,43 @@ export class EditVehicleModalComponent implements OnInit {
       id: new FormControl(this.vehicle.id),
       plateNumber: new FormControl(this.vehicle.plateNumber,
         Validators.compose([
-          Validators.minLength(this.getMinLength()),
-          Validators.maxLength(this.getMaxPlateNumberLength())
+          Validators.minLength(VehicleValidatorConstants.MIN_FIELD_LENGTH),
+          Validators.maxLength(VehicleValidatorConstants.REGISTER_PLATE_MAX_LENGTH)
         ])),
       make: new FormControl(this.vehicle.make,
         Validators.compose([
-          Validators.minLength(this.getMinLength()),
-          Validators.maxLength(this.getMaxMakeLength())
+          Validators.minLength(VehicleValidatorConstants.MIN_FIELD_LENGTH),
+          Validators.maxLength(VehicleValidatorConstants.MAKE_MAX_LENGTH)
         ])),
       model: new FormControl(this.vehicle.model,
         Validators.compose([
-          Validators.minLength(this.getMinLength()),
-          Validators.maxLength(this.getMaxModelLength())
+          Validators.minLength(VehicleValidatorConstants.MIN_FIELD_LENGTH),
+          Validators.maxLength(VehicleValidatorConstants.MODEL_MAX_LENGTH)
         ])),
       horsePower: new FormControl(this.vehicle.horsePower,
         Validators.compose([
-          Validators.min(this.getMinHorsePowerValue()),
-          Validators.max(this.getMaxHorsePowerValue())
+          Validators.min(VehicleValidatorConstants.HORSE_POWER_MIN_VALUE),
+          Validators.max(VehicleValidatorConstants.HORSE_POWER_MAX_VALUE)
         ])),
       vin: new FormControl(this.vehicle.vin,
         Validators.compose([
-          Validators.minLength(this.getMinLength()),
-          Validators.maxLength(this.getMaxVINLength())
+          Validators.minLength(VehicleValidatorConstants.MIN_FIELD_LENGTH),
+          Validators.maxLength(VehicleValidatorConstants.VIN_MAX_LENGTH)
         ])),
+      firstRegistration: new FormControl(this.vehicle.firstRegistration,
+        Validators.compose([
+          Validators.required
+        ])),
+      yearOfProduction: new FormControl(this.vehicle.yearOfProduction,
+        Validators.compose([
+          Validators.required,
+          Validators.min(VehicleValidatorConstants.YEAR_OF_PRODUCTION_MIN_VALUE)
+        ])),
+      weight: new FormControl(this.vehicle.weight,
+        Validators.compose([
+          Validators.min(VehicleValidatorConstants.WEIGHT_MIN_VALUE),
+        ])),
+      currentEmployee: new FormControl(this.vehicle.currentEmployee)
     });
   }
-
-  private getMinLength(): number {
-    return 1;
-  }
-
-  private getMaxPlateNumberLength(): number {
-    return 10;
-  }
-
-  private getMaxMakeLength(): number {
-    return 30;
-  }
-
-  private getMaxModelLength(): number {
-    return 30;
-  }
-
-  private getMaxVINLength(): number {
-    return 20;
-  }
-
-  private getMinHorsePowerValue(): number {
-    return 0;
-  }
-
-  private getMaxHorsePowerValue(): number {
-    return 500;
-  }
-
 }

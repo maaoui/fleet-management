@@ -23,3 +23,15 @@ export class WorkshopValidatorConstants {
   public static readonly LONGITUDE_MIN_VALUE: number = 0;
   public static readonly LONGITUDE_MAX_VALUE: number = 180;
 }
+
+export class VehicleValidatorConstants {
+  public static readonly MIN_FIELD_LENGTH: number = 1;
+  public static readonly REGISTER_PLATE_MAX_LENGTH: number = 10;
+  public static readonly MAKE_MAX_LENGTH: number = 10;
+  public static readonly MODEL_MAX_LENGTH: number = 10;
+  public static readonly HORSE_POWER_MIN_VALUE: number = 10;
+  public static readonly HORSE_POWER_MAX_VALUE: number = 2000;
+  public static readonly VIN_MAX_LENGTH: number = 2000;
+  public static readonly YEAR_OF_PRODUCTION_MIN_VALUE: number = 1900;
+  public static readonly WEIGHT_MIN_VALUE: number = 100;
+}

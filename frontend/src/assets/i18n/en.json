@@ -9,6 +9,19 @@
     "YES": "Yes",
     "NO": "No"
   },
+  "VEHICLE": {
+    "MAKE": "Make",
+    "MODEL": "Model",
+    "PLATE_NUMBER": "Plate number",
+    "HORSE_POWER": "Horse power: ",
+    "HORSE_POWER_VALUE": "{{horsePower}} HP",
+    "WEIGHT_VALUE": "{{weight}} Kilograms",
+    "VIN": "VIN",
+    "FIRST_REGISTRATION": "Date of first registration",
+    "YEAR_OF_PRODUCTION": "Production year",
+    "WEIGHT": "Weight",
+    "CURRENT_EMPLOYEE": "Current user"
+  },
   "LANGUAGE": "English",
   "LOGIN": {
     "EMAIL": "Email",
@@ -20,9 +33,6 @@
     "VEHICLES": "Vehicles",
     "REPAIRS": "Repairs",
     "EXPENSES": "Exploatation Report",
-    "VIN": "Vin number",
-    "PLATE_NUMBER": "Plate number",
-    "HORSE_POWER": "Horse power: ",
     "INSURANCE_INFO": "Insurance",
     "DEPARTMENTS": "Departments",
     "WORKSHOPS": "Workshops",

@@ -7,7 +7,7 @@ export interface VehicleAttrs {
   model: string;
   horsePower: number;
   vin: string;
-  firstRegistration: number;
+  firstRegistration: Date;
   yearOfProduction: number;
   weight: number;
   currentEmployee: Employee;
@@ -33,7 +33,7 @@ export class Vehicle {
   model: string;
   horsePower: number;
   vin: string;
-  firstRegistration: number;
+  firstRegistration: Date;
   yearOfProduction: number;
   weight: number;
   currentEmployee: Employee;

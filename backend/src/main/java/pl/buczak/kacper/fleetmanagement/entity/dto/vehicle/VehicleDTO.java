@@ -29,7 +29,6 @@ public class VehicleDTO extends BaseDTO {
     @Size(max = 30)
     private String model;
 
-    @PastOrPresent
     private Date firstRegistration;
 
     @NotNull

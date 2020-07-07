@@ -8,7 +8,6 @@ import {Subscription} from 'rxjs';
 import {InsuranceService} from '../../shared/service/insurance/insurance.service';
 import {DeleteVehicleModalComponent} from '../modals/delete-vehicle-modal/delete-vehicle-modal.component';
 import {first} from 'rxjs/operators';
-import {CarPartModalComponent} from '../modals/car-part-modal/car-part-modal.component';
 import {Constraint} from '../../shared/constraints/constraint';
 
 @Component({
@@ -37,6 +36,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .getVehiclesList()
       .subscribe(
         (vehicles) => {
+          console.log(vehicles);
           this.vehicles = vehicles.sort((a: Vehicle, b: Vehicle) => a.id > b.id ? 1 : 0);
         },
         (error) => {
@@ -56,7 +56,6 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .subscribe((insurance) => {
         const modalRef = this.modalService.open(InsuranceInformationComponent, {size: Constraint.MODAL_SIZE_LG});
         modalRef.componentInstance.insurance = insurance;
-        modalRef.componentInstance.vehicleUpdateEmitter = new EventEmitter<string>();
         modalRef.componentInstance.vehicleUpdateEmitter
           .pipe(first())
           .subscribe(() => this.loadVehiclesList());

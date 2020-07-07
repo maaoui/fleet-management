@@ -3,82 +3,160 @@
 </div>
 <div class="modal-body">
   <form [formGroup]="vehicleForm" class="form-signin" (ngSubmit)="onSavePress()" autocomplete="off">
-    <div class="form-group">
-      <input formControlName="plateNumber" type="text" class="form-control" name="plateNumber"/>
-    </div>
-    <div *ngIf="vehicleForm.controls.plateNumber.invalid" class="alert-danger">
-      <div *ngIf="vehicleForm.controls['plateNumber'].errors.minlength">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"VEHICLE.PLATE_NUMBER"  | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="plateNumber" type="text" class="form-control" name="plateNumber"/>
       </div>
+      <div *ngIf="vehicleForm.controls.plateNumber.invalid" class="alert-danger">
+        <div *ngIf="vehicleForm.controls['plateNumber'].errors.minlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+        </div>
 
-      <div *ngIf="vehicleForm.controls['plateNumber'].errors.maxlength">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        <div *ngIf="vehicleForm.controls['plateNumber'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
       </div>
-
-    </div>
-    <div class="form-group">
-      <input formControlName="make" type="text" class="form-control" name="make"/>
-    </div>
-    <div *ngIf="vehicleForm.controls.make.invalid" class="alert-danger">
-      <div *ngIf="vehicleForm.controls['make'].errors.minlength">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
-      </div>
-
-      <div *ngIf="vehicleForm.controls['make'].errors.maxlength">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
-      </div>
-
-    </div>
-    <div class="form-group">
-      <input formControlName="model" type="text" class="form-control" name="model"/>
-    </div>
-    <div *ngIf="vehicleForm.controls.model.invalid" class="alert-danger">
-      <div *ngIf="vehicleForm.controls['model'].errors.minlength">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
-      </div>
-
-      <div *ngIf="vehicleForm.controls['model'].errors.maxlength">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
-      </div>
-
-    </div>
-    <div class="form-group">
-      <input formControlName="horsePower" type="number" class="form-control" name="horsePower"/>
-    </div>
-    <div *ngIf="vehicleForm.controls.horsePower.invalid" class="alert-danger">
-      <div *ngIf="vehicleForm.controls['horsePower'].errors.min">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
-      </div>
-
-      <div *ngIf="vehicleForm.controls['horsePower'].errors.max">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_VALUE" | translate }}
-      </div>
-
     </div>
 
-    <div class="form-group">
-      <input formControlName="vin" type="text" class="form-control" name="vin"/>
-    </div>
-    <div *ngIf="vehicleForm.controls.vin.invalid" class="alert-danger">
-      <div *ngIf="vehicleForm.controls['vin'].errors.minlength">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"VEHICLE.MAKE"  | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="make" type="text" class="form-control" name="make"/>
       </div>
+      <div *ngIf="vehicleForm.controls.make.invalid" class="alert-danger">
+        <div *ngIf="vehicleForm.controls['make'].errors.minlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+        </div>
 
-      <div *ngIf="vehicleForm.controls['vin'].errors.maxlength">
-        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-        {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        <div *ngIf="vehicleForm.controls['make'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
       </div>
-
     </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"VEHICLE.MODEL"  | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="model" type="text" class="form-control" name="model"/>
+      </div>
+      <div *ngIf="vehicleForm.controls.model.invalid" class="alert-danger">
+        <div *ngIf="vehicleForm.controls['model'].errors.minlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+        </div>
+
+        <div *ngIf="vehicleForm.controls['model'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"VEHICLE.HORSE_POWER" | translate}}</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="horsePower" type="number" class="form-control" name="horsePower"/>
+      </div>
+      <div *ngIf="vehicleForm.controls.horsePower.invalid" class="alert-danger">
+        <div *ngIf="vehicleForm.controls['horsePower'].errors.min">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
+        </div>
+
+        <div *ngIf="vehicleForm.controls['horsePower'].errors.max">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_VALUE" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"VEHICLE.VIN" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="vin" type="text" class="form-control" name="vin"/>
+      </div>
+      <div *ngIf="vehicleForm.controls.vin.invalid" class="alert-danger">
+        <div *ngIf="vehicleForm.controls['vin'].errors.minlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+        </div>
+
+        <div *ngIf="vehicleForm.controls['vin'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"VEHICLE.FIRST_REGISTRATION" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input class="form-control" placeholder="yyyy-mm-dd" formControlName="firstRegistration"
+               name="dp1" ngbDatepicker #dt1="ngbDatepicker" (click)="dt1.toggle()">
+      </div>
+      <div *ngIf="vehicleForm.controls.firstRegistration.invalid" class="alert-danger">
+        <div *ngIf="vehicleForm.controls['firstRegistration'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"VEHICLE.YEAR_OF_PRODUCTION" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="yearOfProduction" type="text" class="form-control" name="yearOfProduction"/>
+      </div>
+      <div *ngIf="vehicleForm.controls.yearOfProduction.invalid" class="alert-danger">
+        <div *ngIf="vehicleForm.controls['yearOfProduction'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="vehicleForm.controls['yearOfProduction'].errors.min">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"VEHICLE.WEIGHT" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="weight" type="text" class="form-control" name="weight"/>
+      </div>
+      <div *ngIf="vehicleForm.controls.weight.invalid" class="alert-danger">
+        <div *ngIf="vehicleForm.controls['weight'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="vehicleForm.controls['weight'].errors.min">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
+        </div>
+      </div>
+    </div>
+
   </form>
 </div>
 <div class="modal-footer">

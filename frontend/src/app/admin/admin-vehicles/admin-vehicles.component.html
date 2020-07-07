@@ -6,23 +6,45 @@
           <h5 class="listHeader"> {{vehicle.make}} {{vehicle.model}}</h5>
 
           <p class="list-group-item-text">
-            <b>{{"ADMIN_VIEW.PLATE_NUMBER" | translate}}:</b> {{vehicle.plateNumber}}
+            <b>{{"VEHICLE.PLATE_NUMBER" | translate}}:</b> {{vehicle.plateNumber}}
           </p>
 
           <p class="list-group-item-text ">
-            <b>{{"ADMIN_VIEW.HORSE_POWER" | translate  }}</b> {{vehicle.horsePower}}
+            <b>{{"VEHICLE.VIN" | translate}}:</b> {{vehicle.vin}}
           </p>
 
           <p class="list-group-item-text ">
-            <b>{{"ADMIN_VIEW.VIN" | translate}}:</b> {{vehicle.vin}}
+            <b>{{"VEHICLE.CURRENT_EMPLOYEE" | translate}}
+              : </b>{{vehicle.currentEmployee.firstName}} {{vehicle.currentEmployee.lastName}}
           </p>
+
           <p class="list-group-item-text ">
-            <button type="button" class="btn btn-info" (click)="openInsuranceInformationModal(vehicle)"><i class="far fa-edit"></i>  {{"ADMIN_VIEW.INSURANCE_INFO" | translate}} </button>
+            <b>{{"VEHICLE.HORSE_POWER" | translate }}</b> {{"VEHICLE.HORSE_POWER_VALUE" | translate :{horsePower: vehicle.horsePower} }}
+          </p>
+
+          <p class="list-group-item-text ">
+            <b>{{"VEHICLE.WEIGHT" | translate }}</b> {{"VEHICLE.WEIGHT_VALUE" | translate :{weight: vehicle.weight} }}
+          </p>
+
+          <p class="list-group-item-text ">
+            <b>{{"VEHICLE.FIRST_REGISTRATION" | translate}}
+              :</b> {{vehicle.firstRegistration | date :'longDate' }}
+          </p>
+
+          <p class="list-group-item-text ">
+            <b>{{"VEHICLE.YEAR_OF_PRODUCTION" | translate}}:</b> {{vehicle.yearOfProduction}}
+          </p>
+
+          <p class="list-group-item-text ">
+            <button type="button" class="btn btn-info" (click)="openInsuranceInformationModal(vehicle)"><i
+              class="far fa-edit"></i>  {{"ADMIN_VIEW.INSURANCE_INFO" | translate}} </button>
           </p>
         </div>
         <div class="list-group-item__box">
-          <button type="button" class="btn btn-success" (click)="openEditVehicleModal(vehicle)"><i class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
-          <button type="button" class="btn btn-danger" (click)="openDeleteVehicleModal(vehicle)"><i class="far fa-edit"></i>  {{"UNIVERSAL.DELETE" | translate}} </button>
+          <button type="button" class="btn btn-success" (click)="openEditVehicleModal(vehicle)"><i
+            class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
+          <button type="button" class="btn btn-danger" (click)="openDeleteVehicleModal(vehicle)"><i
+            class="far fa-edit"></i>  {{"UNIVERSAL.DELETE" | translate}} </button>
         </div>
       </div>
     </ul>
