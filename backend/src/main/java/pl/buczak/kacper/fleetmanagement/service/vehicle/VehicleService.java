@@ -2,12 +2,12 @@ package pl.buczak.kacper.fleetmanagement.service.vehicle;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import pl.buczak.kacper.fleetmanagement.entity.dao.employee.Employee;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.Vehicle;
 import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.VehicleDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.VehicleFullDTO;
 import pl.buczak.kacper.fleetmanagement.repository.vehicle.VehicleReposiory;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,9 +57,14 @@ public class VehicleService {
                 .get();
     }
 
+    @Transactional
     public VehicleFullDTO editVehicle(VehicleFullDTO vehicleFullDTO) {
+        this.vehicleReposiory.removeCurrentEmployeeFromAllVehicles(vehicleFullDTO.getCurrentEmployee().getId());
         Vehicle vehicleToEdit = this.vehicleReposiory.getOne(vehicleFullDTO.getId());
-        vehicleToEdit.setMake(vehicleFullDTO.getMake());
+        modelMapper.map(modelMapper.map(vehicleFullDTO, Vehicle.class), vehicleToEdit);
+
+
+ /*       vehicleToEdit.setMake(vehicleFullDTO.getMake());
         vehicleToEdit.setModel(vehicleFullDTO.getModel());
         vehicleToEdit.setVIN(vehicleFullDTO.getVIN());
         vehicleToEdit.setPlateNumber(vehicleFullDTO.getPlateNumber());
@@ -67,7 +72,7 @@ public class VehicleService {
         vehicleToEdit.setWeight(vehicleFullDTO.getWeight());
         vehicleToEdit.setFirstRegistration(vehicleFullDTO.getFirstRegistration());
         vehicleToEdit.setYearOfProduction(vehicleFullDTO.getYearOfProduction());
-        vehicleToEdit.setCurrentEmployee(modelMapper.map(vehicleFullDTO.getCurrentEmployee(), Employee.class));
+        vehicleToEdit.setCurrentEmployee(modelMapper.map(vehicleFullDTO.getCurrentEmployee(), Employee.class));*/
         return entityToFullDTO(this.vehicleReposiory.save(vehicleToEdit));
     }
 

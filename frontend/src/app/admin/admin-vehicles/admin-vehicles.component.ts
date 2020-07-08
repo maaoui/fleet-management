@@ -36,7 +36,6 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .getVehiclesList()
       .subscribe(
         (vehicles) => {
-          console.log(vehicles);
           this.vehicles = vehicles.sort((a: Vehicle, b: Vehicle) => a.id > b.id ? 1 : 0);
         },
         (error) => {

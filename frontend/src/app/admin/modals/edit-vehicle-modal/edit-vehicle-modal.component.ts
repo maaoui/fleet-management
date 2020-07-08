@@ -115,6 +115,7 @@ export class EditVehicleModalComponent implements OnInit {
       .getEmployeeList()
       .subscribe((employees: Employee[]) => {
         this.employees = employees;
+
       });
   }
 }

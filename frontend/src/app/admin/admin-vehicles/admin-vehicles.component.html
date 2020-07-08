@@ -13,7 +13,7 @@
             <b>{{"VEHICLE.VIN" | translate}}:</b> {{vehicle.vin}}
           </p>
 
-          <p class="list-group-item-text ">
+          <p class="list-group-item-text" *ngIf="vehicle.currentEmployee">
             <b>{{"VEHICLE.CURRENT_EMPLOYEE" | translate}}
               : </b>{{vehicle.currentEmployee.firstName}} {{vehicle.currentEmployee.lastName}}
           </p>

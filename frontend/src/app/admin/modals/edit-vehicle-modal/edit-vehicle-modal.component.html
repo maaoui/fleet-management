@@ -162,8 +162,7 @@
         <b>{{"VEHICLE.CURRENT_EMPLOYEE" | translate}}:</b>
       </p>
       <select class="custom-select form-control" formControlName="currentEmployee" name="currentEmployee">
-        <option
-          [ngValue]="vehicle.currentEmployee"> {{vehicle.currentEmployee.firstName}} {{vehicle.currentEmployee.lastName}}</option>
+        <option [ngValue]="vehicle.currentEmployee" *ngIf="vehicle.currentEmployee"> {{vehicle.currentEmployee.firstName}} {{vehicle.currentEmployee.lastName}}</option>
         <option *ngFor="let employee of employees"
                 [ngValue]="employee"> {{employee.firstName}} {{employee.lastName}}</option>
       </select>
