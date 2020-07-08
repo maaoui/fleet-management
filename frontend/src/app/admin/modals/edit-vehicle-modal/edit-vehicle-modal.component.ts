@@ -1,12 +1,12 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbDate} from '@ng-bootstrap/ng-bootstrap';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {VehicleService} from '../../../shared/service/vehicle/vehicle.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {VehicleValidatorConstants} from '../../../core/constants/validator-constants';
-import * as moment from 'moment';
 import {EmployeeService} from '../../../shared/service/employee/employee.service';
 import {Employee} from '../../../shared/model/employee/employee';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edit-vehicle-modal',
@@ -34,9 +34,14 @@ export class EditVehicleModalComponent implements OnInit {
     this.activeModal.close();
   }
 
+  private extractDateFromTimePicker(date: NgbDate): Date {
+    const newDate = moment(date);
+    newDate.subtract(1, 'month');
+    newDate.add(12, 'hour');
+    return newDate.toDate();
+  }
+
   onSavePress() {
-    const {year, month, day} = this.vehicleForm.controls.firstRegistration.value;
-    const date = `${month}/${day}/${year}`;
     const editedVehicle = new Vehicle({
       id: this.vehicle.id,
       plateNumber: this.vehicleForm.controls.plateNumber.value,
@@ -44,7 +49,7 @@ export class EditVehicleModalComponent implements OnInit {
       model: this.vehicleForm.controls.model.value,
       horsePower: this.vehicleForm.controls.horsePower.value,
       vin: this.vehicleForm.controls.vin.value,
-      firstRegistration: new Date(date),
+      firstRegistration: this.extractDateFromTimePicker(this.vehicleForm.controls.firstRegistration.value),
       yearOfProduction: this.vehicleForm.controls.yearOfProduction.value,
       weight: this.vehicleForm.controls.weight.value,
       currentEmployee: this.vehicleForm.controls.currentEmployee.value
