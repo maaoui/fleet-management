@@ -129,7 +129,9 @@
         "CITY": "City",
         "POSTAL_CODE": "Postal code",
         "STREET_ADDRESS": "Street address",
-        "REGION": "Region"
+        "REGION": "Region",
+        "LATITUDE": "Latitude",
+        "LONGITUDE": "Longitude"
       }
     }
   },

@@ -100,8 +100,8 @@ export class AdminWorkshopsComponent implements OnInit {
     return workshops
       .map((workshop: Workshop) =>
         marker([workshop.latitude, workshop.longitude], {icon: markerIcon})
-          .on('click', () => this.onClickMarkerEvent(workshop))
           .bindTooltip(() => this.getTooltipMessage(workshop))
+          .on('click', () => this.onClickMarkerEvent(workshop))
       );
   }
 

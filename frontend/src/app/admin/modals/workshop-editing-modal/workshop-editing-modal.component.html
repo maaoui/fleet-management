@@ -10,7 +10,7 @@
         <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.WORKSHOP_NAME" | translate}}:</b>
       </p>
       <div class="form-group">
-        <input formControlName="workshopName" type="text" class="form-control" name="workshopName"/>
+        <input formControlName="workshopName" type="text" class="form-control" name="workshopName" placeholder="Workshop name"/>
       </div>
       <div *ngIf="workshopForm.controls.workshopName.invalid" class="alert-danger">
         <div *ngIf="workshopForm.controls['workshopName'].errors.maxlength">
@@ -40,7 +40,7 @@
         <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.PHONE_NUMBER" | translate}}:</b>
       </p>
       <div class="form-group">
-        <input formControlName="phoneNumber" type="text" class="form-control" name="phoneNumber"/>
+        <input formControlName="phoneNumber" type="text" class="form-control" name="phoneNumber" placeholder="+48 693 999 999"/>
       </div>
       <div *ngIf="workshopForm.controls.email.invalid" class="alert-danger">
         <div *ngIf="workshopForm.controls['phoneNumber'].errors.maxlength">
@@ -70,7 +70,7 @@
           <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.CITY"| translate}}:</b>
         </p>
         <div class="form-group">
-          <input formControlName="city" type="text" class="form-control" name="city"/>
+          <input formControlName="city" type="text" class="form-control" name="city" placeholder="Warszawa"/>
         </div>
         <div *ngIf="workshopForm.controls.address['controls']['city'].errors" class="alert-danger">
           <div *ngIf="workshopForm.controls.address['controls']['city'].errors['maxlength']">
@@ -84,7 +84,7 @@
           <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.POSTAL_CODE"| translate}}:</b>
         </p>
         <div class="form-group">
-          <input formControlName="postalCode" type="text" class="form-control" name="postalCode"/>
+          <input formControlName="postalCode" type="text" class="form-control" name="postalCode" placeholder="42-902"/>
         </div>
         <div *ngIf="workshopForm.controls.address['controls']['postalCode'].errors" class="alert-danger">
           <div *ngIf="workshopForm.controls.address['controls']['postalCode'].errors['maxlength']">
@@ -98,13 +98,51 @@
           <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.STREET_ADDRESS" | translate}}:</b>
         </p>
         <div class="form-group">
-          <input formControlName="streetAddress" type="text" class="form-control" name="streetAddress"/>
+          <input formControlName="streetAddress" type="text" class="form-control" name="streetAddress" placeholder="ul. Domaniewska 52/5"/>
         </div>
         <div *ngIf="workshopForm.controls.address['controls']['streetAddress'].errors" class="alert-danger">
           <div *ngIf="workshopForm.controls.address['controls']['streetAddress'].errors['maxlength']">
             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
             {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.LONGITUDE" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="longitude" type="text" class="form-control" name="longitude" placeholder="21.00000000"/>
+      </div>
+      <div *ngIf="workshopForm.controls.email.invalid" class="alert-danger">
+        <div *ngIf="workshopForm.controls['longitude'].errors.minvalue">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
+        </div>
+        <div *ngIf="workshopForm.controls['longitude'].errors.maxvalue">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_VALUE" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.LATITUDE" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="latitude" type="text" class="form-control" name="latitude" placeholder="52.00000000"/>
+      </div>
+      <div *ngIf="workshopForm.controls.email.invalid" class="alert-danger">
+        <div *ngIf="workshopForm.controls['latitude'].errors.minvalue">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
+        </div>
+        <div *ngIf="workshopForm.controls['latitude'].errors.maxvalue">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_VALUE" | translate }}
         </div>
       </div>
     </div>
