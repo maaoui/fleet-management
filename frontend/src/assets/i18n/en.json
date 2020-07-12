@@ -133,6 +133,10 @@
         "REGION": "Region",
         "LATITUDE": "Latitude",
         "LONGITUDE": "Longitude"
+      },
+      "DELETE_TECHNICAL_EXAMINATION_MODEL": {
+        "TITLE": "Delete Technical Examination",
+        "DELETE_MESSAGE": "Are you sure you want to delete Technical Examination?"
       }
     }
   },
@@ -185,5 +189,13 @@
     "CITY": "City",
     "POSTAL_CODE": "Postal code",
     "ADDRESS": "Address"
+  },
+  "ADMIN_TECHNICAL_EXAMINATION": {
+    "VEHICLE": "Vehicle",
+    "CURRENT_KILOMETRAGE": "Current kilometrage",
+    "LAST_EXAMINATION_DATE": "Last examination date",
+    "NEXT_EXAMINATION_DATE": "Next examination date",
+    "COMMENT": "Comment",
+    "TECHNICAL_EXAMINATIONS_NOT_FOUND": "Technical examinations were not found"
   }
 }

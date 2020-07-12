@@ -1,1 +1,37 @@
-<p>admin-technical-examination works!</p>
+<div class="container" *ngIf="technicalExaminations ">
+  <button type="button" class="btn btn-success btn-circle btn-lg float" (click)="openAddTechnicalExaminationModal()"><i
+    class="fa fa-plus"></i></button>
+  <div *ngIf="technicalExaminations.length > 0">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">{{"ADMIN_TECHNICAL_EXAMINATION.VEHICLE" |translate}}</th>
+        <th scope="col">{{"ADMIN_TECHNICAL_EXAMINATION.CURRENT_KILOMETRAGE" |translate}}</th>
+        <th scope="col">{{"ADMIN_TECHNICAL_EXAMINATION.LAST_EXAMINATION_DATE" |translate}}</th>
+        <th scope="col">{{"ADMIN_TECHNICAL_EXAMINATION.NEXT_EXAMINATION_DATE" |translate}}</th>
+        <th scope="col">{{"ADMIN_TECHNICAL_EXAMINATION.COMMENT" |translate}}</th>
+        <th scope="col">{{"UNIVERSAL.DELETE" |translate}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let technicalExamination of technicalExaminations">
+        <td>{{getVehicleDescription(technicalExamination.vehicle)}}</td>
+        <td>{{technicalExamination.currentKilometrage}}</td>
+        <td>{{technicalExamination.examinationDate | date :'longDate' }}</td>
+        <td>{{technicalExamination.nextExaminationDate| date :'longDate'}}</td>
+        <td class="table--comment-container">{{technicalExamination.comment}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="openDeleteTechnicalExaminationModal(technicalExamination)">
+            {{"UNIVERSAL.DELETE" |translate}}
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container" *ngIf="!technicalExaminations || technicalExaminations.length <= 0 ">
+  <div class="alert alert-warning" role="alert">
+    {{"ADMIN_TECHNICAL_EXAMINATION.TECHNICAL_EXAMINATIONS_NOT_FOUND" |translate}}
+  </div>
+</div>
