@@ -10,6 +10,9 @@ import java.util.Date;
 */
 public class TechnicalExaminationDTO extends BaseDTO {
 
+
+    private VehicleDTO vehicle;
+
     @Future
     @NotNull
     private Date nextExaminationDate;
@@ -57,5 +60,13 @@ public class TechnicalExaminationDTO extends BaseDTO {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public VehicleDTO getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(VehicleDTO vehicle) {
+        this.vehicle = vehicle;
     }
 }
