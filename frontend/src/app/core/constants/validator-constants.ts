@@ -35,3 +35,9 @@ export class VehicleValidatorConstants {
   public static readonly YEAR_OF_PRODUCTION_MIN_VALUE: number = 1900;
   public static readonly WEIGHT_MIN_VALUE: number = 100;
 }
+
+export class TechnicalExaminationValidatorConstants {
+  public static readonly MIN_CURRENT_KILOMETRAGE: number = 1;
+  public static readonly MAX_COMMENT_LENGTH: number = 512;
+
+}

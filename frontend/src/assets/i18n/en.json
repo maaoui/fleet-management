@@ -137,6 +137,15 @@
       "DELETE_TECHNICAL_EXAMINATION_MODEL": {
         "TITLE": "Delete Technical Examination",
         "DELETE_MESSAGE": "Are you sure you want to delete Technical Examination?"
+      },
+      "ADD_TECHNICAL_EXAMINATION": {
+        "TITLE": "Add Technical Examination",
+        "CURRENT_KILOMETRAGE": "Current kilometrage",
+        "EXAMINATION_DATE": "Examination date",
+        "NEXT_EXAMINATION_DATE": "Next examination date",
+        "COMMENT": "Comment",
+        "VEHICLE": "Vehicle",
+        "AFTER": "Next examination date has to be after last examination date"
       }
     }
   },

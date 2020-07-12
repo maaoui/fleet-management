@@ -10,7 +10,6 @@ import java.util.Date;
 */
 public class TechnicalExaminationDTO extends BaseDTO {
 
-
     private VehicleDTO vehicle;
 
     @Future

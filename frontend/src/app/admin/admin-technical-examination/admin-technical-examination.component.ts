@@ -26,6 +26,11 @@ export class AdminTechnicalExaminationComponent implements OnInit {
   openAddTechnicalExaminationModal() {
     const modalRef = this.modalService.open(AddTechnicalExaminationModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.technicalExamination = new TechnicalExamination();
+    modalRef.componentInstance
+      .postTechnicalExaminationEmitter
+      .subscribe((technicalExamination: TechnicalExamination) => {
+        this.technicalExaminations = [...this.technicalExaminations, technicalExamination];
+      });
   }
 
   openDeleteTechnicalExaminationModal(technicalExamination: TechnicalExamination) {

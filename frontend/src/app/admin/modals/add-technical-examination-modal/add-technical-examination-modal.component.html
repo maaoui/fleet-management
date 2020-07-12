@@ -1,1 +1,123 @@
-<p>add-technical-examination-modal works!</p>
+<div class="modal-header">
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.TITLE" | translate}}</h3>
+</div>
+<div class="modal-body">
+
+  <form [formGroup]="technicalExaminationForm" class="form-signin" (ngSubmit)="onSavePress()" autocomplete="off">
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.CURRENT_KILOMETRAGE" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="currentKilometrage" type="number" class="form-control" name="currentKilometrage"/>
+      </div>
+      <div *ngIf="technicalExaminationForm.controls['currentKilometrage'].errors" class="alert-danger">
+        <div *ngIf="technicalExaminationForm.controls['currentKilometrage'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="technicalExaminationForm.controls['currentKilometrage'].errors.min">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.EXAMINATION_DATE" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" formControlName="examinationDate"
+                 name="dp1" ngbDatepicker #dt1="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dt1.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="technicalExaminationForm.controls['examinationDate'].errors" class="alert-danger">
+        <div *ngIf="technicalExaminationForm.controls['examinationDate'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="technicalExaminationForm.controls['examinationDate'].dirty">
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.NEXT_EXAMINATION_DATE" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" formControlName="nextExaminationDate"
+                 name="dp2" ngbDatepicker #dt2="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dt2.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="technicalExaminationForm.controls['nextExaminationDate'].errors" class="alert-danger">
+        <div *ngIf="technicalExaminationForm.controls['nextExaminationDate'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+      </div>
+      <div class="alert alert-warning" role="alert">
+        {{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.AFTER" |translate}}
+      </div>
+    </div>
+
+
+
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.VEHICLE" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <select class="form-control"  formControlName="vehicle" >
+          <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle"> {{getVehicleShortInformation(vehicle)}}</option>
+        </select>
+      </div>
+      <div *ngIf="technicalExaminationForm.controls['vehicle'].errors" class="alert-danger">
+        <div *ngIf="technicalExaminationForm.controls['vehicle'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+      </div>
+    </div>
+
+
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.COMMENT" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <label class="textarea--label--container">
+          <textarea class="form-control" rows="4" formControlName="comment"></textarea>
+        </label>
+      </div>
+      <div *ngIf="technicalExaminationForm.controls['comment'].errors" class="alert-danger">
+        <div *ngIf="technicalExaminationForm.controls['comment'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="technicalExaminationForm.controls['comment'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success" [disabled]="!this.technicalExaminationForm.valid">
+        <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
+      <button type="button" class="btn btn-danger" (click)="onCancelPress()">
+        <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
+    </div>
+  </form>
+</div>
