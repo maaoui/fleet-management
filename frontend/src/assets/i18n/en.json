@@ -36,6 +36,7 @@
     "INSURANCE_INFO": "Insurance",
     "DEPARTMENTS": "Departments",
     "WORKSHOPS": "Workshops",
+    "TECHNICAL_EXAMINATION": "Technical Examination",
     "MODALS": {
       "EDIT_TITLE": "Edit Vehicle",
       "VALIDATION": {
