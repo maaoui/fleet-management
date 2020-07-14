@@ -21,6 +21,11 @@ public interface TechnicalExaminationRepository extends JpaRepository<TechnicalE
     @Query("SELECT t from TechnicalExamination t WHERE t.vehicle.id =:vehicleId ORDER BY t.nextExaminationDate")
     public List<TechnicalExamination> findAllByVehicleId(Long vehicleId);
 
-    @Query("SELECT t from TechnicalExamination t WHERE t.nextExaminationDate BETWEEN :startDate AND :endDate")
-    public List<TechnicalExamination> findAllBetweenDates(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+    @Query(value = "select * from technical_examination t1 " +
+            "inner join (select max(examination_date) examination_date, vehicle_id from technical_examination group by vehicle_id ) t2  " +
+            "on t1.vehicle_id = t2.vehicle_id and t1.examination_date = t2.examination_date where next_examination_date < :endDate",
+            nativeQuery = true)
+    public List<TechnicalExamination> findAllWhereNextExaminationDateInTwoWeeks(@Param("endDate") Date endDate);
+
+
 }

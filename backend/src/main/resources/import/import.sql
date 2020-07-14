@@ -211,7 +211,8 @@ VALUES (1, 'Technical examination 1', 100000, CURRENT_TIMESTAMP - interval '2 ye
        (5, 'Technical examination 5', 170000, CURRENT_TIMESTAMP - interval '1 year', CURRENT_TIMESTAMP, 2),
        (6, 'Technical examination 6', 230000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + interval '1 year', 2),
        (7, 'Technical examination 7', 230000, CURRENT_TIMESTAMP - interval '1 year' + interval '5 days', CURRENT_TIMESTAMP + interval '5 days', 2),
-       (8, 'Technical examination 8', 235000, CURRENT_TIMESTAMP - interval '1 year'+ interval '5 days', CURRENT_TIMESTAMP + interval '5 days', 3);
+       (8, 'Technical examination 8', 235000, CURRENT_TIMESTAMP - interval '1 year'+ interval '5 days', CURRENT_TIMESTAMP + interval '5 days', 3),
+       (9, 'Technical examination 8', 235000, CURRENT_TIMESTAMP + interval '4 days', CURRENT_TIMESTAMP + interval '1 year' + interval '4 days', 3);
 -- Updates for VEHICLE
 UPDATE VEHICLE
 SET EXPLOATATION_REPORT_ID = 1,

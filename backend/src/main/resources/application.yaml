@@ -38,6 +38,6 @@ jwt:
 #Scheduled Jobs
 jobs:
   send_expiration_emails:
-    enabled: true
+    enabled: false
     cron: 0 30 8 ? * MON-FRI
     sender_address: fleetmanagement.kb@gmail.com

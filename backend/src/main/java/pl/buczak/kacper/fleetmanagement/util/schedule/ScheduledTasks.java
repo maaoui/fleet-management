@@ -37,7 +37,7 @@ public class ScheduledTasks {
             Date endDate = new Date();
             endDate.setTime(startDate.getTime() + TIME_INTERVAL_BETWEEN_DATES_MILLISECONDS);
             technicalExaminationRepository
-                    .findAllBetweenDates(startDate, endDate)
+                    .findAllWhereNextExaminationDateInTwoWeeks(endDate)
                     .stream()
                     .forEach(technicalExamination -> {
                         emailService.sendIncomingTechnicalExaminationEmail(technicalExamination.getVehicle().getCurrentEmployee(), technicalExamination);
