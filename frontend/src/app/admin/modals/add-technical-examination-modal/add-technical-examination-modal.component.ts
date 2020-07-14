@@ -6,6 +6,9 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {VehicleService} from '../../../shared/service/vehicle/vehicle.service';
 import {TechnicalExaminationService} from '../../../shared/service/vehicle/technical-examination.service';
 import {TechnicalExaminationValidatorConstants} from '../../../core/constants/validator-constants';
+import {OtherExpenseService} from '../../../shared/service/exploitation/expense/other-expense.service';
+import {OtherExpense} from '../../../shared/model/expense/other-expense';
+import {ExaminationExpenseConstants} from '../../../core/constants/examination-expense-constants';
 
 @Component({
   selector: 'app-add-technical-examination-modal',
@@ -19,10 +22,12 @@ export class AddTechnicalExaminationModalComponent implements OnInit {
   private vehicles: Vehicle[];
   private technicalExaminationForm: FormGroup;
   private technicalExamination: TechnicalExamination;
+  private saveAsOtherExpense = false;
 
   constructor(public activeModal: NgbActiveModal,
               private technicalExaminationService: TechnicalExaminationService,
-              private vehicleService: VehicleService
+              private vehicleService: VehicleService,
+              private otherExpenseService: OtherExpenseService
   ) {
   }
 
@@ -42,6 +47,9 @@ export class AddTechnicalExaminationModalComponent implements OnInit {
     this.technicalExaminationService
       .createTechnicalExamination(technicalExamination)
       .subscribe((updatedTechnicalExamination: TechnicalExamination) => {
+          if (this.saveAsOtherExpense) {
+            this.saveUpdatedTechnicalExaminationAsOtherExpense(updatedTechnicalExamination);
+          }
           this.postTechnicalExaminationEmitter.emit(updatedTechnicalExamination);
           this.activeModal.close();
         },
@@ -53,6 +61,25 @@ export class AddTechnicalExaminationModalComponent implements OnInit {
 
   onCancelPress() {
     this.activeModal.close();
+  }
+
+  onSaveExpenseSelect(saveAsOtherExpense: boolean) {
+    this.saveAsOtherExpense = saveAsOtherExpense;
+  }
+
+  private saveUpdatedTechnicalExaminationAsOtherExpense(technicalExamination: TechnicalExamination) {
+    const otherExpense = new OtherExpense({
+      id: 0,
+      value: ExaminationExpenseConstants.getExpenseConstFromFuelType(technicalExamination.vehicle.fuelType),
+      currency: 'PLN',
+      date: technicalExamination.examinationDate,
+      comment: technicalExamination.comment,
+      currentKilometrage: technicalExamination.currentKilometrage,
+      itemCount: 1
+    });
+    this.otherExpenseService
+      .createOtherExpense(technicalExamination.vehicle.id, otherExpense)
+      .subscribe();
   }
 
   private initializeData() {
@@ -88,6 +115,6 @@ export class AddTechnicalExaminationModalComponent implements OnInit {
   }
 
   getVehicleShortInformation(vehicle: Vehicle) {
-    return `${vehicle.make} ${vehicle.model} - [${vehicle.plateNumber}]`
+    return `${vehicle.make} ${vehicle.model} - [${vehicle.plateNumber}]`;
   }
 }

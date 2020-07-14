@@ -145,7 +145,8 @@
         "NEXT_EXAMINATION_DATE": "Next examination date",
         "COMMENT": "Comment",
         "VEHICLE": "Vehicle",
-        "AFTER": "Next examination date has to be after last examination date"
+        "AFTER": "Next examination date has to be after last examination date",
+        "SAVE_AS_EXPENSE": "Do you want to save this examination as an Expense?"
       }
     }
   },

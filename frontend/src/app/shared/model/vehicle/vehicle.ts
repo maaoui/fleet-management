@@ -1,4 +1,5 @@
 import {Employee} from '../employee/employee';
+import {FuelType} from '../enums/fuel-type.enum';
 
 export interface VehicleAttrs {
   id: number;
@@ -11,6 +12,7 @@ export interface VehicleAttrs {
   yearOfProduction: number;
   weight: number;
   currentEmployee: Employee;
+  fuelType: FuelType;
 }
 
 export class Vehicle {
@@ -25,6 +27,7 @@ export class Vehicle {
     this.yearOfProduction = attrs.yearOfProduction;
     this.weight = attrs.weight;
     this.currentEmployee = attrs.currentEmployee;
+    this.fuelType = attrs.fuelType;
   }
 
   id: number;
@@ -37,4 +40,5 @@ export class Vehicle {
   yearOfProduction: number;
   weight: number;
   currentEmployee: Employee;
+  fuelType: FuelType;
 }

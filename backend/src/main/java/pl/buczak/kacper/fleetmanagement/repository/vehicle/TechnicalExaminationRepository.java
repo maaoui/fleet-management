@@ -15,10 +15,10 @@ import java.util.List;
 @Repository
 public interface TechnicalExaminationRepository extends JpaRepository<TechnicalExamination, Long> {
 
-    @Query("SELECT t from TechnicalExamination t ORDER BY t.nextExaminationDate")
+    @Query("SELECT t from TechnicalExamination t ORDER BY t.nextExaminationDate DESC")
     public List<TechnicalExamination> findAllSortedByDate();
 
-    @Query("SELECT t from TechnicalExamination t WHERE t.vehicle.id =:vehicleId ORDER BY t.nextExaminationDate")
+    @Query("SELECT t from TechnicalExamination t WHERE t.vehicle.id =:vehicleId ORDER BY t.nextExaminationDate DESC")
     public List<TechnicalExamination> findAllByVehicleId(Long vehicleId);
 
     @Query(value = "select * from technical_examination t1 " +

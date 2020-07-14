@@ -4,6 +4,7 @@ import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.ExploatationReportDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.insurance.InsuranceDTO;
+import pl.buczak.kacper.fleetmanagement.util.enums.FuelType;
 
 import javax.validation.constraints.*;
 import java.util.Date;
@@ -30,6 +31,9 @@ public class VehicleFullDTO extends BaseDTO {
     @NotBlank
     @Size(max = 20)
     private String VIN;
+
+    @NotBlank
+    private FuelType fuelType;
 
     @NotBlank
     @Size(max = 30)
@@ -153,5 +157,13 @@ public class VehicleFullDTO extends BaseDTO {
 
     public void setHorsePower(Double horsePower) {
         this.horsePower = horsePower;
+    }
+
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
     }
 }

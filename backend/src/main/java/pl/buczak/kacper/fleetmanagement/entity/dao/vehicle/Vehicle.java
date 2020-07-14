@@ -4,6 +4,7 @@ import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.employee.Employee;
 import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
 import pl.buczak.kacper.fleetmanagement.entity.dao.insurance.Insurance;
+import pl.buczak.kacper.fleetmanagement.util.enums.FuelType;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -28,7 +29,7 @@ public class Vehicle extends BaseEntity {
     @OneToOne(cascade = CascadeType.REMOVE)
     private Employee currentEmployee;
 
-    @OneToMany(cascade = CascadeType.REMOVE,mappedBy = "vehicle")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "vehicle")
     private List<TechnicalExamination> technicalExaminationList;
 
     @Size(max = 10)
@@ -38,6 +39,9 @@ public class Vehicle extends BaseEntity {
     @Size(max = 20)
     @Column(nullable = false, name = "vin")
     private String VIN;
+
+    @Column(nullable = false, name = "fuelType")
+    private FuelType fuelType;
 
     @Size(max = 30)
     @Column(nullable = false, name = "make")
@@ -162,5 +166,13 @@ public class Vehicle extends BaseEntity {
 
     public void setHorsePower(Double horsePower) {
         this.horsePower = horsePower;
+    }
+
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
     }
 }

@@ -129,17 +129,17 @@ VALUES (1, 1),
        (10, 2);
 -- Inserts for VEHICLE Table
 INSERT INTO VEHICLE (ID, VIN, FIRST_REGISTRATION_DATE, HORSE_POWER, MAKE, MODEL, PLATE_NUMBER, WEIGHT,
-                     YEAR_OF_PRODUCTION, INSURANCE_ID)
-VALUES (1, 'KL1NF48J7JK00000', CURRENT_TIMESTAMP, 171, 'Opel', 'Insignia', 'WW 00001', 1851, 2016, NULL),
-       (2, 'KL1NF48J7JK00002', CURRENT_TIMESTAMP, 172, 'Opel', 'Insignia', 'WW 00002', 1852, 2016, NULL),
-       (3, 'KL1NF48J7JK00003', CURRENT_TIMESTAMP, 173, 'Opel', 'Insignia', 'WW 00003', 1853, 2016, NULL),
-       (4, 'KL1NF48J7JK00004', CURRENT_TIMESTAMP, 174, 'Opel', 'Insignia', 'WW 00004', 1854, 2016, NULL),
-       (5, 'KL1NF48J7JK00005', CURRENT_TIMESTAMP, 175, 'Opel', 'Insignia', 'WW 00005', 1855, 2016, NULL),
-       (6, 'KL1NF48J7JK00006', CURRENT_TIMESTAMP, 176, 'Opel', 'Insignia', 'WW 00006', 1856, 2016, NULL),
-       (7, 'KL1NF48J7JK00007', CURRENT_TIMESTAMP, 177, 'Opel', 'Insignia', 'WW 00007', 1857, 2016, NULL),
-       (8, 'KL1NF48J7JK00008', CURRENT_TIMESTAMP, 178, 'Opel', 'Insignia', 'WW 00008', 1858, 2016, NULL),
-       (9, 'KL1NF48J7JK00009', CURRENT_TIMESTAMP, 179, 'Opel', 'Insignia', 'WW 00009', 1859, 2016, NULL),
-       (10, 'KL1NF48J7JK00010', CURRENT_TIMESTAMP, 180, 'Opel', 'Insignia', 'WW 00010', 1860, 2016, NULL);
+                     YEAR_OF_PRODUCTION, INSURANCE_ID, FUEL_TYPE)
+VALUES (1, 'KL1NF48J7JK00000', CURRENT_TIMESTAMP, 171, 'Opel', 'Insignia', 'WW 00001', 1851, 2016, NULL, 1),
+       (2, 'KL1NF48J7JK00002', CURRENT_TIMESTAMP, 172, 'Opel', 'Insignia', 'WW 00002', 1852, 2016, NULL, 1),
+       (3, 'KL1NF48J7JK00003', CURRENT_TIMESTAMP, 173, 'Opel', 'Insignia', 'WW 00003', 1853, 2016, NULL, 1),
+       (4, 'KL1NF48J7JK00004', CURRENT_TIMESTAMP, 174, 'Opel', 'Insignia', 'WW 00004', 1854, 2016, NULL, 1),
+       (5, 'KL1NF48J7JK00005', CURRENT_TIMESTAMP, 175, 'Opel', 'Insignia', 'WW 00005', 1855, 2016, NULL, 1),
+       (6, 'KL1NF48J7JK00006', CURRENT_TIMESTAMP, 176, 'Opel', 'Insignia', 'WW 00006', 1856, 2016, NULL, 1),
+       (7, 'KL1NF48J7JK00007', CURRENT_TIMESTAMP, 177, 'Opel', 'Insignia', 'WW 00007', 1857, 2016, NULL, 1),
+       (8, 'KL1NF48J7JK00008', CURRENT_TIMESTAMP, 178, 'Opel', 'Insignia', 'WW 00008', 1858, 2016, NULL, 1),
+       (9, 'KL1NF48J7JK00009', CURRENT_TIMESTAMP, 179, 'Opel', 'Insignia', 'WW 00009', 1859, 2016, NULL, 1),
+       (10, 'KL1NF48J7JK00010', CURRENT_TIMESTAMP, 180, 'Opel', 'Insignia', 'WW 00010', 1860, 2016, NULL, 1);
 -- Inserts for EXPLOATATION_REPORT Table
 INSERT INTO EXPLOATATION_REPORT (ID, VEHICLE_ID)
 VALUES (1, 1),
@@ -210,9 +210,12 @@ VALUES (1, 'Technical examination 1', 100000, CURRENT_TIMESTAMP - interval '2 ye
         CURRENT_TIMESTAMP - interval '1 year', 2),
        (5, 'Technical examination 5', 170000, CURRENT_TIMESTAMP - interval '1 year', CURRENT_TIMESTAMP, 2),
        (6, 'Technical examination 6', 230000, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + interval '1 year', 2),
-       (7, 'Technical examination 7', 230000, CURRENT_TIMESTAMP - interval '1 year' + interval '5 days', CURRENT_TIMESTAMP + interval '5 days', 2),
-       (8, 'Technical examination 8', 235000, CURRENT_TIMESTAMP - interval '1 year'+ interval '5 days', CURRENT_TIMESTAMP + interval '5 days', 3),
-       (9, 'Technical examination 8', 235000, CURRENT_TIMESTAMP + interval '4 days', CURRENT_TIMESTAMP + interval '1 year' + interval '4 days', 3);
+       (7, 'Technical examination 7', 230000, CURRENT_TIMESTAMP - interval '1 year' + interval '5 days',
+        CURRENT_TIMESTAMP + interval '5 days', 2),
+       (8, 'Technical examination 8', 235000, CURRENT_TIMESTAMP - interval '1 year' + interval '5 days',
+        CURRENT_TIMESTAMP + interval '5 days', 3),
+       (9, 'Technical examination 8', 235000, CURRENT_TIMESTAMP + interval '4 days',
+        CURRENT_TIMESTAMP + interval '1 year' + interval '4 days', 3);
 -- Updates for VEHICLE
 UPDATE VEHICLE
 SET EXPLOATATION_REPORT_ID = 1,

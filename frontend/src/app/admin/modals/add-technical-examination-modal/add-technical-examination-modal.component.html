@@ -71,14 +71,12 @@
     </div>
 
 
-
-
     <div>
       <p class="list-group-item-text">
         <b>{{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.VEHICLE" | translate}}:</b>
       </p>
       <div class="form-group">
-        <select class="form-control"  formControlName="vehicle" >
+        <select class="form-control" formControlName="vehicle">
           <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle"> {{getVehicleShortInformation(vehicle)}}</option>
         </select>
       </div>
@@ -89,7 +87,6 @@
         </div>
       </div>
     </div>
-
 
 
     <div>
@@ -110,6 +107,18 @@
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
           {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
         </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_TECHNICAL_EXAMINATION.SAVE_AS_EXPENSE" | translate}}:</b>
+      </p>
+      <div class="form-group form-check">
+        <select class="form-control">
+          <option [value]="true" (click)="onSaveExpenseSelect(true)">{{"UNIVERSAL.YES" | translate}}</option>
+          <option [value]="false" (click)="onSaveExpenseSelect(false)">{{"UNIVERSAL.NO" | translate}}</option>
+        </select>
       </div>
     </div>
 

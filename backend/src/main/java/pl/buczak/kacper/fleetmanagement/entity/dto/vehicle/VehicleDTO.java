@@ -2,6 +2,7 @@ package pl.buczak.kacper.fleetmanagement.entity.dto.vehicle;
 
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
+import pl.buczak.kacper.fleetmanagement.util.enums.FuelType;
 
 import javax.validation.constraints.*;
 import java.util.Date;
@@ -26,6 +27,9 @@ public class VehicleDTO extends BaseDTO {
     private String make;
 
     @NotBlank
+    private FuelType fuelType;
+
+    @NotBlank
     @Size(max = 30)
     private String model;
 
@@ -48,6 +52,14 @@ public class VehicleDTO extends BaseDTO {
 
     public EmployeeDTO getCurrentEmployee() {
         return currentEmployee;
+    }
+
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
     }
 
     public void setCurrentEmployee(EmployeeDTO currentEmployee) {
