@@ -46,6 +46,6 @@ export class AdminTechnicalExaminationComponent implements OnInit {
   private initializeTechnicalExaminations() {
     this.technicalExaminationService
       .getAllTechnicalExaminations()
-      .subscribe((technicalExaminations: TechnicalExamination[]) => this.technicalExaminations = [...technicalExaminations]);
+      .subscribe((technicalExaminations: TechnicalExamination[]) => this.technicalExaminations =  technicalExaminations);
   }
 }

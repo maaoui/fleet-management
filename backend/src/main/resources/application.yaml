@@ -1,0 +1,43 @@
+# Spring
+spring:
+  profiles:
+    active: "dev"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fleet_database_dev
+    username: fleet_developer
+    password: u5HA(c}RH{P[s"g.dzTCv7mZ#@;BA)qK
+    initialization-mode: always
+    data: classpath*:import/import.sql
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: fleetmanagement.kb@gmail.com
+    password: 9yKN2HykadB4rWj
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+#Server
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+#JWT
+jwt:
+  secretKey: YiCj%7D7k*9;g7W,^J$9!fm}BdmH{]qwwS(n#Y)Q!7WZD6fIW|M[<a^/atlwC/a^!@NQW
+#Scheduled Jobs
+jobs:
+  send_expiration_emails:
+    enabled: true
+    cron: 0 30 8 ? * MON-FRI
+    sender_address: fleetmanagement.kb@gmail.com
