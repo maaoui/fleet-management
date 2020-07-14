@@ -34,10 +34,11 @@ import { WorkshopEditingModalComponent } from './modals/workshop-editing-modal/w
 import { AdminTechnicalExaminationComponent } from './admin-technical-examination/admin-technical-examination.component';
 import { DeleteTechnicalExaminationModalComponent } from './modals/delete-technical-examination-modal/delete-technical-examination-modal.component';
 import { AddTechnicalExaminationModalComponent } from './modals/add-technical-examination-modal/add-technical-examination-modal.component';
+import { AdminEmployeesComponent } from './admin-employees/admin-employees.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent, AdminDepartmentsComponent, DepartmentEmployeeListComponent, EditDepartmentModalComponent, AddDepartmentModalComponent, DeleteDepartmentModalComponent, AdminWorkshopsComponent, WorkshopEditingModalComponent, AdminTechnicalExaminationComponent, DeleteTechnicalExaminationModalComponent, AddTechnicalExaminationModalComponent],
+  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent, AdminDepartmentsComponent, DepartmentEmployeeListComponent, EditDepartmentModalComponent, AddDepartmentModalComponent, DeleteDepartmentModalComponent, AdminWorkshopsComponent, WorkshopEditingModalComponent, AdminTechnicalExaminationComponent, DeleteTechnicalExaminationModalComponent, AddTechnicalExaminationModalComponent, AdminEmployeesComponent],
   exports: [
     AdminViewComponent
   ],

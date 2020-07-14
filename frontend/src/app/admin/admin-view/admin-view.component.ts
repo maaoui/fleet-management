@@ -4,6 +4,7 @@ import {AdminExpensesComponent} from '../admin-expenses/admin-expenses.component
 import {AdminDepartmentsComponent} from '../admin-departments/admin-departments.component';
 import {AdminWorkshopsComponent} from '../admin-workshops/admin-workshops.component';
 import {AdminTechnicalExaminationComponent} from '../admin-technical-examination/admin-technical-examination.component';
+import {AdminEmployeesComponent} from '../admin-employees/admin-employees.component';
 
 @Component({
   selector: 'app-admin-view',
@@ -45,6 +46,12 @@ export class AdminViewComponent implements OnInit {
     this.createComponent(this.getAdminTechnicalExaminationComponent());
   }
 
+  createAdminEmployeesComponent() {
+    this.destroyCurrentComponent();
+    this.createComponent(this.getAdminEmployeesComponent());
+
+  }
+
   createComponent(componentRef: ComponentFactory<any>): void {
     this.currentComponent = this.viewContainerRef.createComponent(componentRef);
     this.currentComponent.changeDetectorRef.detectChanges();
@@ -74,5 +81,9 @@ export class AdminViewComponent implements OnInit {
 
   private getAdminTechnicalExaminationComponent(): ComponentFactory<AdminTechnicalExaminationComponent> {
     return this.componentFactoryResolver.resolveComponentFactory(AdminTechnicalExaminationComponent);
+  }
+
+  private getAdminEmployeesComponent(): ComponentFactory<AdminEmployeesComponent> {
+    return this.componentFactoryResolver.resolveComponentFactory(AdminEmployeesComponent);
   }
 }
