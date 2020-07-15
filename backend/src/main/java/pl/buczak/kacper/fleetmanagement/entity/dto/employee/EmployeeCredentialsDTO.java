@@ -3,13 +3,12 @@ package pl.buczak.kacper.fleetmanagement.entity.dto.employee;
 import pl.buczak.kacper.fleetmanagement.entity.dto.BaseDTO;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /*
     @author Kacper Buczak 
 */
-public class EmployeeDTO extends BaseDTO {
+public class EmployeeCredentialsDTO extends BaseDTO {
 
     @NotBlank
     @Size(max = 30)
@@ -23,15 +22,8 @@ public class EmployeeDTO extends BaseDTO {
     @Size(max = 30)
     private String email;
 
-    @NotBlank
-    @Size(max = 20)
-    @Pattern(regexp = "[1-9][0-9]{8}")
-    private String phoneNumber;
-
-    private boolean enabled;
-
-    public EmployeeDTO() {
-    }
+    @Size(min = 6, max = 128)
+    private String password;
 
     public String getFirstName() {
         return firstName;
@@ -57,19 +49,11 @@ public class EmployeeDTO extends BaseDTO {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

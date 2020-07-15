@@ -35,7 +35,9 @@ public class Employee extends BaseEntity {
     @Pattern(regexp = "[1-9][0-9]{8}")
     private String phoneNumber;
 
+    @Size(min = 6, max = 128)
     private String password;
+
     private boolean enabled;
     private boolean tokenExpired;
     @ManyToMany

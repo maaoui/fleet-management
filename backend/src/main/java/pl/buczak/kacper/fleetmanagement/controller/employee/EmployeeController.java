@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeCredentialsDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeFullDTO;
 import pl.buczak.kacper.fleetmanagement.service.employee.EmployeeService;
@@ -46,14 +47,28 @@ public class EmployeeController {
                 .body(employeeService.findFullDTOById(employeeId));
     }
 
-    @PostMapping(value = "/employee/enable/{id}")
+    @PostMapping(value = "/employees")
+    public ResponseEntity<EmployeeFullDTO> createEmployee(@RequestBody EmployeeFullDTO employeeFullDTO) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(employeeService.createEmployee(employeeFullDTO));
+    }
+
+    @PostMapping(value = "/employee/{id}/credentials")
+    public ResponseEntity<EmployeeFullDTO> changeCredentials(@NotBlank @PathVariable("id") Long employeeId, @RequestBody EmployeeCredentialsDTO employeeCredentialsDTO) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(employeeService.changeCredentials(employeeId, employeeCredentialsDTO));
+    }
+
+    @PostMapping(value = "/employees/enable/{id}")
     public ResponseEntity<EmployeeFullDTO> enableEmployeeById(@NotBlank @PathVariable("id") Long employeeId) {
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
                 .body(employeeService.setActive(employeeId, true));
     }
 
-    @PostMapping(value = "/employee/disable/{id}")
+    @PostMapping(value = "/employees/disable/{id}")
     public ResponseEntity<EmployeeFullDTO> disableEmployeeById(@NotBlank @PathVariable("id") Long employeeId) {
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)

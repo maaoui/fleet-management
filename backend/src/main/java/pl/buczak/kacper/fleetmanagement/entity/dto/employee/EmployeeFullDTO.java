@@ -33,6 +33,8 @@ public class EmployeeFullDTO extends BaseDTO {
     @Pattern(regexp = "[1-9][0-9]{8}")
     private String phoneNumber;
 
+    private boolean enabled;
+
     public EmployeeFullDTO() {
     }
 
@@ -74,5 +76,13 @@ public class EmployeeFullDTO extends BaseDTO {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
