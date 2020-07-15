@@ -4,9 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.buczak.kacper.fleetmanagement.entity.dao.employee.Employee;
-import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeCredentialsDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeFullDTO;
+import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeWithCredentialsDTO;
 import pl.buczak.kacper.fleetmanagement.repository.employee.EmployeeRepository;
 import pl.buczak.kacper.fleetmanagement.repository.employee.RoleRepository;
 
@@ -22,7 +22,6 @@ public class EmployeeService {
     private RoleRepository roleRepository;
     private ModelMapper modelMapper;
     private PasswordEncoder passwordEncoder;
-    private static final String DEFAULT_PASSWORD = "default";
 
     public EmployeeService(EmployeeRepository employeeRepository, RoleRepository roleRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.employeeRepository = employeeRepository;
@@ -54,32 +53,21 @@ public class EmployeeService {
                 .get();
     }
 
-    public EmployeeFullDTO createEmployee(EmployeeFullDTO employeeFullDTO) {
+    public EmployeeWithCredentialsDTO createEmployee(EmployeeWithCredentialsDTO employeeWithCredentialsDTO) {
         Employee employee = new Employee();
-        modelMapper.map(employeeFullDTO, employee);
+        modelMapper.map(employeeWithCredentialsDTO, employee);
         employee.setEnabled(true);
         employee.setTokenExpired(true);
-        employee.setPassword(passwordEncoder.encode(DEFAULT_PASSWORD));
+        employee.setPassword(encodePassword(employeeWithCredentialsDTO.getPassword()));
         employee.setRoles(null);
-        return this.entityToFullDTO(this.employeeRepository.save(employee));
+        return this.entityToDTOWithCredentials(this.employeeRepository.save(employee));
     }
 
-    public EmployeeFullDTO changeCredentials(Long employeeId, EmployeeCredentialsDTO employeeCredentialsDTO) {
+    public EmployeeWithCredentialsDTO changeCredentials(Long employeeId, EmployeeWithCredentialsDTO employeeWithCredentialsDTO) {
         Employee employeeToEdit = this.employeeRepository.getOne(employeeId);
-        employeeToEdit.setPassword(passwordEncoder.encode(employeeCredentialsDTO.getPassword()));
-        return this.entityToFullDTO(this.employeeRepository.save(employeeToEdit));
+        employeeToEdit.setPassword(encodePassword(employeeWithCredentialsDTO.getPassword()));
+        return this.entityToDTOWithCredentials(this.employeeRepository.save(employeeToEdit));
     }
-
-    private EmployeeDTO entityToSimpleDTO(Employee employee) {
-        EmployeeDTO employeeDTO = modelMapper.map(employee, EmployeeDTO.class);
-        return employeeDTO;
-    }
-
-    private EmployeeFullDTO entityToFullDTO(Employee employee) {
-        EmployeeFullDTO employeeDTO = modelMapper.map(employee, EmployeeFullDTO.class);
-        return employeeDTO;
-    }
-
 
     public EmployeeFullDTO setActive(Long employeeId, boolean active) {
         Employee employee = employeeRepository.getOne(employeeId);
@@ -87,5 +75,19 @@ public class EmployeeService {
         return entityToFullDTO(employeeRepository.save(employee));
     }
 
+    private String encodePassword(String passwordToEncode) {
+        return passwordEncoder.encode(passwordToEncode);
+    }
 
+    private EmployeeDTO entityToSimpleDTO(Employee employee) {
+        return modelMapper.map(employee, EmployeeDTO.class);
+    }
+
+    private EmployeeFullDTO entityToFullDTO(Employee employee) {
+        return modelMapper.map(employee, EmployeeFullDTO.class);
+    }
+
+    private EmployeeWithCredentialsDTO entityToDTOWithCredentials(Employee employee) {
+        return modelMapper.map(employee, EmployeeWithCredentialsDTO.class);
+    }
 }

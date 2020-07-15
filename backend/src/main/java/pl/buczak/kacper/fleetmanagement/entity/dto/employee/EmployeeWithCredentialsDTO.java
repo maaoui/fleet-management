@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 /*
     @author Kacper Buczak 
 */
-public class EmployeeCredentialsDTO extends BaseDTO {
+public class EmployeeWithCredentialsDTO extends BaseDTO {
 
     @NotBlank
     @Size(max = 30)
