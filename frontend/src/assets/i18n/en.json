@@ -148,6 +148,15 @@
         "VEHICLE": "Vehicle",
         "AFTER": "Next examination date has to be after last examination date",
         "SAVE_AS_EXPENSE": "Do you want to save this examination as an Expense?"
+      },
+      "ADD_EMPLOYEE": {
+        "TITLE": "Add employee",
+        "FIRST_NAME": "First name",
+        "LAST_NAME": "Last name",
+        "PHONE_NUMBER": "Phone number",
+        "EMAIL_ADDRESS": "Email address",
+        "PASSWORD": "Password",
+        "DEPARTMENT": "Department"
       }
     }
   },

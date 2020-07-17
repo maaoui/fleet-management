@@ -1,0 +1,127 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{"ADMIN_VIEW.MODALS.ADD_EMPLOYEE.TITLE" | translate}}</h3>
+</div>
+<div class="modal-body">
+  <form [formGroup]="employeeForm" class="form-signin" (ngSubmit)="onSavePress()" autocomplete="off">
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_EMPLOYEE.FIRST_NAME" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="firstName" type="text" class="form-control" name="firstName"/>
+      </div>
+      <div *ngIf="employeeForm.controls['firstName'].errors" class="alert-danger">
+        <div *ngIf="employeeForm.controls['firstName'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="employeeForm.controls['firstName'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_EMPLOYEE.LAST_NAME" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="lastName" type="text" class="form-control" name="lastName"/>
+      </div>
+      <div *ngIf="employeeForm.controls['lastName'].errors" class="alert-danger">
+        <div *ngIf="employeeForm.controls['lastName'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="employeeForm.controls['lastName'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_EMPLOYEE.PHONE_NUMBER" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="phoneNumber" type="number" class="form-control" name="phoneNumber"
+               placeholder="693 999 666"/>
+      </div>
+      <div *ngIf="employeeForm.controls['phoneNumber'].errors" class="alert-danger">
+        <div *ngIf="employeeForm.controls['phoneNumber'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="employeeForm.controls['phoneNumber'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+        <div *ngIf="employeeForm.controls['phoneNumber'].errors.pattern">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.INVALID_PATTERN" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_EMPLOYEE.EMAIL_ADDRESS" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="email" type="text" class="form-control" name="email"/>
+      </div>
+      <div *ngIf="employeeForm.controls['email'].errors" class="alert-danger">
+        <div *ngIf="employeeForm.controls['email'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="employeeForm.controls['email'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_EMPLOYEE.PASSWORD" | translate}}:</b>
+      </p>
+      <div class="form-group">
+        <input formControlName="password" type="password" class="form-control" name="password"/>
+      </div>
+      <div *ngIf="employeeForm.controls['password'].errors" class="alert-danger">
+        <div *ngIf="employeeForm.controls['password'].errors.required">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.REQUIRED" | translate }}
+        </div>
+        <div *ngIf="employeeForm.controls['password'].errors.minlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_LENGTH" | translate }}
+        </div>
+        <div *ngIf="employeeForm.controls['password'].errors.maxlength">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_LENGTH" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="list-group-item-text">
+        <b>{{"ADMIN_VIEW.MODALS.ADD_EMPLOYEE.DEPARTMENT" | translate}}:</b>
+      </p>
+      <select class="custom-select form-control" formControlName="department" name="department">
+        <option *ngFor="let department of departments" [ngValue]="department"> {{department.departmentName}}</option>
+      </select>
+    </div>
+
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success" [disabled]="!this.employeeForm.valid">
+        <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
+      <button type="button" class="btn btn-danger" (click)="onCancelPress()">
+        <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
+    </div>
+  </form>
+</div>

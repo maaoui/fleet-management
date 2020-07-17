@@ -39,5 +39,15 @@ export class VehicleValidatorConstants {
 export class TechnicalExaminationValidatorConstants {
   public static readonly MIN_CURRENT_KILOMETRAGE: number = 1;
   public static readonly MAX_COMMENT_LENGTH: number = 512;
+}
+
+export class EmployeeValidatorConstants {
+  public static readonly FIRST_NAME_MAX_LENGTH: number = 30;
+  public static readonly LAST_NAME_MAX_LENGTH: number = 30;
+  public static readonly EMAIL_MAX_LENGTH: number = 30;
+  public static readonly PHONE_NUMBER_MAX_LENGTH: number = 20;
+  public static readonly PHONE_NUMBER_PATTERN: string = '[1-9][0-9]{8}';
+  public static readonly PASSWORD_MIN_LENGTH: number = 6;
+  public static readonly PASSWORD_MAX_LENGTH: number = 128;
 
 }

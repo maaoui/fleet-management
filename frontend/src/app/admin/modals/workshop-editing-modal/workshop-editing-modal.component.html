@@ -40,7 +40,7 @@
         <b>{{"ADMIN_VIEW.MODALS.WORKSHOP_EDITING_MODAL.PHONE_NUMBER" | translate}}:</b>
       </p>
       <div class="form-group">
-        <input formControlName="phoneNumber" type="text" class="form-control" name="phoneNumber" placeholder="+48 693 999 999"/>
+        <input formControlName="phoneNumber" type="text" class="form-control" name="phoneNumber" placeholder="693 999 999"/>
       </div>
       <div *ngIf="workshopForm.controls.email.invalid" class="alert-danger">
         <div *ngIf="workshopForm.controls['phoneNumber'].errors.maxlength">

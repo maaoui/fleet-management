@@ -46,7 +46,6 @@ export class AddFuelExpenseModalComponent implements OnInit {
           // TODO Handle error message
         }
       );
-
   }
 
   private initializeFormGroup() {

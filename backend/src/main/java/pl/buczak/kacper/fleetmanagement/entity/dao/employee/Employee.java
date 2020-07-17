@@ -27,7 +27,7 @@ public class Employee extends BaseEntity {
     private String lastName;
 
     @Size(max = 30)
-    @Column(nullable = false, name = "email")
+    @Column(nullable = false, name = "email", unique = true)
     private String email;
 
     @Size(max = 20)

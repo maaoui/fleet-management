@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Employee} from '../../shared/model/employee/employee';
 import {EmployeeService} from '../../shared/service/employee/employee.service';
+import {Constraint} from '../../shared/constraints/constraint';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AddEmployeeModalComponent} from '../modals/add-employee-modal/add-employee-modal.component';
 
 @Component({
   selector: 'app-admin-employees',
@@ -11,7 +14,7 @@ export class AdminEmployeesComponent implements OnInit {
 
   private employees: Employee[];
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -45,6 +48,7 @@ export class AdminEmployeesComponent implements OnInit {
   }
 
   openAddEmployeeModal() {
-
+    const modalRef = this.modalService.open(AddEmployeeModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.employeeEventEmitter.subscribe(() => this.initializeEmployees());
   }
 }
