@@ -30,11 +30,11 @@ public class EmployeeService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public List<EmployeeDTO> findEmployeesDTOList() {
+    public List<EmployeeFullDTO> findEmployeesDTOList() {
         return employeeRepository
                 .findAll()
                 .stream()
-                .map(this::entityToSimpleDTO)
+                .map(this::entityToFullDTO)
                 .collect(Collectors.toList());
     }
 

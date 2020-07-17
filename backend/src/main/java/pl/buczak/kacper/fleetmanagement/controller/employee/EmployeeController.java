@@ -27,7 +27,7 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/employees")
-    public ResponseEntity<List<EmployeeDTO>> getEmployeesList() {
+    public ResponseEntity<List<EmployeeFullDTO>> getEmployeesList() {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(employeeService.findEmployeesDTOList());
@@ -72,7 +72,7 @@ public class EmployeeController {
     public ResponseEntity<EmployeeFullDTO> disableEmployeeById(@NotBlank @PathVariable("id") Long employeeId) {
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
-                .body(employeeService.setActive(employeeId, true));
+                .body(employeeService.setActive(employeeId, false));
     }
 }
 

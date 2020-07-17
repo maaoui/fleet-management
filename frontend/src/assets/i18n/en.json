@@ -208,5 +208,17 @@
     "NEXT_EXAMINATION_DATE": "Next examination date",
     "COMMENT": "Comment",
     "TECHNICAL_EXAMINATIONS_NOT_FOUND": "Technical examinations were not found"
+  },
+  "ADMIN_EMPLOYEES": {
+    "EMPLOYEES_NOT_FOUND": "Employees were not found.",
+    "EMPLOYEE": "Employee",
+    "EMAIL": "Email address",
+    "PHONE_NUMBER": "Phone number",
+    "ENABLED": "Enabled",
+    "DEPARTMENT_NAME": "Department name",
+    "DEPARTMENT_REGION": "Department region",
+    "DISABLE": "Disable",
+    "ENABLE": "Enable",
+    "DISABLE_EMPLOYEE": "Disable/Enable Employee"
   }
 }

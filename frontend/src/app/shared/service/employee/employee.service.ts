@@ -16,7 +16,23 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(`${environment.baseAPIPath}${this.getEmployeesPath()}`);
   }
 
+  disableEmployee(id: number): Observable<Employee> {
+    return this.httpClient.post<Employee>(`${environment.baseAPIPath}${this.getDisableEmployeePath(id)}`, {});
+  }
+
+  enableEmployee(id: number): Observable<Employee> {
+    return this.httpClient.post<Employee>(`${environment.baseAPIPath}${this.getEnableEmployeePath(id)}`, {});
+  }
+
   private getEmployeesPath() {
     return `employees`;
+  }
+
+  private getEnableEmployeePath(id: number) {
+    return `employees/enable/${id}`;
+  }
+
+  private getDisableEmployeePath(id: number) {
+    return `employees/disable/${id}`;
   }
 }

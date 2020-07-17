@@ -1,1 +1,44 @@
-<p>admin-employees works!</p>
+<div class="container" *ngIf="employees">
+  <button type="button" class="btn btn-success btn-circle btn-lg float" (click)="openAddEmployeeModal()"><i
+    class="fa fa-plus"></i></button>
+  <div *ngIf="employees.length > 0">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">{{"ADMIN_EMPLOYEES.EMPLOYEE" |translate}}</th>
+        <th scope="col">{{"ADMIN_EMPLOYEES.EMAIL" |translate}}</th>
+        <th scope="col">{{"ADMIN_EMPLOYEES.PHONE_NUMBER" |translate}}</th>
+        <th scope="col">{{"ADMIN_EMPLOYEES.ENABLED" |translate}}</th>
+        <th scope="col">{{"ADMIN_EMPLOYEES.DEPARTMENT_NAME" |translate}}</th>
+        <th scope="col">{{"ADMIN_EMPLOYEES.DEPARTMENT_REGION" |translate}}</th>
+        <th scope="col">{{"ADMIN_EMPLOYEES.DISABLE_EMPLOYEE" |translate}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.firstName}} {{employee.lastName}}</td>
+        <td>{{employee.email}}</td>
+        <td>{{employee.phoneNumber}}</td>
+        <td>{{employee.enabled}}</td>
+        <td>{{employee.department.departmentName}}</td>
+        <td>{{employee.department.region.regionName}}</td>
+        <td *ngIf="employee.enabled">
+          <button class="btn btn-danger" (click)="onDisableEmployee(employee)">
+            {{"ADMIN_EMPLOYEES.DISABLE" |translate}}
+          </button>
+        </td>
+        <td *ngIf="!employee.enabled">
+          <button class="btn btn-success" (click)="onEnableEmployee(employee)">
+            {{"ADMIN_EMPLOYEES.ENABLE" |translate}}
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container" *ngIf="!employees || employees.length <= 0 ">
+  <div class="alert alert-warning" role="alert">
+    {{"ADMIN_EMPLOYEES.EMPLOYEES_NOT_FOUND" |translate}}
+  </div>
+</div>
