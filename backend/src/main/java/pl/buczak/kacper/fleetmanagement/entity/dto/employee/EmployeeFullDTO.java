@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 /*
     @author Kacper Buczak 
@@ -34,6 +35,8 @@ public class EmployeeFullDTO extends BaseDTO {
     private String phoneNumber;
 
     private boolean enabled;
+
+    private List<RoleDTO> roles;
 
     public EmployeeFullDTO() {
     }
@@ -84,5 +87,13 @@ public class EmployeeFullDTO extends BaseDTO {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<RoleDTO> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleDTO> roles) {
+        this.roles = roles;
     }
 }

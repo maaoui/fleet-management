@@ -34,10 +34,10 @@ export class EmployeeService {
   }
 
   private getEnableEmployeePath(id: number) {
-    return `employees/enable/${id}`;
+    return `employee/${id}/enable`;
   }
 
   private getDisableEmployeePath(id: number) {
-    return `employees/disable/${id}`;
+    return `employee/${id}/disable`;
   }
 }

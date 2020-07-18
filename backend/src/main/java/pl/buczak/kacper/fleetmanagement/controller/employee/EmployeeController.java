@@ -8,9 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeWithCredentialsDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeFullDTO;
+import pl.buczak.kacper.fleetmanagement.entity.dto.employee.EmployeeWithCredentialsDTO;
 import pl.buczak.kacper.fleetmanagement.service.employee.EmployeeService;
 
 import javax.validation.constraints.NotBlank;
@@ -47,6 +47,14 @@ public class EmployeeController {
                 .body(employeeService.findFullDTOById(employeeId));
     }
 
+    @PostMapping(value = "/employee/{id}")
+    public ResponseEntity<EmployeeFullDTO> editEmployee(@NotBlank @PathVariable("id") Long employeeId, @RequestBody EmployeeFullDTO employeeFullDTO) {
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)
+                .body(employeeService.editEmployee(employeeId, employeeFullDTO));
+    }
+
+
     @PostMapping(value = "/employees")
     public ResponseEntity<EmployeeWithCredentialsDTO> createEmployee(@RequestBody EmployeeWithCredentialsDTO employeeFullDTO) {
         return ResponseEntity
@@ -61,14 +69,14 @@ public class EmployeeController {
                 .body(employeeService.changeCredentials(employeeId, employeeWithCredentialsDTO));
     }
 
-    @PostMapping(value = "/employees/enable/{id}")
+    @PostMapping(value = "/employee/{id}/enable")
     public ResponseEntity<EmployeeFullDTO> enableEmployeeById(@NotBlank @PathVariable("id") Long employeeId) {
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
                 .body(employeeService.setActive(employeeId, true));
     }
 
-    @PostMapping(value = "/employees/disable/{id}")
+    @PostMapping(value = "/employee/{id}/disable")
     public ResponseEntity<EmployeeFullDTO> disableEmployeeById(@NotBlank @PathVariable("id") Long employeeId) {
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)

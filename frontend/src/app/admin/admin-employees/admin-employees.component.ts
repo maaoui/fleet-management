@@ -51,4 +51,8 @@ export class AdminEmployeesComponent implements OnInit {
     const modalRef = this.modalService.open(AddEmployeeModalComponent, {size: Constraint.MODAL_SIZE_LG});
     modalRef.componentInstance.employeeEventEmitter.subscribe(() => this.initializeEmployees());
   }
+
+  onEditEmployee(employee: Employee) {
+    console.log(employee);
+  }
 }
