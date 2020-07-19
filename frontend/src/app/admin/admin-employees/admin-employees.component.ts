@@ -4,6 +4,7 @@ import {EmployeeService} from '../../shared/service/employee/employee.service';
 import {Constraint} from '../../shared/constraints/constraint';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AddEmployeeModalComponent} from '../modals/add-employee-modal/add-employee-modal.component';
+import {EditEmployeeModalComponent} from '../modals/edit-employee-modal/edit-employee-modal.component';
 
 @Component({
   selector: 'app-admin-employees',
@@ -53,6 +54,10 @@ export class AdminEmployeesComponent implements OnInit {
   }
 
   onEditEmployee(employee: Employee) {
+    const modalRef = this.modalService.open(EditEmployeeModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.employee = {...employee};
+    modalRef.componentInstance.employeeEventEmitter.subscribe(() => this.initializeEmployees());
+
     console.log(employee);
   }
 }

@@ -47,7 +47,7 @@ public class EmployeeController {
                 .body(employeeService.findFullDTOById(employeeId));
     }
 
-    @PostMapping(value = "/employee/{id}")
+    @PutMapping(value = "/employee/{id}")
     public ResponseEntity<EmployeeFullDTO> editEmployee(@NotBlank @PathVariable("id") Long employeeId, @RequestBody EmployeeFullDTO employeeFullDTO) {
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)

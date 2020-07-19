@@ -156,7 +156,9 @@
         "PHONE_NUMBER": "Phone number",
         "EMAIL_ADDRESS": "Email address",
         "PASSWORD": "Password",
-        "DEPARTMENT": "Department"
+        "DEPARTMENT": "Department",
+        "SET_ADMIN": "Set as administrator?",
+        "ENABLED": "Set as enabled?"
       }
     }
   },

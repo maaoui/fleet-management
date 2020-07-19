@@ -21,6 +21,10 @@ export class EmployeeService {
     return this.httpClient.post<EmployeeWithCredentials>(`${environment.baseAPIPath}${this.getEmployeesPath()}`, employeeWithCredentials);
   }
 
+  editEmployee(employee: Employee): Observable<Employee> {
+    return this.httpClient.put<Employee>(`${environment.baseAPIPath}${this.getEditEmployeePath(employee.id)}`, employee);
+  }
+
   disableEmployee(id: number): Observable<Employee> {
     return this.httpClient.post<Employee>(`${environment.baseAPIPath}${this.getDisableEmployeePath(id)}`, {});
   }
@@ -35,6 +39,10 @@ export class EmployeeService {
 
   private getEnableEmployeePath(id: number) {
     return `employee/${id}/enable`;
+  }
+
+  private getEditEmployeePath(id: number) {
+    return `employee/${id}`;
   }
 
   private getDisableEmployeePath(id: number) {

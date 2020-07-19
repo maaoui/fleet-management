@@ -1,5 +1,6 @@
 import {Department} from '../department/department';
 import {BaseEntity, BaseEntityAttrs} from '../base-entity';
+import {Role} from './role';
 
 export interface EmployeeAttrs extends BaseEntityAttrs {
   phoneNumber: string;
@@ -8,6 +9,7 @@ export interface EmployeeAttrs extends BaseEntityAttrs {
   lastName: string;
   enabled: boolean;
   department: Department;
+  roles: Role[];
 }
 
 export class Employee extends BaseEntity {
@@ -19,6 +21,7 @@ export class Employee extends BaseEntity {
     this.lastName = attrs.lastName;
     this.department = attrs.department;
     this.enabled = attrs.enabled;
+    this.roles = attrs.roles;
   }
 
   phoneNumber: string;
@@ -27,4 +30,5 @@ export class Employee extends BaseEntity {
   lastName: string;
   enabled: boolean;
   department: Department;
+  roles: Role[];
 }
