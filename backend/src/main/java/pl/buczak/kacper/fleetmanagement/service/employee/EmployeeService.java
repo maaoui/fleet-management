@@ -40,6 +40,7 @@ public class EmployeeService {
                 .findAll()
                 .stream()
                 .map(this::entityToFullDTO)
+                .sorted((e1, e2) -> (int) (e1.getId() - e2.getId()))
                 .collect(Collectors.toList());
     }
 
@@ -61,7 +62,8 @@ public class EmployeeService {
     @Transactional
     public EmployeeFullDTO editEmployee(Long employeeId, EmployeeFullDTO employeeFullDTO) {
         Employee employee = this.employeeRepository.getOne(employeeId);
-        modelMapper.map(modelMapper.map(employeeFullDTO, EmployeeDTO.class), employee);
+        EmployeeDTO employeeDTO = modelMapper.map(employeeFullDTO, EmployeeDTO.class);
+        modelMapper.map(employeeDTO, employee);
         employee.setRoles(prepareRolesForCurrentlyEditedUser(employeeFullDTO));
         employee.setDepartment(this.departmentRepository.getOne(employeeFullDTO.getDepartment().getId()));
         return this.entityToFullDTO(this.employeeRepository.save(employee));

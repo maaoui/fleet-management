@@ -37,13 +37,14 @@ export class EditEmployeeModalComponent implements OnInit {
   }
 
   onSavePress() {
-    console.log(this.employeeForm.value);
     const employeeToCreate = new Employee(
       {
+        ...this.employeeForm.value,
         id: this.employee.id,
-        ...this.employeeForm.value
+        roles: [...this.employee.roles]
       }
     );
+    console.log(employeeToCreate);
     this.employeeService
       .editEmployee(employeeToCreate)
       .subscribe((updatedEmployee: Employee) => {
@@ -99,19 +100,11 @@ export class EditEmployeeModalComponent implements OnInit {
   }
 
   private addAdminRoleToUser() {
-    this.employee.roles = [new Role(
-      {
-        name: 'ROLE_ADMIN'
-      }
-    )];
+    this.employee.roles = this.employeeService.getAdminRoleArray();
   }
 
   private revokeAdminRole() {
-    this.employee.roles = [new Role(
-      {
-        name: 'ROLE_EMPLOYEE'
-      }
-    )];
+    this.employee.roles = this.employeeService.getEmployeeRoleArray();
   }
 
 }

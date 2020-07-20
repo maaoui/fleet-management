@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Employee} from '../../model/employee/employee';
 import {environment} from '../../../../environments/environment';
 import {EmployeeWithCredentials} from '../../model/employee/employee-with-credentials';
+import {Role} from '../../model/employee/role';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,23 @@ export class EmployeeService {
   enableEmployee(id: number): Observable<Employee> {
     return this.httpClient.post<Employee>(`${environment.baseAPIPath}${this.getEnableEmployeePath(id)}`, {});
   }
+
+  getAdminRoleArray(): Role[] {
+    return [new Role(
+      {
+        name: 'ROLE_ADMIN'
+      }
+    )];
+  }
+
+  getEmployeeRoleArray(): Role[] {
+    return [new Role(
+      {
+        name: 'ROLE_EMPLOYEE'
+      }
+    )];
+  }
+
 
   private getEmployeesPath() {
     return `employees`;

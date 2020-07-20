@@ -117,8 +117,8 @@
       </p>
       <div class="form-group  ">
         <select class="form-control">
-          <option [value]="true" (click)="this.employee.enabled = true">{{"UNIVERSAL.YES" | translate}}</option>
-          <option [value]="false" (click)="this.employee.enabled = false">{{"UNIVERSAL.NO" | translate}}</option>
+          <option [value]="true" (click)="this.employeeForm.value.enabled = true">{{"UNIVERSAL.YES" | translate}}</option>
+          <option [value]="false" (click)="this.employeeForm.value.enabled = false">{{"UNIVERSAL.NO" | translate}}</option>
         </select>
       </div>
       <div *ngIf="employeeForm.controls['email'].errors" class="alert-danger">
