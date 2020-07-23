@@ -2,9 +2,14 @@ package pl.buczak.kacper.fleetmanagement.service.vehicle;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import pl.buczak.kacper.fleetmanagement.entity.dao.exploatation.ExploatationReport;
+import pl.buczak.kacper.fleetmanagement.entity.dao.insurance.Insurance;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.Vehicle;
 import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.VehicleDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.VehicleFullDTO;
+import pl.buczak.kacper.fleetmanagement.repository.employee.EmployeeRepository;
+import pl.buczak.kacper.fleetmanagement.repository.exploatation.ExploatationReportRepository;
+import pl.buczak.kacper.fleetmanagement.repository.insurance.InsuranceRepository;
 import pl.buczak.kacper.fleetmanagement.repository.vehicle.VehicleReposiory;
 
 import javax.transaction.Transactional;
@@ -18,13 +23,19 @@ import java.util.stream.Collectors;
 public class VehicleService {
 
     private VehicleReposiory vehicleReposiory;
-
+    private EmployeeRepository employeeRepository;
     private ModelMapper modelMapper;
+    private ExploatationReportRepository exploatationReportRepository;
+    private InsuranceRepository insuranceRepository;
 
-    public VehicleService(VehicleReposiory vehicleReposiory, ModelMapper modelMapper) {
+    public VehicleService(VehicleReposiory vehicleReposiory, EmployeeRepository employeeRepository, ModelMapper modelMapper, ExploatationReportRepository exploatationReportRepository, InsuranceRepository insuranceRepository) {
         this.vehicleReposiory = vehicleReposiory;
+        this.employeeRepository = employeeRepository;
         this.modelMapper = modelMapper;
+        this.exploatationReportRepository = exploatationReportRepository;
+        this.insuranceRepository = insuranceRepository;
     }
+
 
     public List<VehicleDTO> findListOfVehicles() {
         return vehicleReposiory
@@ -58,21 +69,34 @@ public class VehicleService {
     }
 
     @Transactional
+    public VehicleFullDTO createVehicle(VehicleFullDTO vehicleFullDTO) {
+        Vehicle vehicle = new Vehicle();
+        modelMapper.map(vehicleFullDTO, vehicle);
+        Insurance insuranceFromDto = vehicle.getInsurance();
+        vehicle.setInsurance(null);
+        vehicle.setTechnicalExaminationList(null);
+        vehicle.setExploatationReport(null);
+        Vehicle savedVehicle = this.vehicleReposiory.save(vehicle);
+
+        Insurance insurance = new Insurance();
+        modelMapper.map(insuranceFromDto,insurance);
+        insurance.setVehicle(savedVehicle);
+        savedVehicle.setInsurance(this.insuranceRepository.save(insurance));
+
+        ExploatationReport exploatationReport = new ExploatationReport();
+        exploatationReport.setVehicle(savedVehicle);
+        savedVehicle.setExploatationReport(this.exploatationReportRepository.save(exploatationReport));
+
+
+        return this.entityToFullDTO(this.vehicleReposiory.save(savedVehicle));
+    }
+
+
+    @Transactional
     public VehicleFullDTO editVehicle(VehicleFullDTO vehicleFullDTO) {
         this.vehicleReposiory.removeCurrentEmployeeFromAllVehicles(vehicleFullDTO.getCurrentEmployee().getId());
         Vehicle vehicleToEdit = this.vehicleReposiory.getOne(vehicleFullDTO.getId());
         modelMapper.map(modelMapper.map(vehicleFullDTO, Vehicle.class), vehicleToEdit);
-
-
- /*       vehicleToEdit.setMake(vehicleFullDTO.getMake());
-        vehicleToEdit.setModel(vehicleFullDTO.getModel());
-        vehicleToEdit.setVIN(vehicleFullDTO.getVIN());
-        vehicleToEdit.setPlateNumber(vehicleFullDTO.getPlateNumber());
-        vehicleToEdit.setHorsePower(vehicleFullDTO.getHorsePower());
-        vehicleToEdit.setWeight(vehicleFullDTO.getWeight());
-        vehicleToEdit.setFirstRegistration(vehicleFullDTO.getFirstRegistration());
-        vehicleToEdit.setYearOfProduction(vehicleFullDTO.getYearOfProduction());
-        vehicleToEdit.setCurrentEmployee(modelMapper.map(vehicleFullDTO.getCurrentEmployee(), Employee.class));*/
         return entityToFullDTO(this.vehicleReposiory.save(vehicleToEdit));
     }
 
@@ -89,6 +113,5 @@ public class VehicleService {
         VehicleFullDTO vehicleFullDTO = modelMapper.map(vehicle, VehicleFullDTO.class);
         return vehicleFullDTO;
     }
-
 
 }

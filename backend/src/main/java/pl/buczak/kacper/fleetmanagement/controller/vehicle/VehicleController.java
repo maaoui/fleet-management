@@ -52,10 +52,18 @@ public class VehicleController {
                 .body(vehicleService.findVehiclesByDepartmentId(departmentId));
     }
 
+    @PostMapping(value = "/vehicles")
+    public ResponseEntity<VehicleFullDTO> createVehicle(@RequestBody VehicleFullDTO vehicle) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(vehicleService.createVehicle(vehicle));
+    }
+
+
     @PutMapping(value = "/vehicle/{id}")
     public ResponseEntity<VehicleFullDTO> editVehicle(@NotBlank @PathVariable("id") Long vehicleId, @RequestBody VehicleFullDTO vehicle) {
         return ResponseEntity
-                .status(HttpStatus.OK)
+                .status(HttpStatus.ACCEPTED)
                 .body(vehicleService.editVehicle(vehicle));
     }
 

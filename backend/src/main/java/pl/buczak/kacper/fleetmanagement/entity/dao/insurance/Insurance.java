@@ -3,10 +3,7 @@ package pl.buczak.kacper.fleetmanagement.entity.dao.insurance;
 import pl.buczak.kacper.fleetmanagement.entity.dao.BaseEntity;
 import pl.buczak.kacper.fleetmanagement.entity.dao.vehicle.Vehicle;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -18,7 +15,7 @@ import java.util.Date;
 @Table(name = "insurance")
 public class Insurance extends BaseEntity {
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Vehicle vehicle;
 
     @Size(max = 100)
