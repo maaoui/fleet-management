@@ -26,8 +26,12 @@
         <b>{{"ADMIN_VIEW.MODALS.CURRENCY" | translate}}:</b>
       </p>
       <div class="form-group">
-        <input formControlName="currency" type="text" class="form-control" name="currency"
-               [minLength]="this.getCurrencyLength()" [maxLength]="getCurrencyLength()"/>
+        <select class="custom-select form-control" formControlName="currency" name="currency">
+          <option [ngValue]="'PLN'"> PLN</option>
+          <option [ngValue]="'EUR'"> EUR</option>
+          <option [ngValue]="'CHF'"> CHF</option>
+        </select>
+
       </div>
       <div *ngIf="otherExpenseForm.controls['currency'].errors" class="alert-danger">
         <div *ngIf="otherExpenseForm.controls['currency'].errors.required">
@@ -120,7 +124,7 @@
     </div>
   </form>
   <div class="modal-footer">
-    <button type="submit" class="btn btn-success" [disabled]="!this.otherExpenseForm.valid">
+    <button type="submit" class="btn btn-success" [disabled]="!this.otherExpenseForm.valid" (click)="onSavePress()">
       <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
     <button type="button" class="btn btn-danger" (click)="onCancelPress()">
       <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>

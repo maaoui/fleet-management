@@ -26,8 +26,11 @@
         <b>{{"ADMIN_VIEW.MODALS.CURRENCY" | translate}}:</b>
       </p>
       <div class="form-group">
-        <input formControlName="currency" type="text" class="form-control" name="currency"
-               [minLength]="this.getCurrencyLength()" [maxLength]="getCurrencyLength()"/>
+        <select class="custom-select form-control" formControlName="currency" name="currency">
+          <option [ngValue]="'PLN'"> PLN</option>
+          <option [ngValue]="'EUR'"> EUR</option>
+          <option [ngValue]="'CHF'"> CHF</option>
+        </select>
       </div>
       <div *ngIf="carPartExpenseForm.controls['currency'].errors" class="alert-danger">
         <div *ngIf="carPartExpenseForm.controls['currency'].errors.required">

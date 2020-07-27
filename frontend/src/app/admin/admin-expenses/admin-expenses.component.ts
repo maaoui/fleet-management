@@ -50,6 +50,9 @@ export class AdminExpensesComponent implements OnInit {
 
   changeCurrentComponent(componentName: string) {
     this.currentComponentName = componentName;
+    if (this.selectedVehicle) {
+      this.getVehicleExploatationData(this.selectedVehicle.id);
+    }
   }
 
 }

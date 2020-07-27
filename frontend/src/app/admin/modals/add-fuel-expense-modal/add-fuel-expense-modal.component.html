@@ -26,8 +26,11 @@
         <b>{{"ADMIN_VIEW.MODALS.CURRENCY" | translate}}:</b>
       </p>
       <div class="form-group">
-        <input formControlName="currency" type="text" class="form-control" name="currency"
-               [minLength]="this.getCurrencyLength()" [maxLength]="getCurrencyLength()"/>
+        <select class="custom-select form-control" formControlName="currency" name="currency">
+          <option [ngValue]="'PLN'"> PLN</option>
+          <option [ngValue]="'EUR'"> EUR</option>
+          <option [ngValue]="'CHF'"> CHF</option>
+        </select>
       </div>
       <div *ngIf="fuelExpenseForm.controls['currency'].errors" class="alert-danger">
         <div *ngIf="fuelExpenseForm.controls['currency'].errors.required">
@@ -123,9 +126,9 @@
         <b>{{"ADMIN_VIEW.MODALS.ADD_FUEL_EXPENSE_MODAL.FUEL_TYPE" | translate}}:</b>
       </p>
       <div class="form-group">
-          <select class="form-control" formControlName="fuelType" name="fuelType">
-            <option *ngFor="let fuelType of fuelTypeValues">{{fuelType}}</option>
-          </select>
+        <select class="form-control" formControlName="fuelType" name="fuelType">
+          <option *ngFor="let fuelType of fuelTypeValues">{{fuelType}}</option>
+        </select>
       </div>
       <div *ngIf="fuelExpenseForm.controls['fuelType'].errors" class="alert-danger">
         <div *ngIf="fuelExpenseForm.controls['fuelType'].errors.required">

@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {OtherExpense} from '../../../shared/model/expense/other-expense';
-import {ServiceExpense} from '../../../shared/model/expense/service-expense';
 import {DeleteExpenseModalComponent} from '../../modals/delete-expense-modal/delete-expense-modal.component';
 import {first, map} from 'rxjs/operators';
 import {ExpenseEmitterDeletionResponse} from '../../model/expense-emitter-deletion-response';
@@ -9,9 +8,7 @@ import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ExploitationService} from '../../../shared/service/exploitation/exploitation.service';
 import {OtherExpenseService} from '../../../shared/service/exploitation/expense/other-expense.service';
-import {CarPartModalComponent} from '../../modals/car-part-modal/car-part-modal.component';
 import {Constraint} from '../../../shared/constraints/constraint';
-import {AddFuelExpenseModalComponent} from '../../modals/add-fuel-expense-modal/add-fuel-expense-modal.component';
 import {AddOtherExpenseModalComponent} from '../../modals/add-other-expense-modal/add-other-expense-modal.component';
 
 @Component({
