@@ -154,6 +154,10 @@
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
           {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
         </div>
+        <div *ngIf="vehicleForm.controls['weight'].errors.max">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_VALUE" | translate }}
+        </div>
       </div>
     </div>
 
