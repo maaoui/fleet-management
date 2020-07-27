@@ -31,9 +31,10 @@ export class VehicleValidatorConstants {
   public static readonly MODEL_MAX_LENGTH: number = 10;
   public static readonly HORSE_POWER_MIN_VALUE: number = 10;
   public static readonly HORSE_POWER_MAX_VALUE: number = 2000;
-  public static readonly VIN_MAX_LENGTH: number = 2000;
+  public static readonly VIN_MAX_LENGTH: number = 20;
   public static readonly YEAR_OF_PRODUCTION_MIN_VALUE: number = 1900;
   public static readonly WEIGHT_MIN_VALUE: number = 100;
+  public static readonly WEIGHT_MAX_VALUE: number = 100000;
 }
 
 export class TechnicalExaminationValidatorConstants {

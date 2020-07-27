@@ -118,6 +118,7 @@ export class AddVehicleModalComponent implements OnInit {
       weight: new FormControl(this.vehicle.weight,
         Validators.compose([
           Validators.min(VehicleValidatorConstants.WEIGHT_MIN_VALUE),
+          Validators.max(VehicleValidatorConstants.WEIGHT_MAX_VALUE),
         ])),
       fuelType: new FormControl(this.vehicle.fuelType,
         Validators.compose([

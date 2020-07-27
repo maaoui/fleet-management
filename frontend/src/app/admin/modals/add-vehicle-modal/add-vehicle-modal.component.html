@@ -154,6 +154,10 @@
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
           {{"ADMIN_VIEW.MODALS.VALIDATION.MIN_VALUE" | translate }}
         </div>
+        <div *ngIf="vehicleForm.controls['weight'].errors.max">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          {{"ADMIN_VIEW.MODALS.VALIDATION.MAX_VALUE" | translate }}
+        </div>
       </div>
     </div>
 
@@ -266,7 +270,7 @@
   </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-success" (click)="onSavePress()">
+  <button type="button" class="btn btn-success" (click)="onSavePress()" [disabled]="!vehicleForm.valid">
     <i class="far fa-save"></i>  {{"UNIVERSAL.SAVE" | translate}} </button>
   <button type="button" class="btn btn-danger" (click)="onCancelPress()">
     <i class="far fa-times-circle"></i>  {{"UNIVERSAL.CANCEL" | translate}} </button>
