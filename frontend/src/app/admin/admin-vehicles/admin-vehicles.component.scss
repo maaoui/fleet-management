@@ -1,4 +1,19 @@
 @import "src/styles.scss";
+.container {
+  margin-top: 3em;
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+}
 
 .listContainer {
   margin: 3em;
