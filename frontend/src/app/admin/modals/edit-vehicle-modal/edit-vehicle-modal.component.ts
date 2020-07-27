@@ -7,6 +7,7 @@ import {VehicleValidatorConstants} from '../../../core/constants/validator-const
 import {EmployeeService} from '../../../shared/service/employee/employee.service';
 import {Employee} from '../../../shared/model/employee/employee';
 import * as moment from 'moment';
+import {FuelType} from '../../../shared/model/enums/fuel-type.enum';
 
 @Component({
   selector: 'app-edit-vehicle-modal',
@@ -19,6 +20,7 @@ export class EditVehicleModalComponent implements OnInit {
   @Output() vehicleUpdateEmitter = new EventEmitter<string>();
   private vehicleForm: FormGroup;
   private employees: Employee[];
+  private typesOfFuel = Object.values(FuelType);
 
   constructor(public activeModal: NgbActiveModal,
               private vehicleService: VehicleService,
@@ -52,7 +54,8 @@ export class EditVehicleModalComponent implements OnInit {
       firstRegistration: this.extractDateFromTimePicker(this.vehicleForm.controls.firstRegistration.value),
       yearOfProduction: this.vehicleForm.controls.yearOfProduction.value,
       weight: this.vehicleForm.controls.weight.value,
-      currentEmployee: this.vehicleForm.controls.currentEmployee.value
+      currentEmployee: this.vehicleForm.controls.currentEmployee.value,
+      fuelType: this.vehicleForm.controls.fuelType.value
     });
     this.vehicleService
       .updateVehicle(editedVehicle)
@@ -106,6 +109,10 @@ export class EditVehicleModalComponent implements OnInit {
         Validators.compose([
           Validators.min(VehicleValidatorConstants.WEIGHT_MIN_VALUE),
         ])),
+      fuelType: new FormControl(this.vehicle.fuelType,
+        Validators.compose([
+          Validators.required,
+        ])),
       currentEmployee: new FormControl(this.vehicle.currentEmployee)
     });
   }
@@ -115,7 +122,6 @@ export class EditVehicleModalComponent implements OnInit {
       .getEmployeeList()
       .subscribe((employees: Employee[]) => {
         this.employees = employees;
-
       });
   }
 }

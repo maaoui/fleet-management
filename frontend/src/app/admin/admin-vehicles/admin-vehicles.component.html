@@ -37,6 +37,10 @@
             <b>{{"VEHICLE.YEAR_OF_PRODUCTION" | translate}}:</b> {{vehicle.yearOfProduction}}
           </p>
 
+         <p class="list-group-item-text ">
+            <b>{{"VEHICLE.FUEL_TYPE" | translate}}:</b> {{vehicle.fuelType | titlecase}}
+          </p>
+
           <p class="list-group-item-text ">
             <button type="button" class="btn btn-info" (click)="openInsuranceInformationModal(vehicle)"><i
               class="far fa-edit"></i>  {{"ADMIN_VIEW.INSURANCE_INFO" | translate}} </button>

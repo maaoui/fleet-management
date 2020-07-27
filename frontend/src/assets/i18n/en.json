@@ -20,7 +20,8 @@
     "FIRST_REGISTRATION": "Date of first registration",
     "YEAR_OF_PRODUCTION": "Production year",
     "WEIGHT": "Weight",
-    "CURRENT_EMPLOYEE": "Current user"
+    "CURRENT_EMPLOYEE": "Current user",
+    "FUEL_TYPE": "Type of fuel"
   },
   "LANGUAGE": "English",
   "LOGIN": {

@@ -16,6 +16,10 @@ export class VehicleService {
     return this.http.get<Vehicle[]>(`${environment.baseAPIPath}${this.getVehiclesUrl()}`);
   }
 
+  createVehicle(vehicleToCreate: Vehicle): Observable<Vehicle> {
+    return this.http.post<Vehicle>(`${environment.baseAPIPath}${this.getVehiclesUrl()}`, vehicleToCreate);
+  }
+
   updateVehicle(vehicle: Vehicle): Observable<Vehicle> {
     return this.http.put<Vehicle>(`${environment.baseAPIPath}${this.getVehicleUrl()}/${vehicle.id}`, vehicle);
   }
@@ -31,4 +35,6 @@ export class VehicleService {
   private getVehicleUrl(): string {
     return 'vehicle';
   }
+
+
 }
