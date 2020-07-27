@@ -6,8 +6,9 @@ import {Employee} from '../../../shared/model/employee/employee';
 import {EmployeeService} from '../../../shared/service/employee/employee.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
-import {VehicleValidatorConstants} from '../../../core/constants/validator-constants';
+import {InsuranceValidatorConstants, VehicleValidatorConstants} from '../../../core/constants/validator-constants';
 import {FuelType} from '../../../shared/model/enums/fuel-type.enum';
+import {Insurance} from '../../../shared/model/insurance/insurance';
 
 
 @Component({
@@ -16,15 +17,23 @@ import {FuelType} from '../../../shared/model/enums/fuel-type.enum';
   styleUrls: ['./add-vehicle-modal.component.scss']
 })
 export class AddVehicleModalComponent implements OnInit {
+
+  constructor(public activeModal: NgbActiveModal,
+              private vehicleService: VehicleService,
+              private employeeService: EmployeeService) {
+  }
+
   @Input() vehicle: Vehicle;
   @Output() vehicleCreationEmitter = new EventEmitter<Vehicle>();
   private vehicleForm: FormGroup;
   private employees: Employee[];
   private typesOfFuel = Object.values(FuelType);
 
-  constructor(public activeModal: NgbActiveModal,
-              private vehicleService: VehicleService,
-              private employeeService: EmployeeService) {
+  private static extractDateFromTimePicker(date: NgbDate): Date {
+    const newDate = moment(date);
+    newDate.subtract(1, 'month');
+    newDate.add(12, 'hour');
+    return newDate.toDate();
   }
 
   ngOnInit(): void {
@@ -44,12 +53,19 @@ export class AddVehicleModalComponent implements OnInit {
       model: this.vehicleForm.controls.model.value,
       horsePower: this.vehicleForm.controls.horsePower.value,
       vin: this.vehicleForm.controls.vin.value,
-      firstRegistration: this.extractDateFromTimePicker(this.vehicleForm.controls.firstRegistration.value),
+      firstRegistration: AddVehicleModalComponent.extractDateFromTimePicker(this.vehicleForm.controls.firstRegistration.value),
       yearOfProduction: this.vehicleForm.controls.yearOfProduction.value,
       weight: this.vehicleForm.controls.weight.value,
       currentEmployee: this.vehicleForm.controls.currentEmployee.value,
-      fuelType: this.vehicleForm.controls.fuelType.value
+      fuelType: this.vehicleForm.controls.fuelType.value,
+      insurance: new Insurance({
+        ...this.vehicleForm.controls.insurance.value,
+        startDate: this.formatDate(this.vehicleForm.controls.insurance.value.startDate),
+        endDate: this.formatDate(this.vehicleForm.controls.insurance.value.startDate),
+        id: 0
+      })
     });
+
     console.log(vehicleToCreate);
     this.vehicleService
       .createVehicle(vehicleToCreate)
@@ -60,12 +76,6 @@ export class AddVehicleModalComponent implements OnInit {
         error => {
           // TODO Show error response
         });
-  }
-  private extractDateFromTimePicker(date: NgbDate): Date {
-    const newDate = moment(date);
-    newDate.subtract(1, 'month');
-    newDate.add(12, 'hour');
-    return newDate.toDate();
   }
 
   private initializeFormGroup() {
@@ -113,7 +123,26 @@ export class AddVehicleModalComponent implements OnInit {
         Validators.compose([
           Validators.required,
         ])),
-      currentEmployee: new FormControl(this.vehicle.currentEmployee)
+      currentEmployee: new FormControl(this.vehicle.currentEmployee),
+      insurance: new FormGroup({
+        id: new FormControl(this.vehicle.insurance.id),
+        insuranceNumber: new FormControl(this.vehicle.insurance.insuranceNumber,
+          Validators.compose([
+            Validators.min(InsuranceValidatorConstants.COMPANY_NAME_MIN_LENGTH),
+            Validators.max(InsuranceValidatorConstants.COMPANY_NAME_MAX_LENGTH)
+          ])),
+        companyName: new FormControl(this.vehicle.insurance.companyName,
+          Validators.compose([
+            Validators.min(InsuranceValidatorConstants.COMPANY_NAME_MIN_LENGTH),
+            Validators.max(InsuranceValidatorConstants.COMPANY_NAME_MAX_LENGTH)
+          ])),
+        contactNumber: new FormControl(this.vehicle.insurance.contactNumber,
+          Validators.compose([
+            Validators.pattern(InsuranceValidatorConstants.PHONE_NUMBER_PATTERN)
+          ])),
+        startDate: new FormControl(this.vehicle.insurance.startDate),
+        endDate: new FormControl(this.vehicle.insurance.endDate),
+      })
     });
   }
 
@@ -125,4 +154,7 @@ export class AddVehicleModalComponent implements OnInit {
       });
   }
 
+  private formatDate(date) {
+    return moment(date).toDate();
+  }
 }

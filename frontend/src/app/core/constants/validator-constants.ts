@@ -49,5 +49,12 @@ export class EmployeeValidatorConstants {
   public static readonly PHONE_NUMBER_PATTERN: string = '[1-9][0-9]{8}';
   public static readonly PASSWORD_MIN_LENGTH: number = 6;
   public static readonly PASSWORD_MAX_LENGTH: number = 128;
+}
 
+export class InsuranceValidatorConstants {
+  public static readonly PHONE_NUMBER_PATTERN: string = '[1-9][0-9]{8}';
+  public static readonly COMPANY_NAME_MIN_LENGTH: number = 0;
+  public static readonly COMPANY_NAME_MAX_LENGTH: number = 100;
+  public static readonly INSURANCE_NUMBER_MIN_LENGTH: number = 0;
+  public static readonly INSURANCE_NUMBER_MAX_LENGTH: number = 100;
 }

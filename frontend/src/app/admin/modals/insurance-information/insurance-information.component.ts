@@ -4,6 +4,7 @@ import {Insurance} from '../../../shared/model/insurance/insurance';
 import {InsuranceService} from '../../../shared/service/insurance/insurance.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
+import {InsuranceValidatorConstants} from '../../../core/constants/validator-constants';
 
 @Component({
   selector: 'app-insurance-information',
@@ -55,25 +56,21 @@ export class InsuranceInformationComponent implements OnInit {
       id: new FormControl(this.insurance.id),
       insuranceNumber: new FormControl(this.insurance.insuranceNumber,
         Validators.compose([
-          Validators.min(0),
-          Validators.max(100)
+          Validators.min(InsuranceValidatorConstants.COMPANY_NAME_MIN_LENGTH),
+          Validators.max(InsuranceValidatorConstants.COMPANY_NAME_MAX_LENGTH)
         ])),
       companyName: new FormControl(this.insurance.companyName,
         Validators.compose([
-          Validators.min(0),
-          Validators.max(100)
+          Validators.min(InsuranceValidatorConstants.COMPANY_NAME_MIN_LENGTH),
+          Validators.max(InsuranceValidatorConstants.COMPANY_NAME_MAX_LENGTH)
         ])),
       contactNumber: new FormControl(this.insurance.contactNumber,
         Validators.compose([
-          Validators.pattern(this.getContactNumberPattern())
+          Validators.pattern(InsuranceValidatorConstants.PHONE_NUMBER_PATTERN)
         ])),
       startDate: new FormControl(this.insurance.startDate),
       endDate: new FormControl(this.insurance.endDate),
     });
-  }
-
-  private getContactNumberPattern(): string {
-    return '[1-9][0-9]{8}';
   }
 
   private formatDate(date) {

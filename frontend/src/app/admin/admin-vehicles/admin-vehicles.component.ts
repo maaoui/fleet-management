@@ -10,6 +10,7 @@ import {DeleteVehicleModalComponent} from '../modals/delete-vehicle-modal/delete
 import {first} from 'rxjs/operators';
 import {Constraint} from '../../shared/constraints/constraint';
 import {AddVehicleModalComponent} from '../modals/add-vehicle-modal/add-vehicle-modal.component';
+import {Insurance} from '../../shared/model/insurance/insurance';
 
 @Component({
   selector: 'app-admin-vehicles',
@@ -83,7 +84,9 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
 
   openAddVehicleModal() {
     const modalRef = this.modalService.open(AddVehicleModalComponent, {size: Constraint.MODAL_SIZE_LG});
-    modalRef.componentInstance.vehicle = new Vehicle();
+    modalRef.componentInstance.vehicle = new Vehicle({
+      insurance: new Insurance()
+    });
     modalRef.componentInstance.vehicleCreationEmitter = new EventEmitter();
     modalRef.componentInstance
       .vehicleCreationEmitter
