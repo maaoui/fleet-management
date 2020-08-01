@@ -20,6 +20,7 @@ export class FuelExpensesComponent implements OnInit {
 
   @Input() fuelExpenses: FuelExpense[];
   @Input() vehicle: Vehicle;
+  @Input() readonly canDelete: boolean;
 
   constructor(private modalService: NgbModal,
               private fuelExpenseService: FuelExpenseService,
@@ -30,17 +31,20 @@ export class FuelExpensesComponent implements OnInit {
   }
 
   openDeleteExpenseModal(expense: FuelExpense) {
-    const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
-    modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<FuelExpense>();
-    modalRef.componentInstance.expense = new FuelExpense(expense);
-    modalRef.componentInstance
-      .expenseDeletetionEmitter
-      .pipe(
-        map((emittedExpense: FuelExpense) => this.createExpenseEmitterResponser(emittedExpense)),
-        first()
-      )
-      .subscribe((expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) =>
-        this.handleEmittedDeletionResponse(expenseEmitterDeletionResponse));
+    if (this.canDelete) {
+      const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+      modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<FuelExpense>();
+      modalRef.componentInstance.expense = new FuelExpense(expense);
+      modalRef.componentInstance
+        .expenseDeletetionEmitter
+        .pipe(
+          map((emittedExpense: FuelExpense) => this.createExpenseEmitterResponser(emittedExpense)),
+          first()
+        )
+        .subscribe((expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) =>
+          this.handleEmittedDeletionResponse(expenseEmitterDeletionResponse)
+        );
+    }
   }
 
   private createExpenseEmitterResponser(emittedExpense: FuelExpense) {

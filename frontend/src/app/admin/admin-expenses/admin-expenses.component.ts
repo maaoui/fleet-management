@@ -19,6 +19,7 @@ export class AdminExpensesComponent implements OnInit {
   private exploitationReport: ExploitationReport;
   private currentComponentName: string;
   private isVehicleSelected = false;
+  private readonly canDeleteExpenses = true;
   private selectedVehicle: Vehicle;
 
 

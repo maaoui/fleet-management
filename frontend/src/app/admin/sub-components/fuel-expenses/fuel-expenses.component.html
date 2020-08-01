@@ -2,7 +2,8 @@
   <div class="col-1">
   </div>
   <div class="col-10 header--button--container">
-    <button type="button" class="btn btn-success btn-circle btn-lg" (click)="openAddFuelExpenseModal()"><i class="fa fa-plus"></i></button>
+    <button type="button" class="btn btn-success btn-circle btn-lg" (click)="openAddFuelExpenseModal()"><i
+      class="fa fa-plus"></i></button>
   </div>
   <div class="col-1">
   </div>
@@ -17,7 +18,7 @@
       <th scope="col" class="table--comment-container">{{"ADMIN_EXPENSES.COMMON.COMMENT" |translate}}</th>
       <th scope="col">{{"ADMIN_EXPENSES.FUEL_EXPENSES_COMPONENT.FUEL_AMOUNT" |translate}}</th>
       <th scope="col">{{"ADMIN_EXPENSES.FUEL_EXPENSES_COMPONENT.FUEL_TYPE" |translate}}</th>
-      <th scope="col">{{"UNIVERSAL.DELETE" |translate}}</th>
+      <th scope="col" *ngIf="canDelete">{{"UNIVERSAL.DELETE" |translate}}</th>
     </tr>
     </thead>
     <tbody>
@@ -28,7 +29,7 @@
       <td class="table--comment-container">{{expense.comment}}</td>
       <td>{{expense.fuelAmount | number}}</td>
       <td>{{expense.fuelType}}</td>
-      <td>
+      <td *ngIf="canDelete">
         <button class="btn btn-danger" (click)="openDeleteExpenseModal(expense)">
           {{"UNIVERSAL.DELETE" |translate}}
         </button>

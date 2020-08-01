@@ -11,7 +11,6 @@ import {ExploitationService} from '../../../shared/service/exploitation/exploita
 import {CarServiceExpenseService} from '../../../shared/service/exploitation/expense/car-service-expense.service';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {Constraint} from '../../../shared/constraints/constraint';
-import {AddCarPartExpenseModalComponent} from '../../modals/add-car-part-expense-modal/add-car-part-expense-modal.component';
 import {AddServicingExpenseModalComponent} from '../../modals/add-servicing-expense-modal/add-servicing-expense-modal.component';
 
 @Component({
@@ -23,6 +22,7 @@ export class CarServiceExpensesComponent implements OnInit {
 
   @Input() serviceExpenses: ServiceExpense[];
   @Input() vehicle: Vehicle;
+  @Input() readonly canDelete: boolean;
 
   constructor(private modalService: NgbModal,
               private carServiceExpenseService: CarServiceExpenseService,
@@ -43,17 +43,20 @@ export class CarServiceExpensesComponent implements OnInit {
   }
 
   openDeleteExpenseModal(expense: ServiceExpense) {
-    const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
-    modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<ServiceExpense>();
-    modalRef.componentInstance.expense = new ServiceExpense(expense);
-    modalRef.componentInstance
-      .expenseDeletetionEmitter
-      .pipe(
-        map((emittedExpense: ServiceExpense) => this.createExpenseEmitterResponse(emittedExpense)),
-        first()
-      )
-      .subscribe((expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) =>
-        this.handleEmittedDeletionResponse(expenseEmitterDeletionResponse));
+    if (this.canDelete) {
+      const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+      modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<ServiceExpense>();
+      modalRef.componentInstance.expense = new ServiceExpense(expense);
+      modalRef.componentInstance
+        .expenseDeletetionEmitter
+        .pipe(
+          map((emittedExpense: ServiceExpense) => this.createExpenseEmitterResponse(emittedExpense)),
+          first()
+        )
+        .subscribe((expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) =>
+          this.handleEmittedDeletionResponse(expenseEmitterDeletionResponse)
+        );
+    }
   }
 
   private createExpenseEmitterResponse(emittedExpense: ServiceExpense) {

@@ -15,6 +15,7 @@ export class EmployeeExpensesComponent implements OnInit {
   selectedVehicle: Vehicle;
   vehicles: Vehicle[];
   private isVehicleSelected: boolean;
+  private readonly canDeleteExpenses = false;
 
   constructor(private exploitationService: ExploitationService, private vehicleService: VehicleService) {
   }

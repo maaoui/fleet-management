@@ -13,79 +13,83 @@ import {CarPartExpenseService} from '../../../shared/service/exploitation/expens
 import {Constraint} from '../../../shared/constraints/constraint';
 
 @Component({
-    selector: 'app-car-part-expenses',
-    templateUrl: './car-part-expenses.component.html',
-    styleUrls: ['./car-part-expenses.component.scss']
+  selector: 'app-car-part-expenses',
+  templateUrl: './car-part-expenses.component.html',
+  styleUrls: ['./car-part-expenses.component.scss']
 })
 export class CarPartExpensesComponent implements OnInit {
 
-    @Input() carPartExpenses: CarPartExpense[];
-    @Input() vehicle: Vehicle;
+  @Input() carPartExpenses: CarPartExpense[];
+  @Input() vehicle: Vehicle;
+  @Input() readonly canDelete: boolean;
 
-    constructor(private modalService: NgbModal,
-                private exploitationService: ExploitationService,
-                private carPartExpenseService: CarPartExpenseService) {
-    }
+  constructor(private modalService: NgbModal,
+              private exploitationService: ExploitationService,
+              private carPartExpenseService: CarPartExpenseService) {
+  }
 
-    ngOnInit(): void {
-    }
+  ngOnInit(): void {
+  }
 
-    openCarPartModal(expense: CarPartExpense) {
-        const modalRef = this.modalService.open(CarPartModalComponent, {size: Constraint.MODAL_SIZE_LG});
-        modalRef.componentInstance.carPart = expense.carPart;
-    }
+  openCarPartModal(expense: CarPartExpense) {
+    const modalRef = this.modalService.open(CarPartModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.carPart = expense.carPart;
+  }
 
-    openAddCarPartExpenseModal() {
-        const modalRef = this.modalService.open(AddCarPartExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
-        modalRef.componentInstance.vehicle = this.vehicle;
-        modalRef.componentInstance
-            .postExpenseEmitter
-            .pipe(first())
-            .subscribe(() => this.refreshCarPartExpenses());
-    }
+  openAddCarPartExpenseModal() {
+    const modalRef = this.modalService.open(AddCarPartExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    modalRef.componentInstance.vehicle = this.vehicle;
+    modalRef.componentInstance
+      .postExpenseEmitter
+      .pipe(first())
+      .subscribe(() => this.refreshCarPartExpenses());
+  }
 
-    openDeleteExpenseModal(expense: CarPartExpense) {
-        const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
-        modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<CarPartExpense>();
-        modalRef.componentInstance.expense = new CarPartExpense(expense);
-        modalRef.componentInstance
-            .expenseDeletetionEmitter
-            .pipe(
-                map((emittedExpense: CarPartExpense) => this.createExpenseEmitterResponse(emittedExpense)),
-                first()
-            )
-            .subscribe((expenseEmitterDeletionReponse: ExpenseEmitterDeletionResponse) =>
-                this.handleEmittedDeletionResponse(expenseEmitterDeletionReponse));
+  openDeleteExpenseModal(expense: CarPartExpense) {
+    if (this.canDelete) {
+      const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+      modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<CarPartExpense>();
+      modalRef.componentInstance.expense = new CarPartExpense(expense);
+      modalRef.componentInstance
+        .expenseDeletetionEmitter
+        .pipe(
+          map((emittedExpense: CarPartExpense) => this.createExpenseEmitterResponse(emittedExpense)),
+          first()
+        )
+        .subscribe((expenseEmitterDeletionReponse: ExpenseEmitterDeletionResponse) =>
+          this.handleEmittedDeletionResponse(expenseEmitterDeletionReponse)
+        );
     }
+  }
 
-    private refreshCarPartExpenses() {
-        this.exploitationService
-            .getExploitationReportByVehicleId(this.vehicle.id)
-            .subscribe((report: ExploitationReport) => {
-                this.carPartExpenses = [...report.carPartsExpenses];
-            });
-    }
+  private refreshCarPartExpenses() {
+    this.exploitationService
+      .getExploitationReportByVehicleId(this.vehicle.id)
+      .subscribe((report: ExploitationReport) => {
+        this.carPartExpenses = [...report.carPartsExpenses];
+      });
+  }
 
-    private createExpenseEmitterResponse(emittedExpense: CarPartExpense) {
-        return new ExpenseEmitterDeletionResponse({
-            delete: emittedExpense instanceof CarPartExpense,
-            expense: emittedExpense
-        });
-    }
+  private createExpenseEmitterResponse(emittedExpense: CarPartExpense) {
+    return new ExpenseEmitterDeletionResponse({
+      delete: emittedExpense instanceof CarPartExpense,
+      expense: emittedExpense
+    });
+  }
 
-    private handleEmittedDeletionResponse(expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) {
-        if (expenseEmitterDeletionResponse.delete) {
-            this.carPartExpenseService
-                .deleteCarPartExpense(expenseEmitterDeletionResponse.expense.id)
-                .subscribe((response) => {
-                        console.log(response);
-                        this.refreshCarPartExpenses();
-                        // TODO Show deleted
-                    },
-                    (error) => {
-                        // TODO Show error
-                    });
-        }
+  private handleEmittedDeletionResponse(expenseEmitterDeletionResponse: ExpenseEmitterDeletionResponse) {
+    if (expenseEmitterDeletionResponse.delete) {
+      this.carPartExpenseService
+        .deleteCarPartExpense(expenseEmitterDeletionResponse.expense.id)
+        .subscribe((response) => {
+            console.log(response);
+            this.refreshCarPartExpenses();
+            // TODO Show deleted
+          },
+          (error) => {
+            // TODO Show error
+          });
     }
+  }
 
 }
