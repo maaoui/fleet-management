@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewContainerRef} from '@angular/core';
 
 @Component({
   selector: 'app-employee-view',
@@ -7,10 +7,24 @@ import {Component, OnInit} from '@angular/core';
 })
 export class EmployeeViewComponent implements OnInit {
 
-  constructor() {
+  private currentComponent: ComponentRef<Component> = null;
+
+  constructor(private componentFactoryResolver: ComponentFactoryResolver,
+              private viewContainerRef: ViewContainerRef) {
   }
 
   ngOnInit(): void {
   }
 
+
+  createComponent(componentRef: ComponentFactory<any>): void {
+    this.currentComponent = this.viewContainerRef.createComponent(componentRef);
+    this.currentComponent.changeDetectorRef.detectChanges();
+  }
+
+  destroyCurrentComponent(): void {
+    if (this.currentComponent) {
+      this.currentComponent.destroy();
+    }
+  }
 }
