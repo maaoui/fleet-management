@@ -1,4 +1,5 @@
-import {Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, ViewContainerRef} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 import {AdminVehiclesComponent} from '../admin-vehicles/admin-vehicles.component';
 import {AdminExpensesComponent} from '../admin-expenses/admin-expenses.component';
 import {AdminDepartmentsComponent} from '../admin-departments/admin-departments.component';
@@ -11,20 +12,27 @@ import {AdminEmployeesComponent} from '../admin-employees/admin-employees.compon
   templateUrl: './admin-view.component.html',
   styleUrls: ['./admin-view.component.scss']
 })
-export class AdminViewComponent implements OnInit {
+export class AdminViewComponent {
   private currentComponent: ComponentRef<Component> = null;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private viewContainerRef: ViewContainerRef) {
+              private viewContainerRef: ViewContainerRef,
+              private translateService: TranslateService
+  ) {
   }
 
-  ngOnInit(): void {
+  setLanguage(language: string) {
+    this.translateService.use(language);
   }
 
-  createAdminVehiclesComponent(): void {
+  getLanguage(): string {
+    return this.translateService.currentLang;
+  }
+
+  createAdminVehiclesComponent = (): void => {
     this.destroyCurrentComponent();
     this.createComponent(this.getAdminVehiclesComponentFactory());
-  }
+  };
 
   createAdminExpensesComponent() {
     this.destroyCurrentComponent();

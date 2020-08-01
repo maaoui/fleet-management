@@ -1,0 +1,243 @@
+{
+  "NOT_IMPLEMENTED": "BRAK_TRANSLACJI",
+  "UNIVERSAL": {
+    "SAVE": "Zapisz",
+    "EDIT": "Edytuj",
+    "DELETE": "Usuń",
+    "CANCEL": "Anuluj",
+    "CLOSE": "Zamknij",
+    "YES": "Tak",
+    "NO": "Nie"
+  },
+  "VEHICLE": {
+    "MAKE": "Marka",
+    "MODEL": "Model",
+    "PLATE_NUMBER": "Numer rejestracyjny",
+    "HORSE_POWER": "Liczba koni mechanicznych",
+    "HORSE_POWER_VALUE": "{{horsePower}} KM",
+    "WEIGHT_VALUE": "{{weight}} kilogramy",
+    "VIN": "VIN",
+    "FIRST_REGISTRATION": "Data pierwszej rejestracji",
+    "YEAR_OF_PRODUCTION": "Rok produkcji",
+    "WEIGHT": "Waga",
+    "CURRENT_EMPLOYEE": "Obecny użytkownik",
+    "FUEL_TYPE": "Rodzaj paliwa",
+    "INSURANCE": "Ubezpieczenie "
+  },
+  "LANGUAGE": "Polski",
+  "LOGIN": {
+    "EMAIL": "Email",
+    "PASSWORD": "Hasło",
+    "LOGIN": "Zaloguj"
+  },
+  "ADMIN_VIEW": {
+    "NAV_HEADER": "Fleet Management",
+    "VEHICLES": "Pojazdy",
+    "REPAIRS": "Naprawy",
+    "EMPLOYEES": "Pracownicy",
+    "EXPENSES": "Raport eksploatacyjny",
+    "INSURANCE_INFO": "Ubezpieczenie",
+    "DEPARTMENTS": "Departamenty",
+    "WORKSHOPS": "Warsztaty",
+    "TECHNICAL_EXAMINATION": "Badania techniczne",
+    "MODALS": {
+      "EDIT_TITLE": "Edytuj pojazd",
+      "VALIDATION": {
+        "MIN_LENGTH": "Za mało znaków",
+        "MAX_LENGTH": "Za dużo znaków",
+        "MIN_VALUE": "Podana wartość jest za niska",
+        "MAX_VALUE": "Podana wartość jest za wysoka",
+        "INVALID_PATTERN": "Niepoprawne dane",
+        "REQUIRED": "To pole jest wymagane",
+        "WRONG_VALUE": "Niepoprawna wartość"
+      },
+      "INSURANCE_TITLE": "Ubezpieczenie",
+      "INSURANCE_NUMBER": "Numer ubezpieczenia",
+      "COMPANY_NAME": "Nazwa ubezpieczyciela",
+      "START_DATE": "Data początkowa",
+      "END_DATE": "Data końcowa",
+      "CONTACT_NUMBER": "Numer kontaktowy",
+      "DELETE_TITLE": "Usuwanie poajzdu",
+      "DELETE_MESSAGE": "Czy jesteś pewny, że chcesz usunąć następujący pojazd {vehicle} oraz wszystkie dane z nim powiązane? Ta operacja jest nieodwracalna!",
+      "DELETE_YES": "Tak, usuń",
+      "DELETE_NO": "Nie",
+      "VALUE": "Wartość kosztu",
+      "CURRENCY": "Waluta",
+      "DATE": "Data",
+      "COMMENT": "Komentarz",
+      "CURRENT_KILOMETRAGE": "Obecny kilometraż ",
+      "CAR_PART_MODAL": {
+        "TITLE": "Informacje o części samochodowej",
+        "PART_TYPE": "Typ części",
+        "NAME": "Nazwa części",
+        "DESCRIPTION": "Opis"
+      },
+      "WORKSHOP_MODAL": {
+        "TITLE": "Informacje o warsztacie",
+        "WORKSHOP_NAME": "Nazwa warsztatu",
+        "CONTACT": "Numer kontaktowy",
+        "EMAIL": "Adres email",
+        "REGION": "Region",
+        "CITY": "Miasto",
+        "POSTAL_CODE": "Kod pocztowy",
+        "STREET": "Adres"
+      },
+      "ADD_CAR_PART_EXPENSE_MODAL": {
+        "TITLE": "Dodaj koszt częsci samochodowej",
+        "CAR_PART": "Część samochodowa",
+        "PART_TYPE": "Typ części",
+        "NAME": "Nazwa części",
+        "DESCRIPTION": "Opis"
+      },
+      "ADD_FUEL_EXPENSE_MODAL": {
+        "TITLE": "Dodaj koszt paliwa",
+        "FUEL_AMOUNT": "Liczba litrów",
+        "FUEL_TYPE": "Typ paliwa"
+      },
+      "DELETE_EXPENSE_MODAL": {
+        "TITLE": "Usuń wydatek",
+        "DELETE_MESSAGE": "Czy jesteś pewny/a, że chcesz usunąć wydatek?"
+      },
+      "ADD_OTHER_EXPENSE_MODAL": {
+        "TITLE": "Dodaj inny wydatek",
+        "ITEM_COUNT": "Licza przedmiotów"
+      },
+      "ADD_SERVICE_EXPENSE_MODAL": {
+        "TITLE": "Dodaj koszt serwisowy",
+        "WORKSHOP": "Warsztat",
+        "CAR_PART": "Część samochodowa",
+        "PART_TYPE": "Typ części",
+        "NAME": "Nazwa części",
+        "DESCRIPTION": "Opis"
+      },
+      "DELETE_DEPARTMENT_MODAL": {
+        "TITLE": "Usuń oddział",
+        "DELETE_MESSAGE": "Czy jesteś pewny/a, że chcesz usunąć oddział {{department}} i wszystkie dane z nim powiązane? Ta operacja jest nieodwracalna"
+      },
+      "DEPARTMENT_MODAL": {
+        "TITLE_EDIT": "Edytuj oddział",
+        "TITLE_ADD": "Dodaj oddział",
+        "DEPARTMENT_NAME": "Nazwa oddziału",
+        "CITY": "Miasto",
+        "POSTAL_CODE": "Kod pocztowy",
+        "STREET_ADDRESS": "Adres",
+        "EMPLOYEES": "Pracownicy",
+        "REGION": "Region"
+      },
+      "WORKSHOP_EDITING_MODAL": {
+        "TITLE_EDIT": "Edytuj warsztat",
+        "TITLE_ADD": "Dodaj warsztat",
+        "WORKSHOP_NAME": "Nazwa warsztatu",
+        "EMAIL": "Adres email",
+        "PHONE_NUMBER": "Numer kontaktowy",
+        "CITY": "Miasto",
+        "POSTAL_CODE": "Kod pocztowy",
+        "STREET_ADDRESS": "Adres",
+        "REGION": "Region",
+        "LATITUDE": "Szerokość geograficzna",
+        "LONGITUDE": "Długość geograficzna"
+      },
+      "DELETE_TECHNICAL_EXAMINATION_MODEL": {
+        "TITLE": "Usuń badanie techniczne",
+        "DELETE_MESSAGE": "Czy jesteś pewny/a, że chcesz usunąć badanie techniczne?"
+      },
+      "ADD_TECHNICAL_EXAMINATION": {
+        "TITLE": "Dodaj badanie techniczne",
+        "CURRENT_KILOMETRAGE": "Obecny kilometraż",
+        "EXAMINATION_DATE": "Data badania technicznego",
+        "NEXT_EXAMINATION_DATE": "Data następnego badania technicznego",
+        "COMMENT": "Komentarz",
+        "VEHICLE": "Pojazd",
+        "AFTER": "Data następnego badania musi być po dacie ostatniego badania.",
+        "SAVE_AS_EXPENSE": "Czy dodać badanie techniczne jako koszt dodatkowy?"
+      },
+      "ADD_EMPLOYEE": {
+        "TITLE": "Dodaj pracownika",
+        "FIRST_NAME": "Imię",
+        "LAST_NAME": "Nazwisko",
+        "PHONE_NUMBER": "Numer telefonu",
+        "EMAIL_ADDRESS": "Adres email",
+        "PASSWORD": "Hasło",
+        "DEPARTMENT": "Oddział",
+        "SET_ADMIN": "Czy chcesz ustawić uprawnienia administratora?",
+        "ENABLED": "Czy użytkownik ma być aktywny?"
+      }
+    }
+  },
+  "ADMIN_EXPENSES": {
+    "SELECT_VEHICLE": "Wybierz pojazd, aby uzyskać dostęp do kosztów",
+    "CAR_PART_EXPENSES": "Koszty części",
+    "FUEL_EXPENSES": "Koszty paliwa",
+    "OTHER_EXPENSES": "Inne koszty",
+    "CAR_SERVICE_EXPENSES": "Koszty serwisowe",
+    "NOT_AVAILABLE": "Koszty dla wybranego samochodu nie są dostepne",
+    "EXPENSE_NOT_FOUND": "Wybrane koszty nie zostały znalezione.",
+    "COMMON": {
+      "DATE": "Data wydatku",
+      "KILOMETRAGE": "Kilometraż",
+      "COMMENT": "Komentarz",
+      "VALUE": "Wartość"
+    },
+    "CAR_PART_EXPENSES_COMPONENT": {
+      "CAR_PART": "Część samochodowa"
+    },
+    "CAR_SERVICE_EXPENSES_COMPONENT": {
+      "WORKSHOP": "Warsztat",
+      "CAR_PART": "Część samochodowa"
+    },
+    "FUEL_EXPENSES_COMPONENT": {
+      "FUEL_AMOUNT": "Ilość paliwa",
+      "FUEL_TYPE": "Typ paliwa"
+    },
+    "OTHER_EXPENSES_COMPONENT": {
+      "ITEM_COUNT": "Liczba pozycji",
+      "TOTAL_VALUE": "Łączna wartość"
+    }
+  },
+  "ADMIN_DEPARTMENTS": {
+    "LIST": {
+      "REGION_NAME": "Nazwa regionu",
+      "CITY": "Miasto",
+      "POSTAL_CODE": "Kod pocztowy",
+      "ADDRESS": "Adres",
+      "BTN_EMPLOYEES": "Zobacz listę pracowników"
+    },
+    "NOT_FOUND": "Nie znaleziono oddziałów."
+  },
+  "ADMIN_WORKSHOP": {
+    "WORKSHOP_NOT_CHOSEN": "Wybierz warsztat aby uzyskać informacje dodatkowe.",
+    "COORDINATES": "Długość geograficzna: {{longitude}}, Szerokość geograficzna: {{latitude}}",
+    "REGION_NAME": "Nazwa regionu",
+    "EMAIL": "Email",
+    "PHONE_NUMBER": "Numer kontaktowy",
+    "CITY": "Miasto",
+    "POSTAL_CODE": "Kod pocztowy",
+    "ADDRESS": "Adres"
+  },
+  "ADMIN_TECHNICAL_EXAMINATION": {
+    "VEHICLE": "Pojazd",
+    "CURRENT_KILOMETRAGE": "Obecny kilometraż",
+    "LAST_EXAMINATION_DATE": "Ostatnie badanie techniczne",
+    "NEXT_EXAMINATION_DATE": "Następne badanie techniczne",
+    "COMMENT": "Komentarz",
+    "TECHNICAL_EXAMINATIONS_NOT_FOUND": "Badania techniczne nie zostały znalezione dla wybranego pojazdu"
+  },
+  "ADMIN_EMPLOYEES": {
+    "EMPLOYEES_NOT_FOUND": "Brak pracowników.",
+    "EMPLOYEE": "Pracownik",
+    "EMAIL": "Adres email",
+    "PHONE_NUMBER": "Numer telefonu",
+    "ENABLED": "Aktywny",
+    "DEPARTMENT_NAME": "Nazwa oddziału",
+    "DEPARTMENT_REGION": "Nazwa regionu",
+    "DISABLE": "Deaktywuj",
+    "ENABLE": "Aktywuj",
+    "DISABLE_EMPLOYEE": "Aktywuj/Deaktywuj Pracownika"
+  },
+  "EMPLOYEE_VIEW": {
+    "NAV_HEADER": "Fleet Management",
+    "VEHICLES": "Pojazdy",
+    "EXPENSES": "Raport Eksploatacyjny",
+    "TECHNICAL_EXAMINATION": "Badanie techniczne"
+  }
+}
