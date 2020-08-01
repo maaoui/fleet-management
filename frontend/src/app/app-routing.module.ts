@@ -4,14 +4,13 @@ import {AdminViewComponent} from './admin/admin-view/admin-view.component';
 import {EmployeeViewComponent} from './employee/employee-view/employee-view.component';
 import {LoginComponent} from './shared/component/login/login.component';
 import {LogoutComponent} from './shared/component/logout/logout.component';
+import {AppComponent} from './app.component';
 
 
 const routes: Routes = [
-  // TODO Change this
   {
     path: '',
-    component: EmployeeViewComponent
-    //  component: AppComponent
+    component: AppComponent
   },
   {
     path: 'admin',
