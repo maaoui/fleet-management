@@ -7,10 +7,11 @@ import {EmployeeVehiclesComponent} from './employee-vehicles/employee-vehicles.c
 import {ReadInsuranceInformationModalComponent} from './modals/read-insurance-information-modal/read-insurance-information-modal.component';
 import { EmployeeExpensesComponent } from './employee-expenses/employee-expenses.component';
 import {AdminModule} from '../admin/admin.module';
+import { EmployeeTechnicalExaminationComponent } from './employee-technical-examination/employee-technical-examination.component';
 
 
 @NgModule({
-  declarations: [EmployeeViewComponent, EmployeeVehiclesComponent, ReadInsuranceInformationModalComponent, EmployeeExpensesComponent],
+  declarations: [EmployeeViewComponent, EmployeeVehiclesComponent, ReadInsuranceInformationModalComponent, EmployeeExpensesComponent, EmployeeTechnicalExaminationComponent],
   imports: [
     CommonModule,
     SharedModule,

@@ -1,6 +1,7 @@
 import {Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewContainerRef} from '@angular/core';
 import {EmployeeVehiclesComponent} from '../employee-vehicles/employee-vehicles.component';
 import {EmployeeExpensesComponent} from '../employee-expenses/employee-expenses.component';
+import {EmployeeTechnicalExaminationComponent} from '../employee-technical-examination/employee-technical-examination.component';
 
 @Component({
   selector: 'app-employee-view',
@@ -52,7 +53,7 @@ export class EmployeeViewComponent implements OnInit {
     return this.componentFactoryResolver.resolveComponentFactory(EmployeeExpensesComponent);
   }
 
-  private getEmployeeTechnicalExaminationComponentFactory(): ComponentFactory<EmployeeVehiclesComponent> {
-    return this.componentFactoryResolver.resolveComponentFactory(EmployeeVehiclesComponent);
+  private getEmployeeTechnicalExaminationComponentFactory(): ComponentFactory<EmployeeTechnicalExaminationComponent> {
+    return this.componentFactoryResolver.resolveComponentFactory(EmployeeTechnicalExaminationComponent);
   }
 }

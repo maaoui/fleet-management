@@ -8,10 +8,11 @@ import {LogoutComponent} from './component/logout/logout.component';
 import {FormsModule} from '@angular/forms';
 import { VehicleInformationComponent } from './component/vehicle-information/vehicle-information.component';
 import { InsuranceInformationComponent } from './component/insurance-information/insurance-information.component';
+import { TechnicalExaminationComponent } from './component/technical-examination/technical-examination.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, LogoutComponent, VehicleInformationComponent, InsuranceInformationComponent],
+  declarations: [LoginComponent, LogoutComponent, VehicleInformationComponent, InsuranceInformationComponent, TechnicalExaminationComponent],
   imports: [
     TranslateModule,
     BrowserModule,
@@ -23,7 +24,8 @@ import { InsuranceInformationComponent } from './component/insurance-information
     BrowserModule,
     CommonModule,
     VehicleInformationComponent,
-    InsuranceInformationComponent
+    InsuranceInformationComponent,
+    TechnicalExaminationComponent
   ]
 })
 export class SharedModule {

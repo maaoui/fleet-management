@@ -3,11 +3,11 @@ import {TechnicalExamination} from '../../shared/model/technicalExamination/tech
 import {TechnicalExaminationService} from '../../shared/service/vehicle/technical-examination.service';
 
 @Component({
-  selector: 'app-admin-technical-examination',
-  templateUrl: './admin-technical-examination.component.html',
-  styleUrls: ['./admin-technical-examination.component.scss']
+  selector: 'app-employee-technical-examination',
+  templateUrl: './employee-technical-examination.component.html',
+  styleUrls: ['./employee-technical-examination.component.scss']
 })
-export class AdminTechnicalExaminationComponent implements OnInit {
+export class EmployeeTechnicalExaminationComponent implements OnInit {
 
   technicalExaminations: TechnicalExamination[];
 

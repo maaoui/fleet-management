@@ -1,5 +1,5 @@
 <div class="container" *ngIf="technicalExaminations ">
-  <app-technical-examination [canDeleteTechnicalExaminations]="true"
+  <app-technical-examination [canDeleteTechnicalExaminations]="false"
                              [technicalExaminations]="technicalExaminations"
                              (deleteTechnicalExaminationEmitter)="initializeTechnicalExaminations()"></app-technical-examination>
 </div>
