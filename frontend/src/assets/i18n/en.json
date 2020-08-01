@@ -237,6 +237,7 @@
   "EMPLOYEE_VIEW": {
     "NAV_HEADER": "Fleet Management",
     "VEHICLES": "Vehicles",
-    "EXPLOATATION_REPORT": "Exploatation Report"
+    "EXPENSES": "Exploatation Report",
+    "TECHNICAL_EXAMINATION": "Technical examination"
   }
 }

@@ -1,4 +1,5 @@
 import {Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewContainerRef} from '@angular/core';
+import {AdminExpensesComponent} from '../../admin/admin-expenses/admin-expenses.component';
 
 @Component({
   selector: 'app-employee-view',
@@ -26,5 +27,34 @@ export class EmployeeViewComponent implements OnInit {
     if (this.currentComponent) {
       this.currentComponent.destroy();
     }
+  }
+
+  createEmployeeVehiclesComponent(): void {
+    this.destroyCurrentComponent();
+    this.createComponent(this.getEmployeeVehiclesComponentFactory());
+  }
+
+  createEmployeeExpensesComponent(): void {
+
+    this.destroyCurrentComponent();
+    this.createComponent(this.getEmployeeExpensesComponentFactory());
+  }
+
+  createEmployeeTechnicalExaminationComponent(): void {
+
+    this.destroyCurrentComponent();
+    this.createComponent(this.getEmployeeTechnicalExaminationComponentFactory());
+  }
+
+  private getEmployeeVehiclesComponentFactory(): ComponentFactory<AdminExpensesComponent> {
+    return this.componentFactoryResolver.resolveComponentFactory(AdminExpensesComponent);
+  }
+
+  private getEmployeeExpensesComponentFactory(): ComponentFactory<AdminExpensesComponent> {
+    return this.componentFactoryResolver.resolveComponentFactory(AdminExpensesComponent);
+  }
+
+  private getEmployeeTechnicalExaminationComponentFactory(): ComponentFactory<AdminExpensesComponent> {
+    return this.componentFactoryResolver.resolveComponentFactory(AdminExpensesComponent);
   }
 }

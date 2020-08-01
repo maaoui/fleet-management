@@ -2,8 +2,18 @@
   <a class="navbar-brand" (click)="destroyCurrentComponent()">{{"EMPLOYEE_VIEW.NAV_HEADER" | translate }}</a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-
-
+      <li class="nav-item">
+        <a class="nav-link" (click)="createEmployeeVehiclesComponent()"><i
+          class="fas fa-car"></i> {{"EMPLOYEE_VIEW.VEHICLES" | translate }} </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="createEmployeeExpensesComponent()"><i
+          class="fas fa-receipt"></i> {{"EMPLOYEE_VIEW.EXPENSES" | translate }}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="createEmployeeTechnicalExaminationComponent()"><i
+          class="fas fa-wrench"></i> {{"EMPLOYEE_VIEW.TECHNICAL_EXAMINATION" | translate }}</a>
+      </li>
     </ul>
   </div>
 </nav>
