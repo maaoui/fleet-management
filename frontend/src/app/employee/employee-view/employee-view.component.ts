@@ -2,6 +2,7 @@ import {Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnI
 import {EmployeeVehiclesComponent} from '../employee-vehicles/employee-vehicles.component';
 import {EmployeeExpensesComponent} from '../employee-expenses/employee-expenses.component';
 import {EmployeeTechnicalExaminationComponent} from '../employee-technical-examination/employee-technical-examination.component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-employee-view',
@@ -13,7 +14,17 @@ export class EmployeeViewComponent implements OnInit {
   private currentComponent: ComponentRef<Component> = null;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
-              private viewContainerRef: ViewContainerRef) {
+              private viewContainerRef: ViewContainerRef,
+              private translateService: TranslateService
+  ) {
+  }
+
+  setLanguage(language: string) {
+    this.translateService.use(language);
+  }
+
+  getLanguage(): string {
+    return this.translateService.currentLang;
   }
 
   ngOnInit(): void {

@@ -32,7 +32,7 @@ export class AdminViewComponent {
   createAdminVehiclesComponent = (): void => {
     this.destroyCurrentComponent();
     this.createComponent(this.getAdminVehiclesComponentFactory());
-  };
+  }
 
   createAdminExpensesComponent() {
     this.destroyCurrentComponent();
