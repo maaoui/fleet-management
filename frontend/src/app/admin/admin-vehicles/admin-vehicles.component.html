@@ -5,7 +5,7 @@
     <ul class="list-group">
       <div class="list-group-item" *ngFor="let vehicle of vehicles">
         <div>
-          <app-vehicle-information [vehicle]="vehicle" (eventEmitter)="loadVehiclesList()"></app-vehicle-information>
+          <app-vehicle-information [vehicle]="vehicle"></app-vehicle-information>
         </div>
         <div class="list-group-item__box">
           <button type="button" class="btn btn-success" (click)="openEditVehicleModal(vehicle)"><i

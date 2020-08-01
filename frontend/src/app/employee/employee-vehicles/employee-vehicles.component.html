@@ -2,7 +2,14 @@
   <div class="listContainer">
     <ul class="list-group">
       <div class="list-group-item" *ngFor="let vehicle of vehicles">
-        <app-vehicle-information [vehicle]="vehicle"></app-vehicle-information>
+        <div class="list-group-item__box">
+
+          <app-vehicle-information [vehicle]="vehicle"></app-vehicle-information>
+        </div>
+        <div class="list-group-item__box">
+          <button type="button" class="btn btn-info" (click)="openInsuranceInformationModal(vehicle)"><i
+            class="far fa-edit"></i>  {{"ADMIN_VIEW.INSURANCE_INFO" | translate}} </button>
+        </div>
 
       </div>
     </ul>

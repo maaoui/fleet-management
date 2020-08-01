@@ -17,3 +17,13 @@
   display: flex;
 }
 
+.list-group-item__box {
+  flex-direction: row;
+  flex-grow: 3;
+
+  &:last-child {
+    justify-content: end;
+    align-items: center;
+    display: grid;
+  }
+}
