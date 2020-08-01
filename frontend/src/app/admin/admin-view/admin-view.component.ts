@@ -12,7 +12,7 @@ import {AdminEmployeesComponent} from '../admin-employees/admin-employees.compon
   styleUrls: ['./admin-view.component.scss']
 })
 export class AdminViewComponent implements OnInit {
-  private currentComponent: ComponentRef<any> = null;
+  private currentComponent: ComponentRef<Component> = null;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
               private viewContainerRef: ViewContainerRef) {

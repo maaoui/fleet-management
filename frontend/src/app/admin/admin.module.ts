@@ -30,18 +30,50 @@ import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import {DeleteDepartmentModalComponent} from './modals/delete-department-modal/delete-department-modal.component';
 import {AdminWorkshopsComponent} from './admin-workshops/admin-workshops.component';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
-import { WorkshopEditingModalComponent } from './modals/workshop-editing-modal/workshop-editing-modal.component';
-import { AdminTechnicalExaminationComponent } from './admin-technical-examination/admin-technical-examination.component';
-import { DeleteTechnicalExaminationModalComponent } from './modals/delete-technical-examination-modal/delete-technical-examination-modal.component';
-import { AddTechnicalExaminationModalComponent } from './modals/add-technical-examination-modal/add-technical-examination-modal.component';
-import { AdminEmployeesComponent } from './admin-employees/admin-employees.component';
-import { AddEmployeeModalComponent } from './modals/add-employee-modal/add-employee-modal.component';
-import { EditEmployeeModalComponent } from './modals/edit-employee-modal/edit-employee-modal.component';
-import { AddVehicleModalComponent } from './modals/add-vehicle-modal/add-vehicle-modal.component';
+import {WorkshopEditingModalComponent} from './modals/workshop-editing-modal/workshop-editing-modal.component';
+import {AdminTechnicalExaminationComponent} from './admin-technical-examination/admin-technical-examination.component';
+import {DeleteTechnicalExaminationModalComponent} from './modals/delete-technical-examination-modal/delete-technical-examination-modal.component';
+import {AddTechnicalExaminationModalComponent} from './modals/add-technical-examination-modal/add-technical-examination-modal.component';
+import {AdminEmployeesComponent} from './admin-employees/admin-employees.component';
+import {AddEmployeeModalComponent} from './modals/add-employee-modal/add-employee-modal.component';
+import {EditEmployeeModalComponent} from './modals/edit-employee-modal/edit-employee-modal.component';
+import {AddVehicleModalComponent} from './modals/add-vehicle-modal/add-vehicle-modal.component';
 
 
 @NgModule({
-  declarations: [AdminViewComponent, AdminVehiclesComponent, AdminExpensesComponent, EditVehicleModalComponent, InsuranceInformationComponent, CarPartExpensesComponent, FuelExpensesComponent, CarServiceExpensesComponent, OtherExpensesComponent, ExpensesNotFoundComponent, DeleteVehicleModalComponent, CarPartModalComponent, WorkshopModalComponent, AddCarPartExpenseModalComponent, DeleteExpenseModalComponent, AddFuelExpenseModalComponent, AddOtherExpenseModalComponent, AddServicingExpenseModalComponent, AdminDepartmentsComponent, DepartmentEmployeeListComponent, EditDepartmentModalComponent, AddDepartmentModalComponent, DeleteDepartmentModalComponent, AdminWorkshopsComponent, WorkshopEditingModalComponent, AdminTechnicalExaminationComponent, DeleteTechnicalExaminationModalComponent, AddTechnicalExaminationModalComponent, AdminEmployeesComponent, AddEmployeeModalComponent, EditEmployeeModalComponent, AddVehicleModalComponent],
+  declarations: [
+    AdminViewComponent,
+    AdminVehiclesComponent,
+    AdminExpensesComponent,
+    EditVehicleModalComponent,
+    InsuranceInformationComponent,
+    CarPartExpensesComponent,
+    FuelExpensesComponent,
+    CarServiceExpensesComponent,
+    OtherExpensesComponent,
+    ExpensesNotFoundComponent,
+    DeleteVehicleModalComponent,
+    CarPartModalComponent,
+    WorkshopModalComponent,
+    AddCarPartExpenseModalComponent,
+    DeleteExpenseModalComponent,
+    AddFuelExpenseModalComponent,
+    AddOtherExpenseModalComponent,
+    AddServicingExpenseModalComponent,
+    AdminDepartmentsComponent,
+    DepartmentEmployeeListComponent,
+    EditDepartmentModalComponent,
+    AddDepartmentModalComponent,
+    DeleteDepartmentModalComponent,
+    AdminWorkshopsComponent,
+    WorkshopEditingModalComponent,
+    AdminTechnicalExaminationComponent,
+    DeleteTechnicalExaminationModalComponent,
+    AddTechnicalExaminationModalComponent,
+    AdminEmployeesComponent,
+    AddEmployeeModalComponent,
+    EditEmployeeModalComponent,
+    AddVehicleModalComponent],
   exports: [
     AdminViewComponent
   ],

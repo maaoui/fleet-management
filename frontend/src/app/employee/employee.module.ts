@@ -11,7 +11,11 @@ import {BrowserModule} from '@angular/platform-browser';
     CommonModule,
     SharedModule,
     BrowserModule
+  ],
+  exports: [
+    EmployeeViewComponent
   ]
 })
 export class EmployeeModule {
 }
+

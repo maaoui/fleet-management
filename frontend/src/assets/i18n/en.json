@@ -233,5 +233,10 @@
     "DISABLE": "Disable",
     "ENABLE": "Enable",
     "DISABLE_EMPLOYEE": "Disable/Enable Employee"
+  },
+  "EMPLOYEE_VIEW": {
+    "NAV_HEADER": "Fleet Management",
+    "VEHICLES": "Vehicles",
+    "EXPLOATATION_REPORT": "Exploatation Report"
   }
 }
