@@ -10,15 +10,17 @@ import {ExploitationReport} from '../../shared/model/exploitation/exploitation-r
   styleUrls: ['./admin-expenses.component.scss']
 })
 export class AdminExpensesComponent implements OnInit {
+
+  constructor(private vehicleService: VehicleService,
+              private exploitationService: ExploitationService) {
+  }
+
   private vehicles: Vehicle[];
   private exploitationReport: ExploitationReport;
   private currentComponentName: string;
   private isVehicleSelected = false;
   private selectedVehicle: Vehicle;
 
-  constructor(private vehicleService: VehicleService,
-              private exploitationService: ExploitationService) {
-  }
 
   ngOnInit(): void {
     this.initializeVehicles();
@@ -32,11 +34,6 @@ export class AdminExpensesComponent implements OnInit {
       });
   }
 
-
-  getVehicleShortInformation(vehicle: Vehicle) {
-    return `${vehicle.make} ${vehicle.model} [${vehicle.plateNumber}]`;
-  }
-
   getVehicleExploatationData(vehicleId) {
     this.exploitationService
       .getExploitationReportByVehicleId(vehicleId)
@@ -46,6 +43,10 @@ export class AdminExpensesComponent implements OnInit {
           this.isVehicleSelected = true;
         }
       );
+  }
+
+  getVehicleShortInformation(vehicle: Vehicle) {
+    return `${vehicle.make} ${vehicle.model} [${vehicle.plateNumber}]`;
   }
 
   changeCurrentComponent(componentName: string) {

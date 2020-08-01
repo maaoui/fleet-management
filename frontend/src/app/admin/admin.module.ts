@@ -75,7 +75,11 @@ import {InsuranceInformationModalComponent} from './modals/insurance-information
     AddVehicleModalComponent,
     InsuranceInformationModalComponent],
   exports: [
-    AdminViewComponent
+    AdminViewComponent,
+    CarPartExpensesComponent,
+    FuelExpensesComponent,
+    CarServiceExpensesComponent,
+    OtherExpensesComponent
   ],
   imports: [
     CommonModule,

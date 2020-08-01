@@ -45,4 +45,5 @@ export class Vehicle {
   currentEmployee: Employee;
   fuelType: FuelType;
   insurance: Insurance;
+
 }
