@@ -3,10 +3,11 @@ import {CommonModule} from '@angular/common';
 import {EmployeeViewComponent} from './employee-view/employee-view.component';
 import {SharedModule} from '../shared/shared.module';
 import {BrowserModule} from '@angular/platform-browser';
+import { EmployeeVehiclesComponent } from './employee-vehicles/employee-vehicles.component';
 
 
 @NgModule({
-  declarations: [EmployeeViewComponent],
+  declarations: [EmployeeViewComponent, EmployeeVehiclesComponent],
   imports: [
     CommonModule,
     SharedModule,

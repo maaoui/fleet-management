@@ -7,10 +7,11 @@ import {LoginComponent} from './component/login/login.component';
 import {LogoutComponent} from './component/logout/logout.component';
 import {FormsModule} from '@angular/forms';
 import { VehicleInformationComponent } from './component/vehicle-information/vehicle-information.component';
+import { InsuranceInformationComponent } from './component/insurance-information/insurance-information.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, LogoutComponent, VehicleInformationComponent],
+  declarations: [LoginComponent, LogoutComponent, VehicleInformationComponent, InsuranceInformationComponent],
   imports: [
     TranslateModule,
     BrowserModule,
@@ -21,7 +22,8 @@ import { VehicleInformationComponent } from './component/vehicle-information/veh
     TranslateModule,
     BrowserModule,
     CommonModule,
-    VehicleInformationComponent
+    VehicleInformationComponent,
+    InsuranceInformationComponent
   ]
 })
 export class SharedModule {

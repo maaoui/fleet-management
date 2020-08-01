@@ -36,5 +36,4 @@ export class VehicleService {
     return 'vehicle';
   }
 
-
 }

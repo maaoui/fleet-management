@@ -9,6 +9,8 @@ import {first} from 'rxjs/operators';
 import {Constraint} from '../../shared/constraints/constraint';
 import {AddVehicleModalComponent} from '../modals/add-vehicle-modal/add-vehicle-modal.component';
 import {Insurance} from '../../shared/model/insurance/insurance';
+import {InsuranceInformationModalComponent} from '../modals/insurance-information-modal/insurance-information-modal.component';
+import {InsuranceService} from '../../shared/service/insurance/insurance.service';
 
 @Component({
   selector: 'app-admin-vehicles',
@@ -19,7 +21,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
   private vehicles: Vehicle[];
   private subscription: Subscription;
 
-  constructor(private vehicleService: VehicleService, private modalService: NgbModal) {
+  constructor(private vehicleService: VehicleService, private modalService: NgbModal, private insuranceService: InsuranceService) {
   }
 
   ngOnInit(): void {
@@ -78,7 +80,20 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .subscribe(() => this.loadVehiclesList());
   }
 
-  update($event: any) {
-    console.log(event);
+  openInsuranceInformationModal(vehicle: Vehicle) {
+    this.insuranceService
+      .getInsuranceByVehicleId(vehicle.id)
+      .subscribe((insurance) => {
+        const modalRef = this.modalService.open(InsuranceInformationModalComponent, {size: Constraint.MODAL_SIZE_LG});
+        modalRef.componentInstance.insurance = insurance;
+        modalRef.componentInstance.insuranceUpdateEmitter = new EventEmitter();
+        modalRef.componentInstance.insuranceUpdateEmitter
+          .pipe(first())
+          .subscribe(
+            () => this.loadVehiclesList(),
+            (error) => {
+              // TODO Handle error - show error message
+            });
+      });
   }
 }

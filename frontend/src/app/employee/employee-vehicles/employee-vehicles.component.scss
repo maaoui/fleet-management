@@ -1,0 +1,19 @@
+@import "src/styles.scss";
+
+.listContainer {
+  margin: 3em;
+}
+
+.container {
+  margin-top: 3em;
+}
+
+.list-group-item {
+  margin: 2em;
+  border: 1px solid $color-border;
+  border-radius: 2em;
+  word-wrap: break-word;
+  min-width: 360px;
+  display: flex;
+}
+

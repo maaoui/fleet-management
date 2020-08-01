@@ -6,21 +6,7 @@
 
 </div>
 <div class="modal-body" *ngIf="!isEditMode">
-  <p class="list-group-item-text">
-    <b>{{"ADMIN_VIEW.MODALS.INSURANCE_NUMBER" | translate}}:</b>  {{insurance.insuranceNumber}}
-  </p>
-  <p class="list-group-item-text">
-    <b>{{"ADMIN_VIEW.MODALS.COMPANY_NAME" | translate}}:</b>  {{insurance.companyName}}
-  </p>
-  <p class="list-group-item-text">
-    <b>{{"ADMIN_VIEW.MODALS.START_DATE" | translate}}:</b>  {{insurance.startDate | date}}
-  </p>
-  <p class="list-group-item-text">
-    <b>{{"ADMIN_VIEW.MODALS.END_DATE" | translate}}:</b>  {{insurance.endDate | date}}
-  </p>
-  <p class="list-group-item-text">
-    <b>{{"ADMIN_VIEW.MODALS.CONTACT_NUMBER" | translate}}:</b>  {{insurance.contactNumber}}
-  </p>
+  <app-insurance-information [insurance]="insurance"></app-insurance-information>
 </div>
 <div class="modal-body" *ngIf="isEditMode">
   <form [formGroup]="insuranceForm" class="form-signin" (ngSubmit)="onSavePress()" autocomplete="off">

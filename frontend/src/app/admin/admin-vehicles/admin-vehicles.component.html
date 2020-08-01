@@ -4,12 +4,16 @@
   <div class="listContainer">
     <ul class="list-group">
       <div class="list-group-item" *ngFor="let vehicle of vehicles">
-        <app-vehicle-information [vehicle]="vehicle" (eventEmitter)="loadVehiclesList()"></app-vehicle-information>
+        <div>
+          <app-vehicle-information [vehicle]="vehicle" (eventEmitter)="loadVehiclesList()"></app-vehicle-information>
+        </div>
         <div class="list-group-item__box">
           <button type="button" class="btn btn-success" (click)="openEditVehicleModal(vehicle)"><i
             class="far fa-edit"></i>  {{"UNIVERSAL.EDIT" | translate}} </button>
           <button type="button" class="btn btn-danger" (click)="openDeleteVehicleModal(vehicle)"><i
             class="far fa-edit"></i>  {{"UNIVERSAL.DELETE" | translate}} </button>
+          <button type="button" class="btn btn-info" (click)="openInsuranceInformationModal(vehicle)"><i
+            class="far fa-edit"></i>  {{"ADMIN_VIEW.INSURANCE_INFO" | translate}} </button>
         </div>
       </div>
     </ul>

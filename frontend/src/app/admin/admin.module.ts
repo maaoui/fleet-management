@@ -7,7 +7,6 @@ import {AdminVehiclesComponent} from './admin-vehicles/admin-vehicles.component'
 import {AdminExpensesComponent} from './admin-expenses/admin-expenses.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EditVehicleModalComponent} from './modals/edit-vehicle-modal/edit-vehicle-modal.component';
-import {InsuranceInformationComponent} from './modals/insurance-information/insurance-information.component';
 import {NgbAlertModule, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarPartExpensesComponent} from './sub-components/car-part-expenses/car-part-expenses.component';
 import {FuelExpensesComponent} from './sub-components/fuel-expenses/fuel-expenses.component';
@@ -38,6 +37,7 @@ import {AdminEmployeesComponent} from './admin-employees/admin-employees.compone
 import {AddEmployeeModalComponent} from './modals/add-employee-modal/add-employee-modal.component';
 import {EditEmployeeModalComponent} from './modals/edit-employee-modal/edit-employee-modal.component';
 import {AddVehicleModalComponent} from './modals/add-vehicle-modal/add-vehicle-modal.component';
+import {InsuranceInformationModalComponent} from './modals/insurance-information-modal/insurance-information-modal.component';
 
 
 @NgModule({
@@ -46,7 +46,6 @@ import {AddVehicleModalComponent} from './modals/add-vehicle-modal/add-vehicle-m
     AdminVehiclesComponent,
     AdminExpensesComponent,
     EditVehicleModalComponent,
-    InsuranceInformationComponent,
     CarPartExpensesComponent,
     FuelExpensesComponent,
     CarServiceExpensesComponent,
@@ -73,7 +72,8 @@ import {AddVehicleModalComponent} from './modals/add-vehicle-modal/add-vehicle-m
     AdminEmployeesComponent,
     AddEmployeeModalComponent,
     EditEmployeeModalComponent,
-    AddVehicleModalComponent],
+    AddVehicleModalComponent,
+    InsuranceInformationModalComponent],
   exports: [
     AdminViewComponent
   ],

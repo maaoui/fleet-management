@@ -1,17 +1,17 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Insurance} from '../../../shared/model/insurance/insurance';
-import {InsuranceService} from '../../../shared/service/insurance/insurance.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import * as moment from 'moment';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {InsuranceService} from '../../../shared/service/insurance/insurance.service';
 import {InsuranceValidatorConstants} from '../../../core/constants/validator-constants';
 
+import * as moment from 'moment';
 @Component({
-  selector: 'app-insurance-information',
-  templateUrl: './insurance-information.component.html',
-  styleUrls: ['./insurance-information.component.scss']
+  selector: 'app-insurance-information-modal',
+  templateUrl: './insurance-information-modal.component.html',
+  styleUrls: ['./insurance-information-modal.component.scss']
 })
-export class InsuranceInformationComponent implements OnInit {
+export class InsuranceInformationModalComponent implements OnInit {
 
   @Input() insurance: Insurance;
   @Output() insuranceUpdateEmitter: EventEmitter<Insurance> = new EventEmitter<Insurance>();

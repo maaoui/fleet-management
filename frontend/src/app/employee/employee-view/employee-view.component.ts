@@ -1,5 +1,5 @@
 import {Component, ComponentFactory, ComponentFactoryResolver, ComponentRef, OnInit, ViewContainerRef} from '@angular/core';
-import {AdminExpensesComponent} from '../../admin/admin-expenses/admin-expenses.component';
+import {EmployeeVehiclesComponent} from '../employee-vehicles/employee-vehicles.component';
 
 @Component({
   selector: 'app-employee-view',
@@ -16,7 +16,6 @@ export class EmployeeViewComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
   createComponent(componentRef: ComponentFactory<any>): void {
     this.currentComponent = this.viewContainerRef.createComponent(componentRef);
@@ -35,26 +34,24 @@ export class EmployeeViewComponent implements OnInit {
   }
 
   createEmployeeExpensesComponent(): void {
-
     this.destroyCurrentComponent();
     this.createComponent(this.getEmployeeExpensesComponentFactory());
   }
 
   createEmployeeTechnicalExaminationComponent(): void {
-
     this.destroyCurrentComponent();
     this.createComponent(this.getEmployeeTechnicalExaminationComponentFactory());
   }
 
-  private getEmployeeVehiclesComponentFactory(): ComponentFactory<AdminExpensesComponent> {
-    return this.componentFactoryResolver.resolveComponentFactory(AdminExpensesComponent);
+  private getEmployeeVehiclesComponentFactory(): ComponentFactory<EmployeeVehiclesComponent> {
+    return this.componentFactoryResolver.resolveComponentFactory(EmployeeVehiclesComponent);
   }
 
-  private getEmployeeExpensesComponentFactory(): ComponentFactory<AdminExpensesComponent> {
-    return this.componentFactoryResolver.resolveComponentFactory(AdminExpensesComponent);
+  private getEmployeeExpensesComponentFactory(): ComponentFactory<EmployeeVehiclesComponent> {
+    return this.componentFactoryResolver.resolveComponentFactory(EmployeeVehiclesComponent);
   }
 
-  private getEmployeeTechnicalExaminationComponentFactory(): ComponentFactory<AdminExpensesComponent> {
-    return this.componentFactoryResolver.resolveComponentFactory(AdminExpensesComponent);
+  private getEmployeeTechnicalExaminationComponentFactory(): ComponentFactory<EmployeeVehiclesComponent> {
+    return this.componentFactoryResolver.resolveComponentFactory(EmployeeVehiclesComponent);
   }
 }
