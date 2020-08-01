@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Insurance} from '../../../shared/model/insurance/insurance';
 import {InsuranceService} from '../../../shared/service/insurance/insurance.service';
@@ -14,6 +14,7 @@ import {InsuranceValidatorConstants} from '../../../core/constants/validator-con
 export class InsuranceInformationComponent implements OnInit {
 
   @Input() insurance: Insurance;
+  @Output() insuranceUpdateEmitter: EventEmitter<Insurance> = new EventEmitter<Insurance>();
   private isEditMode = false;
   private insuranceForm: FormGroup;
 
@@ -47,6 +48,7 @@ export class InsuranceInformationComponent implements OnInit {
     this.insuranceService
       .updateInsurance(editedVehicle)
       .subscribe(insurance => {
+        this.insuranceUpdateEmitter.emit(insurance);
         this.activeModal.close();
       });
   }

@@ -3,9 +3,7 @@ import {Vehicle} from '../../shared/model/vehicle/vehicle';
 import {VehicleService} from '../../shared/service/vehicle/vehicle.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EditVehicleModalComponent} from '../modals/edit-vehicle-modal/edit-vehicle-modal.component';
-import {InsuranceInformationComponent} from '../modals/insurance-information/insurance-information.component';
 import {Subscription} from 'rxjs';
-import {InsuranceService} from '../../shared/service/insurance/insurance.service';
 import {DeleteVehicleModalComponent} from '../modals/delete-vehicle-modal/delete-vehicle-modal.component';
 import {first} from 'rxjs/operators';
 import {Constraint} from '../../shared/constraints/constraint';
@@ -21,7 +19,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
   private vehicles: Vehicle[];
   private subscription: Subscription;
 
-  constructor(private vehicleService: VehicleService, private modalService: NgbModal, private insuranceService: InsuranceService) {
+  constructor(private vehicleService: VehicleService, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -56,20 +54,6 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .subscribe(() => this.loadVehiclesList());
   }
 
-  openInsuranceInformationModal(vehicle: Vehicle) {
-    this.subscription = this.insuranceService
-      .getInsuranceByVehicleId(vehicle.id)
-      .subscribe((insurance) => {
-        const modalRef = this.modalService.open(InsuranceInformationComponent, {size: Constraint.MODAL_SIZE_LG});
-        modalRef.componentInstance.insurance = insurance;
-        modalRef.componentInstance.vehicleUpdateEmitter = new EventEmitter();
-        modalRef.componentInstance.vehicleUpdateEmitter
-          .pipe(first())
-          .subscribe(() => this.loadVehiclesList());
-      }, error => {
-        // TODO Handle error - show error message
-      });
-  }
 
   openDeleteVehicleModal(vehicle: Vehicle) {
     const modalRef = this.modalService
@@ -92,5 +76,9 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
       .vehicleCreationEmitter
       .pipe(first())
       .subscribe(() => this.loadVehiclesList());
+  }
+
+  update($event: any) {
+    console.log(event);
   }
 }
