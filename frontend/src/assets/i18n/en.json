@@ -28,7 +28,8 @@
   "LOGIN": {
     "EMAIL": "Email",
     "PASSWORD": "Password",
-    "LOGIN": "Log in"
+    "LOGIN": "Log in",
+    "INCORRECT": "Incorrect username or password"
   },
   "ADMIN_VIEW": {
     "NAV_HEADER": "Fleet Management",

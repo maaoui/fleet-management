@@ -10,7 +10,8 @@ import {AuthenticationService} from '../../service/authentication/authentication
 export class LoginComponent implements OnInit {
   username = 'e1@c.com';
   password = 'e1';
-  invalidLogin = false;
+  hasLoginFailed = false;
+  isLoading = false;
 
   constructor(private router: Router,
               private loginservice: AuthenticationService) {
@@ -20,13 +21,19 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
+    this.isLoading = true;
     this.loginservice
       .authenticate(this.username, this.password)
       .subscribe(token => {
-          this.router.navigate(['/admin']);
-          this.invalidLogin = false;
+          this.hasLoginFailed = false;
+          this.router.navigate(['/']);
+          this.isLoading = false;
         },
-        error => this.invalidLogin = true);
+        (error) => {
+          this.hasLoginFailed = true;
+          this.isLoading = false;
+        }
+      );
 
   }
 }

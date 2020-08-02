@@ -1,19 +1,39 @@
 <div class="container">
-  <div>
-    {{"LOGIN.EMAIL" | translate}}
-    <label>
-      <input type="text" name="username" [(ngModel)]="username">
-    </label>
+  <div class="row">
+    <div class="col-4 offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Login into Fleet Management</h4>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <input class="form-control"
+                   placeholder="yourmail@example.com"
+                   type="text"
+                   name="username"
+                   [(ngModel)]="username">
+          </div>
+          <div class="form-group">
+            <input class="form-control"
+                   placeholder="password"
+                   type="password"
+                   name="password"
+                   [(ngModel)]="password">
+          </div>
+          <button (click)=checkLogin() class="btn btn-success btn-block" type="submit">
+            {{"LOGIN.LOGIN" | translate}}
+          </button>
+        </div>
+      </div>
+      <div class="panel-heading div--panel--error" *ngIf="isLoading">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div class="panel-heading div--panel--error alert-danger" *ngIf="hasLoginFailed && !isLoading">
+        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        {{"LOGIN.INCORRECT" | translate}}
+      </div>
+    </div>
   </div>
-  <div>
-    {{"LOGIN.PASSWORD" | translate}}
-    <label>
-      <input type="password" name="password" [(ngModel)]="password">
-    </label>
-  </div>
-
-
-  <button (click)=checkLogin() class="btn btn-success">
-    {{"LOGIN.LOGIN" | translate}}
-  </button>
 </div>
