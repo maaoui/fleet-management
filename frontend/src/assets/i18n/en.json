@@ -243,5 +243,8 @@
   },
   "LANDING_PAGE": {
     "REDIRECT": "You will be redirected to main page soon."
+  },
+  "LOGOUT_PAGE": {
+    "LOGOUT": "You are beeing logged out."
   }
 }

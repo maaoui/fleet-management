@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     if (!this.authService.isUserLoggedIn()) {
       this.router.navigate([RoutePaths.LOGIN]);
     }
-
+    console.log('xd');
     const {url} = state;
     if (url) {
       return this.isPathActiveableByCurrentUser(url.replace('/', ''));
@@ -31,9 +31,9 @@ export class AuthGuard implements CanActivate {
         return this.authService.hasPrivilege('PRIVILEGE_FOR_ROLE_ADMIN_1');
       case RoutePaths.EMPLOYEE_PATH:
         return this.authService.hasPrivilege('PRIVILEGE_FOR_ROLE_EMPLOYEE_1');
-      case RoutePaths.DEFAULT:
-        return true;
       case RoutePaths.LOGIN:
+        return true;
+      case RoutePaths.DEFAULT:
         return true;
       default:
         return false;

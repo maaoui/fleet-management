@@ -31,8 +31,7 @@ const routes: Routes = [
   },
   {
     path: RoutePaths.LOGOUT,
-    component: LogoutComponent,
-    canActivate: [AuthGuard]
+    component: LogoutComponent
   },
   {
     path: '**',

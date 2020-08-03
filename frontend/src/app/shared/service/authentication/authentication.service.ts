@@ -48,7 +48,6 @@ export class AuthenticationService {
   }
 
   logOut() {
-    sessionStorage.removeItem(Constants.STORAGE_USERNAME_KEY);
-    sessionStorage.removeItem(Constants.STORAGE_TOKEN_KEY);
+    sessionStorage.clear();
   }
 }
