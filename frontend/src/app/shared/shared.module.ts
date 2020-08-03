@@ -6,13 +6,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {LoginComponent} from './component/login/login.component';
 import {LogoutComponent} from './component/logout/logout.component';
 import {FormsModule} from '@angular/forms';
-import { VehicleInformationComponent } from './component/vehicle-information/vehicle-information.component';
-import { InsuranceInformationComponent } from './component/insurance-information/insurance-information.component';
-import { TechnicalExaminationComponent } from './component/technical-examination/technical-examination.component';
+import {VehicleInformationComponent} from './component/vehicle-information/vehicle-information.component';
+import {InsuranceInformationComponent} from './component/insurance-information/insurance-information.component';
+import {TechnicalExaminationComponent} from './component/technical-examination/technical-examination.component';
+import {LandingPageComponent} from './component/landing-page/landing-page.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, LogoutComponent, VehicleInformationComponent, InsuranceInformationComponent, TechnicalExaminationComponent],
+  declarations: [LoginComponent, LogoutComponent, VehicleInformationComponent, InsuranceInformationComponent, TechnicalExaminationComponent, LandingPageComponent],
   imports: [
     TranslateModule,
     BrowserModule,

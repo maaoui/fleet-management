@@ -7,7 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'frontend';
+  title = 'Fleet Management';
 
   constructor(private translateService: TranslateService) {
   }
@@ -17,4 +17,5 @@ export class AppComponent implements OnInit {
       this.translateService.use('en') :
       this.translateService.use(navigator.language);
   }
+
 }

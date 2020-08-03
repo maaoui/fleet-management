@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   isLoading = false;
 
   constructor(private router: Router,
-              private loginservice: AuthenticationService) {
+              private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   checkLogin() {
     this.isLoading = true;
-    this.loginservice
+    this.authenticationService
       .authenticate(this.username, this.password)
       .subscribe(token => {
           this.hasLoginFailed = false;

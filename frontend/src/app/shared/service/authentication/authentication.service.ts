@@ -3,10 +3,17 @@ import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import * as jwt_decode from 'jwt-decode';
+import {Constants} from '../../constants/constants';
+
+export interface Authority {
+  authority: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticationService {
 
   constructor(private httpClient: HttpClient) {
@@ -18,9 +25,8 @@ export class AuthenticationService {
       .pipe(
         map(
           userData => {
-            sessionStorage.setItem('username', username);
-            const tokenStr = 'Bearer ' + userData.token;
-            sessionStorage.setItem('token', tokenStr);
+            sessionStorage.setItem(Constants.STORAGE_USERNAME_KEY, username);
+            sessionStorage.setItem(Constants.STORAGE_TOKEN_KEY, `Bearer ${userData.token}`);
             return userData;
           }
         )
@@ -28,13 +34,21 @@ export class AuthenticationService {
   }
 
   isUserLoggedIn() {
-    const user = sessionStorage.getItem('username');
-    // console.log(!(user === null))
+    const user = sessionStorage.getItem(Constants.STORAGE_USERNAME_KEY);
     return !(user === null);
   }
 
+  hasPrivilege(privilegeName: string) {
+    if (!sessionStorage.getItem(Constants.STORAGE_TOKEN_KEY)) {
+      return false;
+    }
+
+    const {privileges} = jwt_decode(sessionStorage.getItem(Constants.STORAGE_TOKEN_KEY));
+    return Object.values(privileges).map((val: Authority) => val.authority).includes(privilegeName);
+  }
+
   logOut() {
-    sessionStorage.removeItem('username');
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem(Constants.STORAGE_USERNAME_KEY);
+    sessionStorage.removeItem(Constants.STORAGE_TOKEN_KEY);
   }
 }
