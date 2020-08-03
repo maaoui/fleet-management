@@ -66,7 +66,6 @@ export class AddVehicleModalComponent implements OnInit {
       })
     });
 
-    console.log(vehicleToCreate);
     this.vehicleService
       .createVehicle(vehicleToCreate)
       .subscribe((vehicle) => {

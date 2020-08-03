@@ -71,7 +71,6 @@ export class CarServiceExpensesComponent implements OnInit {
       this.carServiceExpenseService
         .deleteCarServiceExpense(expenseEmitterDeletionResponse.expense.id)
         .subscribe((response) => {
-            console.log(response);
             this.refreshCarServiceExpenses();
             // TODO Show deleted
           },

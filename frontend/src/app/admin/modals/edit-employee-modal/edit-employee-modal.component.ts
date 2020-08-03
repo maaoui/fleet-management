@@ -44,7 +44,6 @@ export class EditEmployeeModalComponent implements OnInit {
         roles: [...this.employee.roles]
       }
     );
-    console.log(employeeToCreate);
     this.employeeService
       .editEmployee(employeeToCreate)
       .subscribe((updatedEmployee: Employee) => {
