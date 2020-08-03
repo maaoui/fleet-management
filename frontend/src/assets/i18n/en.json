@@ -240,5 +240,8 @@
     "VEHICLES": "Vehicles",
     "EXPENSES": "Exploatation Report",
     "TECHNICAL_EXAMINATION": "Technical examination"
+  },
+  "LANDING_PAGE": {
+    "REDIRECT": "You will be redirected to main page soon."
   }
 }

@@ -240,5 +240,8 @@
     "VEHICLES": "Pojazdy",
     "EXPENSES": "Raport Eksploatacyjny",
     "TECHNICAL_EXAMINATION": "Badanie techniczne"
+  },
+  "LANDING_PAGE": {
+    "REDIRECT": "Za chwile nastąpi przeniesienie na stronę główną."
   }
 }
