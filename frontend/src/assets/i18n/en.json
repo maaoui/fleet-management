@@ -26,6 +26,7 @@
   },
   "LANGUAGE": "English",
   "LOGIN": {
+    "TITLE": "Login into Fleet Management",
     "EMAIL": "Email",
     "PASSWORD": "Password",
     "LOGIN": "Log in",

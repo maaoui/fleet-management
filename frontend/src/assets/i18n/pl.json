@@ -26,6 +26,7 @@
   },
   "LANGUAGE": "Polski",
   "LOGIN": {
+    "TITLE": "Zaloguj do Fleet Management",
     "EMAIL": "Email",
     "PASSWORD": "Hasło",
     "LOGIN": "Zaloguj",
