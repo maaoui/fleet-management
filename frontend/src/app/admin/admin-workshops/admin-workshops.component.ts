@@ -3,7 +3,7 @@ import {Icon, latLng, Marker, marker, tileLayer} from 'leaflet';
 import {Workshop} from '../../shared/model/workshop/workshop';
 import {WorkshopService} from '../../shared/service/vehicle/workshop.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Constraint} from '../../shared/constraints/constraint';
+import {Constants} from '../../shared/constants/constants';
 import {WorkshopEditingModalComponent} from '../modals/workshop-editing-modal/workshop-editing-modal.component';
 import {Address} from '../../shared/model/address/address';
 import {Region} from '../../shared/model/address/region';
@@ -44,7 +44,7 @@ export class AdminWorkshopsComponent implements OnInit {
 
   onEditWorkshopPress() {
     const workshop = new Workshop({...this.chosenWorkshop});
-    const modalRef = this.modalService.open(WorkshopEditingModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(WorkshopEditingModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.isEditMode = true;
     modalRef.componentInstance.workshop = workshop;
     modalRef.componentInstance
@@ -56,7 +56,7 @@ export class AdminWorkshopsComponent implements OnInit {
   }
 
   onAddWorkshopPress() {
-    const modalRef = this.modalService.open(WorkshopEditingModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(WorkshopEditingModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.isEditMode = false;
     modalRef.componentInstance.workshop = new Workshop({
       address: new Address(),

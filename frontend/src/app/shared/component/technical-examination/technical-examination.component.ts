@@ -3,7 +3,7 @@ import {TechnicalExamination} from '../../model/technicalExamination/technical-e
 import {TechnicalExaminationService} from '../../service/vehicle/technical-examination.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AddTechnicalExaminationModalComponent} from '../../../admin/modals/add-technical-examination-modal/add-technical-examination-modal.component';
-import {Constraint} from '../../constraints/constraint';
+import {Constants} from '../../constants/constants';
 import {DeleteTechnicalExaminationModalComponent} from '../../../admin/modals/delete-technical-examination-modal/delete-technical-examination-modal.component';
 import {Vehicle} from '../../model/vehicle/vehicle';
 
@@ -26,7 +26,7 @@ export class TechnicalExaminationComponent implements OnInit {
   }
 
   openAddTechnicalExaminationModal() {
-    const modalRef = this.modalService.open(AddTechnicalExaminationModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(AddTechnicalExaminationModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.technicalExamination = new TechnicalExamination();
     modalRef.componentInstance
       .postTechnicalExaminationEmitter
@@ -37,7 +37,7 @@ export class TechnicalExaminationComponent implements OnInit {
 
   openDeleteTechnicalExaminationModal(technicalExamination: TechnicalExamination) {
     if (this.canDeleteTechnicalExaminations) {
-      const modalRef = this.modalService.open(DeleteTechnicalExaminationModalComponent, {size: Constraint.MODAL_SIZE_LG});
+      const modalRef = this.modalService.open(DeleteTechnicalExaminationModalComponent, {size: Constants.MODAL_SIZE_LG});
       modalRef.componentInstance.technicalExamination = {...technicalExamination};
       modalRef
         .componentInstance

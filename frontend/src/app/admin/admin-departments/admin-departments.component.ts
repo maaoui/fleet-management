@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DepartmentService} from '../../shared/service/department/department.service';
 import {Department} from '../../shared/model/department/department';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Constraint} from '../../shared/constraints/constraint';
+import {Constants} from '../../shared/constants/constants';
 import {DepartmentEmployeeListComponent} from '../modals/department-employee-list/department-employee-list.component';
 import {EditDepartmentModalComponent} from '../modals/edit-department-modal/edit-department-modal.component';
 import {AddDepartmentModalComponent} from '../modals/add-department-modal/add-department-modal.component';
@@ -29,12 +29,12 @@ export class AdminDepartmentsComponent implements OnInit {
   }
 
   openDepartmentEmployeesListModal(department: Department) {
-    const modalRef = this.modalService.open(DepartmentEmployeeListComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(DepartmentEmployeeListComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.employees = department.employees;
   }
 
   openEditDepartmentModal(department: Department) {
-    const modalRef = this.modalService.open(EditDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(EditDepartmentModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.department = department;
     modalRef.componentInstance
       .updateEmitter
@@ -45,7 +45,7 @@ export class AdminDepartmentsComponent implements OnInit {
   }
 
   openAddDepartmentModal() {
-    const modalRef = this.modalService.open(AddDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(AddDepartmentModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.department = this.getEmptyDepartment();
     modalRef.componentInstance
       .creationEmitter
@@ -57,7 +57,7 @@ export class AdminDepartmentsComponent implements OnInit {
 
   openDeleteDepartmentModal(department: Department) {
     const modalRef = this.modalService
-      .open(DeleteDepartmentModalComponent, {size: Constraint.MODAL_SIZE_LG});
+      .open(DeleteDepartmentModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.department = department;
     modalRef.componentInstance
       .departmentDeletionEmitter

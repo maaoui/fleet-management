@@ -10,7 +10,7 @@ import {ExploitationReport} from '../../../shared/model/exploitation/exploitatio
 import {ExploitationService} from '../../../shared/service/exploitation/exploitation.service';
 import {CarServiceExpenseService} from '../../../shared/service/exploitation/expense/car-service-expense.service';
 import {Vehicle} from '../../../shared/model/vehicle/vehicle';
-import {Constraint} from '../../../shared/constraints/constraint';
+import {Constants} from '../../../shared/constants/constants';
 import {AddServicingExpenseModalComponent} from '../../modals/add-servicing-expense-modal/add-servicing-expense-modal.component';
 
 @Component({
@@ -33,18 +33,18 @@ export class CarServiceExpensesComponent implements OnInit {
   }
 
   openCarPartModal(expense: ServiceExpense) {
-    const modalRef = this.modalService.open(CarPartModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(CarPartModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.carPart = expense.carPart;
   }
 
   openWorkshopModal(expense: ServiceExpense) {
-    const modalRef = this.modalService.open(WorkshopModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(WorkshopModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.workshop = expense.workshop;
   }
 
   openDeleteExpenseModal(expense: ServiceExpense) {
     if (this.canDelete) {
-      const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+      const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constants.MODAL_SIZE_LG});
       modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<ServiceExpense>();
       modalRef.componentInstance.expense = new ServiceExpense(expense);
       modalRef.componentInstance
@@ -90,7 +90,7 @@ export class CarServiceExpensesComponent implements OnInit {
   }
 
   openAddServicingExpenseModal() {
-    const modalRef = this.modalService.open(AddServicingExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(AddServicingExpenseModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.vehicle = this.vehicle;
     modalRef.componentInstance
       .postExpenseEmitter

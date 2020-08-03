@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Vehicle} from '../../shared/model/vehicle/vehicle';
 import {VehicleService} from '../../shared/service/vehicle/vehicle.service';
-import {Constraint} from '../../shared/constraints/constraint';
+import {Constants} from '../../shared/constants/constants';
 import {InsuranceService} from '../../shared/service/insurance/insurance.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ReadInsuranceInformationModalComponent} from '../modals/read-insurance-information-modal/read-insurance-information-modal.component';
@@ -33,7 +33,7 @@ export class EmployeeVehiclesComponent implements OnInit {
     this.insuranceService
       .getInsuranceByVehicleId(vehicle.id)
       .subscribe((insurance) => {
-        const modalRef = this.modalService.open(ReadInsuranceInformationModalComponent, {size: Constraint.MODAL_SIZE_LG});
+        const modalRef = this.modalService.open(ReadInsuranceInformationModalComponent, {size: Constants.MODAL_SIZE_LG});
         modalRef.componentInstance.insurance = insurance;
       });
   }

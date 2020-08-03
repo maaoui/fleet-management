@@ -8,7 +8,7 @@ import {Vehicle} from '../../../shared/model/vehicle/vehicle';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ExploitationService} from '../../../shared/service/exploitation/exploitation.service';
 import {OtherExpenseService} from '../../../shared/service/exploitation/expense/other-expense.service';
-import {Constraint} from '../../../shared/constraints/constraint';
+import {Constants} from '../../../shared/constants/constants';
 import {AddOtherExpenseModalComponent} from '../../modals/add-other-expense-modal/add-other-expense-modal.component';
 
 @Component({
@@ -31,7 +31,7 @@ export class OtherExpensesComponent implements OnInit {
 
   openDeleteExpenseModal(expense: OtherExpense) {
     if (this.canDelete) {
-      const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+      const modalRef = this.modalService.open(DeleteExpenseModalComponent, {size: Constants.MODAL_SIZE_LG});
       modalRef.componentInstance.expenseDeletetionEmitter = new EventEmitter<OtherExpense>();
       modalRef.componentInstance.expense = new OtherExpense(expense);
       modalRef.componentInstance
@@ -77,7 +77,7 @@ export class OtherExpensesComponent implements OnInit {
   }
 
   openAddOtherExpenseModal() {
-    const modalRef = this.modalService.open(AddOtherExpenseModalComponent, {size: Constraint.MODAL_SIZE_LG});
+    const modalRef = this.modalService.open(AddOtherExpenseModalComponent, {size: Constants.MODAL_SIZE_LG});
     modalRef.componentInstance.vehicle = this.vehicle;
     modalRef.componentInstance
       .postExpenseEmitter

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Constants} from '../../shared/constants/constants';
 
 @Injectable()
 export class BasicAuthHttpInterceptor implements HttpInterceptor {
@@ -8,10 +9,10 @@ export class BasicAuthHttpInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    if (sessionStorage.getItem('username') && sessionStorage.getItem('token')) {
+    if (sessionStorage.getItem(Constants.STORAGE_USERNAME_KEY) && sessionStorage.getItem(Constants.STORAGE_TOKEN_KEY)) {
       req = req.clone({
         setHeaders: {
-          Authorization: sessionStorage.getItem('token')
+          Authorization: sessionStorage.getItem(Constants.STORAGE_TOKEN_KEY)
         }
       });
     }
