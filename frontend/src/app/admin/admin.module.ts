@@ -38,6 +38,7 @@ import {AddEmployeeModalComponent} from './modals/add-employee-modal/add-employe
 import {EditEmployeeModalComponent} from './modals/edit-employee-modal/edit-employee-modal.component';
 import {AddVehicleModalComponent} from './modals/add-vehicle-modal/add-vehicle-modal.component';
 import {InsuranceInformationModalComponent} from './modals/insurance-information-modal/insurance-information-modal.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import {InsuranceInformationModalComponent} from './modals/insurance-information
     AngularMultiSelectModule,
     LeafletModule,
     NgbAlertModule,
+    RouterModule,
   ]
 })
 export class AdminModule {

@@ -3,6 +3,8 @@ import {EmployeeVehiclesComponent} from '../employee-vehicles/employee-vehicles.
 import {EmployeeExpensesComponent} from '../employee-expenses/employee-expenses.component';
 import {EmployeeTechnicalExaminationComponent} from '../employee-technical-examination/employee-technical-examination.component';
 import {TranslateService} from '@ngx-translate/core';
+import {RoutePaths} from '../../shared/constants/route-paths';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-employee-view',
@@ -15,7 +17,8 @@ export class EmployeeViewComponent implements OnInit {
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
               private viewContainerRef: ViewContainerRef,
-              private translateService: TranslateService
+              private translateService: TranslateService,
+              private router: Router
   ) {
   }
 
@@ -66,5 +69,9 @@ export class EmployeeViewComponent implements OnInit {
 
   private getEmployeeTechnicalExaminationComponentFactory(): ComponentFactory<EmployeeTechnicalExaminationComponent> {
     return this.componentFactoryResolver.resolveComponentFactory(EmployeeTechnicalExaminationComponent);
+  }
+
+  redirectToLogoutPage() {
+    this.router.navigate([RoutePaths.LOGOUT]);
   }
 }

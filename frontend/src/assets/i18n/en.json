@@ -32,6 +32,7 @@
     "INCORRECT": "Incorrect username or password"
   },
   "ADMIN_VIEW": {
+    "LOGOUT": "Log out",
     "NAV_HEADER": "Fleet Management",
     "VEHICLES": "Vehicles",
     "REPAIRS": "Repairs",

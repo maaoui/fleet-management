@@ -6,6 +6,8 @@ import {AdminDepartmentsComponent} from '../admin-departments/admin-departments.
 import {AdminWorkshopsComponent} from '../admin-workshops/admin-workshops.component';
 import {AdminTechnicalExaminationComponent} from '../admin-technical-examination/admin-technical-examination.component';
 import {AdminEmployeesComponent} from '../admin-employees/admin-employees.component';
+import {Router} from '@angular/router';
+import {RoutePaths} from '../../shared/constants/route-paths';
 
 @Component({
   selector: 'app-admin-view',
@@ -17,7 +19,8 @@ export class AdminViewComponent {
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver,
               private viewContainerRef: ViewContainerRef,
-              private translateService: TranslateService
+              private translateService: TranslateService,
+              private router: Router
   ) {
   }
 
@@ -32,7 +35,7 @@ export class AdminViewComponent {
   createAdminVehiclesComponent = (): void => {
     this.destroyCurrentComponent();
     this.createComponent(this.getAdminVehiclesComponentFactory());
-  }
+  };
 
   createAdminExpensesComponent() {
     this.destroyCurrentComponent();
@@ -93,5 +96,9 @@ export class AdminViewComponent {
 
   private getAdminEmployeesComponent(): ComponentFactory<AdminEmployeesComponent> {
     return this.componentFactoryResolver.resolveComponentFactory(AdminEmployeesComponent);
+  }
+
+  redirectToLogoutPage() {
+    this.router.navigate([RoutePaths.LOGOUT]);
   }
 }
