@@ -16,7 +16,6 @@ export class AuthGuard implements CanActivate {
     if (!this.authService.isUserLoggedIn()) {
       this.router.navigate([RoutePaths.LOGIN]);
     }
-    console.log('xd');
     const {url} = state;
     if (url) {
       return this.isPathActiveableByCurrentUser(url.replace('/', ''));

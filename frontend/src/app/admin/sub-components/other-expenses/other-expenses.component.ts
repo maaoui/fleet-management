@@ -58,7 +58,6 @@ export class OtherExpensesComponent implements OnInit {
       this.otherExpenseService
         .deleteOtherExpense(expenseEmitterDeletionResponse.expense.id)
         .subscribe((response) => {
-            console.log(response);
             this.refreshOtherExpenses();
             // TODO Show deleted
           },
