@@ -16,6 +16,10 @@ export class VehicleService {
     return this.http.get<Vehicle[]>(`${environment.baseAPIPath}${this.getVehiclesUrl()}`);
   }
 
+  getVehicleListForEmployee(): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(`${environment.baseAPIPath}vehiclesByEmployeeId`);
+  }
+
   createVehicle(vehicleToCreate: Vehicle): Observable<Vehicle> {
     return this.http.post<Vehicle>(`${environment.baseAPIPath}${this.getVehiclesUrl()}`, vehicleToCreate);
   }

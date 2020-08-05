@@ -27,5 +27,6 @@ public interface TechnicalExaminationRepository extends JpaRepository<TechnicalE
             nativeQuery = true)
     public List<TechnicalExamination> findAllWhereNextExaminationDateInTwoWeeks(@Param("endDate") Date endDate);
 
-
+    @Query("SELECT t from TechnicalExamination t WHERE t.vehicle.currentEmployee.email =:email ORDER BY t.nextExaminationDate DESC")
+    public List<TechnicalExamination> findAllForEmployeeSortedByDate(String email);
 }

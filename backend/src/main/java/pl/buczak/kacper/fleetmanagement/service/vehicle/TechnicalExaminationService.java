@@ -33,6 +33,14 @@ public class TechnicalExaminationService {
                 .collect(Collectors.toList());
     }
 
+    public List<TechnicalExaminationDTO> getAllTechnicalExaminationsForEmployeeSortedByDate(String username) {
+        return this.technicalExaminationRepository
+                .findAllForEmployeeSortedByDate(username)
+                .stream()
+                .map(this::entityToSimpleDTO)
+                .collect(Collectors.toList());
+    }
+
     public List<TechnicalExaminationDTO> getTechnicalExaminationsByVehicleId(Long id) {
         return this.technicalExaminationRepository
                 .findAllByVehicleId(id)
@@ -60,4 +68,5 @@ public class TechnicalExaminationService {
     private TechnicalExaminationDTO entityToSimpleDTO(TechnicalExamination technicalExamination) {
         return modelMapper.map(technicalExamination, TechnicalExaminationDTO.class);
     }
+
 }

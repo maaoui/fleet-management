@@ -20,7 +20,7 @@ export class EmployeeTechnicalExaminationComponent implements OnInit {
 
   private initializeTechnicalExaminations() {
     this.technicalExaminationService
-      .getAllTechnicalExaminations()
+      .getTechnicalExaminationsForCurrentEmployee()
       .subscribe((technicalExaminations: TechnicalExamination[]) => this.technicalExaminations = technicalExaminations);
   }
 }

@@ -23,7 +23,7 @@ export class EmployeeVehiclesComponent implements OnInit {
 
   loadVehiclesList() {
     this.vehicleService
-      .getVehiclesList()
+      .getVehicleListForEmployee()
       .subscribe((vehicles: Vehicle[]) => {
         this.vehicles = vehicles;
       });

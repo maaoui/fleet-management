@@ -45,7 +45,7 @@ export class EmployeeExpensesComponent implements OnInit {
 
   private initializeVehicles() {
     this.vehicleService
-      .getVehiclesList()
+      .getVehicleListForEmployee()
       .subscribe((vehicles: Vehicle[]) => {
           this.vehicles = vehicles;
         }

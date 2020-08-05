@@ -3,6 +3,8 @@ package pl.buczak.kacper.fleetmanagement.controller.vehicle;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.TechnicalExaminationDTO;
 import pl.buczak.kacper.fleetmanagement.service.vehicle.TechnicalExaminationService;
@@ -27,6 +29,14 @@ public class TechnicalExaminationController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(technicalExaminationService.getAllTechnicalExaminationsSortedByDate());
+    }
+
+    @GetMapping(value = "/technicalExaminationsByEmployee")
+    public ResponseEntity<List<TechnicalExaminationDTO>> getTechnicalExaminationsByEmployee() {
+        User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(technicalExaminationService.getAllTechnicalExaminationsForEmployeeSortedByDate(userDetails.getUsername()));
     }
 
     @GetMapping(value = "/technicalExaminations/{id}")

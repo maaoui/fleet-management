@@ -10,7 +10,7 @@ import pl.buczak.kacper.fleetmanagement.entity.dto.vehicle.VehicleFullDTO;
 import pl.buczak.kacper.fleetmanagement.repository.employee.EmployeeRepository;
 import pl.buczak.kacper.fleetmanagement.repository.exploatation.ExploatationReportRepository;
 import pl.buczak.kacper.fleetmanagement.repository.insurance.InsuranceRepository;
-import pl.buczak.kacper.fleetmanagement.repository.vehicle.VehicleReposiory;
+import pl.buczak.kacper.fleetmanagement.repository.vehicle.VehicleRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -22,13 +22,13 @@ import java.util.stream.Collectors;
 @Service
 public class VehicleService {
 
-    private VehicleReposiory vehicleReposiory;
+    private VehicleRepository vehicleReposiory;
     private EmployeeRepository employeeRepository;
     private ModelMapper modelMapper;
     private ExploatationReportRepository exploatationReportRepository;
     private InsuranceRepository insuranceRepository;
 
-    public VehicleService(VehicleReposiory vehicleReposiory, EmployeeRepository employeeRepository, ModelMapper modelMapper, ExploatationReportRepository exploatationReportRepository, InsuranceRepository insuranceRepository) {
+    public VehicleService(VehicleRepository vehicleReposiory, EmployeeRepository employeeRepository, ModelMapper modelMapper, ExploatationReportRepository exploatationReportRepository, InsuranceRepository insuranceRepository) {
         this.vehicleReposiory = vehicleReposiory;
         this.employeeRepository = employeeRepository;
         this.modelMapper = modelMapper;
@@ -45,9 +45,9 @@ public class VehicleService {
                 .collect(Collectors.toList());
     }
 
-    public List<VehicleDTO> findVehiclesByEmployeeId(Long employeeId) {
+    public List<VehicleDTO> findVehiclesByEmployeeUsername(String employeeUsername) {
         return vehicleReposiory
-                .findAllByEmployeeId(employeeId)
+                .findAllByEmployeeUsername(employeeUsername)
                 .stream()
                 .map(this::entityToSimpleDTO)
                 .collect(Collectors.toList());
@@ -79,7 +79,7 @@ public class VehicleService {
         Vehicle savedVehicle = this.vehicleReposiory.save(vehicle);
 
         Insurance insurance = new Insurance();
-        modelMapper.map(insuranceFromDto,insurance);
+        modelMapper.map(insuranceFromDto, insurance);
         insurance.setVehicle(savedVehicle);
         savedVehicle.setInsurance(this.insuranceRepository.save(insurance));
 

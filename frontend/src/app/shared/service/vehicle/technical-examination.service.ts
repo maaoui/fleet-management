@@ -16,7 +16,9 @@ export class TechnicalExaminationService {
   getAllTechnicalExaminations(): Observable<TechnicalExamination[]> {
     return this.http.get<TechnicalExamination[]>(`${environment.baseAPIPath}${this.technicalExaminationsPath()}`);
   }
-
+  getTechnicalExaminationsForCurrentEmployee() : Observable<TechnicalExamination[]> {
+    return this.http.get<TechnicalExamination[]>(`${environment.baseAPIPath}technicalExaminationsByEmployee`);
+  }
   getAllTechnicalExaminationsByVehicleId(vehicleId: number): Observable<TechnicalExamination[]> {
     const requestPath = `${this.technicalExaminationsPath()}/${vehicleId}`;
     return this.http.get<TechnicalExamination[]>(`${environment.baseAPIPath}${requestPath}`);
