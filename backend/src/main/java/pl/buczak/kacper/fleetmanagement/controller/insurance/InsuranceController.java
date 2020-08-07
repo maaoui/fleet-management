@@ -3,6 +3,7 @@ package pl.buczak.kacper.fleetmanagement.controller.insurance;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import pl.buczak.kacper.fleetmanagement.entity.dto.insurance.InsuranceDTO;
 import pl.buczak.kacper.fleetmanagement.service.insurance.InsuranceService;
@@ -23,6 +24,7 @@ public class InsuranceController {
         this.insuranceService = insuranceService;
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @GetMapping(value = "/insurance")
     public ResponseEntity<InsuranceDTO> getInsuranceByVehicleId(@RequestParam(value = "id") @NotBlank Long vehicleId) {
         return ResponseEntity
@@ -30,6 +32,7 @@ public class InsuranceController {
                 .body(insuranceService.findInsuranceByVehicleId(vehicleId));
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @PutMapping(value = "/insurance")
     public ResponseEntity<InsuranceDTO> getInsuranceByVehicleId(@RequestBody InsuranceDTO insuranceDTO) {
         return ResponseEntity

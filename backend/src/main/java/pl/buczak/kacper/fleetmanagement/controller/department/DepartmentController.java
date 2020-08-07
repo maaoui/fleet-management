@@ -7,6 +7,7 @@ package pl.buczak.kacper.fleetmanagement.controller.department;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.DepartmentDTO;
 import pl.buczak.kacper.fleetmanagement.entity.dto.department.DepartmentFullDTO;
@@ -25,6 +26,8 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
+
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @GetMapping(value = "/departments")
     public ResponseEntity<List<DepartmentFullDTO>> getDepartmentsList() {
         return ResponseEntity
@@ -32,6 +35,7 @@ public class DepartmentController {
                 .body(departmentService.getDepartmentsList());
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @GetMapping(value = "/departmentsByRegionId")
     public ResponseEntity<List<DepartmentDTO>> getDepartmentsListByRegion(@NotBlank @RequestParam(name = "id") Long regionId) {
         return ResponseEntity
@@ -39,6 +43,7 @@ public class DepartmentController {
                 .body(departmentService.getDepartmentsListByRegionId(regionId));
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping(value = "/department/{id}")
     public ResponseEntity<DepartmentFullDTO> getFullDepartmentInformation(@NotBlank @PathVariable(name = "id") Long departmentId) {
         return ResponseEntity
@@ -46,6 +51,7 @@ public class DepartmentController {
                 .body(departmentService.getDepartmentById(departmentId));
     }
 
+    @Secured("ROLE_ADMIN")
     @PostMapping(value = "/departments")
     public ResponseEntity<DepartmentFullDTO> createDepartment(@RequestBody DepartmentFullDTO departmentFullDTO) {
         return ResponseEntity
@@ -53,6 +59,7 @@ public class DepartmentController {
                 .body(departmentService.createDepartment(departmentFullDTO));
     }
 
+    @Secured("ROLE_ADMIN")
     @PutMapping(value = "/department/{id}")
     public ResponseEntity<DepartmentFullDTO> editDepartment(@RequestBody DepartmentFullDTO departmentFullDTO, @NotBlank @PathVariable(name = "id") Long id) {
         return ResponseEntity
@@ -60,6 +67,7 @@ public class DepartmentController {
                 .body(departmentService.editDepartment(departmentFullDTO, id));
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping(value = "/department/{id}")
     public ResponseEntity<DepartmentFullDTO> deleteDepartment(@NotBlank @PathVariable(name = "id") Long id) {
         departmentService.deleteDepartment(id);

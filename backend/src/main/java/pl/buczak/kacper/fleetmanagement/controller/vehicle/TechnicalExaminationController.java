@@ -3,6 +3,7 @@ package pl.buczak.kacper.fleetmanagement.controller.vehicle;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,7 @@ public class TechnicalExaminationController {
         this.technicalExaminationService = technicalExaminationService;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping(value = "/technicalExaminations")
     public ResponseEntity<List<TechnicalExaminationDTO>> getTechnicalExaminationsSortedByDate() {
         return ResponseEntity
@@ -31,6 +33,7 @@ public class TechnicalExaminationController {
                 .body(technicalExaminationService.getAllTechnicalExaminationsSortedByDate());
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @GetMapping(value = "/technicalExaminationsByEmployee")
     public ResponseEntity<List<TechnicalExaminationDTO>> getTechnicalExaminationsByEmployee() {
         User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -39,6 +42,7 @@ public class TechnicalExaminationController {
                 .body(technicalExaminationService.getAllTechnicalExaminationsForEmployeeSortedByDate(userDetails.getUsername()));
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping(value = "/technicalExaminations/{id}")
     public ResponseEntity<List<TechnicalExaminationDTO>> getTechnicalExaminationsByVehicleId(@NotBlank @PathVariable("id") Long id) {
         return ResponseEntity
@@ -46,6 +50,7 @@ public class TechnicalExaminationController {
                 .body(technicalExaminationService.getTechnicalExaminationsByVehicleId(id));
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @PostMapping(value = "/technicalExaminations")
     public ResponseEntity<TechnicalExaminationDTO> createTechnicalExamination(@RequestBody TechnicalExaminationDTO technicalExaminationDTO) {
         return ResponseEntity
@@ -53,14 +58,16 @@ public class TechnicalExaminationController {
                 .body(technicalExaminationService.createTechnicalExamination(technicalExaminationDTO));
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @PutMapping(value = "/technicalExaminations/{id}")
     public ResponseEntity<TechnicalExaminationDTO> updateTechnicalExamination(@NotBlank @PathVariable("id") Long id,
-                                                                                       @RequestBody TechnicalExaminationDTO technicalExaminationDTO) {
+                                                                              @RequestBody TechnicalExaminationDTO technicalExaminationDTO) {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(technicalExaminationService.editTechnicalExamination(technicalExaminationDTO));
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping(value = "/technicalExaminations/{id}")
     public ResponseEntity<Void> deleteTechnicalExaminationById(@NotBlank @PathVariable("id") Long id) {
         technicalExaminationService.deleteTechnicalExamination(id);

@@ -3,6 +3,7 @@ package pl.buczak.kacper.fleetmanagement.controller.exploatation.expense;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import pl.buczak.kacper.fleetmanagement.entity.dto.exploatation.expense.CarPartExpenseDTO;
 import pl.buczak.kacper.fleetmanagement.service.exploatation.expense.CarPartExpenseService;
@@ -20,6 +21,7 @@ public class CarPartExpenseController {
         this.carPartExpenseService = carPartExpenseService;
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @PostMapping("/carPartExpense/{vehicleId}")
     public ResponseEntity<CarPartExpenseDTO> createCarPartExpense(@RequestBody CarPartExpenseDTO carPartExpenseDTO, @PathVariable("vehicleId") Long vehicleId) {
         return ResponseEntity
@@ -27,6 +29,7 @@ public class CarPartExpenseController {
                 .body(carPartExpenseService.createCarPartExpense(carPartExpenseDTO, vehicleId));
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @PutMapping("/carPartExpense")
     public ResponseEntity<CarPartExpenseDTO> updateCarPartExpense(@RequestBody CarPartExpenseDTO carPartExpenseDTO) {
         return ResponseEntity
@@ -34,6 +37,8 @@ public class CarPartExpenseController {
                 .body(carPartExpenseService.updateCarPartExpense(carPartExpenseDTO));
     }
 
+
+    @Secured("ROLE_ADMIN")
     @DeleteMapping("/carPartExpense/{expenseId}")
     public ResponseEntity<Void> deleteCarPartExpenseById(@PathVariable("expenseId") Long expenseId) {
         carPartExpenseService.deleteCarPartExpenseById(expenseId);

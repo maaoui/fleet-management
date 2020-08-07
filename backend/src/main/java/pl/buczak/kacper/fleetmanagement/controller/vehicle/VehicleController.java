@@ -3,6 +3,7 @@ package pl.buczak.kacper.fleetmanagement.controller.vehicle;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping(value = "/vehicles")
     public ResponseEntity<List<VehicleDTO>> getListOfVehicles() {
         return ResponseEntity
@@ -33,6 +35,8 @@ public class VehicleController {
                 .body(vehicleService.findListOfVehicles());
     }
 
+
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @GetMapping(value = "/vehicle/{id}")
     public ResponseEntity<VehicleFullDTO> getVehicleById(@NotBlank @PathVariable("id") Long vehicleId) {
         return ResponseEntity
@@ -40,6 +44,8 @@ public class VehicleController {
                 .body(vehicleService.findVehicleById(vehicleId));
     }
 
+
+    @Secured({"ROLE_ADMIN", "ROLE_EMPLOYEE"})
     @GetMapping(value = "/vehiclesByEmployeeId")
     public ResponseEntity<List<VehicleDTO>> getListOfVehiclesByEmployeeId() {
         User userDetails = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -48,6 +54,7 @@ public class VehicleController {
                 .body(vehicleService.findVehiclesByEmployeeUsername(userDetails.getUsername()));
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping(value = "/vehiclesByDepartmentId")
     public ResponseEntity<List<VehicleDTO>> getListOfVehiclesByDepartmentId(@NotBlank @RequestParam("departmentId") Long departmentId) {
         return ResponseEntity
@@ -55,6 +62,7 @@ public class VehicleController {
                 .body(vehicleService.findVehiclesByDepartmentId(departmentId));
     }
 
+    @Secured("ROLE_ADMIN")
     @PostMapping(value = "/vehicles")
     public ResponseEntity<VehicleFullDTO> createVehicle(@RequestBody VehicleFullDTO vehicle) {
         return ResponseEntity
@@ -63,6 +71,7 @@ public class VehicleController {
     }
 
 
+    @Secured("ROLE_ADMIN")
     @PutMapping(value = "/vehicle/{id}")
     public ResponseEntity<VehicleFullDTO> editVehicle(@NotBlank @PathVariable("id") Long vehicleId, @RequestBody VehicleFullDTO vehicle) {
         return ResponseEntity
@@ -70,6 +79,7 @@ public class VehicleController {
                 .body(vehicleService.editVehicle(vehicle));
     }
 
+    @Secured("ROLE_ADMIN")
     @DeleteMapping(value = "/vehicle/{id}")
     public ResponseEntity<Void> deleteVehicleById(@NotBlank @PathVariable("id") Long vehicleId) {
         vehicleService.deleteVehicleById(vehicleId);
