@@ -5,6 +5,7 @@ import {Constants} from '../../shared/constants/constants';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {AddEmployeeModalComponent} from '../modals/add-employee-modal/add-employee-modal.component';
 import {EditEmployeeModalComponent} from '../modals/edit-employee-modal/edit-employee-modal.component';
+import {ToastService} from '../../shared/service/toast/toast.service';
 
 @Component({
   selector: 'app-admin-employees',
@@ -15,7 +16,7 @@ export class AdminEmployeesComponent implements OnInit {
 
   private employees: Employee[];
 
-  constructor(private employeeService: EmployeeService, private modalService: NgbModal) {
+  constructor(private employeeService: EmployeeService, private modalService: NgbModal, private toastService: ToastService) {
   }
 
   ngOnInit(): void {
@@ -25,24 +26,38 @@ export class AdminEmployeesComponent implements OnInit {
   private initializeEmployees() {
     this.employeeService
       .getEmployeeList()
-      .subscribe((employees: Employee[]) => {
-        this.employees = employees;
-      });
+      .subscribe(
+        (employees: Employee[]) => {
+          this.employees = employees;
+        },
+        () => this.toastService.showFetchingFailed());
   }
 
   onDisableEmployee(employee: Employee) {
     this.employeeService
       .disableEmployee(employee.id)
-      .subscribe((updatedEmployee: Employee) => this.updateEmployee(updatedEmployee));
+      .subscribe(
+        (updatedEmployee: Employee) => {
+          this.updateEmployeeEnabledStatus(updatedEmployee);
+          this.toastService.showUpdated();
+        },
+        () => this.toastService.showFetchingFailed()
+      );
   }
 
   onEnableEmployee(employee: Employee) {
     this.employeeService
       .enableEmployee(employee.id)
-      .subscribe((updatedEmployee: Employee) => this.updateEmployee(updatedEmployee));
+      .subscribe(
+        (updatedEmployee: Employee) => {
+          this.updateEmployeeEnabledStatus(updatedEmployee);
+          this.toastService.showUpdated();
+        },
+        () => this.toastService.showFetchingFailed()
+      );
   }
 
-  private updateEmployee(updatedEmployee: Employee) {
+  private updateEmployeeEnabledStatus(updatedEmployee: Employee) {
     this.employees
       .filter(emp => emp.id === updatedEmployee.id)
       .map(filteredEmployee => filteredEmployee.enabled = updatedEmployee.enabled);

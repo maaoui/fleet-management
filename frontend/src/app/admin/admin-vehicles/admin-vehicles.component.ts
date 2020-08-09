@@ -11,6 +11,7 @@ import {AddVehicleModalComponent} from '../modals/add-vehicle-modal/add-vehicle-
 import {Insurance} from '../../shared/model/insurance/insurance';
 import {InsuranceInformationModalComponent} from '../modals/insurance-information-modal/insurance-information-modal.component';
 import {InsuranceService} from '../../shared/service/insurance/insurance.service';
+import {ToastService} from '../../shared/service/toast/toast.service';
 
 @Component({
   selector: 'app-admin-vehicles',
@@ -21,7 +22,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
   private vehicles: Vehicle[];
   private subscription: Subscription;
 
-  constructor(private vehicleService: VehicleService, private modalService: NgbModal, private insuranceService: InsuranceService) {
+  constructor(private vehicleService: VehicleService, private modalService: NgbModal, private insuranceService: InsuranceService, private toastService: ToastService) {
   }
 
   ngOnInit(): void {
@@ -40,8 +41,8 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
         (vehicles) => {
           this.vehicles = vehicles.sort((a: Vehicle, b: Vehicle) => a.id > b.id ? 1 : 0);
         },
-        (error) => {
-          // TODO Handle error - show error message
+        () => {
+          this.toastService.showFetchingFailed();
         }
       );
   }
@@ -77,7 +78,8 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
     modalRef.componentInstance
       .vehicleCreationEmitter
       .pipe(first())
-      .subscribe(() => this.loadVehiclesList());
+      .subscribe(() => this.loadVehiclesList())
+    ;
   }
 
   openInsuranceInformationModal(vehicle: Vehicle) {
@@ -89,11 +91,7 @@ export class AdminVehiclesComponent implements OnInit, OnDestroy {
         modalRef.componentInstance.insuranceUpdateEmitter = new EventEmitter();
         modalRef.componentInstance.insuranceUpdateEmitter
           .pipe(first())
-          .subscribe(
-            () => this.loadVehiclesList(),
-            (error) => {
-              // TODO Handle error - show error message
-            });
+          .subscribe(() => this.loadVehiclesList());
       });
   }
 }

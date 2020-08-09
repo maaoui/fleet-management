@@ -3,6 +3,7 @@ import {VehicleService} from '../../shared/service/vehicle/vehicle.service';
 import {Vehicle} from '../../shared/model/vehicle/vehicle';
 import {ExploitationService} from '../../shared/service/exploitation/exploitation.service';
 import {ExploitationReport} from '../../shared/model/exploitation/exploitation-report';
+import {ToastService} from '../../shared/service/toast/toast.service';
 
 @Component({
   selector: 'app-admin-expenses',
@@ -12,7 +13,8 @@ import {ExploitationReport} from '../../shared/model/exploitation/exploitation-r
 export class AdminExpensesComponent implements OnInit {
 
   constructor(private vehicleService: VehicleService,
-              private exploitationService: ExploitationService) {
+              private exploitationService: ExploitationService,
+              private toastService: ToastService) {
   }
 
   private vehicles: Vehicle[];
@@ -30,19 +32,24 @@ export class AdminExpensesComponent implements OnInit {
   private initializeVehicles() {
     this.vehicleService
       .getVehiclesList()
-      .subscribe((vehicles: Vehicle[]) => {
-        this.vehicles = vehicles;
-      });
+      .subscribe(
+        (vehicles: Vehicle[]) => {
+          this.vehicles = vehicles;
+        },
+        () => this.toastService.showFetchingFailed()
+      );
   }
 
   getVehicleExploatationData(vehicleId) {
     this.exploitationService
       .getExploitationReportByVehicleId(vehicleId)
-      .subscribe(exploitationReport => {
+      .subscribe(
+        (exploitationReport: ExploitationReport) => {
           this.exploitationReport = exploitationReport;
           this.selectedVehicle = exploitationReport.vehicle;
           this.isVehicleSelected = true;
-        }
+        },
+        () => this.toastService.showFetchingFailed()
       );
   }
 

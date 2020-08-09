@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TechnicalExamination} from '../../shared/model/technicalExamination/technical-examination';
 import {TechnicalExaminationService} from '../../shared/service/vehicle/technical-examination.service';
+import {ToastService} from '../../shared/service/toast/toast.service';
 
 @Component({
   selector: 'app-admin-technical-examination',
@@ -11,7 +12,8 @@ export class AdminTechnicalExaminationComponent implements OnInit {
 
   technicalExaminations: TechnicalExamination[];
 
-  constructor(private technicalExaminationService: TechnicalExaminationService) {
+  constructor(private technicalExaminationService: TechnicalExaminationService,
+              private toastService: ToastService) {
   }
 
   ngOnInit(): void {
@@ -21,6 +23,9 @@ export class AdminTechnicalExaminationComponent implements OnInit {
   private initializeTechnicalExaminations() {
     this.technicalExaminationService
       .getAllTechnicalExaminations()
-      .subscribe((technicalExaminations: TechnicalExamination[]) => this.technicalExaminations = technicalExaminations);
+      .subscribe(
+        (technicalExaminations: TechnicalExamination[]) => this.technicalExaminations = technicalExaminations,
+        () => this.toastService.showFetchingFailed()
+      );
   }
 }

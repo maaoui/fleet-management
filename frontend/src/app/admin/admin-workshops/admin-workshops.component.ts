@@ -8,6 +8,7 @@ import {WorkshopEditingModalComponent} from '../modals/workshop-editing-modal/wo
 import {Address} from '../../shared/model/address/address';
 import {Region} from '../../shared/model/address/region';
 import {first} from 'rxjs/operators';
+import {ToastService} from '../../shared/service/toast/toast.service';
 
 export class DefaultMapConstants {
   public static readonly DEFAULT_COORDINATES = {
@@ -34,7 +35,8 @@ export class AdminWorkshopsComponent implements OnInit {
 
   constructor(private workshopService: WorkshopService,
               private ref: ChangeDetectorRef,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private toastService: ToastService) {
   }
 
   ngOnInit(): void {
@@ -86,10 +88,12 @@ export class AdminWorkshopsComponent implements OnInit {
   private initializeWorkshops() {
     this.workshopService
       .getWorkshopsList()
-      .subscribe((workshops: Workshop[]) => {
-        this.workshops = workshops;
-        this.mapMarkerLayers = this.getMapLayerMarkersFromWorkshops(workshops);
-      });
+      .subscribe(
+        (workshops: Workshop[]) => {
+          this.workshops = workshops;
+          this.mapMarkerLayers = this.getMapLayerMarkersFromWorkshops(workshops);
+        },
+        () => this.toastService.showFetchingFailed());
   }
 
   private getMapLayerMarkersFromWorkshops(workshops: Workshop[]): Marker[] {

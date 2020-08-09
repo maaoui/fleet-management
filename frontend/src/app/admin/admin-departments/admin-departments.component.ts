@@ -10,6 +10,7 @@ import {Address} from '../../shared/model/address/address';
 import {Region} from '../../shared/model/address/region';
 import {first} from 'rxjs/operators';
 import {DeleteDepartmentModalComponent} from '../modals/delete-department-modal/delete-department-modal.component';
+import {ToastService} from '../../shared/service/toast/toast.service';
 
 @Component({
   selector: 'app-admin-departments',
@@ -21,7 +22,8 @@ export class AdminDepartmentsComponent implements OnInit {
   private departments: Department[];
 
   constructor(private departmentService: DepartmentService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private toastService: ToastService) {
   }
 
   ngOnInit(): void {
@@ -39,9 +41,7 @@ export class AdminDepartmentsComponent implements OnInit {
     modalRef.componentInstance
       .updateEmitter
       .pipe(first())
-      .subscribe(() => {
-        this.loadDepartmentsList();
-      });
+      .subscribe(() => this.loadDepartmentsList());
   }
 
   openAddDepartmentModal() {
@@ -50,9 +50,7 @@ export class AdminDepartmentsComponent implements OnInit {
     modalRef.componentInstance
       .creationEmitter
       .pipe(first())
-      .subscribe(() => {
-        this.loadDepartmentsList();
-      });
+      .subscribe(() => this.loadDepartmentsList());
   }
 
   openDeleteDepartmentModal(department: Department) {
@@ -68,9 +66,12 @@ export class AdminDepartmentsComponent implements OnInit {
   private loadDepartmentsList() {
     this.departmentService
       .getDepartmentsList()
-      .subscribe((departments: Department[]) => {
-        this.departments = departments;
-      });
+      .subscribe(
+        (departments: Department[]) => {
+          this.departments = departments;
+        },
+        () => this.toastService.showFetchingFailed()
+      );
   }
 
   private getEmptyDepartment(): Department {
