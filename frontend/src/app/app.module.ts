@@ -10,6 +10,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AdminModule} from './admin/admin.module';
 import {BasicAuthHttpInterceptor} from './core/interceptor/basic-auth-http.interceptor';
 import {EmployeeModule} from './employee/employee.module';
+import {SharedModule} from './shared/shared.module';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -20,21 +21,22 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    AdminModule,
-    EmployeeModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        AdminModule,
+        EmployeeModule,
+        SharedModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: BasicAuthHttpInterceptor, multi: true

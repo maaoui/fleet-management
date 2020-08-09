@@ -248,5 +248,10 @@
   },
   "LOGOUT_PAGE": {
     "LOGOUT": "Za chwile nastąpi wylogowanie"
+  },
+  "TOAST_MESSAGES": {
+    "FETCHING_FAILED": "Pobieranie danych nie powiodło się",
+    "UNAUTHORIZED": "Nie posiadasz uprawnień do danych",
+    "UPDATED": "Dane zostały zaktualizowane"
   }
 }

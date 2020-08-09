@@ -10,23 +10,27 @@ import {VehicleInformationComponent} from './component/vehicle-information/vehic
 import {InsuranceInformationComponent} from './component/insurance-information/insurance-information.component';
 import {TechnicalExaminationComponent} from './component/technical-examination/technical-examination.component';
 import {LandingPageComponent} from './component/landing-page/landing-page.component';
+import { ToastContainerComponent } from './component/toast-container/toast-container.component';
+import {NgbToastModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
-  declarations: [LoginComponent, LogoutComponent, VehicleInformationComponent, InsuranceInformationComponent, TechnicalExaminationComponent, LandingPageComponent],
-  imports: [
-    TranslateModule,
-    BrowserModule,
-    CommonModule,
-    FormsModule
-  ],
+  declarations: [LoginComponent, LogoutComponent, VehicleInformationComponent, InsuranceInformationComponent, TechnicalExaminationComponent, LandingPageComponent, ToastContainerComponent],
+    imports: [
+        TranslateModule,
+        BrowserModule,
+        CommonModule,
+        FormsModule,
+        NgbToastModule
+    ],
   exports: [
     TranslateModule,
     BrowserModule,
     CommonModule,
     VehicleInformationComponent,
     InsuranceInformationComponent,
-    TechnicalExaminationComponent
+    TechnicalExaminationComponent,
+    ToastContainerComponent
   ]
 })
 export class SharedModule {

@@ -248,5 +248,10 @@
   },
   "LOGOUT_PAGE": {
     "LOGOUT": "You are beeing logged out."
+  },
+  "TOAST_MESSAGES": {
+    "FETCHING_FAILED": "Fetching data was unsuccessful",
+    "UNAUTHORIZED": "You are not authorized to access this data",
+    "UPDATED": "Data was successfully updated"
   }
 }
